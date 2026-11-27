@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Managalas Camera Trap ID</title>
-<meta name="description" content="Community identification of curated camera trap images from the Managalas Plateau, Oro Province, Papua New Guinea.">
+<title>Melanesian Camera Trap ID</title>
+<meta name="description" content="Community identification of difficult camera trap images from Melanesia, starting with the Managalas Plateau, Oro Province, Papua New Guinea.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=DM+Mono:wght@400;500&display=swap">
 <style>
@@ -332,7 +332,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
 <body>
 <div class="topbar" id="topbar">
   <div class="wrap">
-    <a class="home" href="#" id="navHome">Managalas Camera Trap ID <small>Pilot</small></a>
+    <a class="home" href="#" id="navHome">Melanesian Camera Trap ID <small>Pilot</small></a>
     <nav aria-label="Main">
       <a href="#" id="navHome2">Home</a>
       <div class="menu">
@@ -738,7 +738,7 @@ function issueBody(img, d) {
     sec("Not identifiable", box(d.unid, "The animal cannot be identified from this image (too dark, blurred or partial)")),
     sec("Flags", FLAGS.map(([k, l]) => box(d.flags[k], l)).join("\n")),
     sec("Confidence", d.confidence), sec("Local or common name (optional)", d.local), sec("Notes and ideas", d.note),
-    `---\n_Submitted from the [Managalas Camera Trap ID website](${location.origin + location.pathname}#img-${img.id}). Press **Create** to send it._`
+    `---\n_Submitted from the [Melanesian Camera Trap ID website](${location.origin + location.pathname}#img-${img.id}). Press **Create** to send it._`
   ].join("\n");
 }
 function datalist(id, values) {

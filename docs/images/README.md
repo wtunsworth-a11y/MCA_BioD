@@ -1,7 +1,7 @@
 # Curated camera trap images for community identification
 
 Images from the Managalas camera trap survey that need identification
-below family level. They are published on the Managalas Camera Trap ID website
+below family level. They are published on the Melanesian Camera Trap ID website
 (https://wtunsworth-a11y.github.io/MCA_BioD/), which is built from the
 `docs/` folder.
 

@@ -133,6 +133,6 @@ automated protocol. See Sections 4.1–4.2 of the paper.
 
 ---
 
-**Also in this repository:** the Managalas Camera Trap ID website, a
+**Also in this repository:** the Melanesian Camera Trap ID website, a
 community identification site for camera trap images. See
 [CAMTRAP.md](CAMTRAP.md).

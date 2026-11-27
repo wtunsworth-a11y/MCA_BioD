@@ -1,11 +1,14 @@
-# Managalas Camera Trap ID website
+# Melanesian Camera Trap ID website
 
 Website: https://wtunsworth-a11y.github.io/MCA_BioD/
 
-A community identification site for curated camera trap images from the
-Managalas Plateau, Ijivitari District, Oro (Northern) Province, Papua New
-Guinea. It is a pilot of the Managalas project, funded by the European
-Union, and is built to be handed on to a Papua New Guinean group.
+A community identification site for difficult camera trap images from
+Melanesia. It starts with the Managalas Plateau, Ijivitari District, Oro
+(Northern) Province, Papua New Guinea, and aims to become a national
+community of practice for camera trap users in PNG, open in time to
+Indonesia (Papua), Solomon Islands and other neighbours. It is a pilot of
+the Managalas project, funded by the European Union, run with Landscape
+Alliance, and built to be handed on to a Papua New Guinean group.
 
 ## How it works
 

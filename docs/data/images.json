@@ -14,10 +14,12 @@
 "time": "03:22",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Dasyuridae_002",
@@ -34,10 +36,12 @@
 "time": "05:08",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Dasyuridae_004",
@@ -54,10 +58,12 @@
 "time": "20:21",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_001",
@@ -74,10 +80,12 @@
 "time": "10:39",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_002",
@@ -94,10 +102,12 @@
 "time": "21:14",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_003",
@@ -114,10 +124,12 @@
 "time": "08:09",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_004",
@@ -134,10 +146,12 @@
 "time": "09:00",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_005",
@@ -154,10 +168,12 @@
 "time": "07:41",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_006",
@@ -174,10 +190,12 @@
 "time": "13:01",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_007",
@@ -194,10 +212,12 @@
 "time": "15:25",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_008",
@@ -214,10 +234,12 @@
 "time": "07:16",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_009",
@@ -234,10 +256,12 @@
 "time": "08:29",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_010",
@@ -254,10 +278,12 @@
 "time": "16:29",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_011",
@@ -274,10 +300,12 @@
 "time": "07:57",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_012",
@@ -294,10 +322,12 @@
 "time": "09:14",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_013",
@@ -314,10 +344,12 @@
 "time": "13:05",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_014",
@@ -334,10 +366,12 @@
 "time": "09:18",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_015",
@@ -354,10 +388,12 @@
 "time": "21:31",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_016",
@@ -374,10 +410,12 @@
 "time": "03:58",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_017",
@@ -394,10 +432,12 @@
 "time": "07:43",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_018",
@@ -414,10 +454,12 @@
 "time": "21:07",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_019",
@@ -434,10 +476,12 @@
 "time": "01:46",
 "clockReset": true,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_020",
@@ -454,10 +498,12 @@
 "time": "16:33",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Macropodidae_021",
@@ -474,13 +520,15 @@
 "time": "03:06",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
 "llg": "Afore Rural LLG",
 "aliases": [
 "Dasyuridae_003"
-]
+],
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_001",
@@ -497,10 +545,12 @@
 "time": "11:59",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_002",
@@ -517,10 +567,12 @@
 "time": "23:19",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_003",
@@ -537,10 +589,12 @@
 "time": "04:53",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_004",
@@ -557,10 +611,12 @@
 "time": "04:13",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_005",
@@ -577,10 +633,12 @@
 "time": "22:29",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_006",
@@ -597,10 +655,12 @@
 "time": "22:14",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_007",
@@ -617,10 +677,12 @@
 "time": "21:12",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_008",
@@ -637,10 +699,12 @@
 "time": "18:00",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_009",
@@ -657,10 +721,12 @@
 "time": "00:13",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_010",
@@ -677,10 +743,12 @@
 "time": "01:47",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_011",
@@ -697,10 +765,12 @@
 "time": "01:35",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_012",
@@ -717,10 +787,12 @@
 "time": "22:39",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_013",
@@ -737,10 +809,12 @@
 "time": "02:23",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_014",
@@ -757,10 +831,12 @@
 "time": "03:32",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_015",
@@ -777,10 +853,12 @@
 "time": "21:38",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_016",
@@ -797,10 +875,12 @@
 "time": "19:58",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_017",
@@ -817,10 +897,12 @@
 "time": "18:36",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_018",
@@ -837,10 +919,12 @@
 "time": "22:19",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_019",
@@ -857,10 +941,12 @@
 "time": "19:25",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_020",
@@ -877,10 +963,12 @@
 "time": "19:02",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_021",
@@ -897,10 +985,12 @@
 "time": "23:02",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_022",
@@ -917,10 +1007,12 @@
 "time": "02:42",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_023",
@@ -937,10 +1029,12 @@
 "time": "21:24",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_024",
@@ -957,10 +1051,12 @@
 "time": "23:23",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_025",
@@ -977,10 +1073,12 @@
 "time": "18:40",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_026",
@@ -997,10 +1095,12 @@
 "time": "00:13",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_027",
@@ -1017,10 +1117,12 @@
 "time": "23:34",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_028",
@@ -1037,10 +1139,12 @@
 "time": "23:08",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_029",
@@ -1057,12 +1161,15 @@
 "time": "01:28",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [
-"Peramelidae_030"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Peramelidae_029",
+"Peramelidae_030"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_030",
@@ -1079,12 +1186,15 @@
 "time": "01:33",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [
-"Peramelidae_029"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Peramelidae_029",
+"Peramelidae_030"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_031",
@@ -1101,10 +1211,12 @@
 "time": "20:48",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_032",
@@ -1121,12 +1233,15 @@
 "time": "20:37",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [
-"Peramelidae_033"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Peramelidae_032",
+"Peramelidae_033"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_033",
@@ -1143,12 +1258,15 @@
 "time": "20:37",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [
-"Peramelidae_032"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Peramelidae_032",
+"Peramelidae_033"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_034",
@@ -1165,10 +1283,12 @@
 "time": "21:00",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Peramelidae_035",
@@ -1185,10 +1305,12 @@
 "time": "16:56",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_001",
@@ -1205,10 +1327,12 @@
 "time": "20:14",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_002",
@@ -1225,10 +1349,12 @@
 "time": "05:32",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_003",
@@ -1245,10 +1371,12 @@
 "time": "20:31",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_004",
@@ -1265,10 +1393,12 @@
 "time": "01:57",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_005",
@@ -1285,10 +1415,12 @@
 "time": "22:22",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_006",
@@ -1305,10 +1437,12 @@
 "time": "23:32",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_007",
@@ -1325,10 +1459,12 @@
 "time": "23:02",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_008",
@@ -1345,10 +1481,12 @@
 "time": "23:26",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_009",
@@ -1365,10 +1503,12 @@
 "time": "19:50",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_010",
@@ -1385,10 +1525,12 @@
 "time": "11:13",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Phalangeridae_011",
@@ -1405,10 +1547,12 @@
 "time": "09:53",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_001",
@@ -1425,10 +1569,12 @@
 "time": "01:03",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_002",
@@ -1445,10 +1591,12 @@
 "time": "01:47",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_003",
@@ -1465,10 +1613,12 @@
 "time": "22:13",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_004",
@@ -1485,10 +1635,12 @@
 "time": "19:13",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_005",
@@ -1505,10 +1657,12 @@
 "time": "19:55",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_006",
@@ -1525,10 +1679,12 @@
 "time": "04:51",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_007",
@@ -1545,10 +1701,12 @@
 "time": "21:57",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_008",
@@ -1565,10 +1723,12 @@
 "time": "04:53",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_009",
@@ -1585,10 +1745,12 @@
 "time": "00:06",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_010",
@@ -1605,10 +1767,12 @@
 "time": "20:58",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_011",
@@ -1625,10 +1789,12 @@
 "time": "00:32",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_012",
@@ -1645,10 +1811,12 @@
 "time": "04:36",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_013",
@@ -1665,10 +1833,12 @@
 "time": "04:38",
 "clockReset": false,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_014",
@@ -1685,10 +1855,12 @@
 "time": "16:49",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Small_mammal_015",
@@ -1705,10 +1877,12 @@
 "time": "15:11",
 "clockReset": true,
 "imageType": "infrared (night)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_001",
@@ -1725,10 +1899,12 @@
 "time": "10:29",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_002",
@@ -1745,10 +1921,12 @@
 "time": "12:58",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_003",
@@ -1765,10 +1943,12 @@
 "time": "12:10",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Oro Bay Rural LLG"
+"llg": "Oro Bay Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_004",
@@ -1785,12 +1965,15 @@
 "time": "12:34",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [
-"Varanidae_005"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Varanidae_004",
+"Varanidae_005"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_005",
@@ -1807,12 +1990,15 @@
 "time": "12:34",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [
-"Varanidae_004"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Varanidae_004",
+"Varanidae_005"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_006",
@@ -1829,10 +2015,12 @@
 "time": "10:27",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_007",
@@ -1849,10 +2037,12 @@
 "time": "10:04",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_008",
@@ -1869,12 +2059,15 @@
 "time": "12:44",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [
-"Varanidae_009"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Varanidae_008",
+"Varanidae_009"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_009",
@@ -1891,12 +2084,15 @@
 "time": "12:44",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [
-"Varanidae_008"
-],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [
+"Varanidae_008",
+"Varanidae_009"
+],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_010",
@@ -1913,10 +2109,12 @@
 "time": "09:50",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 },
 {
 "id": "Varanidae_011",
@@ -1933,9 +2131,11 @@
 "time": "12:30",
 "clockReset": false,
 "imageType": "colour (day)",
-"sameVisit": [],
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
-"llg": "Afore Rural LLG"
+"llg": "Afore Rural LLG",
+"set": [],
+"project": "Managalas",
+"country": "Papua New Guinea"
 }
 ]

@@ -163,7 +163,9 @@ def main():
         sys.exit("Set REPO=owner/name")
     images = json.load(open(os.path.join(DATA, "images.json")))
     cfg = json.load(open(os.path.join(DATA, "config.json")))
-    known = {i["id"].lower(): i["id"] for i in images}
+    # Several photos of one animal form a set; identifications count for the set's first photo.
+    lead = {i["id"]: (i.get("set") or [i["id"]])[0] for i in images}
+    known = {i["id"].lower(): lead[i["id"]] for i in images}
     # IUCN common names (e.g. "New Guinea Quoll") -> (family, genus, epithet)
     common = {}
     try:
@@ -174,7 +176,7 @@ def main():
         pass
     for i in images:                      # old IDs of images that were moved
         for a in i.get("aliases", []):
-            known[a.lower()] = i["id"]
+            known[a.lower()] = lead[i["id"]]
 
     latest, notes = {}, []
     for iss in sorted(fetch_issues(), key=lambda i: i["created_at"]):
@@ -249,12 +251,12 @@ def main():
                 flagged[v["image"]][k] += 1
     with open(os.path.join(DATA, "labels.csv"), "w", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["image_id", "file", "curated_family", "curated_genus", "grid", "station", "camera",
+        w.writerow(["image_id", "observation_id", "file", "curated_family", "curated_genus", "grid", "station", "camera",
                     "elevation_m", "date", "time", "clock_unreliable", "status", "consensus_rank",
                     "consensus_family", "consensus_genus", "consensus_species", "agreement_pct",
                     "agreeing_ids", "total_ids", "flag_range_extension", "flag_undescribed", "flag_review", "rule_min_ids", "rule_agree_pct", "rule_target_rank"])
         for im in images:
-            status, res, total = consensus(by_img[im["id"]], gfm, cfg)
+            status, res, total = consensus(by_img[lead[im["id"]]], gfm, cfg)
             fam = gen = sp = ""
             if res and res[0] == "species":
                 gen, sp = res[1].split(" ", 1)
@@ -264,13 +266,13 @@ def main():
                 fam = gfm.get(gen, "")
             elif res and res[0] == "family":
                 fam = res[1]
-            w.writerow([im["id"], im["file"], im["family"], im["curatedGenus"], im["grid"], im["station"],
+            w.writerow([im["id"], lead[im["id"]], im["file"], im["family"], im["curatedGenus"], im["grid"], im["station"],
                         im["camera"], im["elevation"], im["date"], im["time"], "yes" if im["clockReset"] else "",
                         status, res[0] if res else "", fam, gen, sp,
                         round(res[2] / total * 100) if res else "", res[2] if res else "", total,
-                        flagged[im["id"]]["range"] or "", flagged[im["id"]]["newsp"] or "", flagged[im["id"]]["review"] or "",
+                        flagged[lead[im["id"]]]["range"] or "", flagged[lead[im["id"]]]["newsp"] or "", flagged[lead[im["id"]]]["review"] or "",
                         cfg["minIds"], cfg["agreePct"], cfg["targetRank"]])
-    print(f"{len(votes)} votes and {len(notes)} notes; {len(ids)} entries across {len(by_img)} images")
+    print(f"{len(votes)} votes and {len(notes)} notes; {len(ids)} entries across {len(by_img)} observations")
 
 
 if __name__ == "__main__":

@@ -425,7 +425,7 @@ function candidatesNode(img) {
   if (!pool.length) return null;
   const e = img.elevation, M = 150;
   const inRange = s => s.elevMin == null && s.elevMax == null ? null : (e >= (s.elevMin ?? 0) - M && e <= (s.elevMax ?? 9000) + M);
-  const sorted = pool.map(s => ({s, r: inRange(s)})).sort((a,b) => (a.r === false) - (b.r === false) || a.s.name.localeCompare(b.s.name));
+  const sorted = pool.map(s => ({s, r: inRange(s)})).sort((a,b) => (a.r === false) - (b.r === false) || (a.r === null) - (b.r === null) || a.s.name.localeCompare(b.s.name));
   const fits = sorted.filter(x => x.r !== false), outs = sorted.filter(x => x.r === false);
   const row = ({s, r}) => {
     const url = safeUrl(s.url);
@@ -437,7 +437,7 @@ function candidatesNode(img) {
   const box = el("div",{class:"cands"}, ...fits.map(row));
   if (!fits.length) box.append(el("p",{class:"none", text:"No species in this group is recorded at this elevation."}));
   const sec = el("div",{class:"sec"}, el("h3",{text: fam ? `Known ${fam} in PNG near ${e} m` : `Known small mammals in PNG near ${e} m`}),
-    el("p",{class:"hint", text:`Guidance only. These are species the IUCN Red List records in Papua New Guinea with an elevation range that includes ${e} m (±${M} m). This survey is expected to find range extensions and possibly undescribed species, so the animal may not be on this list. If so, say so and flag it.`}), box);
+    el("p",{class:"hint", text:`Guidance only. These are species the IUCN Red List records anywhere in Papua New Guinea (not only Oro Province) with an elevation range that includes ${e} m (±${M} m). Check each one's distribution on its IUCN page. This survey is expected to find range extensions and possibly undescribed species, so the animal may not be on this list. If so, say so and flag it.`}), box);
   if (outs.length) sec.append(el("details",{class:"more"}, el("summary",{text:`${outs.length} more recorded in PNG, but not at this elevation (a match would be an elevation range extension)`}), el("div",{class:"cands"}, ...outs.map(row))));
   return sec;
 }

@@ -6,7 +6,7 @@ common name, Red List category, elevation limits and habitats.
 Needs an IUCN Red List API v4 token in IUCN_REDLIST_KEY (or a proxy that
 adds it). Usage: python3 scripts/iucn_candidates.py
 """
-import json, os, sys, time, urllib.error, urllib.request
+import html, json, os, sys, time, urllib.error, urllib.request
 API = "https://api.iucnredlist.org/api/v4"
 KEY = os.environ.get("IUCN_REDLIST_KEY", "dummy")
 FAMILIES = ["Macropodidae", "Peramelidae", "Phalangeridae", "Varanidae", "Dasyuridae",
@@ -63,7 +63,7 @@ for fam in FAMILIES:
                  next((c["name"] for c in tx.get("common_names", []) if c.get("language") == "eng"), "")
         species.append(dict(
             family=fam, genus=tx["genus_name"], species=tx["species_name"], name=tx["scientific_name"],
-            authority=tx.get("authority") or "", common=common,
+            authority=html.unescape(tx.get("authority") or ""), common=html.unescape(common or ""),
             category=(d.get("red_list_category") or {}).get("code", ""),
             elevMin=si.get("lower_elevation_limit"), elevMax=si.get("upper_elevation_limit"),
             countries=sorted(l["code"] for l in d.get("locations", []) if l.get("code") and len(l["code"]) == 2),

@@ -96,6 +96,34 @@ where the paper leaves room:
 5. **Species only.** Subpopulation and infraspecific assessments are dropped, which matches the paper's species focus. Set `species_only = FALSE` to keep them.
 6. **Ties** share the same (minimum) rank and are displayed alphabetically.
 
+## Check against the paper (Papua New Guinea)
+
+Run on 27 Nov 2026 against the live API:
+
+| | This implementation | Paper, Table 6 |
+|---|---|---|
+| Threatened + EW species | 1,299 qualifying in-country (1,328 listed) | 1,322 |
+| Priority 1 | 914 (70.4%) | 916 (69.3%) |
+| Priority 2 | 385 | — |
+| Top score | 4000 (*Paphiopedilum bougainvilleanum*, CR) | max 4000 |
+
+Of the 29 listed assessments that don't qualify in PNG:
+- 10 are *Possibly Extant* there.
+- 10 are *Presence Uncertain*.
+- 9 are introduced, vagrant or of uncertain origin.
+
+Each alternative choice changes Priority 1 by at most 5 species:
+
+| Alternative | Priority 1 |
+|---|---|
+| Include *Possibly Extant* | 918 |
+| Treat a missing trend as *Unknown* | 919 |
+| Use the lower bound of numeric ranges | 917 |
+
+Eight qualifying species use 2.3 criteria, and eight have no recorded
+population trend. The remaining gap with the paper most likely comes from
+Red List updates between versions 2025-2 and 2026-1.
+
 ## Caveats from the paper
 
 The ranked list is a **starting point** for national review, not a final

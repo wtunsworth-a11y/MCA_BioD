@@ -1,0 +1,4529 @@
+{
+ "source": "IUCN Red List of Threatened Species, API v4",
+ "retrieved": "2026-11-27",
+ "species": [
+  {
+   "family": "Acrobatidae",
+   "genus": "Distoechurus",
+   "species": "pennatus",
+   "name": "Distoechurus pennatus",
+   "authority": "(Peters, 1874)",
+   "common": "Feather-tailed Possum",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6765/21963930"
+  },
+  {
+   "family": "Burramyidae",
+   "genus": "Cercartetus",
+   "species": "caudatus",
+   "name": "Cercartetus caudatus",
+   "authority": "(Milne-Edwards, 1877)",
+   "common": "Long-tailed Pygmy Possum",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 3450,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Shrubland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/4192/21963339"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Dasyurus",
+   "species": "albopunctatus",
+   "name": "Dasyurus albopunctatus",
+   "authority": "Schlegel, 1880",
+   "common": "New Guinea Quoll",
+   "category": "NT",
+   "elevMin": 0,
+   "elevMax": 3600,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6299/21946965"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Dasyurus",
+   "species": "spartacus",
+   "name": "Dasyurus spartacus",
+   "authority": "Van Dyck, 1988",
+   "common": "Bronze Quoll",
+   "category": "NT",
+   "elevMin": 0,
+   "elevMax": 200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6301/21947093"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Murexia",
+   "species": "habbema",
+   "name": "Murexia habbema",
+   "authority": "(Tate & Archbold, 1941)",
+   "common": "Habbema Dasyure",
+   "category": "LC",
+   "elevMin": 1600,
+   "elevMax": 3660,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/1589/21943099"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Murexia",
+   "species": "longicaudata",
+   "name": "Murexia longicaudata",
+   "authority": "(Schlegel, 1866)",
+   "common": "Short-furred Dasyure",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13930/21943259"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Murexia",
+   "species": "melanura",
+   "name": "Murexia melanura",
+   "authority": "(O. Thomas, 1899)",
+   "common": "Black-tailed Dasyure",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/1591/21943184"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Murexia",
+   "species": "naso",
+   "name": "Murexia naso",
+   "authority": "(Jentink, 1911)",
+   "common": "Long-nosed Dasyure",
+   "category": "LC",
+   "elevMin": 1400,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/1587/21942936"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Murexia",
+   "species": "rothschildi",
+   "name": "Murexia rothschildi",
+   "authority": "(Tate, 1938)",
+   "common": "Broad-striped Dasyure",
+   "category": "NT",
+   "elevMin": 600,
+   "elevMax": 1400,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13931/21943008"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Myoictis",
+   "species": "leucura",
+   "name": "Myoictis leucura",
+   "authority": "Woolley, 2005",
+   "common": "Woolley\u2019s Three-striped Dasyure",
+   "category": "DD",
+   "elevMin": 650,
+   "elevMax": 1600,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136449/21945246"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Myoictis",
+   "species": "melas",
+   "name": "Myoictis melas",
+   "authority": "(M\u00fcller, 1840)",
+   "common": "M\u00fcller\u2019s Three-striped Dasyure",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/14086/21945102"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Myoictis",
+   "species": "wallacei",
+   "name": "Myoictis wallacei",
+   "authority": "(Gray, 1858)",
+   "common": "Wallace's Three-striped Dasyure",
+   "category": "LC",
+   "elevMin": 30,
+   "elevMax": 923,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136839/21945028"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Myoictis",
+   "species": "wavicus",
+   "name": "Myoictis wavicus",
+   "authority": "Tate, 1947",
+   "common": "Tate\u2019s Three-striped Dasyure",
+   "category": "DD",
+   "elevMin": 975,
+   "elevMax": 1810,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136829/21945185"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Neophascogale",
+   "species": "lorentzii",
+   "name": "Neophascogale lorentzii",
+   "authority": "(Jentink, 1911)",
+   "common": "Speckled Dasyure",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 3900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/14541/21943824"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Phascolosorex",
+   "species": "dorsalis",
+   "name": "Phascolosorex dorsalis",
+   "authority": "(Peters & Doria, 1876)",
+   "common": "Narrow-striped Dasyure",
+   "category": "LC",
+   "elevMin": 1500,
+   "elevMax": 3600,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16894/21943541"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Planigale",
+   "species": "novaeguineae",
+   "name": "Planigale novaeguineae",
+   "authority": "Tate & Archbold, 1941",
+   "common": "Papuan Planigale",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 250,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17474/21944952"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Sminthopsis",
+   "species": "archeri",
+   "name": "Sminthopsis archeri",
+   "authority": "Van Dyck, 1986",
+   "common": "Chestnut Dunnart",
+   "category": "DD",
+   "elevMin": 0,
+   "elevMax": 1000,
+   "countries": [
+    "AU",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/20296/21948127"
+  },
+  {
+   "family": "Dasyuridae",
+   "genus": "Sminthopsis",
+   "species": "virginiae",
+   "name": "Sminthopsis virginiae",
+   "authority": "(Tarragon, 1847)",
+   "common": "Red-cheeked Dunnart",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Grassland - Subtropical/Tropical Dry",
+    "Savanna - Moist",
+    "Wetlands (inland)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40549/21948773"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "dorianus",
+   "name": "Dendrolagus dorianus",
+   "authority": "Ramsay, 1883",
+   "common": "Doria's Tree Kangaroo",
+   "category": "VU",
+   "elevMin": 600,
+   "elevMax": 3650,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6427/21957392"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "goodfellowi",
+   "name": "Dendrolagus goodfellowi",
+   "authority": "Thomas, 1908",
+   "common": "Goodfellow's Tree Kangaroo",
+   "category": "EN",
+   "elevMin": null,
+   "elevMax": 2860,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6429/21957524"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "inustus",
+   "name": "Dendrolagus inustus",
+   "authority": "M\u00fcller, 1840",
+   "common": "Grizzled Tree Kangaroo",
+   "category": "VU",
+   "elevMin": 100,
+   "elevMax": 1400,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6431/21957669"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "matschiei",
+   "name": "Dendrolagus matschiei",
+   "authority": "F\u00f6rster & Rothschild, 1907",
+   "common": "Huon Tree Kangaroo",
+   "category": "EN",
+   "elevMin": 1000,
+   "elevMax": 3300,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6433/21956650"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "notatus",
+   "name": "Dendrolagus notatus",
+   "authority": "Matschie, 1916",
+   "common": "Ifola",
+   "category": "EN",
+   "elevMin": 900,
+   "elevMax": 3100,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136732/21957010"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "pulcherrimus",
+   "name": "Dendrolagus pulcherrimus",
+   "authority": "Flannery, 1993",
+   "common": "Golden-mantled Tree Kangaroo",
+   "category": "CR",
+   "elevMin": 680,
+   "elevMax": 1700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136696/21957219"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "scottae",
+   "name": "Dendrolagus scottae",
+   "authority": "Flannery & Seri, 1990",
+   "common": "Tenkile",
+   "category": "CR",
+   "elevMin": 900,
+   "elevMax": 1700,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/6435/21956375"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "spadix",
+   "name": "Dendrolagus spadix",
+   "authority": "Troughton & Le Souef, 1936",
+   "common": "Lowlands Tree Kangaroo",
+   "category": "VU",
+   "elevMin": 0,
+   "elevMax": 800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6436/21956250"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dendrolagus",
+   "species": "stellarum",
+   "name": "Dendrolagus stellarum",
+   "authority": "Flannery & Seri, 1990",
+   "common": "Seri\u2019s Tree Kangaroo",
+   "category": "VU",
+   "elevMin": 2600,
+   "elevMax": 4000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136812/21956889"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dorcopsis",
+   "species": "atrata",
+   "name": "Dorcopsis atrata",
+   "authority": "Van Deusen, 1957",
+   "common": "Black Dorcopsis",
+   "category": "CR",
+   "elevMin": 1000,
+   "elevMax": 1800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2026",
+   "url": "https://www.iucnredlist.org/species/6794/258658468"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dorcopsis",
+   "species": "hageni",
+   "name": "Dorcopsis hageni",
+   "authority": "Heller, 1897",
+   "common": "White-striped Dorcopsis",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 400,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6795/21952491"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dorcopsis",
+   "species": "luctuosa",
+   "name": "Dorcopsis luctuosa",
+   "authority": "(D'Albertis, 1874)",
+   "common": "Grey Dorcopsis",
+   "category": "VU",
+   "elevMin": 0,
+   "elevMax": 400,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6799/21952259"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dorcopsulus",
+   "species": "macleayi",
+   "name": "Dorcopsulus macleayi",
+   "authority": "(Miklouho-Maclay, 1885)",
+   "common": "Macleay's Dorcopsis",
+   "category": "LC",
+   "elevMin": 1000,
+   "elevMax": 1800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6801/21952872"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Dorcopsulus",
+   "species": "vanheurni",
+   "name": "Dorcopsulus vanheurni",
+   "authority": "(Thomas, 1922)",
+   "common": "Small Dorcopsis",
+   "category": "NT",
+   "elevMin": 800,
+   "elevMax": 3100,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6802/21952770"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Lagorchestes",
+   "species": "conspicillatus",
+   "name": "Lagorchestes conspicillatus",
+   "authority": "Gould, 1842",
+   "common": "Spectacled Hare-wallaby",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Dry",
+    "Savanna - Dry",
+    "Shrubland - Subtropical/Tropical Dry"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/11161/21954319"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Notamacropus",
+   "species": "agilis",
+   "name": "Notamacropus agilis",
+   "authority": "(Gould, 1842)",
+   "common": "Agile Wallaby",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Grassland - Subtropical/Tropical Dry",
+    "Savanna - Dry"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40560/21954106"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Thylogale",
+   "species": "browni",
+   "name": "Thylogale browni",
+   "authority": "(E.P. Ramsay, 1877)",
+   "common": "New Guinea Pademelon",
+   "category": "VU",
+   "elevMin": 0,
+   "elevMax": 2100,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/21874/21958526"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Thylogale",
+   "species": "brunii",
+   "name": "Thylogale brunii",
+   "authority": "(Schreber, 1777)",
+   "common": "Dusky Pademelon",
+   "category": "VU",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/21870/21958826"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Thylogale",
+   "species": "calabyi",
+   "name": "Thylogale calabyi",
+   "authority": "Flannery, 1992",
+   "common": "Calaby's Pademelon",
+   "category": "EN",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/21873/21958741"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Thylogale",
+   "species": "lanata",
+   "name": "Thylogale lanata",
+   "authority": "O. Thomas, 1922",
+   "common": "Mountain Pademelon",
+   "category": "EN",
+   "elevMin": 3000,
+   "elevMax": 3800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136255/21958371"
+  },
+  {
+   "family": "Macropodidae",
+   "genus": "Thylogale",
+   "species": "stigmatica",
+   "name": "Thylogale stigmatica",
+   "authority": "(J. Gould, 1861)",
+   "common": "Red-legged Pademelon",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1200,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Temperate"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40574/21958270"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Abeomelomys",
+   "species": "sevia",
+   "name": "Abeomelomys sevia",
+   "authority": "(Tate & Archbold, 1935)",
+   "common": "Menzies' Mouse",
+   "category": "LC",
+   "elevMin": 1400,
+   "elevMax": 3100,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17879/22402392"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Anisomys",
+   "species": "imitator",
+   "name": "Anisomys imitator",
+   "authority": "Thomas, 1904",
+   "common": "Uneven-toothed Rat",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 3500,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/1307/115056040"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Baiyankamys",
+   "species": "shawmayeri",
+   "name": "Baiyankamys shawmayeri",
+   "authority": "Hinton, 1943",
+   "common": "Shaw Mayer's Water Rat",
+   "category": "LC",
+   "elevMin": 1500,
+   "elevMax": 3600,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/10314/115097322"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Chiruromys",
+   "species": "forbesi",
+   "name": "Chiruromys forbesi",
+   "authority": "Thomas, 1888",
+   "common": "Forbes's Tree Mouse",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1300,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/4691/22448006"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Chiruromys",
+   "species": "lamia",
+   "name": "Chiruromys lamia",
+   "authority": "(Thomas, 1897)",
+   "common": "Broad-headed Tree Mouse",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 2300,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/4692/22448086"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Chiruromys",
+   "species": "vates",
+   "name": "Chiruromys vates",
+   "authority": "(Thomas, 1908)",
+   "common": "Lesser Tree Mouse",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1500,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/4693/22448155"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Coccymys",
+   "species": "kirrhos",
+   "name": "Coccymys kirrhos",
+   "authority": "Musser & Lunde, 2009",
+   "common": "Tawny Coccymys",
+   "category": "DD",
+   "elevMin": 1490,
+   "elevMax": 2230,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/112391705/112391754"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Coccymys",
+   "species": "ruemmleri",
+   "name": "Coccymys ruemmleri",
+   "authority": "(Tate & Archbold, 1941)",
+   "common": "R\u00fcmmler's Mouse",
+   "category": "LC",
+   "elevMin": 2200,
+   "elevMax": 4040,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/112464492/123796403"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Coccymys",
+   "species": "shawmayeri",
+   "name": "Coccymys shawmayeri",
+   "authority": "Musser & Lunde, 2009",
+   "common": "Shawmayer\u2019s Coccymys",
+   "category": "LC",
+   "elevMin": 1587,
+   "elevMax": 3500,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/112393452/112393495"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Conilurus",
+   "species": "penicillatus",
+   "name": "Conilurus penicillatus",
+   "authority": "(Gould, 1842)",
+   "common": "Brush-tailed Rabbit-rat",
+   "category": "VU",
+   "elevMin": 0,
+   "elevMax": 60,
+   "countries": [
+    "AU",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Savanna - Dry"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/5224/22450418"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Crossomys",
+   "species": "moncktoni",
+   "name": "Crossomys moncktoni",
+   "authority": "Thomas, 1907",
+   "common": "Earless Water Rat",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 3500,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/5679/115079540"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Hydromys",
+   "species": "chrysogaster",
+   "name": "Hydromys chrysogaster",
+   "authority": "\u00c9. Geoffroy Saint-Hilaire, 1804",
+   "common": "Common Water Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1900,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Marine Coastal/Supratidal - Coastal Brackish/Saline Lagoons/Marine Lakes",
+    "Marine Coastal/Supratidal - Coastal Freshwater Lakes",
+    "Marine Neritic - Estuaries",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands",
+    "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/10310/115097054"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Hydromys",
+   "species": "neobritannicus",
+   "name": "Hydromys neobritannicus",
+   "authority": "Tate & Archbold, 1935",
+   "common": "New Britain Water Rat",
+   "category": "DD",
+   "elevMin": 0,
+   "elevMax": 500,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Unknown",
+    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+    "Wetlands (inland) - Seasonal/Intermittent Freshwater Lakes (over 8ha)",
+    "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/10313/115097202"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Hydromys",
+   "species": "ziegleri",
+   "name": "Hydromys ziegleri",
+   "authority": "Helgen, 2005",
+   "common": "Ziegler's Water Rat",
+   "category": "DD",
+   "elevMin": 200,
+   "elevMax": 200,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136476/115208415"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Hyomys",
+   "species": "dammermani",
+   "name": "Hyomys dammermani",
+   "authority": "Stein, 1933",
+   "common": "Western White-eared Giant Rat",
+   "category": "DD",
+   "elevMin": 1400,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/10632/115098343"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Hyomys",
+   "species": "goliath",
+   "name": "Hyomys goliath",
+   "authority": "(Milne-Edwards, 1900)",
+   "common": "Eastern White-eared Giant Rat",
+   "category": "LC",
+   "elevMin": 1400,
+   "elevMax": 2800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/10633/22407102"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Leptomys",
+   "species": "elegans",
+   "name": "Leptomys elegans",
+   "authority": "Thomas, 1897",
+   "common": "Large Leptomys",
+   "category": "LC",
+   "elevMin": 400,
+   "elevMax": 1600,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/11691/115103866"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Leptomys",
+   "species": "ernstmayri",
+   "name": "Leptomys ernstmayri",
+   "authority": "R\u00fcmmler, 1932",
+   "common": "Ernst Mayr's Leptomys",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/11692/22430490"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Leptomys",
+   "species": "paulus",
+   "name": "Leptomys paulus",
+   "authority": "Musser, Helgen & Lunde, 2008",
+   "common": "Small Leptomys",
+   "category": "DD",
+   "elevMin": 1240,
+   "elevMax": 1540,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/47989221/47989254"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Leptomys",
+   "species": "signatus",
+   "name": "Leptomys signatus",
+   "authority": "Tate & Archbold, 1938",
+   "common": "Fly River Leptomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1400,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Unknown"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/11693/22430400"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Lorentzimys",
+   "species": "nouhuysi",
+   "name": "Lorentzimys nouhuysi",
+   "authority": "Jentink, 1911",
+   "common": "Long-footed Tree Mouse",
+   "category": "LC",
+   "elevMin": 80,
+   "elevMax": 2700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/12361/115105162"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Macruromys",
+   "species": "major",
+   "name": "Macruromys major",
+   "authority": "R\u00fcmmler, 1935",
+   "common": "Greater Small-toothed Rat",
+   "category": "LC",
+   "elevMin": 660,
+   "elevMax": 1900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/12656/22458913"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mallomys",
+   "species": "aroaensis",
+   "name": "Mallomys aroaensis",
+   "authority": "(De Vis, 1907)",
+   "common": "De Vis's Woolly Rat",
+   "category": "LC",
+   "elevMin": 1100,
+   "elevMax": 2700,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2023",
+   "url": "https://www.iucnredlist.org/species/12721/236790628"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mallomys",
+   "species": "istapantap",
+   "name": "Mallomys istapantap",
+   "authority": "Flannery, Aplin & Groves, 1989",
+   "common": "Subalpine Woolly Rat",
+   "category": "LC",
+   "elevMin": 2450,
+   "elevMax": 3850,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/12723/115106010"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mallomys",
+   "species": "rothschildi",
+   "name": "Mallomys rothschildi",
+   "authority": "Thomas, 1898",
+   "common": "Rothschild's Woolly Rat",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 3700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Caves and Subterranean Habitats (non-aquatic) - Caves",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/12724/22454854"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mammelomys",
+   "species": "lanosus",
+   "name": "Mammelomys lanosus",
+   "authority": "(O. Thomas, 1922)",
+   "common": "Highland Mammelomys",
+   "category": "LC",
+   "elevMin": 1000,
+   "elevMax": 3200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2025",
+   "url": "https://www.iucnredlist.org/species/13122/269122919"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mammelomys",
+   "species": "rattoides",
+   "name": "Mammelomys rattoides",
+   "authority": "(Thomas, 1922)",
+   "common": "Lowland Mammelomys",
+   "category": "LC",
+   "elevMin": 320,
+   "elevMax": 1400,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13130/115109190"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "arcium",
+   "name": "Melomys arcium",
+   "authority": "(Thomas, 1913)",
+   "common": "Rossel Island Melomys",
+   "category": "DD",
+   "elevMin": 50,
+   "elevMax": 700,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Unknown"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136431/22420872"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "bougainville",
+   "name": "Melomys bougainville",
+   "authority": "Troughton, 1936",
+   "common": "Bougainville Melomys",
+   "category": "DD",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG",
+    "SB"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Unknown"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13115/22420453"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "burtoni",
+   "name": "Melomys burtoni",
+   "authority": "(Ramsay, 1887)",
+   "common": "Grassland Melomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1200,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Forest - Temperate",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Savanna - Moist",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13116/115108809"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "dollmani",
+   "name": "Melomys dollmani",
+   "authority": "R\u00fcmmler, 1935",
+   "common": "Dollman\u2019s Melomys",
+   "category": "LC",
+   "elevMin": 1000,
+   "elevMax": 1800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136818/22421708"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "leucogaster",
+   "name": "Melomys leucogaster",
+   "authority": "(Jentink, 1908)",
+   "common": "White-bellied Melomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1400,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13123/22421348"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "lutillus",
+   "name": "Melomys lutillus",
+   "authority": "(Thomas, 1913)",
+   "common": "Grassland Melomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136764/115212323"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "matambuai",
+   "name": "Melomys matambuai",
+   "authority": "Flannery, Colgan & Trimble, 1994",
+   "common": "Manus Melomys",
+   "category": "EN",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136522/22421603"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Melomys",
+   "species": "rufescens",
+   "name": "Melomys rufescens",
+   "authority": "(Alston, 1877)",
+   "common": "Black-tailed Melomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2400,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13133/115109431"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Microhydromys",
+   "species": "argenteus",
+   "name": "Microhydromys argenteus",
+   "authority": "Helgen, Leary & Aplin, 2010",
+   "common": "Southern Groove-toothed Shrew Mouse",
+   "category": "DD",
+   "elevMin": 380,
+   "elevMax": 1450,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/48004865/48004917"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Microhydromys",
+   "species": "richardsoni",
+   "name": "Microhydromys richardsoni",
+   "authority": "Tate & Archbold, 1941",
+   "common": "",
+   "category": "DD",
+   "elevMin": 850,
+   "elevMax": 1500,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/48002425/22459257"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mirzamys",
+   "species": "louiseae",
+   "name": "Mirzamys louiseae",
+   "authority": "Helgen & Helgen, 2009",
+   "common": "Mirza\u2019s Western Moss-rat",
+   "category": "LC",
+   "elevMin": 1900,
+   "elevMax": 3450,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/48266217/48266264"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mirzamys",
+   "species": "norahae",
+   "name": "Mirzamys norahae",
+   "authority": "Helgen & Helgen, 2009",
+   "common": "Mirza\u2019s Eastern Moss-rat",
+   "category": "DD",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/48265836/48266173"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Mus",
+   "species": "musculus",
+   "name": "Mus musculus",
+   "authority": "Linnaeus, 1758",
+   "common": "House Mouse",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AD",
+    "AE",
+    "AF",
+    "AL",
+    "AM",
+    "AR",
+    "AT",
+    "AU",
+    "AZ",
+    "BA",
+    "BE",
+    "BG",
+    "BH",
+    "BN",
+    "BO",
+    "BR",
+    "BY",
+    "CA",
+    "CH",
+    "CL",
+    "CO",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "DZ",
+    "EC",
+    "EE",
+    "EG",
+    "ER",
+    "ES",
+    "FI",
+    "FO",
+    "FR",
+    "GB",
+    "GE",
+    "GG",
+    "GI",
+    "GR",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IM",
+    "IN",
+    "IQ",
+    "IR",
+    "IS",
+    "IT",
+    "JE",
+    "JO",
+    "JP",
+    "KG",
+    "KH",
+    "KP",
+    "KR",
+    "KZ",
+    "LA",
+    "LB",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "LY",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MK",
+    "MM",
+    "MN",
+    "MT",
+    "MY",
+    "NL",
+    "NO",
+    "NP",
+    "NZ",
+    "OM",
+    "PE",
+    "PG",
+    "PH",
+    "PK",
+    "PL",
+    "PS",
+    "PT",
+    "RO",
+    "RS",
+    "RU",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SY",
+    "TH",
+    "TJ",
+    "TM",
+    "TN",
+    "TR",
+    "TW",
+    "UA",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VE",
+    "VN",
+    "YE",
+    "ZA"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Arable Land",
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Grassland - Subantarctic",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Grassland - Temperate",
+    "Grassland - Tundra",
+    "Marine Coastal/Supratidal - Coastal Sand Dunes",
+    "Shrubland - Boreal",
+    "Shrubland - Mediterranean-type Shrubby Vegetation",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Shrubland - Temperate",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+    "Wetlands (inland) - Permanent Saline, Brackish or Alkaline Marshes/Pools"
+   ],
+   "year": "2021",
+   "url": "https://www.iucnredlist.org/species/13972/197519724"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Parahydromys",
+   "species": "asper",
+   "name": "Parahydromys asper",
+   "authority": "(Thomas, 1906)",
+   "common": "Waterside Rat",
+   "category": "LC",
+   "elevMin": 500,
+   "elevMax": 2200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16114/22460300"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paraleptomys",
+   "species": "rufilatus",
+   "name": "Paraleptomys rufilatus",
+   "authority": "Osgood, 1945",
+   "common": "Northern Hydromyine",
+   "category": "EN",
+   "elevMin": 1200,
+   "elevMax": 1700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16121/22419478"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paraleptomys",
+   "species": "wilhelmina",
+   "name": "Paraleptomys wilhelmina",
+   "authority": "Tate & Archbold, 1941",
+   "common": "Short-haired Hydromyine",
+   "category": "DD",
+   "elevMin": 1800,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16122/115131430"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "gressitti",
+   "name": "Paramelomys gressitti",
+   "authority": "Menzies, 1996",
+   "common": "Gressitt\u2019s Paramelomys",
+   "category": "EN",
+   "elevMin": 2300,
+   "elevMax": 2400,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136701/22408955"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "levipes",
+   "name": "Paramelomys levipes",
+   "authority": "(Thomas, 1897)",
+   "common": "Papuan Lowland Paramelomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1200,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13124/22408756"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "lorentzii",
+   "name": "Paramelomys lorentzii",
+   "authority": "(Jentink, 1908)",
+   "common": "Lorentz\u2019s Paramelomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1500,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13125/115108951"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "mollis",
+   "name": "Paramelomys mollis",
+   "authority": "(Thomas, 1913)",
+   "common": "Montane Soft-furred Paramelomys",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 2200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13126/22409176"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "moncktoni",
+   "name": "Paramelomys moncktoni",
+   "authority": "(Thomas, 1904)",
+   "common": "Moncton's Paramelomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13127/22409104"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "platyops",
+   "name": "Paramelomys platyops",
+   "authority": "(Thomas, 1906)",
+   "common": "Common Lowland Paramelomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13129/115109069"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Paramelomys",
+   "species": "rubex",
+   "name": "Paramelomys rubex",
+   "authority": "(Thomas, 1922)",
+   "common": "Mountain Paramelomys",
+   "category": "LC",
+   "elevMin": 900,
+   "elevMax": 3000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13131/115109301"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomelomys",
+   "species": "brassi",
+   "name": "Pogonomelomys brassi",
+   "authority": "Tate & Archbold, 1941",
+   "common": "Grey Pogonomelomys",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 600,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/136660/22449087"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomelomys",
+   "species": "mayeri",
+   "name": "Pogonomelomys mayeri",
+   "authority": "(Rothschild & Dollman, 1932)",
+   "common": "Shaw Mayer's Pogonomelomys",
+   "category": "LC",
+   "elevMin": 400,
+   "elevMax": 1500,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17878/22449181"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomys",
+   "species": "championi",
+   "name": "Pogonomys championi",
+   "authority": "Flannery, 1988",
+   "common": "Champion's Tree Mouse",
+   "category": "DD",
+   "elevMin": 1400,
+   "elevMax": 2300,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17882/115141317"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomys",
+   "species": "fergussoniensis",
+   "name": "Pogonomys fergussoniensis",
+   "authority": "Laurie, 1952",
+   "common": "D\u2019entrecasteaux Archipelago Pogonomys",
+   "category": "EN",
+   "elevMin": 200,
+   "elevMax": 900,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136763/22431006"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomys",
+   "species": "loriae",
+   "name": "Pogonomys loriae",
+   "authority": "Thomas, 1897",
+   "common": "Loria\u2019s Pogonomys",
+   "category": "LC",
+   "elevMin": 240,
+   "elevMax": 3000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17883/115141457"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomys",
+   "species": "macrourus",
+   "name": "Pogonomys macrourus",
+   "authority": "(Milne-Edwards, 1877)",
+   "common": "Chestnut Tree Mouse",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17884/115141567"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pogonomys",
+   "species": "sylvestris",
+   "name": "Pogonomys sylvestris",
+   "authority": "Thomas, 1920",
+   "common": "Gray-bellied Tree Mouse",
+   "category": "LC",
+   "elevMin": 1300,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/17885/115141693"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Protochromys",
+   "species": "fellowsi",
+   "name": "Protochromys fellowsi",
+   "authority": "(Hinton, 1943)",
+   "common": "Red-bellied Protochromys",
+   "category": "LC",
+   "elevMin": 1800,
+   "elevMax": 2600,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13119/22459833"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "berniceae",
+   "name": "Pseudohydromys berniceae",
+   "authority": "K.M. Helgen & L.E. Helgen, 2009",
+   "common": "Bishop\u2019s Moss Mouse",
+   "category": "LC",
+   "elevMin": 590,
+   "elevMax": 1570,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2024",
+   "url": "https://www.iucnredlist.org/species/45958680/259060442"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "carlae",
+   "name": "Pseudohydromys carlae",
+   "authority": "Hegen & Helgen, 2009",
+   "common": "Huon Small-toothed Moss-mouse",
+   "category": "DD",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/48020754/48020760"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "eleanorae",
+   "name": "Pseudohydromys eleanorae",
+   "authority": "Helgen & Helgen, 2009",
+   "common": "Laurie\u2019s Moss-mouse",
+   "category": "DD",
+   "elevMin": 2440,
+   "elevMax": 3050,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/48265607/48265612"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "ellermani",
+   "name": "Pseudohydromys ellermani",
+   "authority": "(Laurie & Hill, 1954)",
+   "common": "",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 3000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/48019838/22410741"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "fuscus",
+   "name": "Pseudohydromys fuscus",
+   "authority": "(Laurie, 1952)",
+   "common": "Mottled-tailed Shrew Mouse",
+   "category": "LC",
+   "elevMin": 2350,
+   "elevMax": 3100,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/14528/22410650"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "germani",
+   "name": "Pseudohydromys germani",
+   "authority": "(Helgen, 2005)",
+   "common": "German's One-toothed Moss Mouse",
+   "category": "DD",
+   "elevMin": 1300,
+   "elevMax": 1570,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136523/22410827"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "murinus",
+   "name": "Pseudohydromys murinus",
+   "authority": "R\u00fcmmler, 1934",
+   "common": "",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/48265359/115400710"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "musseri",
+   "name": "Pseudohydromys musseri",
+   "authority": "(Flannery, 1989)",
+   "common": "Musser's Shrew Mouse",
+   "category": "DD",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/42646/22459332"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "occidentalis",
+   "name": "Pseudohydromys occidentalis",
+   "authority": "Tate, 1951",
+   "common": "Western Shrew Mouse",
+   "category": "DD",
+   "elevMin": 2300,
+   "elevMax": 3800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/48266448/115400819"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "pumehanae",
+   "name": "Pseudohydromys pumehanae",
+   "authority": "Helgen & Helgen, 2009",
+   "common": "Southern Small-toothed Moss-mouse ",
+   "category": "DD",
+   "elevMin": 2100,
+   "elevMax": 2100,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/48020705/48020726"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudohydromys",
+   "species": "sandrae",
+   "name": "Pseudohydromys sandrae",
+   "authority": "K.M. Helgen & L.E. Helgen, 2009",
+   "common": "White-bellied Moss Mouse",
+   "category": "LC",
+   "elevMin": 800,
+   "elevMax": 850,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2024",
+   "url": "https://www.iucnredlist.org/species/45958686/259311113"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Pseudomys",
+   "species": "mimulus",
+   "name": "Pseudomys mimulus",
+   "authority": "Thomas, 1926",
+   "common": "Eastern Delicate Mouse",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Savanna - Dry",
+    "Savanna - Moist"
+   ],
+   "year": "2026",
+   "url": "https://www.iucnredlist.org/species/277137614/277138457"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "detentus",
+   "name": "Rattus detentus",
+   "authority": "Timm, Weijola, K.P. Aplin, Flannery & Pine, 2016",
+   "common": "Admiralty Rat",
+   "category": "CR",
+   "elevMin": 34,
+   "elevMax": 200,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest"
+   ],
+   "year": "2024",
+   "url": "https://www.iucnredlist.org/species/112139816/258514107"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "exulans",
+   "name": "Rattus exulans",
+   "authority": "(Peale, 1848)",
+   "common": "Polynesian Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 250,
+   "countries": [
+    "AS",
+    "BD",
+    "BN",
+    "CC",
+    "CK",
+    "CX",
+    "FJ",
+    "FM",
+    "GU",
+    "ID",
+    "KH",
+    "KI",
+    "LA",
+    "MH",
+    "MM",
+    "MP",
+    "MY",
+    "NC",
+    "NF",
+    "NR",
+    "NU",
+    "NZ",
+    "PF",
+    "PG",
+    "PH",
+    "PW",
+    "SB",
+    "SG",
+    "TH",
+    "TK",
+    "TL",
+    "TO",
+    "TV",
+    "TW",
+    "UM",
+    "US",
+    "VN",
+    "VU",
+    "WF",
+    "WS"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Arable Land",
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Marine Coastal/Supratidal - Sea Cliffs and Rocky Offshore Islands",
+    "Marine Intertidal - Rocky Shoreline",
+    "Marine Intertidal - Sandy Shoreline and/or Beaches, Sand Bars, Spits, Etc",
+    "Marine Intertidal - Shingle and/or Pebble Shoreline and/or Beaches",
+    "Rocky areas (eg. inland cliffs, mountain peaks)",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19330/115146549"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "giluwensis",
+   "name": "Rattus giluwensis",
+   "authority": "Hill, 1960",
+   "common": "Giluwe Rat",
+   "category": "LC",
+   "elevMin": 2195,
+   "elevMax": 3660,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19318/22444795"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "leucopus",
+   "name": "Rattus leucopus",
+   "authority": "(Gray, 1867)",
+   "common": "Cape York Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1200,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19340/115147292"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "mordax",
+   "name": "Rattus mordax",
+   "authority": "(Thomas, 1904)",
+   "common": "Eastern Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2800,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Savanna - Moist",
+    "Shrubland - Subtropical/Tropical Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19349/22443314"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "niobe",
+   "name": "Rattus niobe",
+   "authority": "Thomas, 1906",
+   "common": "Moss-forest Rat",
+   "category": "LC",
+   "elevMin": 762,
+   "elevMax": 4050,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/20758/115159918"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "norvegicus",
+   "name": "Rattus norvegicus",
+   "authority": "(Berkenhout, 1769)",
+   "common": "Brown Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 3250,
+   "countries": [
+    "AD",
+    "AE",
+    "AF",
+    "AL",
+    "AM",
+    "AO",
+    "AR",
+    "AS",
+    "AT",
+    "AU",
+    "AW",
+    "AX",
+    "AZ",
+    "BA",
+    "BB",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BJ",
+    "BL",
+    "BM",
+    "BN",
+    "BO",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BW",
+    "BY",
+    "BZ",
+    "CA",
+    "CD",
+    "CG",
+    "CH",
+    "CI",
+    "CK",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CR",
+    "CU",
+    "CW",
+    "CY",
+    "CZ",
+    "DE",
+    "DJ",
+    "DK",
+    "DM",
+    "DO",
+    "DZ",
+    "EC",
+    "EE",
+    "EG",
+    "EH",
+    "ER",
+    "ES",
+    "ET",
+    "FI",
+    "FJ",
+    "FK",
+    "FM",
+    "FO",
+    "FR",
+    "GB",
+    "GE",
+    "GF",
+    "GG",
+    "GH",
+    "GI",
+    "GL",
+    "GN",
+    "GP",
+    "GQ",
+    "GR",
+    "GS",
+    "GT",
+    "GU",
+    "GY",
+    "HK",
+    "HM",
+    "HN",
+    "HR",
+    "HT",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IM",
+    "IN",
+    "IO",
+    "IQ",
+    "IR",
+    "IS",
+    "IT",
+    "JE",
+    "JM",
+    "JO",
+    "JP",
+    "KE",
+    "KG",
+    "KH",
+    "KI",
+    "KM",
+    "KN",
+    "KP",
+    "KR",
+    "KW",
+    "KY",
+    "KZ",
+    "LA",
+    "LB",
+    "LC",
+    "LI",
+    "LK",
+    "LS",
+    "LT",
+    "LU",
+    "LV",
+    "LY",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MF",
+    "MG",
+    "MH",
+    "MK",
+    "ML",
+    "MM",
+    "MN",
+    "MO",
+    "MP",
+    "MQ",
+    "MS",
+    "MT",
+    "MU",
+    "MV",
+    "MX",
+    "MY",
+    "MZ",
+    "NA",
+    "NC",
+    "NF",
+    "NG",
+    "NI",
+    "NL",
+    "NO",
+    "NP",
+    "NR",
+    "NU",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PF",
+    "PG",
+    "PH",
+    "PK",
+    "PL",
+    "PM",
+    "PN",
+    "PR",
+    "PS",
+    "PT",
+    "PW",
+    "PY",
+    "QA",
+    "RO",
+    "RS",
+    "RU",
+    "SA",
+    "SB",
+    "SC",
+    "SD",
+    "SE",
+    "SG",
+    "SH",
+    "SI",
+    "SK",
+    "SL",
+    "SM",
+    "SN",
+    "SO",
+    "SR",
+    "ST",
+    "SV",
+    "SX",
+    "SY",
+    "SZ",
+    "TC",
+    "TF",
+    "TH",
+    "TJ",
+    "TL",
+    "TM",
+    "TN",
+    "TO",
+    "TR",
+    "TT",
+    "TV",
+    "TW",
+    "TZ",
+    "UA",
+    "UG",
+    "UM",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VC",
+    "VE",
+    "VG",
+    "VI",
+    "VN",
+    "VU",
+    "WF",
+    "WS",
+    "YE",
+    "YT",
+    "ZA",
+    "ZM",
+    "ZW"
+   ],
+   "habitats": [
+    "Artificial/Aquatic - Aquaculture Ponds",
+    "Artificial/Aquatic - Canals and Drainage Channels, Ditches",
+    "Artificial/Aquatic - Excavations (open)",
+    "Artificial/Aquatic - Irrigated Land (includes irrigation channels)",
+    "Artificial/Aquatic - Karst and Other Subterranean Hydrological Systems (human-made)",
+    "Artificial/Aquatic - Ponds (below 8ha)",
+    "Artificial/Aquatic - Salt Exploitation Sites",
+    "Artificial/Aquatic - Seasonally Flooded Agricultural Land",
+    "Artificial/Aquatic - Wastewater Treatment Areas",
+    "Artificial/Aquatic - Water Storage Areas (over 8ha)",
+    "Artificial/Marine - Mari/Brackishculture Ponds",
+    "Artificial/Marine - Mariculture Cages",
+    "Artificial/Marine - Marine Anthropogenic Structures",
+    "Artificial/Terrestrial - Arable Land",
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Caves and Subterranean Habitats (non-aquatic) - Caves",
+    "Caves and Subterranean Habitats (non-aquatic) - Other Subterranean Habitats",
+    "Desert - Cold",
+    "Desert - Hot",
+    "Desert - Temperate",
+    "Forest - Boreal",
+    "Forest - Subantarctic",
+    "Forest - Subarctic",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Subtropical/Tropical Swamp",
+    "Forest - Temperate",
+    "Grassland - Subantarctic",
+    "Grassland - Subarctic",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Grassland - Temperate",
+    "Grassland - Tundra",
+    "Introduced vegetation",
+    "Marine Coastal/Supratidal - Coastal Brackish/Saline Lagoons/Marine Lakes",
+    "Marine Coastal/Supratidal - Coastal Freshwater Lakes",
+    "Marine Coastal/Supratidal - Coastal Sand Dunes",
+    "Marine Coastal/Supratidal - Sea Cliffs and Rocky Offshore Islands",
+    "Marine Coastal/supratidal - Coastal Caves/Karst",
+    "Marine Intertidal - Mangrove Submerged Roots",
+    "Marine Intertidal - Mud Flats and Salt Flats",
+    "Marine Intertidal - Rocky Shoreline",
+    "Marine Intertidal - Salt Marshes (Emergent Grasses)",
+    "Marine Intertidal - Sandy Shoreline and/or Beaches, Sand Bars, Spits, Etc",
+    "Marine Intertidal - Shingle and/or Pebble Shoreline and/or Beaches",
+    "Marine Neritic - Estuaries",
+    "Savanna - Dry",
+    "Savanna - Moist",
+    "Shrubland - Boreal",
+    "Shrubland - Mediterranean-type Shrubby Vegetation",
+    "Shrubland - Subantarctic",
+    "Shrubland - Subarctic",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Shrubland - Temperate",
+    "Wetlands (inland) - Alpine Wetlands (includes temporary waters from snowmelt)",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands",
+    "Wetlands (inland) - Freshwater Springs and Oases",
+    "Wetlands (inland) - Geothermal Wetlands",
+    "Wetlands (inland) - Karst and Other Subterranean Hydrological Systems (inland)",
+    "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+    "Wetlands (inland) - Permanent Inland Deltas",
+    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+    "Wetlands (inland) - Permanent Saline, Brackish or Alkaline Lakes",
+    "Wetlands (inland) - Permanent Saline, Brackish or Alkaline Marshes/Pools",
+    "Wetlands (inland) - Seasonal/Intermittent Freshwater Lakes (over 8ha)",
+    "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+    "Wetlands (inland) - Seasonal/Intermittent Saline, Brackish or Alkaline Lakes and Flats",
+    "Wetlands (inland) - Seasonal/Intermittent Saline, Brackish or Alkaline Marshes/Pools",
+    "Wetlands (inland) - Seasonal/Intermittent/Irregular Rivers/Streams/Creeks",
+    "Wetlands (inland) - Shrub Dominated Wetlands",
+    "Wetlands (inland) - Tundra Wetlands (incl. pools and temporary waters from snowmelt)"
+   ],
+   "year": "2026",
+   "url": "https://www.iucnredlist.org/species/19353/286459858"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "novaeguineae",
+   "name": "Rattus novaeguineae",
+   "authority": "Taylor & Calaby, 1982",
+   "common": "New Guinea Rat",
+   "category": "LC",
+   "elevMin": 740,
+   "elevMax": 1520,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical Dry"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19354/22442250"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "pococki",
+   "name": "Rattus pococki",
+   "authority": "(Ellerman, 1941)",
+   "common": "Pocock\u2019s Highland Rat",
+   "category": "LC",
+   "elevMin": 1500,
+   "elevMax": 2500,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136632/22440169"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "praetor",
+   "name": "Rattus praetor",
+   "authority": "(Thomas, 1888)",
+   "common": "Large Spiny Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2000,
+   "countries": [
+    "ID",
+    "PG",
+    "SB"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19358/115148371"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "rattus",
+   "name": "Rattus rattus",
+   "authority": "(Linnaeus, 1758)",
+   "common": "House Rat",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AL",
+    "AT",
+    "BA",
+    "BE",
+    "BG",
+    "BN",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DZ",
+    "EE",
+    "ES",
+    "FR",
+    "GB",
+    "GR",
+    "HR",
+    "HU",
+    "ID",
+    "IE",
+    "IN",
+    "IR",
+    "IT",
+    "KH",
+    "LA",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MA",
+    "MD",
+    "ME",
+    "MK",
+    "MM",
+    "MT",
+    "MY",
+    "NL",
+    "PG",
+    "PH",
+    "PK",
+    "PL",
+    "PT",
+    "RO",
+    "RS",
+    "RU",
+    "SG",
+    "SI",
+    "TH",
+    "TN",
+    "TR",
+    "VN"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Arable Land",
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Boreal",
+    "Forest - Subarctic",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Temperate",
+    "Grassland - Subantarctic",
+    "Grassland - Subarctic",
+    "Grassland - Tundra",
+    "Shrubland - Mediterranean-type Shrubby Vegetation",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Shrubland - Temperate",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands"
+   ],
+   "year": "2021",
+   "url": "https://www.iucnredlist.org/species/19360/192565917"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "sordidus",
+   "name": "Rattus sordidus",
+   "authority": "(Gould, 1858)",
+   "common": "Canefield Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 670,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Grassland - Subtropical/Tropical Dry",
+    "Savanna - Dry"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19363/115149502"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "steini",
+   "name": "Rattus steini",
+   "authority": "R\u00fcmmler, 1935",
+   "common": "Small Spiny Rat",
+   "category": "LC",
+   "elevMin": 450,
+   "elevMax": 2800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19364/22445902"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "tanezumi",
+   "name": "Rattus tanezumi",
+   "authority": "Temminck, 1844",
+   "common": "Oriental House Rat",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AF",
+    "BD",
+    "BT",
+    "CN",
+    "FJ",
+    "ID",
+    "IN",
+    "JP",
+    "KH",
+    "KP",
+    "KR",
+    "LA",
+    "MY",
+    "NP",
+    "PG",
+    "PH",
+    "TH",
+    "TW",
+    "VN"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Arable Land",
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Temperate",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Grassland - Temperate",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Shrubland - Temperate"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/19366/115149780"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "vandeuseni",
+   "name": "Rattus vandeuseni",
+   "authority": "Taylor & Calaby, 1982",
+   "common": "Van Deusen's Rat",
+   "category": "NT",
+   "elevMin": 1300,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2024",
+   "url": "https://www.iucnredlist.org/species/20760/22440427"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Rattus",
+   "species": "verecundus",
+   "name": "Rattus verecundus",
+   "authority": "(Thomas, 1904)",
+   "common": "Slender Rat",
+   "category": "LC",
+   "elevMin": 150,
+   "elevMax": 2700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/20761/115160029"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Solomys",
+   "species": "ponceleti",
+   "name": "Solomys ponceleti",
+   "authority": "(Troughton, 1935)",
+   "common": "Poncelet's Giant Rat",
+   "category": "CR",
+   "elevMin": 0,
+   "elevMax": 200,
+   "countries": [
+    "PG",
+    "SB"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp"
+   ],
+   "year": "2024",
+   "url": "https://www.iucnredlist.org/species/20333/22430082"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Solomys",
+   "species": "salebrosus",
+   "name": "Solomys salebrosus",
+   "authority": "Troughton, 1936",
+   "common": "Bougainville Giant Rat",
+   "category": "VU",
+   "elevMin": 0,
+   "elevMax": 400,
+   "countries": [
+    "PG",
+    "SB"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2021",
+   "url": "https://www.iucnredlist.org/species/20335/22429892"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Uromys",
+   "species": "anak",
+   "name": "Uromys anak",
+   "authority": "Thomas, 1907",
+   "common": "Black-tailed Giant Rat",
+   "category": "LC",
+   "elevMin": 850,
+   "elevMax": 3000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Caves and Subterranean Habitats (non-aquatic) - Caves",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/22800/22447286"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Uromys",
+   "species": "caudimaculatus",
+   "name": "Uromys caudimaculatus",
+   "authority": "(Krefft, 1867)",
+   "common": "White-tailed Giant Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1925,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Subtropical/Tropical Swamp",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands"
+   ],
+   "year": "2017",
+   "url": "https://www.iucnredlist.org/species/22801/22446882"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Uromys",
+   "species": "neobritannicus",
+   "name": "Uromys neobritannicus",
+   "authority": "Tate & Archbold, 1935",
+   "common": "Bismarck Giant Rat",
+   "category": "NT",
+   "elevMin": 30,
+   "elevMax": 500,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/22804/22447160"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Xenuromys",
+   "species": "barbatus",
+   "name": "Xenuromys barbatus",
+   "authority": "(Milne-Edwards, 1900)",
+   "common": "Rock-dwelling Giant Rat",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1600,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Rocky areas (eg. inland cliffs, mountain peaks)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/23137/22429670"
+  },
+  {
+   "family": "Muridae",
+   "genus": "Xeromys",
+   "species": "myoides",
+   "name": "Xeromys myoides",
+   "authority": "Thomas, 1889",
+   "common": "Water Mouse",
+   "category": "VU",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Marine Coastal/Supratidal - Coastal Brackish/Saline Lagoons/Marine Lakes",
+    "Marine Intertidal - Salt Marshes (Emergent Grasses)",
+    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+    "Wetlands (inland) - Seasonal/Intermittent Freshwater Lakes (over 8ha)"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/23141/22454469"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Echymipera",
+   "species": "clara",
+   "name": "Echymipera clara",
+   "authority": "(Stein, 1932)",
+   "common": "Clara's Echymipera",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/7015/21966942"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Echymipera",
+   "species": "davidi",
+   "name": "Echymipera davidi",
+   "authority": "Flannery, 1990",
+   "common": "David's Echymipera",
+   "category": "EN",
+   "elevMin": 0,
+   "elevMax": 100,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/7017/21966774"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Echymipera",
+   "species": "echinista",
+   "name": "Echymipera echinista",
+   "authority": "Menzies, 1990",
+   "common": "Menzies' Echymipera",
+   "category": "DD",
+   "elevMin": 0,
+   "elevMax": 1000,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Savanna - Moist",
+    "Unknown"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/7016/21967022"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Echymipera",
+   "species": "kalubu",
+   "name": "Echymipera kalubu",
+   "authority": "(Fischer, 1829)",
+   "common": "Common Echymipera",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2000,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/7018/21966845"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Echymipera",
+   "species": "rufescens",
+   "name": "Echymipera rufescens",
+   "authority": "(Peters & Doria, 1875)",
+   "common": "Long-nosed Echymipera",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2100,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Shrubland - Subtropical/Tropical Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/7019/21966655"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Isoodon",
+   "species": "macrourus",
+   "name": "Isoodon macrourus",
+   "authority": "(Gould, 1842)",
+   "common": "Northern Brown Bandicoot",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1200,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Temperate",
+    "Grassland - Subtropical/Tropical Dry",
+    "Grassland - Temperate",
+    "Savanna - Dry",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Shrubland - Temperate"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40552/21966494"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Microperoryctes",
+   "species": "longicauda",
+   "name": "Microperoryctes longicauda",
+   "authority": "(W.C.H. Peters & Doria, 1876)",
+   "common": "Long-tailed Bandicoot",
+   "category": "LC",
+   "elevMin": 1000,
+   "elevMax": 3950,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/84783217/21965649"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Microperoryctes",
+   "species": "papuensis",
+   "name": "Microperoryctes papuensis",
+   "authority": "(Laurie, 1952)",
+   "common": "Papuan Bandicoot",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 2650,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/13390/21965507"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Peroryctes",
+   "species": "broadbenti",
+   "name": "Peroryctes broadbenti",
+   "authority": "(Ramsay, 1879)",
+   "common": "Giant Bandicoot",
+   "category": "EN",
+   "elevMin": 0,
+   "elevMax": 1000,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16710/21965270"
+  },
+  {
+   "family": "Peramelidae",
+   "genus": "Peroryctes",
+   "species": "raffrayana",
+   "name": "Peroryctes raffrayana",
+   "authority": "(Milne-Edwards, 1878)",
+   "common": "Raffray's Bandicoot",
+   "category": "LC",
+   "elevMin": 60,
+   "elevMax": 3900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude",
+    "Shrubland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16711/21965412"
+  },
+  {
+   "family": "Petauridae",
+   "genus": "Dactylopsila",
+   "species": "megalura",
+   "name": "Dactylopsila megalura",
+   "authority": "W. Rothschild & Dollman, 1932",
+   "common": "Great-tailed Striped Possum",
+   "category": "LC",
+   "elevMin": 1000,
+   "elevMax": 2300,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6223/21960272"
+  },
+  {
+   "family": "Petauridae",
+   "genus": "Dactylopsila",
+   "species": "palpator",
+   "name": "Dactylopsila palpator",
+   "authority": "A. Milne-Edwards, 1888",
+   "common": "Long-fingered Striped Possum",
+   "category": "LC",
+   "elevMin": 850,
+   "elevMax": 3050,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6225/21959892"
+  },
+  {
+   "family": "Petauridae",
+   "genus": "Dactylopsila",
+   "species": "tatei",
+   "name": "Dactylopsila tatei",
+   "authority": "Laurie, 1952",
+   "common": "Tate's Striped Possum",
+   "category": "EN",
+   "elevMin": 600,
+   "elevMax": 1000,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6224/21960180"
+  },
+  {
+   "family": "Petauridae",
+   "genus": "Dactylopsila",
+   "species": "trivirgata",
+   "name": "Dactylopsila trivirgata",
+   "authority": "J.E. Gray, 1858",
+   "common": "Torresian Striped Possum",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2300,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/6226/21960093"
+  },
+  {
+   "family": "Petauridae",
+   "genus": "Petaurus",
+   "species": "abidi",
+   "name": "Petaurus abidi",
+   "authority": "Ziegler, 1981",
+   "common": "Northern Glider",
+   "category": "CR",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16726/21959298"
+  },
+  {
+   "family": "Petauridae",
+   "genus": "Petaurus",
+   "species": "breviceps",
+   "name": "Petaurus breviceps",
+   "authority": "Waterhouse, 1838",
+   "common": "Sugar Glider",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 3000,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Temperate",
+    "Savanna - Dry"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16731/21959798"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "carmelitae",
+   "name": "Phalanger carmelitae",
+   "authority": "O. Thomas, 1898",
+   "common": "Mountain Cuscus",
+   "category": "LC",
+   "elevMin": 1350,
+   "elevMax": 3800,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16853/21950989"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "gymnotis",
+   "name": "Phalanger gymnotis",
+   "authority": "(W.C.H. Peters & Doria, 1875)",
+   "common": "Ground Cuscus",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 2700,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16856/21951309"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "intercastellanus",
+   "name": "Phalanger intercastellanus",
+   "authority": "O. Thomas, 1895",
+   "common": "Eastern Common Cuscus",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1250,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16857/21950491"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "lullulae",
+   "name": "Phalanger lullulae",
+   "authority": "O. Thomas, 1896",
+   "common": "Woodlark Cuscus",
+   "category": "EN",
+   "elevMin": 0,
+   "elevMax": 410,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16846/21951419"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "matanim",
+   "name": "Phalanger matanim",
+   "authority": "Flannery, 1987",
+   "common": "Telefomin Cuscus",
+   "category": "CR",
+   "elevMin": 1400,
+   "elevMax": 2600,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16851/21950802"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "mimicus",
+   "name": "Phalanger mimicus",
+   "authority": "O. Thomas, 1922",
+   "common": "Southern Common Cuscus",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Savanna - Moist"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136450/21951638"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "orientalis",
+   "name": "Phalanger orientalis",
+   "authority": "(Pallas, 1766)",
+   "common": "Common Phalanger",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "ID",
+    "PG",
+    "SB",
+    "TL"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16847/21951519"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "sericeus",
+   "name": "Phalanger sericeus",
+   "authority": "O. Thomas, 1907",
+   "common": "Silky Cuscus",
+   "category": "LC",
+   "elevMin": 1500,
+   "elevMax": 3900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16855/21951235"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Phalanger",
+   "species": "vestitus",
+   "name": "Phalanger vestitus",
+   "authority": "(A. Milne-Edwards, 1877)",
+   "common": "Stein's Cuscus",
+   "category": "LC",
+   "elevMin": 1200,
+   "elevMax": 2200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/16850/21950723"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Spilocuscus",
+   "species": "kraemeri",
+   "name": "Spilocuscus kraemeri",
+   "authority": "(E. Schwartz, 1910)",
+   "common": "Admiralty Spotted Cuscus",
+   "category": "NT",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/20637/21950199"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Spilocuscus",
+   "species": "maculatus",
+   "name": "Spilocuscus maculatus",
+   "authority": "(\u00c9. Geoffroy Saint-Hilaire, 1803)",
+   "common": "Common Spotted Cuscus",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1400,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/20636/21950307"
+  },
+  {
+   "family": "Phalangeridae",
+   "genus": "Spilocuscus",
+   "species": "rufoniger",
+   "name": "Spilocuscus rufoniger",
+   "authority": "(Zimara, 1937)",
+   "common": "Black Spotted Cuscus",
+   "category": "CR",
+   "elevMin": 0,
+   "elevMax": 1200,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/20639/21949788"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirops",
+   "species": "albertisii",
+   "name": "Pseudochirops albertisii",
+   "authority": "(Peters, 1874)",
+   "common": "D'Albertis's Ringtail",
+   "category": "NT",
+   "elevMin": 1000,
+   "elevMax": 1900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/18503/21962540"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirops",
+   "species": "corinnae",
+   "name": "Pseudochirops corinnae",
+   "authority": "(Thomas, 1897)",
+   "common": "Plush-coated Ringtail",
+   "category": "NT",
+   "elevMin": 900,
+   "elevMax": 2900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2019",
+   "url": "https://www.iucnredlist.org/species/18504/21962636"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirops",
+   "species": "cupreus",
+   "name": "Pseudochirops cupreus",
+   "authority": "(Thomas, 1897)",
+   "common": "Coppery Ringtail",
+   "category": "LC",
+   "elevMin": 1500,
+   "elevMax": 3996,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Grassland - Subtropical/Tropical High Altitude"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/18505/21962805"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirulus",
+   "species": "canescens",
+   "name": "Pseudochirulus canescens",
+   "authority": "(Waterhouse, 1846)",
+   "common": "Lowland Ringtail",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 1300,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40638/21961626"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirulus",
+   "species": "forbesi",
+   "name": "Pseudochirulus forbesi",
+   "authority": "(Thomas, 1887)",
+   "common": "Painted Ringtail",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40639/21961873"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirulus",
+   "species": "larvatus",
+   "name": "Pseudochirulus larvatus",
+   "authority": "(F\u00f6rster & Rothschild, 1911)",
+   "common": "Masked Ringtail",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/136699/21961712"
+  },
+  {
+   "family": "Pseudocheiridae",
+   "genus": "Pseudochirulus",
+   "species": "mayeri",
+   "name": "Pseudochirulus mayeri",
+   "authority": "(Rothschild & Dollman, 1932)",
+   "common": "Pygmy Ringtail",
+   "category": "LC",
+   "elevMin": 1500,
+   "elevMax": 3600,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Montane"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/40640/21961792"
+  },
+  {
+   "family": "Soricidae",
+   "genus": "Suncus",
+   "species": "murinus",
+   "name": "Suncus murinus",
+   "authority": "Linnaeus, 1766",
+   "common": "House Shrew",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AF",
+    "BD",
+    "BH",
+    "BN",
+    "BT",
+    "CN",
+    "DJ",
+    "EG",
+    "ER",
+    "GU",
+    "ID",
+    "IN",
+    "IQ",
+    "IR",
+    "JP",
+    "KE",
+    "KH",
+    "KM",
+    "KW",
+    "LA",
+    "LK",
+    "MG",
+    "MM",
+    "MU",
+    "MY",
+    "NP",
+    "OM",
+    "PG",
+    "PH",
+    "PK",
+    "RE",
+    "RW",
+    "SA",
+    "SD",
+    "SG",
+    "SO",
+    "TH",
+    "TW",
+    "TZ",
+    "VN",
+    "YE"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Arable Land",
+    "Artificial/Terrestrial - Pastureland",
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Moist Montane",
+    "Forest - Subtropical/Tropical Swamp",
+    "Forest - Temperate",
+    "Grassland - Subtropical/Tropical Dry",
+    "Savanna - Dry",
+    "Savanna - Moist",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Wetlands (inland) - Bogs, Marshes, Swamps, Fens, Peatlands"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/41440/22287830"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "bogerti",
+   "name": "Varanus bogerti",
+   "authority": "Mertens, 1950",
+   "common": "Bogert's Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 400,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/42485692/42485697"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "doreanus",
+   "name": "Varanus doreanus",
+   "authority": "(Meyer, 1874)",
+   "common": "Bluetail Monitor",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp"
+   ],
+   "year": "2018",
+   "url": "https://www.iucnredlist.org/species/42485703/101751957"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "douarrha",
+   "name": "Varanus douarrha",
+   "authority": "(Lesson, 1830)",
+   "common": "New Ireland Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 900,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2025",
+   "url": "https://www.iucnredlist.org/species/200959025/200959432"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "finschi",
+   "name": "Varanus finschi",
+   "authority": "B\u00f6hme, Horn & Ziegler, 1994",
+   "common": "Finsch's Monitor",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Marine Intertidal - Mangrove Submerged Roots"
+   ],
+   "year": "2010",
+   "url": "https://www.iucnredlist.org/species/178027/7486763"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "indicus",
+   "name": "Varanus indicus",
+   "authority": "(Daudin, 1802)",
+   "common": "Mangrove Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 200,
+   "countries": [
+    "AU",
+    "FM",
+    "ID",
+    "KI",
+    "MH",
+    "MP",
+    "PG",
+    "SB"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+    "Shrubland - Subtropical/Tropical Moist",
+    "Wetlands (inland) - Permanent Saline, Brackish or Alkaline Marshes/Pools",
+    "Wetlands (inland) - Seasonal/Intermittent Saline, Brackish or Alkaline Marshes/Pools"
+   ],
+   "year": "2021",
+   "url": "https://www.iucnredlist.org/species/200972722/1533318"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "jobiensis",
+   "name": "Varanus jobiensis",
+   "authority": "Ahl, 1932",
+   "common": "Peach-throated Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 900,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/178029/21647160"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "panoptes",
+   "name": "Varanus panoptes",
+   "authority": "Storr, 1980",
+   "common": "Yellow-spotted Monitor",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Rural Gardens",
+    "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+    "Artificial/Terrestrial - Urban Areas",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Grassland - Subtropical/Tropical Dry",
+    "Marine Coastal/Supratidal - Coastal Sand Dunes",
+    "Savanna - Dry",
+    "Savanna - Moist",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical Moist"
+   ],
+   "year": "2018",
+   "url": "https://www.iucnredlist.org/species/42485740/42485745"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "prasinus",
+   "name": "Varanus prasinus",
+   "authority": "(Schlegel, 1839)",
+   "common": "Emerald Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 830,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Artificial/Terrestrial - Plantations",
+    "Forest - Subtropical/Tropical Dry",
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland",
+    "Forest - Subtropical/Tropical Swamp",
+    "Marine Coastal/Supratidal - Coastal Brackish/Saline Lagoons/Marine Lakes"
+   ],
+   "year": "2018",
+   "url": "https://www.iucnredlist.org/species/42485751/101752115"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "salvadorii",
+   "name": "Varanus salvadorii",
+   "authority": "(Peters & Doria, 1878)",
+   "common": "Crocodile Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": 740,
+   "countries": [
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/42485775/42485784"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "scalaris",
+   "name": "Varanus scalaris",
+   "authority": "Mertens, 1941",
+   "common": "Banded Tree Monitor",
+   "category": "LC",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "AU",
+    "ID",
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry",
+    "Savanna - Dry",
+    "Savanna - Moist",
+    "Shrubland - Subtropical/Tropical Dry",
+    "Shrubland - Subtropical/Tropical Moist"
+   ],
+   "year": "2018",
+   "url": "https://www.iucnredlist.org/species/178032/44969426"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "semotus",
+   "name": "Varanus semotus",
+   "authority": "Weijola, Donnellan & Lindqvist, 2016",
+   "common": "Mussau Monitor",
+   "category": "DD",
+   "elevMin": 1,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Dry"
+   ],
+   "year": "2025",
+   "url": "https://www.iucnredlist.org/species/104835825/104835832"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "spinulosus",
+   "name": "Varanus spinulosus",
+   "authority": "Mertens, 1941",
+   "common": "Isabel Monitor",
+   "category": "LC",
+   "elevMin": 0,
+   "elevMax": null,
+   "countries": [
+    "PG",
+    "SB"
+   ],
+   "habitats": [
+    "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level",
+    "Forest - Subtropical/Tropical Moist Lowland"
+   ],
+   "year": "2013",
+   "url": "https://www.iucnredlist.org/species/196662/2472069"
+  },
+  {
+   "family": "Varanidae",
+   "genus": "Varanus",
+   "species": "telenesetes",
+   "name": "Varanus telenesetes",
+   "authority": "Sprackland, 1991",
+   "common": "",
+   "category": "DD",
+   "elevMin": null,
+   "elevMax": null,
+   "countries": [
+    "PG"
+   ],
+   "habitats": [
+    "Unknown"
+   ],
+   "year": "2016",
+   "url": "https://www.iucnredlist.org/species/178388/21647361"
+  }
+ ]
+}

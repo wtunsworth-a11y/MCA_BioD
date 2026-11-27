@@ -1,0 +1,71 @@
+name: Camera trap identification
+description: Add your identification for one image on the Managalas Camera Trap ID website.
+title: "ID: "
+labels: ["identification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping. Open this form from the **Add my identification** button on the website, so the image ID is filled in for you.
+        Fill in only the ranks you are confident of. Working names are welcome (e.g. species `sp. "Managalas"`), and so is a note with no name at all.
+        Many of these animals may be range extensions, and some may be undescribed, so don't force a match to a known species.
+        Your latest identification for an image replaces any earlier one.
+        It is counted on the website within a few minutes. To withdraw it, close this issue as "not planned".
+  - type: input
+    id: image_id
+    attributes:
+      label: Image ID
+      description: For example Macropodidae_001. Filled in automatically from the website.
+    validations:
+      required: true
+  - type: input
+    id: family
+    attributes:
+      label: Family
+      placeholder: e.g. Peramelidae
+  - type: input
+    id: genus
+    attributes:
+      label: Genus
+      placeholder: e.g. Echymipera
+  - type: input
+    id: species
+    attributes:
+      label: Species epithet
+      description: Leave blank for a genus-level identification. For a possible new species, use a working name such as sp. "Managalas".
+      placeholder: e.g. kalubu
+  - type: checkboxes
+    id: unid
+    attributes:
+      label: Not identifiable
+      options:
+        - label: The animal cannot be identified from this image (too dark, blurred or partial)
+  - type: checkboxes
+    id: flags
+    attributes:
+      label: Flags
+      description: Tick any that apply. Flagged images are collected on the website for specialist review.
+      options:
+        - label: Possible range extension (outside the known range or elevation for this taxon)
+        - label: Possibly an undescribed species
+        - label: Needs a specialist's review
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Confidence
+      options:
+        - Sure
+        - Likely
+        - Best guess
+    validations:
+      required: false
+  - type: input
+    id: local_name
+    attributes:
+      label: Local or common name (optional)
+      description: Tok Pisin, Tok Ples or English. Recorded but not counted in the consensus.
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Notes and ideas
+      description: Which features did you use (tail, ears, colour, gait, size against the vegetation)? Alternatives you considered, why it might be a range extension or new species, local knowledge, or questions for others. You can submit a note with no name above; it is shown on the website but not counted as a vote.

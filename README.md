@@ -130,3 +130,9 @@ The ranked list is a **starting point** for national review, not a final
 Target 4 list. Data Deficient species, national Red List assessments, cultural
 priorities, and the feasibility and cost of recovery are all outside the
 automated protocol. See Sections 4.1–4.2 of the paper.
+
+---
+
+**Also in this repository:** the Managalas Camera Trap ID website, a
+community identification site for camera trap images. See
+[CAMTRAP.md](CAMTRAP.md).

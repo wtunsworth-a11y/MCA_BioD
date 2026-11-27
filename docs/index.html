@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Managalas Camera Trap ID</title>
+<meta name="description" content="Community identification of curated camera trap images from the Managalas Plateau, Oro Province, Papua New Guinea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a contact-sheet grid of trap frames under a slim rule bar; a frame opens into a lightbox sheet with the tally beside it. */
+:root{
+  --sea:#dfe9ee; --land:#c9d3c4;
+  --bg:#eef0ec; --surface:#fbfcfa; --sunk:#e3e7e1; --ink:#18201b; --muted:#59645c; --line:#d2d8d0;
+  --accent:#a85f00; --accent-ink:#ffffff; --accent-soft:#f6e6cf;
+  --moss:#2f6a45; --moss-soft:#dcebdf; --warn:#a2382a; --warn-soft:#f5dfdb;
+  --strip:#0d100e; --strip-ink:#f4c46a;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1311; --surface:#171c19; --sunk:#202722; --ink:#e6ebe6; --muted:#97a39a; --line:#2b332e;
+  --accent:#f0a63c; --accent-ink:#1c1200; --accent-soft:#3a2a12;
+  --moss:#7cc495; --moss-soft:#1d3326; --warn:#ef8a74; --warn-soft:#3b1f1a;
+  --strip:#050706; --strip-ink:#f4c46a; --sea:#16232b; --land:#33403a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1311; --surface:#171c19; --sunk:#202722; --ink:#e6ebe6; --muted:#97a39a; --line:#2b332e;
+  --accent:#f0a63c; --accent-ink:#1c1200; --accent-soft:#3a2a12;
+  --moss:#7cc495; --moss-soft:#1d3326; --warn:#ef8a74; --warn-soft:#3b1f1a;
+  --strip:#050706; --strip-ink:#f4c46a; --sea:#16232b; --land:#33403a; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1600px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+i.tx{font-style:italic}
+
+header.top{padding-block:28px 18px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;justify-content:space-between}
+.brand h1{font-family:var(--f-display);font-stretch:78%;font-weight:800;font-size:clamp(28px,4.4vw,44px);line-height:1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.brand p{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:8px 14px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--warn);border-color:var(--warn)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+.rule{border-block:1px solid var(--line);padding-block:12px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.rule .lede{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rule .txt{flex:1 1 380px;min-width:0}
+.rule b{font-weight:600}
+.ladder{display:inline-flex;gap:4px;align-items:center;font-family:var(--f-mono);font-size:12.5px}
+.ladder span{padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+.ladder span.on{background:var(--moss-soft);color:var(--moss)}
+
+.settings{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:end;padding-block:14px;border-bottom:1px solid var(--line)}
+.settings label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.settings input,.settings select{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 8px;width:9.5em}
+
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-block:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;background:var(--sunk);padding:4px;border-radius:calc(var(--r) + 2px)}
+.tabs button{border:0;background:transparent;padding:6px 12px;border-radius:var(--r);cursor:pointer;color:var(--muted);font-weight:500;display:inline-flex;gap:6px;align-items:center}
+.tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+.tabs .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.check{display:inline-flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;cursor:pointer}
+
+.note{margin:0 0 14px;padding:10px 14px;border-radius:var(--r);background:var(--accent-soft);color:var(--ink);font-size:14px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;padding-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s ease,border-color .15s}
+.card:hover{border-color:var(--muted);transform:translateY(-2px)}
+.frame{position:relative;aspect-ratio:4/3;background:var(--strip);max-width:100%}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .miss{position:absolute;inset:0;display:grid;place-items:center;color:var(--strip-ink);font-family:var(--f-mono);font-size:12px}
+.strip{position:absolute;left:0;right:0;bottom:0;background:rgb(5 7 6 / .78);color:var(--strip-ink);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:4px 8px;display:flex;justify-content:space-between;gap:8px;white-space:nowrap;overflow:hidden}
+.strip span:last-child{overflow:hidden;text-overflow:ellipsis}
+.cbody{padding:10px 12px 12px;display:grid;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:3px 9px;border-radius:99px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-self:start}
+.pill.needs{background:var(--sunk);color:var(--muted)}
+.pill.disputed{background:var(--warn-soft);color:var(--warn)}
+.pill.partial{background:var(--accent-soft);color:var(--accent)}
+.pill.resolved{background:var(--moss-soft);color:var(--moss)}
+.meter{height:4px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent)}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12.5px}
+.mine{color:var(--moss);font-weight:500}
+
+.empty{border:1.5px dashed var(--line);border-radius:var(--r);padding:48px 24px;text-align:center;color:var(--muted);grid-column:1/-1}
+.empty h2{font-family:var(--f-display);font-stretch:85%;color:var(--ink);margin:0 0 6px;font-size:22px}
+.empty p{max-width:52ch;margin:0 auto 14px}
+
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:20;background:rgb(5 7 6 / .62);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 24px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(12px,env(safe-area-inset-left,0px))}
+.panel{background:var(--surface);border-radius:10px;width:min(1180px,100%);display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);overflow:hidden;border:1px solid var(--line)}
+@media (max-width:860px){.panel{grid-template-columns:minmax(0,1fr)}}
+.lightbox{background:var(--strip);display:flex;flex-direction:column;min-width:0}
+.lb-img{position:relative;flex:1;display:grid;place-items:center;min-height:280px;overflow:auto;cursor:zoom-in}
+.lb-img img{max-width:100%;max-height:78vh;display:block}
+.lb-img.zoom{cursor:zoom-out;place-items:start}
+.lb-img.zoom img{max-width:none;max-height:none}
+.lb-tools{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:10px 14px;color:var(--strip-ink);font-family:var(--f-mono);font-size:12px;border-top:1px solid rgb(255 255 255 / .08)}
+.lb-tools label{display:inline-flex;gap:8px;align-items:center}
+.lb-tools input[type=range]{width:110px;accent-color:#f4c46a}
+.lb-tools button{background:transparent;border:1px solid rgb(244 196 106 / .4);color:var(--strip-ink);border-radius:4px;padding:3px 8px;cursor:pointer;font:inherit}
+.side{padding:20px 22px 24px;display:grid;gap:20px;align-content:start;min-width:0}
+.side-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.side-head h2{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:26px;margin:0;line-height:1.1}
+.x{border:1px solid var(--line);background:transparent;border-radius:var(--r);width:34px;height:34px;cursor:pointer;flex:none;font-size:18px;line-height:1}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:14px}
+dl.facts dt{color:var(--muted);font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+dl.facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.sec h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500}
+.verdict{padding:12px 14px;border-radius:var(--r);border:1px solid var(--line);display:grid;gap:4px}
+.verdict .big{font-size:18px;font-weight:600}
+.verdict small{color:var(--muted)}
+.tally{display:grid;gap:12px}
+.rank h4{margin:0 0 6px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;color:var(--muted)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;font-size:14px;margin-bottom:6px}
+.row .lbar{grid-column:1/-1;height:6px;background:var(--sunk);border-radius:99px;overflow:hidden;position:relative}
+.row .lbar i{display:block;height:100%;background:var(--muted)}
+.row.top .lbar i{background:var(--accent)}
+.row.met .lbar i{background:var(--moss)}
+.row .lbar b{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.55}
+.none{color:var(--muted);font-size:14px;margin:0}
+ul.ids{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.ids li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+ul.ids img{width:28px;height:28px;border-radius:50%}
+ul.ids .who{font-size:13px;color:var(--muted)}
+ul.ids .who b{color:var(--ink);font-weight:600}
+ul.ids .what{font-size:14.5px}
+ul.ids .why{font-size:13.5px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.conf{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:1px 6px;border-radius:3px;background:var(--sunk);color:var(--muted);margin-left:6px}
+form.idf{display:grid;gap:10px;background:var(--sunk);padding:14px;border-radius:var(--r)}
+.f3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.f3{grid-template-columns:minmax(0,1fr)}}
+form label{display:grid;gap:3px;font-size:12.5px;color:var(--muted)}
+form input,form select,form textarea{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:7px 9px;width:100%;min-width:0}
+form textarea{resize:vertical;min-height:54px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.msg{font-size:13px;color:var(--muted)}
+.msg.err{color:var(--warn)}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+
+/* upload */
+.up{background:var(--surface);border-radius:10px;width:min(620px,100%);padding:22px;border:1px solid var(--line);display:grid;gap:14px}
+.up h2{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:24px;margin:0}
+.drop{border:1.5px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.thumbs{display:flex;flex-wrap:wrap;gap:6px}
+.thumbs img{width:64px;height:48px;object-fit:cover;border-radius:3px}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:480px){.f2{grid-template-columns:minmax(0,1fr)}}
+.up form{display:grid;gap:10px}
+.fams{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-block:14px 4px}
+.fams .lbl{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.fam{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer;font-weight:500;display:inline-flex;gap:8px;align-items:center}
+.fam .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.fam[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fam[aria-pressed="true"] .n{color:var(--bg);opacity:.75}
+.famlink{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding-top:6px}
+.famlink code{font-family:var(--f-mono);font-size:12px;background:var(--sunk);padding:2px 6px;border-radius:4px;overflow-wrap:anywhere}
+.famlink button{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:2px 8px;cursor:pointer;font-size:12.5px}
+.locmap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:10px;align-items:start}
+.locmap svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:var(--r);background:var(--sea)}
+.locmap figcaption{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+.clockwarn{color:var(--warn)}
+.foot{border-top:1px solid var(--line);padding-block:22px 34px;color:var(--muted);font-size:13.5px}
+.foot p{margin:0 0 6px;max-width:80ch}
+.foot .mono{font-size:12px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--ink)}
+.chk input{width:auto}
+.pill.unid{background:var(--sunk);color:var(--ink)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.flag{display:inline-flex;font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--warn-soft);color:var(--warn);margin-right:4px}
+.flag.newsp{background:var(--accent-soft);color:var(--accent)}
+.cbody .flags{display:flex;flex-wrap:wrap;gap:4px}
+.note-entry .what{font-style:normal;color:var(--muted)}
+.cands{display:grid;gap:6px}
+.cand{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:14px;padding:6px 0;border-bottom:1px solid var(--line)}
+.cand small{color:var(--muted);grid-column:1/-1}
+.cand.out{opacity:.55}
+.rl{font-family:var(--f-mono);font-size:11px;padding:1px 6px;border-radius:3px;background:var(--sunk);color:var(--ink);align-self:start}
+.rl.CR,.rl.EN{background:var(--warn-soft);color:var(--warn)}
+.rl.VU,.rl.NT{background:var(--accent-soft);color:var(--accent)}
+.cta{display:grid;gap:10px;background:var(--sunk);padding:14px;border-radius:var(--r)}
+.cta ol{margin:0;padding-left:20px;font-size:14px;display:grid;gap:4px}
+a{color:var(--accent)}
+details.more summary{cursor:pointer;color:var(--muted);font-size:13px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;padding-block:6px 14px;font-size:14px;color:var(--muted)}
+.howto b{color:var(--ink);display:block;font-weight:600}
+</style>
+
+<style>body{margin:0;font-family:var(--f-body)}img{max-width:100%}[hidden]{display:none!important}/* desktop-first detail view: photo fixed on the left, details scroll on the right */
+@media (min-width:861px){
+  .sheet{align-items:stretch;padding:24px max(24px,env(safe-area-inset-right,0px)) 24px max(24px,env(safe-area-inset-left,0px));overflow:hidden}
+  .panel{width:min(1680px,100%);height:calc(100vh - 48px);grid-template-columns:minmax(0,1.7fr) minmax(380px,1fr)}
+  .lightbox{min-height:0}
+  .lb-img{min-height:0}
+  .lb-img img{max-height:calc(100vh - 140px)}
+  .side{overflow-y:auto;min-height:0}
+}
+.grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.navbtns{display:flex;gap:6px;align-items:center}
+.navbtns button{border:1px solid var(--line);background:transparent;border-radius:var(--r);height:34px;padding:0 10px;cursor:pointer;font-size:13px;color:var(--ink)}
+.navbtns button:disabled{opacity:.4;cursor:default}
+.navbtns .pos{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+a.btn{text-decoration:none;justify-content:center}
+kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:3px;padding:0 4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <p class="eyebrow">Pilot · Managalas Plateau · Oro Province · Papua New Guinea</p>
+      <h1>Managalas Camera Trap ID</h1>
+      <p>Curated camera trap frames that still need a name. Add your best identification at family, genus or species level. Once enough people agree, the name becomes a verified label for training automated image classifiers.</p>
+    </div>
+    <div class="actions">
+      <a class="btn ghost" href="data/labels.csv" download>Download labels (CSV)</a>
+    </div>
+  </header>
+
+  <div class="howto">
+    <div><b>1. Choose your group</b>Pick the family you know best below.</div>
+    <div><b>2. Open an image</b>Each one shows its location, elevation and time of day, plus IUCN species recorded in PNG at that elevation.</div>
+    <div><b>3. Add your identification or ideas</b>Submit through a short GitHub form (free account). Working names, notes and flags for possible range extensions or new species are all welcome. Your entry appears here within a few minutes.</div>
+  </div>
+
+  <nav class="fams" id="fams" aria-label="Browse by family"><span class="lbl">Browse by family</span></nav>
+  <div class="famlink" id="famlink" hidden></div>
+
+  <section class="rule" aria-label="Consensus rule">
+    <span class="lede">Consensus rule</span>
+    <span class="txt" id="ruleText">Loading the rule…</span>
+    <span class="ladder" id="ladder" aria-label="Target rank"></span>
+  </section>
+
+  <div class="bar">
+    <div class="tabs" role="group" aria-label="Filter images" id="tabs">
+      <button data-f="needs" aria-pressed="true">Needs IDs <span class="n" id="n-needs">0</span></button>
+      <button data-f="disputed" aria-pressed="false">No agreement yet <span class="n" id="n-disputed">0</span></button>
+      <button data-f="partial" aria-pressed="false">Partly resolved <span class="n" id="n-partial">0</span></button>
+      <button data-f="resolved" aria-pressed="false">Resolved <span class="n" id="n-resolved">0</span></button>
+      <button data-f="flagged" aria-pressed="false">Flagged for review <span class="n" id="n-flagged">0</span></button>
+      <button data-f="all" aria-pressed="false">All <span class="n" id="n-all">0</span></button>
+    </div>
+    <span class="msg" id="updated"></span>
+  </div>
+
+  <p class="note" id="note" hidden></p>
+  <div class="grid" id="grid"><div class="empty"><h2>Loading images…</h2></div></div>
+</div>
+
+<footer class="foot"><div class="wrap">
+  <p>A pilot of the Managalas project, funded by the European Union. Built to be handed on to a Papua New Guinean group that will grow a community of practice and identification expertise.</p>
+  <p>All images are from Ijivitari District, Oro (Northern) Province. Maps show the 3 km survey grid only, not exact camera positions. Elevations come from SRTM data. Candidate species, names and elevation ranges come from the IUCN Red List of Threatened Species (<span id="iucnDate">API v4</span>).</p>
+  <p class="mono">Identifications are public GitHub issues in <a id="repoLink" href="#">the project repository</a>. Everything on this site can be exported and moved to another platform.</p>
+</div></footer>
+
+<div class="sheet" id="sheet" hidden></div>
+
+<script>
+(() => {
+const RANKS = ["species","genus","family"];
+const RANK_LABEL = {species:"Species", genus:"Genus", family:"Family"};
+const S = { images:[], ids:[], cfg:{minIds:5, agreePct:70, targetRank:"species", repo:""}, geo:null, iucn:null, family:"", filter:"needs", openId:null };
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null && k !== false) n.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return n;
+};
+const svgEl = (tag, attrs={}, ...kids) => { const n = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const [k,v] of Object.entries(attrs)) if (v != null) n.setAttribute(k, v); kids.forEach(k => n.append(k.nodeType ? k : document.createTextNode(String(k)))); return n; };
+try { S.filter = localStorage.getItem("ctid.filter") || "needs"; } catch(e) {}
+const famKey = i => i.family || i.group || "Unassigned";
+const famLabel = k => k.replace(/-/g, " ");
+const safeUrl = u => /^https:\/\//.test(u || "") ? u : null;
+
+function timeOfDay(img) {
+  const ir = /^infrared/i.test(img.imageType || "");
+  if (img.clockReset || !img.time) return img.imageType ? (ir ? "Night" : "Day") : "";
+  const [h, m] = img.time.split(":").map(Number), t = h + (m || 0) / 60;
+  if (t < 5 || t >= 19) return "Night"; if (t < 6.75) return "Dawn"; if (t < 17.5) return "Day"; return "Dusk";
+}
+function genusFamilyMap() {
+  const t = {};
+  for (const v of S.ids.filter(isVote)) if (v.genus && v.family) { t[v.genus] ??= {}; t[v.genus][v.family] = (t[v.genus][v.family]||0)+1; }
+  const m = {}; for (const [g, f] of Object.entries(t)) m[g] = Object.entries(f).sort((a,b)=>b[1]-a[1])[0][0];
+  if (S.iucn) for (const s of S.iucn.species) m[s.genus] ??= s.family;
+  return m;
+}
+const isVote = v => v.vote !== false;
+const idsFor = id => S.ids.filter(v => v.image === id && isVote(v));
+const entriesFor = id => S.ids.filter(v => v.image === id);
+function flagsFor(id) {
+  const f = {range:0, newsp:0, review:0};
+  for (const v of entriesFor(id)) for (const k in f) if (v.flags && v.flags[k]) f[k]++;
+  return f;
+}
+const FLAG_LABEL = {range:"Possible range extension", newsp:"Possibly undescribed", review:"Needs specialist review"};
+function flagNodes(id) {
+  const f = flagsFor(id);
+  return Object.entries(f).filter(([,n]) => n).map(([k,n]) => el("span",{class:"flag " + k, title:`${n} contributor${n>1?"s":""}`, text: FLAG_LABEL[k] + (n > 1 ? ` ×${n}` : "")}));
+}
+function consensus(id, gfm) {
+  const ids = idsFor(id), total = ids.length, {minIds, agreePct, targetRank} = S.cfg;
+  const tally = {species:{}, genus:{}, family:{}}; let unid = 0;
+  for (const v of ids) {
+    if (v.unid) { unid++; continue; }
+    const fam = v.family || gfm[v.genus] || "";
+    if (fam) tally.family[fam] = (tally.family[fam]||0)+1;
+    if (v.genus) tally.genus[v.genus] = (tally.genus[v.genus]||0)+1;
+    if (v.genus && v.species) { const k = v.genus+" "+v.species; tally.species[k] = (tally.species[k]||0)+1; }
+  }
+  const lists = {};
+  for (const r of RANKS) lists[r] = Object.entries(tally[r]).map(([name,n])=>({name,n,pct: total? n/total*100:0})).sort((a,b)=>b.n-a.n||a.name.localeCompare(b.name));
+  let result = null; const unidPct = total ? unid/total*100 : 0;
+  if (total >= minIds && unidPct >= agreePct) result = {rank:"unid", name:"Not identifiable", n:unid, pct:unidPct};
+  if (total >= minIds && !result) for (const r of RANKS) { const [a,b] = lists[r]; if (a && a.pct >= agreePct && (!b || b.n < a.n)) { result = {rank:r, ...a}; break; } }
+  let status;
+  if (total < minIds) status = "needs"; else if (!result) status = "disputed";
+  else if (result.rank === "unid") status = "resolved";
+  else status = RANKS.indexOf(result.rank) <= RANKS.indexOf(targetRank) ? "resolved" : "partial";
+  return {ids, total, lists, result, status, unid, unidPct};
+}
+const taxonNode = (rank, name) => rank === "family" ? el("span",{text:name}) : el("i",{class:"tx", text:name});
+function pillNode(c) {
+  const {status, result, total} = c;
+  if (status === "needs") return el("span",{class:"pill needs", text:`${total} of ${S.cfg.minIds} IDs`});
+  if (status === "disputed") return el("span",{class:"pill disputed", text:`No agreement · ${total} IDs`});
+  if (result.rank === "unid") return el("span",{class:"pill unid", text:`Not identifiable · ${Math.round(result.pct)}%`});
+  const p = el("span",{class:"pill "+status}); p.append(result.rank === "family" ? "Family " : "", taxonNode(result.rank, result.name), ` · ${Math.round(result.pct)}%`); return p;
+}
+
+function renderRule() {
+  const {minIds, agreePct, targetRank} = S.cfg, t = $("#ruleText"); t.textContent = "";
+  t.append("A name is accepted once an image has at least ", el("b",{text:`${minIds} identifications`}), " and ", el("b",{text:`${agreePct}%`}),
+    " of them agree. The finest rank that passes wins: species, then genus, then family. Images are marked resolved at ", el("b",{text:targetRank}), " level.");
+  const lad = $("#ladder"); lad.textContent = ""; const ti = RANKS.indexOf(targetRank);
+  ["family","genus","species"].forEach(r => lad.append(el("span",{class: RANKS.indexOf(r) >= ti ? "on":"", text: RANK_LABEL[r]})));
+}
+function renderFamilies() {
+  const nav = $("#fams"); nav.querySelectorAll(".fam").forEach(b => b.remove());
+  const counts = {}; S.images.forEach(i => { const f = famKey(i); counts[f] = (counts[f]||0)+1; });
+  const mk = (val, label, n) => nav.append(el("button",{class:"fam", type:"button", "aria-pressed": String(S.family === val), onclick: () => setFamily(val)}, label, el("span",{class:"n", text:n})));
+  mk("", "All families", S.images.length);
+  Object.keys(counts).sort().forEach(f => mk(f, famLabel(f), counts[f]));
+  const fl = $("#famlink"); fl.textContent = ""; fl.hidden = !S.family;
+  if (S.family) {
+    const url = location.origin + location.pathname + "#family-" + S.family;
+    const c = el("code",{text:url}), btn = el("button",{type:"button", text:"Copy link"});
+    btn.addEventListener("click", () => navigator.clipboard?.writeText(url).then(() => btn.textContent = "Copied", () => {}));
+    fl.append(`Link for ${famLabel(S.family)} specialists:`, c, btn);
+  }
+}
+function setFamily(f) {
+  S.family = f; const h = f ? "#family-" + f : "";
+  if (location.hash !== h) history.replaceState(null, "", location.pathname + h);
+  renderFamilies(); renderGrid();
+}
+function renderGrid() {
+  const gfm = genusFamilyMap();
+  const rows = S.images.filter(i => !S.family || famKey(i) === S.family).map(img => ({img, c: consensus(img.id, gfm)}));
+  const counts = {needs:0, disputed:0, partial:0, resolved:0, flagged:0, all:rows.length};
+  rows.forEach(r => { counts[r.c.status]++; r.flags = flagNodes(r.img.id); if (r.flags.length) counts.flagged++; });
+  for (const k in counts) $("#n-"+k).textContent = counts[k];
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === S.filter)));
+  const g = $("#grid"); g.textContent = "";
+  const list = S.visible = rows.filter(r => S.filter === "all" || (S.filter === "flagged" ? r.flags.length : r.c.status === S.filter));
+  S.visible = list.map(r => r.img.id);
+  if (!list.length) { g.append(el("div",{class:"empty"}, el("h2",{text:"Nothing in this view"}), el("p",{text:"Try another tab or family."}))); return; }
+  for (const {img, c, flags} of list) {
+    const info = [img.elevation.toLocaleString("en") + " m", [timeOfDay(img), img.clockReset ? "(clock reset)" : img.time].filter(Boolean).join(" ")].join(" · ");
+    const frame = el("div",{class:"frame"}, el("img",{src: img.thumb, alt:"Camera trap image " + img.id, loading:"lazy"}));
+    g.append(el("button",{class:"card", type:"button", "aria-label":`Open ${img.id}`, onclick: () => openImage(img.id)}, frame,
+      el("div",{class:"cbody"}, el("div",{class:"meta mono"}, el("b",{text: img.id, style:"color:var(--ink);font-weight:500"}), el("span",{text: info})), pillNode(c), flags.length ? el("div",{class:"flags"}, flags) : null,
+        c.status === "needs" ? el("div",{class:"meter"}, el("i",{style:`width:${Math.min(100, c.total / S.cfg.minIds * 100)}%`})) : null,
+        el("div",{class:"meta"}, el("span",{text:`${c.total} identification${c.total===1?"":"s"}`}), el("span",{text: img.curatedGenus || ""})))));
+  }
+}
+
+/* ---------- detail ---------- */
+function openImage(id) {
+  if (S.openId) { history.replaceState(null, "", location.pathname + "#img-" + id); showDetail(id); }
+  else location.hash = "img-" + id;
+}
+function closeSheet() {
+  S.openId = null; $("#sheet").hidden = true; $("#sheet").textContent = ""; document.body.style.overflow = "";
+  if (location.hash.startsWith("#img-")) history.replaceState(null, "", location.pathname + (S.family ? "#family-" + S.family : ""));
+}
+function mapNode(img) {
+  const G = S.geo; if (!G || !G.grids[img.grid]) return null;
+  const [x, y, w, h] = G.grids[img.grid], [bx, by, bw, bh] = G.studyBox, R = G.relief;
+  const over = svgEl("svg",{viewBox:"139.6 1.4 16.2 9.8", role:"img", "aria-label":"Papua New Guinea with the study area marked"},
+    svgEl("path",{d: G.outline, style:"fill:var(--land);stroke:var(--muted);stroke-width:.05"}),
+    svgEl("circle",{cx: bx + bw/2, cy: by + bh/2, r:".75", style:"fill:none;stroke:var(--accent);stroke-width:.16"}),
+    svgEl("text",{x:"140.1", y:"10.9", style:"font:600 .62px var(--f-mono);fill:var(--muted)"}, "PAPUA NEW GUINEA"));
+  const study = svgEl("svg",{viewBox:`0 0 ${R.w} ${R.h}`, role:"img", "aria-label":`Survey grids on the Managalas Plateau, grid ${img.grid} highlighted`}, svgEl("image",{href: R.uri, x:0, y:0, width:R.w, height:R.h}));
+  for (const [g, b] of Object.entries(G.grids)) if (g !== img.grid) study.append(svgEl("rect",{x:b[0]-2, y:b[1]-2, width:b[2]+4, height:b[3]+4, style:"fill:none;stroke:#ffffff;stroke-opacity:.75;stroke-width:1.2"}));
+  study.append(svgEl("rect",{x:x-4, y:y-4, width:w+8, height:h+8, style:"fill:var(--accent);fill-opacity:.35;stroke:var(--accent);stroke-width:3"}),
+    svgEl("text",{x:x+w/2, y:y-9, "text-anchor":"middle", style:"font:700 15px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3.5px"}, img.grid),
+    svgEl("rect",{x:12, y:R.h-24, width:R.km10, height:5, style:"fill:#18201b"}),
+    svgEl("text",{x:12, y:R.h-30, style:"font:600 12px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3px"}, "10 km"));
+  return el("div",{class:"sec"}, el("h3",{text:"Location"}),
+    el("figure",{class:"locmap", style:"margin:0"}, over, study,
+      el("figcaption",{text:`Grid ${img.grid}, ${img.llg}, ${img.district}, ${img.province}. Each square is one survey grid of 49 stations, about 3 km across; exact camera positions are not shown.`})));
+}
+function candidatesNode(img) {
+  if (!S.iucn) return null;
+  const fam = img.family;
+  const pool = S.iucn.species.filter(s => fam ? s.family === fam : !["Macropodidae","Peramelidae","Phalangeridae","Varanidae"].includes(s.family));
+  if (!pool.length) return null;
+  const e = img.elevation, M = 150;
+  const inRange = s => s.elevMin == null && s.elevMax == null ? null : (e >= (s.elevMin ?? 0) - M && e <= (s.elevMax ?? 9000) + M);
+  const sorted = pool.map(s => ({s, r: inRange(s)})).sort((a,b) => (a.r === false) - (b.r === false) || (a.r === null) - (b.r === null) || a.s.name.localeCompare(b.s.name));
+  const fits = sorted.filter(x => x.r !== false), outs = sorted.filter(x => x.r === false);
+  const row = ({s, r}) => {
+    const url = safeUrl(s.url);
+    const name = el("span",{}, el("i",{class:"tx", text:s.name}), " ", el("span",{class:"msg", text:s.authority}), s.common ? " · " + s.common : "");
+    const elev = s.elevMin == null && s.elevMax == null ? "elevation range not recorded" : `${s.elevMin ?? "?"}–${s.elevMax ?? "?"} m`;
+    return el("div",{class:"cand" + (r === false ? " out" : "")}, url ? el("a",{href:url, target:"_blank", rel:"noopener"}, name) : name,
+      el("span",{class:"rl " + s.category, title:"IUCN Red List category", text:s.category}), el("small",{text:`${elev}${s.habitats.length ? " · " + s.habitats.slice(0,2).join("; ") : ""}`}));
+  };
+  const box = el("div",{class:"cands"}, ...fits.map(row));
+  if (!fits.length) box.append(el("p",{class:"none", text:"No species in this group is recorded at this elevation."}));
+  const sec = el("div",{class:"sec"}, el("h3",{text: fam ? `Known ${fam} in PNG near ${e} m` : `Known small mammals in PNG near ${e} m`}),
+    el("p",{class:"hint", text:`Guidance only. These are species the IUCN Red List records anywhere in Papua New Guinea (not only Oro Province) with an elevation range that includes ${e} m (±${M} m). Check each one's distribution on its IUCN page. This survey is expected to find range extensions and possibly undescribed species, so the animal may not be on this list. If so, say so and flag it.`}), box);
+  if (outs.length) sec.append(el("details",{class:"more"}, el("summary",{text:`${outs.length} more recorded in PNG, but not at this elevation (a match would be an elevation range extension)`}), el("div",{class:"cands"}, ...outs.map(row))));
+  return sec;
+}
+function formUrl(img) {
+  const q = new URLSearchParams({template:"identification.yml", title:`ID: ${img.id}`, image_id: img.id});
+  if (img.family) q.set("family", img.family);
+  if (img.curatedGenus) q.set("genus", img.curatedGenus);
+  return `https://github.com/${S.cfg.repo}/issues/new?` + q.toString();
+}
+function step(id, d) {
+  const list = (S.visible && S.visible.includes(id)) ? S.visible : S.images.map(i => i.id);
+  const i = list.indexOf(id) + d;
+  return i >= 0 && i < list.length ? list[i] : null;
+}
+function navNode(id) {
+  const list = (S.visible && S.visible.includes(id)) ? S.visible : S.images.map(i => i.id);
+  const prev = step(id, -1), next = step(id, 1);
+  return el("div",{class:"navbtns"},
+    el("button",{type:"button", "aria-label":"Previous image", title:"Previous image (left arrow)", disabled: !prev, onclick: () => prev && openImage(prev), text:"← Prev"}),
+    el("span",{class:"pos", text:`${list.indexOf(id) + 1} / ${list.length}`}),
+    el("button",{type:"button", "aria-label":"Next image", title:"Next image (right arrow)", disabled: !next, onclick: () => next && openImage(next), text:"Next →"}),
+    el("button",{class:"x", type:"button", "aria-label":"Close", title:"Close (Esc)", onclick: closeSheet, text:"×"}));
+}
+function showDetail(id) {
+  const img = S.images.find(i => i.id === id); if (!img) return;
+  S.openId = id; const sh = $("#sheet"); sh.textContent = ""; sh.hidden = false; document.body.style.overflow = "hidden";
+  const box = el("div",{class:"lb-img", title:"Click to zoom"}), im = el("img",{src: img.file, alt:"Camera trap image " + img.id}); box.append(im);
+  box.addEventListener("click", () => box.classList.toggle("zoom"));
+  const br = el("input",{type:"range", min:"50", max:"300", value:"100", "aria-label":"Brightness"}), ct = el("input",{type:"range", min:"50", max:"250", value:"100", "aria-label":"Contrast"});
+  const apply = () => im.style.filter = `brightness(${br.value}%) contrast(${ct.value}%)`; br.oninput = ct.oninput = apply;
+  const lb = el("div",{class:"lightbox"}, box, el("div",{class:"lb-tools"}, el("label",{}, "Brightness", br), el("label",{}, "Contrast", ct),
+    el("button",{type:"button", onclick:()=>{br.value=100; ct.value=100; apply(); box.classList.remove("zoom");}, text:"Reset"}), el("span",{}, "Click image to zoom · ", el("kbd",{text:"←"}), " ", el("kbd",{text:"→"}), " previous / next · ", el("kbd",{text:"Esc"}), " close")));
+
+  const c = consensus(img.id, genusFamilyMap()), {minIds, agreePct} = S.cfg;
+  const v = el("div",{class:"verdict"}, pillNode(c));
+  if (c.result && c.result.rank === "unid") v.append(el("div",{class:"big", text:"Not identifiable from this image"}), el("small",{text:`${c.result.n} of ${c.total} judged the image too poor to name.`}));
+  else if (c.result) v.append(el("div",{class:"big"}, RANK_LABEL[c.result.rank]+": ", taxonNode(c.result.rank, c.result.name)), el("small",{text:`${c.result.n} of ${c.total} identifications agree (${Math.round(c.result.pct)}%).` + (c.status === "partial" ? ` Not yet agreed at ${S.cfg.targetRank} level.` : "")}));
+  else if (c.status === "needs") v.append(el("div",{class:"big", text:`Needs ${minIds - c.total} more identification${minIds - c.total === 1 ? "" : "s"}`}), el("small",{text:`${c.total} of ${minIds} so far.`}));
+  else v.append(el("div",{class:"big", text:"No agreement yet"}), el("small",{text:`No rank has ${agreePct}% agreement across ${c.total} identifications.`}));
+
+  const fl = flagNodes(img.id); if (fl.length) v.append(el("div",{class:"flags"}, fl));
+  const facts = el("dl",{class:"facts"}), fact = (k, val, cls) => { if (val) facts.append(el("dt",{class:cls, text:k}), el("dd",{class:cls, text:val})); };
+  fact("Curated as", img.family ? [img.family, img.curatedGenus].filter(Boolean).join(", ") : "Small mammal, family not yet known");
+  fact("Location", `${img.llg}, ${img.district}, ${img.province}`);
+  fact("Station", `Grid ${img.grid}, station ${img.station}, camera ${img.camera}`);
+  const gr = S.geo && S.geo.grids[img.grid];
+  fact("Elevation", `${img.elevation.toLocaleString("en")} m` + (gr ? ` (grid spans ${gr[4].toLocaleString("en")}–${gr[5].toLocaleString("en")} m)` : ""));
+  const tod = timeOfDay(img);
+  fact("Time of day", img.clockReset ? `${tod} (judged from the ${/^infrared/i.test(img.imageType) ? "infrared" : "colour"} image)` : `${tod}, ${img.time} · ${img.imageType}`);
+  fact("Date", img.clockReset ? "" : img.date);
+  if (img.clockReset) fact("Clock", "Unreliable: this camera's clock reset after a battery failure, so the date and time may be wrong.", "clockwarn");
+  if (img.sameVisit.length) fact("Same visit", "Other frames of this visit: " + img.sameVisit.join(", "));
+
+  const tally = el("div",{class:"tally"});
+  for (const r of RANKS) {
+    const list = c.lists[r], b = el("div",{class:"rank"}, el("h4",{}, el("span",{text:RANK_LABEL[r]}), el("span",{class:"mono", text:`${list.reduce((a,x)=>a+x.n,0)} of ${c.total} gave a ${r}`})));
+    if (!list.length) b.append(el("p",{class:"none", text:"No suggestions at this rank yet."}));
+    list.slice(0,4).forEach((x,i) => b.append(el("div",{class:"row"+(i===0?" top":"")+(c.result && c.result.rank===r && i===0?" met":"")},
+      el("span",{}, taxonNode(r, x.name)), el("span",{class:"mono", text:`${x.n} · ${Math.round(x.pct)}%`}),
+      el("span",{class:"lbar"}, el("i",{style:`width:${x.pct}%`}), el("b",{style:`left:calc(${agreePct}% - 1px)`})))));
+    tally.append(b);
+  }
+  const ul = el("ul",{class:"ids"});
+  const entries = entriesFor(img.id);
+  if (!entries.length) ul.append(el("li",{}, el("span"), el("p",{class:"none", text:"No identifications or notes yet. Be the first."})));
+  for (const x of entries) {
+    const what = el("div",{class:"what"});
+    if (!isVote(x)) what.append("Note (not counted as a vote)");
+    else if (x.unid) what.append("Not identifiable from this image");
+    else {
+      if (x.genus) what.append(el("i",{class:"tx", text: x.genus + (x.species ? " " + x.species : x.provisional ? "" : " sp.")}), x.provisional ? " " + x.provisional : "");
+      if (x.family) what.append(x.genus ? ` (${x.family})` : x.family);
+    }
+    if (x.confidence && isVote(x)) what.append(el("span",{class:"conf", text:x.confidence}));
+    const xf = Object.entries(x.flags || {}).filter(([,on]) => on).map(([k]) => el("span",{class:"flag " + k, text: FLAG_LABEL[k]}));
+    if (xf.length) what.append(el("div",{}, xf));
+    const url = safeUrl(x.url);
+    ul.append(el("li",{class: isVote(x) ? "" : "note-entry"}, el("span"), el("div",{}, el("div",{class:"who"}, el("b",{text:x.user}), " · " + (x.at||"").slice(0,10), url ? [" · ", el("a",{href:url, target:"_blank", rel:"noopener", text:"discussion"})] : ""), what,
+      x.local ? el("div",{class:"why", text:"Local or common name: " + x.local}) : null, x.note ? el("div",{class:"why", text:x.note}) : null)));
+  }
+  const cta = el("div",{class:"cta"},
+    el("a",{class:"btn primary", href: formUrl(img), target:"_blank", rel:"noopener", text:"Add my identification"}),
+    el("ol",{}, el("li",{text:"The button opens a short form on GitHub with this image's ID filled in. Sign in or create a free GitHub account if asked."}),
+      el("li",{text:"Fill in the ranks you're confident of. Working names and notes are welcome, and you can flag a possible range extension or undescribed species. Then press Create."}),
+      el("li",{text:"Your identification appears on this page within a few minutes. Submitting again for the same image replaces your earlier one."})));
+
+  const side = el("div",{class:"side"},
+    el("div",{class:"side-head"}, el("div",{}, el("p",{class:"eyebrow", text: img.id}), el("h2",{id:"dTitle", text:"Identification"})), navNode(img.id)),
+    v, facts, mapNode(img), el("div",{class:"sec"}, el("h3",{text:"Your identification"}), cta),
+    el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally), el("div",{class:"sec"}, el("h3",{text:`Identifications and notes (${c.total} counted${entries.length > c.total ? `, ${entries.length - c.total} note${entries.length - c.total > 1 ? "s" : ""}` : ""})`}), ul), candidatesNode(img));
+  sh.append(el("div",{class:"panel", role:"dialog", "aria-modal":"true", "aria-labelledby":"dTitle"}, lb, side));
+  sh.onclick = e => { if (e.target === sh) closeSheet(); };
+}
+function route() {
+  const m = location.hash.match(/^#img-([A-Za-z0-9_-]+)$/), f = location.hash.match(/^#family-([A-Za-z-]+)$/);
+  if (f && f[1] !== S.family) { S.family = f[1]; renderFamilies(); renderGrid(); }
+  if (m) showDetail(m[1]); else if (S.openId) closeSheet();
+}
+window.addEventListener("hashchange", route);
+document.addEventListener("keydown", e => {
+  if ($("#sheet").hidden || e.target.closest("input,textarea,select")) return;
+  if (e.key === "Escape") closeSheet();
+  else if ((e.key === "ArrowRight" || e.key === "ArrowLeft") && S.openId) { const n = step(S.openId, e.key === "ArrowRight" ? 1 : -1); if (n) { e.preventDefault(); openImage(n); } }
+});
+$("#tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.filter = b.dataset.f; try { localStorage.setItem("ctid.filter", S.filter); } catch(e) {} renderGrid(); });
+
+const get = (u, fallback) => fetch(u, {cache:"no-cache"}).then(r => r.ok ? r.json() : fallback).catch(() => fallback);
+Promise.all([get("data/images.json", []), get("data/ids.json", []), get("data/config.json", {}), get("data/geo.json", null), get("data/iucn.json", null)]).then(([images, ids, cfg, geo, iucn]) => {
+  S.images = images; S.ids = ids; S.cfg = {...S.cfg, ...cfg}; S.geo = geo; S.iucn = iucn;
+  if (!S.cfg.repo) { const o = location.hostname.split(".")[0], r = location.pathname.split("/")[1]; S.cfg.repo = `${o}/${r}`; }
+  $("#repoLink").href = `https://github.com/${S.cfg.repo}/issues?q=label%3Aidentification`;
+  if (iucn && iucn.retrieved) $("#iucnDate").textContent = "retrieved " + iucn.retrieved;
+  if (!images.length) { $("#grid").textContent = ""; $("#grid").append(el("div",{class:"empty"}, el("h2",{text:"The image list could not be loaded"}), el("p",{text:"Reload the page to try again."}))); return; }
+  const latest = ids.reduce((a, v) => v.at > a ? v.at : a, "");
+  const nv = ids.filter(isVote).length;
+  $("#updated").textContent = ids.length ? `${nv} identifications, ${ids.length - nv} notes · latest ${latest.slice(0,10)}` : "No identifications yet";
+  renderRule(); renderFamilies(); renderGrid(); route();
+});
+})();
+</script>
+</body>
+</html>

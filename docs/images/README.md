@@ -14,11 +14,11 @@ images in one place:
 
 | Folder | Images | Curated as |
 |---|---|---|
-| Macropodidae | 20 | family |
+| Macropodidae | 21 | family |
 | Peramelidae | 35 | family |
 | Phalangeridae | 11 | genus *Phalanger* |
 | Varanidae | 11 | genus *Varanus* |
-| Dasyuridae | 4 | genus *Dasyurus* (2) or family only (2) |
+| Dasyuridae | 3 | genus *Dasyurus* (2) or family only (1) |
 | Small_mammals_family_unknown | 15 | "small mammal"; family not yet known |
 
 Images are numbered within their family, in order of capture date, with
@@ -39,6 +39,10 @@ One row per image:
 - Context read from the camera's data strip: grid, station, camera (CT1 or CT2 at the station), date, time, time of day,
   temperature, and whether the frame is colour (day) or infrared (night).
   This is supporting information for identifiers. It does not affect how the files are organised.
+
+`Macropodidae_021` was first filed as `Dasyuridae_003` (it was in the *Dasyurus*
+upload, named `Dorcopsis.jpeg`) and moved to Macropodidae. The old ID
+still works on the website and in the identification form.
 
 ## Clock resets
 

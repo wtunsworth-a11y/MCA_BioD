@@ -1,7 +1,6 @@
 image_id,file,curated_family,curated_genus,grid,station,camera,elevation_m,date,time,clock_unreliable,status,consensus_rank,consensus_family,consensus_genus,consensus_species,agreement_pct,agreeing_ids,total_ids,flag_range_extension,flag_undescribed,flag_review,rule_min_ids,rule_agree_pct,rule_target_rank
 Dasyuridae_001,images/Dasyuridae/Dasyuridae_001.jpg,Dasyuridae,,G57,G5,1,528,2025-09-09,03:22,,needs,,,,,,,0,,,,5,70,species
 Dasyuridae_002,images/Dasyuridae/Dasyuridae_002.jpg,Dasyuridae,Dasyurus,G09,G3,1,1242,2025-09-29,05:08,,needs,,,,,,,0,,,,5,70,species
-Dasyuridae_003,images/Dasyuridae/Dasyuridae_003.jpg,Dasyuridae,,G51,G4,2,971,2025-10-10,03:06,,needs,,,,,,,0,,,,5,70,species
 Dasyuridae_004,images/Dasyuridae/Dasyuridae_004.jpg,Dasyuridae,Dasyurus,G51,B4,2,1065,2025-10-27,20:21,,needs,,,,,,,0,,,,5,70,species
 Macropodidae_001,images/Macropodidae/Macropodidae_001.jpg,Macropodidae,,G46,E1,1,1509,2026-04-03,10:39,,needs,,,,,,,0,,,,5,70,species
 Macropodidae_002,images/Macropodidae/Macropodidae_002.jpg,Macropodidae,,G46,C3,2,1484,2026-04-03,21:14,,needs,,,,,,,0,,,,5,70,species
@@ -23,6 +22,7 @@ Macropodidae_017,images/Macropodidae/Macropodidae_017.jpg,Macropodidae,,G51,A1,2
 Macropodidae_018,images/Macropodidae/Macropodidae_018.jpg,Macropodidae,,G51,C7,1,1054,2025-11-05,21:07,,needs,,,,,,,0,,,,5,70,species
 Macropodidae_019,images/Macropodidae/Macropodidae_019.jpg,Macropodidae,,G57,F4,2,535,2020-01-05,01:46,yes,needs,,,,,,,0,,,,5,70,species
 Macropodidae_020,images/Macropodidae/Macropodidae_020.jpg,Macropodidae,,G09,A6,2,684,2020-01-07,16:33,yes,needs,,,,,,,0,,,,5,70,species
+Macropodidae_021,images/Macropodidae/Macropodidae_021.jpg,Macropodidae,,G51,G4,2,971,2025-10-10,03:06,,needs,,,,,,,0,,,,5,70,species
 Peramelidae_001,images/Peramelidae/Peramelidae_001.jpg,Peramelidae,,G55,F7,1,557,2020-01-18,11:59,yes,needs,,,,,,,0,,,,5,70,species
 Peramelidae_002,images/Peramelidae/Peramelidae_002.jpg,Peramelidae,,G43,F1,1,1219,2026-02-15,23:19,,needs,,,,,,,0,,,,5,70,species
 Peramelidae_003,images/Peramelidae/Peramelidae_003.jpg,Peramelidae,,G43,E2,2,1075,2026-02-17,04:53,,needs,,,,,,,0,,,,5,70,species

@@ -6,7 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping. Open this form from the **Add my identification** button on the website, so the image ID is filled in for you.
+        Thank you for helping. The easiest way to identify an image is the form beside it on the website: https://wtunsworth-a11y.github.io/MCA_BioD/
+        Use this GitHub form only if you can't use the website, and put the image ID (for example Macropodidae_001) below.
         Fill in only the ranks you are confident of. Working names are welcome (e.g. species `sp. "Managalas"`), and so is a note with no name at all.
         Many of these animals may be range extensions, and some may be undescribed, so don't force a match to a known species.
         Your latest identification for an image replaces any earlier one.

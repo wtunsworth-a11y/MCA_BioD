@@ -22,15 +22,16 @@ Union, and is built to be handed on to a Papua New Guinean group.
 | Tally and deploy | `.github/workflows/site.yml` runs `scripts/tally.py` |
 | Results | `docs/data/ids.json` and `docs/data/labels.csv`, written by the workflow |
 
-1. A specialist opens an image on the website and presses **Add my
-   identification**. This opens a GitHub issue form with the image ID
-   filled in.
+1. A specialist opens an image on the website and fills in the
+   identification form beside it, then presses **Submit on GitHub**. GitHub
+   opens with the identification written out (marked in the issue body),
+   and they press **Create**. A GitHub issue form also exists as a fallback.
 2. They give a name at whatever rank they are confident of. Working names
    (`sp. "Managalas"`, `cf.`, `aff.`) count at genus level. They can
    also flag a possible range extension, a possibly undescribed species,
    or a need for specialist review, or leave a note with no name.
 3. The workflow runs on every issue change. It keeps each person's latest
-   identification per image, labels the issue `counted`, rebuilds
+   identification per image, labels the issue `identification` and `counted`, rebuilds
    `ids.json` and `labels.csv`, and redeploys the site. This takes a few
    minutes.
 4. A name is accepted when an image has at least `minIds`

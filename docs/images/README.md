@@ -35,7 +35,8 @@ One row per image:
 - `original_filename`: the name it was uploaded with.
 - `family` and `curated_genus`: the curator's grouping. Empty `genus` and `species` columns are for the agreed IDs.
 - `curator_hint`: a name taken from the uploaded file name (e.g. `Isoodon`). The board does not show it to identifiers, so it can't bias their IDs.
-- `same_visit_as`: other frames from the same camera within 30 minutes, which probably show the same animal on one visit.
+- `same_activation_as` and `observation_id`: photos from one camera activation (same camera, same minute on the data strip) form a set, identified once. Frames minutes apart are not grouped.
+- `survey_location`: a neutral code for the fixed 1 km square the camera is in. The key linking codes to squares is kept privately by the project, not in this repository.
 - Context read from the camera's data strip: grid, station, camera (CT1 or CT2 at the station), date, time, time of day,
   temperature, and whether the frame is colour (day) or infrared (night).
   This is supporting information for identifiers. It does not affect how the files are organised.

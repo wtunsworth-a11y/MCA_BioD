@@ -394,12 +394,12 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
       <article><h3>Send selected images</h3><ul>
         <li>Choose images that genuinely need a second opinion: animals you can't name with confidence after checking them yourself.</li>
         <li>Send tens of images per group, not hundreds.</li>
-        <li>Send no more than 2 or 3 images of the same thing: the same species, station and situation. Pick the clearest ones.</li>
+        <li>Send no more than 2 or 3 images of the same thing: the same species at the same survey location (cameras within the same 1 km square). Pick the clearest ones.</li>
       </ul></article>
       <article><h3>Group photos of one animal</h3><ul>
-        <li>If one animal appears in several photos, send up to 3 as a set, chosen to show different features: head and ears, tail, feet, flank or markings.</li>
+        <li>If one camera activation (the same camera, within the same minute) caught an animal in several photos, send up to 3 as a set, chosen to show different features: head and ears, tail, feet, flank or markings.</li>
         <li>Keep a set together by putting it in its own folder, or by giving the files the same name with a, b, c (e.g. <code>G46_C2_0716a.jpg</code>).</li>
-        <li>On this site a set appears as one sighting: people identify the animal once, using all its photos.</li>
+        <li>On this site a set appears as one sighting and is identified once, using all its photos. Photos minutes apart are kept separate, as there is no way to know they show the same individual.</li>
       </ul></article>
       <article><h3>Keep the originals</h3><ul>
         <li>Send the original JPEG at full size, with the camera's data strip (date, time, station) intact. Don't crop, brighten or edit it.</li>
@@ -468,7 +468,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
 <footer class="foot" id="about"><div class="wrap">
   <div class="logos" id="logos"></div>
   <p>A pilot of the Managalas project, funded by the European Union. Built to be handed on to a Papua New Guinean group that will grow a community of practice and identification expertise.</p>
-  <p>All images are from Ijivitari District, Oro (Northern) Province. Maps show the 3 km survey grid only, not exact camera positions. Elevations come from SRTM data. Candidate species, names and elevation ranges come from the IUCN Red List of Threatened Species (<span id="iucnDate">API v4</span>).</p>
+  <p>All images are from Ijivitari District, Oro (Northern) Province. A survey location is a fixed 1 km square; maps show only the 5 km area around it, never exact camera positions. Elevations come from SRTM data. Candidate species, names and elevation ranges come from the IUCN Red List of Threatened Species (<span id="iucnDate">API v4</span>).</p>
   <p class="mono">Identifications are public GitHub issues in <a id="repoLink" href="#">the project repository</a>. Everything on this site can be exported and moved to another platform.</p>
 </div></footer>
 
@@ -584,10 +584,10 @@ function renderHome() {
   const home = !S.family;
   $("#workTitle").textContent = home ? "All images" : (FAM_INFO[S.family] || famLabel(S.family));
   $("#hero").hidden = !home; $("#homeIntro").hidden = !home;
-  const gfm = genusFamilyMap(), grids = new Set(S.images.map(i => i.grid));
+  const gfm = genusFamilyMap(), locs = new Set(S.images.map(i => i.location));
   const elev = S.images.map(i => i.elevation);
   const hf = $("#heroFacts"); hf.textContent = "";
-  [[sightings().length, `sightings to identify (${S.images.length} photos)`], [familyKeys().length, "animal groups"], [grids.size, "survey grids"], [`${Math.min(...elev).toLocaleString("en")}–${Math.max(...elev).toLocaleString("en")} m`, "elevation range"], [S.ids.filter(isVote).length, "identifications so far"]]
+  [[sightings().length, `sightings to identify (${S.images.length} photos)`], [familyKeys().length, "animal groups"], [locs.size, "survey locations"], [`${Math.min(...elev).toLocaleString("en")}–${Math.max(...elev).toLocaleString("en")} m`, "elevation range"], [S.ids.filter(isVote).length, "identifications so far"]]
     .forEach(([n, l]) => hf.append(el("div",{}, el("b",{text:n}), l)));
   const fc = $("#famcards"); fc.textContent = "";
   for (const f of familyKeys()) {
@@ -687,21 +687,20 @@ function closeSheet() {
   if (location.hash.startsWith("#img-")) history.replaceState(null, "", location.pathname + (S.family ? "#family-" + S.family : ""));
 }
 function mapNode(img) {
-  const G = S.geo; if (!G || !G.grids[img.grid]) return null;
-  const [x, y, w, h] = G.grids[img.grid], [bx, by, bw, bh] = G.studyBox, R = G.relief;
+  const G = S.geo; if (!G || !G.areas || !G.areas[img.area]) return null;
+  const [x, y, w, h] = G.areas[img.area], [bx, by, bw, bh] = G.studyBox, R = G.relief;
   const over = svgEl("svg",{viewBox:"139.6 1.4 16.2 9.8", role:"img", "aria-label":"Papua New Guinea with the study area marked"},
     svgEl("path",{d: G.outline, style:"fill:var(--land);stroke:var(--muted);stroke-width:.05"}),
     svgEl("circle",{cx: bx + bw/2, cy: by + bh/2, r:".75", style:"fill:none;stroke:var(--accent);stroke-width:.16"}),
     svgEl("text",{x:"140.1", y:"10.9", style:"font:600 .62px var(--f-mono);fill:var(--muted)"}, "PAPUA NEW GUINEA"));
-  const study = svgEl("svg",{viewBox:`0 0 ${R.w} ${R.h}`, role:"img", "aria-label":`Survey grids on the Managalas Plateau, grid ${img.grid} highlighted`}, svgEl("image",{href: R.uri, x:0, y:0, width:R.w, height:R.h}));
-  for (const [g, b] of Object.entries(G.grids)) if (g !== img.grid) study.append(svgEl("rect",{x:b[0]-2, y:b[1]-2, width:b[2]+4, height:b[3]+4, style:"fill:none;stroke:#ffffff;stroke-opacity:.75;stroke-width:1.2"}));
-  study.append(svgEl("rect",{x:x-4, y:y-4, width:w+8, height:h+8, style:"fill:var(--accent);fill-opacity:.35;stroke:var(--accent);stroke-width:3"}),
-    svgEl("text",{x:x+w/2, y:y-9, "text-anchor":"middle", style:"font:700 15px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3.5px"}, img.grid),
+  const study = svgEl("svg",{viewBox:`0 0 ${R.w} ${R.h}`, role:"img", "aria-label":`Managalas Plateau, with the 5 km area around survey location ${img.location} highlighted`}, svgEl("image",{href: R.uri, x:0, y:0, width:R.w, height:R.h}));
+  for (const [a, b] of Object.entries(G.areas)) if (a !== img.area) study.append(svgEl("rect",{x:b[0], y:b[1], width:b[2], height:b[3], style:"fill:none;stroke:#ffffff;stroke-opacity:.55;stroke-width:1"}));
+  study.append(svgEl("rect",{x, y, width:w, height:h, style:"fill:var(--accent);fill-opacity:.3;stroke:var(--accent);stroke-width:3"}),
     svgEl("rect",{x:12, y:R.h-24, width:R.km10, height:5, style:"fill:#18201b"}),
     svgEl("text",{x:12, y:R.h-30, style:"font:600 12px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3px"}, "10 km"));
   return el("div",{class:"sec"}, el("h3",{text:"Location"}),
     el("figure",{class:"locmap", style:"margin:0"}, over, study,
-      el("figcaption",{text:`Grid ${img.grid}, ${img.llg}, ${img.district}, ${img.province}. Each square is one survey grid of 49 stations, about 3 km across; exact camera positions are not shown.`})));
+      el("figcaption",{text:`The highlighted square is the 5 km area containing survey location ${img.location} (${img.llg}, ${img.district}, ${img.province}). Faint squares are other areas with images. Exact camera positions and 1 km survey locations are not shown publicly.`})));
 }
 function candidatesNode(img) {
   if (!S.iucn) return null;
@@ -866,14 +865,13 @@ function showDetail(id) {
   fact("Curated as", img.family ? [img.family, img.curatedGenus].filter(Boolean).join(", ") : "Small mammal, family not yet known");
   fact("Project", img.project ? `${img.project}${img.project === "Managalas" ? " (pilot)" : ""}` : "");
   fact("Location", [img.llg, img.district, img.province, img.country].filter(Boolean).join(", "));
-  fact("Station", `Grid ${img.grid}, station ${img.station}, camera ${img.camera}`);
-  const gr = S.geo && S.geo.grids[img.grid];
-  fact("Elevation", `${img.elevation.toLocaleString("en")} m` + (gr ? ` (grid spans ${gr[4].toLocaleString("en")}–${gr[5].toLocaleString("en")} m)` : ""));
+  fact("Survey location", `${img.location}${img.camera ? `, camera ${img.camera}` : ""}`);
+  fact("Elevation", `${img.elevation.toLocaleString("en")} m`);
   const tod = timeOfDay(img);
   fact("Time of day", img.clockReset ? `${tod} (judged from the ${/^infrared/i.test(img.imageType) ? "infrared" : "colour"} image)` : `${tod}, ${img.time} · ${img.imageType}`);
   fact("Date", img.clockReset ? "" : img.date);
   if (img.clockReset) fact("Clock", "Unreliable: this camera's clock reset after a battery failure, so the date and time may be wrong.", "clockwarn");
-  if (members.length > 1) fact("Photos", `${members.length} photos of the same animal (${members.map(m => m.id).join(", ")}). Your identification covers all of them.`);
+  if (members.length > 1) fact("Photos", `${members.length} photos from one camera activation (same camera, same minute): ${members.map(m => m.id).join(", ")}. Your identification covers the set.`);
 
   const tally = el("div",{class:"tally"});
   for (const r of RANKS) {

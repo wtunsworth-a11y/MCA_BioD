@@ -9,8 +9,8 @@ identify what they record. It starts with the Managalas Plateau, Ijivitari Distr
 (Northern) Province, Papua New Guinea, and aims to become a national
 community of practice for camera trap users in PNG, open in time to
 Indonesia (Papua), Solomon Islands and other neighbours. It is a pilot of
-the Managalas project, funded by the European Union, run with Landscape
-Alliance, and built to be handed on to a Papua New Guinean group.
+the Managalas project, led by Landscape Alliance PNG and funded by the
+European Union.
 
 ## How it works
 
@@ -59,8 +59,9 @@ its row to `docs/images/manifest.csv`, and regenerate `images.json` and
 the thumbnail. Or upload the files anywhere in the repository and ask for
 them to be filed.
 
-## Handing over
+## Moving the repository
 
-Transfer the repository (Settings > General > Transfer ownership) to the
-new group's GitHub account, then update `repo` in `docs/data/config.json`.
+If the repository moves to another GitHub account (for example a Landscape
+Alliance PNG organisation account), transfer it under Settings > General >
+Transfer ownership, then update `repo` in `docs/data/config.json`.
 The identifications travel with the repository because they are its issues.

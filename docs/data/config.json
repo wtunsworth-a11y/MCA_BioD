@@ -2,5 +2,8 @@
   "repo": "wtunsworth-a11y/MCA_BioD",
   "minIds": 5,
   "agreePct": 70,
-  "targetRank": "species"
+  "targetRank": "species",
+  "contactEmail": "",
+  "logos": [],
+  "logoNotes": "LA = Landscape Alliance"
 }

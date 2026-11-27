@@ -183,6 +183,19 @@ form textarea{resize:vertical;min-height:54px}
 .cbody .flags{display:flex;flex-wrap:wrap;gap:4px}
 .note-entry .what{font-style:normal;color:var(--muted)}
 .cands{display:grid;gap:6px}
+form.idf{display:grid;gap:12px;background:var(--sunk);padding:16px;border-radius:var(--r)}
+form.idf .f3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+form.idf label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+form.idf label.chk{display:flex;gap:8px;align-items:flex-start;color:var(--ink);font-size:14px}
+form.idf label.chk input{margin-top:3px}
+form.idf input:not([type]),form.idf textarea{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;width:100%;min-width:0;color:var(--ink);font:inherit}
+form.idf input:disabled{opacity:.45}
+form.idf textarea{resize:vertical}
+.fs{border:0;padding:0;margin:0;display:grid;gap:6px}
+.fs legend{font-size:13px;color:var(--muted);padding:0;margin-bottom:4px}
+.fs.row3{display:flex;flex-wrap:wrap;gap:6px 18px}
+.fs.row3 legend{width:100%}
+@media (max-width:480px){form.idf .f3{grid-template-columns:minmax(0,1fr)}}
 .cand{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:14px;padding:6px 0;border-bottom:1px solid var(--line)}
 .cand small{color:var(--muted);grid-column:1/-1}
 .cand.out{opacity:.55}
@@ -231,7 +244,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
   <div class="howto">
     <div><b>1. Choose your group</b>Pick the family you know best below.</div>
     <div><b>2. Open an image</b>Each one shows its location, elevation and time of day, plus IUCN species recorded in PNG at that elevation.</div>
-    <div><b>3. Add your identification or ideas</b>Submit through a short GitHub form (free account). Working names, notes and flags for possible range extensions or new species are all welcome. Your entry appears here within a few minutes.</div>
+    <div><b>3. Add your identification or ideas</b>Fill in the form beside the image and press Submit. GitHub (free account) opens to record it; press Create. Working names, notes and flags for possible range extensions or new species are all welcome.</div>
   </div>
 
   <nav class="fams" id="fams" aria-label="Browse by family"><span class="lbl">Browse by family</span></nav>
@@ -441,11 +454,79 @@ function candidatesNode(img) {
   if (outs.length) sec.append(el("details",{class:"more"}, el("summary",{text:`${outs.length} more recorded in PNG, but not at this elevation (a match would be an elevation range extension)`}), el("div",{class:"cands"}, ...outs.map(row))));
   return sec;
 }
-function formUrl(img) {
-  const q = new URLSearchParams({template:"identification.yml", title:`ID: ${img.id}`, image_id: img.id});
-  if (img.family) q.set("family", img.family);
-  if (img.curatedGenus) q.set("genus", img.curatedGenus);
-  return `https://github.com/${S.cfg.repo}/issues/new?` + q.toString();
+/* ---------- identification form (on the site; GitHub only stores it) ---------- */
+const MARK = "<!-- camtrap-identification v1 -->";
+const FLAGS = [["range","Possible range extension (outside the known range or elevation for this taxon)"],
+               ["newsp","Possibly an undescribed species"],["review","Needs a specialist's review"]];
+const cap1 = t => t ? t.charAt(0).toUpperCase() + t.slice(1).toLowerCase() : "";
+function issueBody(img, d) {
+  const sec = (h, v) => `### ${h}\n\n${v && String(v).trim() ? String(v).trim() : "_No response_"}\n`;
+  const box = (on, label) => `- [${on ? "x" : " "}] ${label}`;
+  return [MARK,
+    sec("Image ID", img.id), sec("Family", d.family), sec("Genus", d.genus), sec("Species epithet", d.species),
+    sec("Not identifiable", box(d.unid, "The animal cannot be identified from this image (too dark, blurred or partial)")),
+    sec("Flags", FLAGS.map(([k, l]) => box(d.flags[k], l)).join("\n")),
+    sec("Confidence", d.confidence), sec("Local or common name (optional)", d.local), sec("Notes and ideas", d.note),
+    `---\n_Submitted from the [Managalas Camera Trap ID website](${location.origin + location.pathname}#img-${img.id}). Press **Create** to send it._`
+  ].join("\n");
+}
+function datalist(id, values) {
+  const dl = el("datalist",{id}); [...new Set(values.filter(Boolean))].sort().forEach(v => dl.append(el("option",{value:v}))); return dl;
+}
+function idForm(img) {
+  const sp = S.iucn ? S.iucn.species : [];
+  const fam = el("input",{id:"fFam", list:"dlFam", autocomplete:"off", placeholder:"e.g. Peramelidae", value: img.family || ""});
+  const gen = el("input",{id:"fGen", list:"dlGen", autocomplete:"off", placeholder:"e.g. Echymipera", value: img.curatedGenus || ""});
+  const spe = el("input",{id:"fSp", list:"dlSp", autocomplete:"off", placeholder:'e.g. kalubu, or sp. "Managalas"'});
+  const lists = el("div",{hidden:true});
+  const refresh = () => {
+    lists.textContent = "";
+    const f = cap1(fam.value.trim()), g = cap1(gen.value.trim());
+    lists.append(datalist("dlFam", [...sp.map(x => x.family), ...S.images.map(i => i.family)]),
+      datalist("dlGen", sp.filter(x => !f || x.family === f).map(x => x.genus)),
+      datalist("dlSp", sp.filter(x => (!g || x.genus === g) && (!f || x.family === f)).map(x => x.species)));
+  };
+  fam.addEventListener("input", refresh); gen.addEventListener("input", refresh);
+  gen.addEventListener("change", () => { const m = sp.find(x => x.genus === cap1(gen.value.trim())); if (m && !fam.value.trim()) { fam.value = m.family; refresh(); } });
+  refresh();
+  const unid = el("input",{type:"checkbox", id:"fUnid"});
+  unid.addEventListener("change", () => [fam, gen, spe].forEach(i => i.disabled = unid.checked));
+  const flagBoxes = Object.fromEntries(FLAGS.map(([k]) => [k, el("input",{type:"checkbox", id:"fFlag-"+k})]));
+  const confs = ["Sure","Likely","Best guess"].map(c => el("input",{type:"radio", name:"fConf", id:"fConf-"+c.replace(/ /g,""), value:c, checked: c === "Likely"}));
+  const local = el("input",{id:"fLocal", maxlength:"80", placeholder:"Tok Pisin, Tok Ples or English"});
+  const note = el("textarea",{id:"fNote", maxlength:"1500", rows:"3", placeholder:"Features you used (tail, ears, colour, gait, size), alternatives you considered, why it might be a range extension or a new species, local knowledge…"});
+  const msg = el("p",{class:"msg", "aria-live":"polite"});
+  const go = el("button",{class:"btn primary", type:"submit", text:"Submit on GitHub"});
+  const form = el("form",{class:"idf", novalidate:true},
+    el("div",{class:"f3"}, el("label",{for:"fFam"}, "Family", fam), el("label",{for:"fGen"}, "Genus", gen), el("label",{for:"fSp"}, "Species", spe)),
+    el("p",{class:"hint", text:"Fill in only the ranks you're sure of: leave species blank for a genus-level ID. Suggestions come from the IUCN list, but any name is accepted, including working names for a possible new species."}),
+    el("label",{class:"chk", for:"fUnid"}, unid, "Not identifiable from this image (too dark, blurred or partial)"),
+    el("fieldset",{class:"fs"}, el("legend",{text:"Flags (optional)"}),
+      ...FLAGS.map(([k, l]) => el("label",{class:"chk", for:"fFlag-"+k}, flagBoxes[k], l))),
+    el("fieldset",{class:"fs row3"}, el("legend",{text:"Confidence"}),
+      ...confs.map(c => el("label",{class:"chk", for:c.id}, c, c.value))),
+    el("label",{for:"fNote"}, "Notes and ideas (optional)", note),
+    el("label",{for:"fLocal"}, "Local or common name (optional; not counted in the consensus)", local),
+    lists,
+    el("div",{class:"actions"}, go, msg),
+    el("p",{class:"hint", text:"Submit opens GitHub in a new tab with your identification written out. Sign in (a free account), check it, and press Create. It appears here within a few minutes. Submitting again for the same image replaces your earlier ID. You can also send a note or flag with no name; it is shown but not counted as a vote."}));
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const d = { family: cap1(fam.value.trim().split(/\s+/)[0] || ""), genus: cap1(gen.value.trim().split(/\s+/)[0] || ""), species: spe.value.trim(),
+      unid: unid.checked, flags: Object.fromEntries(FLAGS.map(([k]) => [k, flagBoxes[k].checked])),
+      confidence: (confs.find(c => c.checked) || {}).value || "", local: local.value.trim(), note: note.value.trim() };
+    if (d.unid) { d.family = d.genus = d.species = ""; }
+    const hasName = d.family || d.genus, hasOther = d.unid || d.note || Object.values(d.flags).some(Boolean);
+    if (!hasName && !hasOther) { msg.className = "msg err"; msg.textContent = "Give a family or genus, tick Not identifiable, or write a note."; return; }
+    if (d.species && !d.genus) { msg.className = "msg err"; msg.textContent = "A species needs its genus."; return; }
+    const what = d.unid ? "not identifiable" : [d.genus, d.species].filter(Boolean).join(" ") || d.family || "note";
+    const url = `https://github.com/${S.cfg.repo}/issues/new?` + new URLSearchParams({title: `ID: ${img.id} – ${what}`, body: issueBody(img, d)}).toString();
+    const w = window.open(url, "_blank", "noopener");
+    msg.className = "msg"; msg.textContent = "";
+    msg.append(w === null ? "Your browser blocked the new tab. " : "GitHub has opened in a new tab. Press Create there to send it. ",
+      el("a",{href:url, target:"_blank", rel:"noopener", text: w === null ? "Open GitHub to send it" : "Open it again"}));
+  });
+  return form;
 }
 function step(id, d) {
   const list = (S.visible && S.visible.includes(id)) ? S.visible : S.images.map(i => i.id);
@@ -518,15 +599,11 @@ function showDetail(id) {
     ul.append(el("li",{class: isVote(x) ? "" : "note-entry"}, el("span"), el("div",{}, el("div",{class:"who"}, el("b",{text:x.user}), " · " + (x.at||"").slice(0,10), url ? [" · ", el("a",{href:url, target:"_blank", rel:"noopener", text:"discussion"})] : ""), what,
       x.local ? el("div",{class:"why", text:"Local or common name: " + x.local}) : null, x.note ? el("div",{class:"why", text:x.note}) : null)));
   }
-  const cta = el("div",{class:"cta"},
-    el("a",{class:"btn primary", href: formUrl(img), target:"_blank", rel:"noopener", text:"Add my identification"}),
-    el("ol",{}, el("li",{text:"The button opens a short form on GitHub with this image's ID filled in. Sign in or create a free GitHub account if asked."}),
-      el("li",{text:"Fill in the ranks you're confident of. Working names and notes are welcome, and you can flag a possible range extension or undescribed species. Then press Create."}),
-      el("li",{text:"Your identification appears on this page within a few minutes. Submitting again for the same image replaces your earlier one."})));
+  const cta = idForm(img);
 
   const side = el("div",{class:"side"},
     el("div",{class:"side-head"}, el("div",{}, el("p",{class:"eyebrow", text: img.id}), el("h2",{id:"dTitle", text:"Identification"})), navNode(img.id)),
-    v, facts, mapNode(img), el("div",{class:"sec"}, el("h3",{text:"Your identification"}), cta),
+    v, facts, mapNode(img), el("div",{class:"sec", id:"yourId"}, el("h3",{text:"Your identification"}), cta),
     el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally), el("div",{class:"sec"}, el("h3",{text:`Identifications and notes (${c.total} counted${entries.length > c.total ? `, ${entries.length - c.total} note${entries.length - c.total > 1 ? "s" : ""}` : ""})`}), ul), candidatesNode(img));
   sh.append(el("div",{class:"panel", role:"dialog", "aria-modal":"true", "aria-labelledby":"dTitle"}, lb, side));
   sh.onclick = e => { if (e.target === sh) closeSheet(); };

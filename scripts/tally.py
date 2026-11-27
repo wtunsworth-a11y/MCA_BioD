@@ -2,7 +2,7 @@
 """Tally camera trap identifications submitted as GitHub issues.
 
 Run by .github/workflows/site.yml. Reads every issue labelled
-"identification", keeps each person's latest identification per image,
+"identification" or submitted from the website (marked in its body), keeps each person's latest identification per image,
 and writes:
 
   docs/data/ids.json    every counted identification (read by the website)
@@ -42,11 +42,21 @@ def api(method, path, body=None):
         return json.loads(r.read() or "null")
 
 
+MARK = "<!-- camtrap-identification v1 -->"
+
+
+def is_identification(issue):
+    """Submitted from the website (marker in the body) or the GitHub issue form (label)."""
+    labels = {l["name"] for l in issue.get("labels", [])}
+    return "identification" in labels or MARK in (issue.get("body") or "")
+
+
 def fetch_issues():
+    # Visitors can't set labels, so website submissions are found by the marker in their body.
     out, page = [], 1
     while True:
-        batch = api("GET", f"/repos/{REPO}/issues?labels=identification&state=all&per_page=100&page={page}")
-        out += [i for i in batch if "pull_request" not in i]
+        batch = api("GET", f"/repos/{REPO}/issues?state=all&per_page=100&page={page}")
+        out += [i for i in batch if "pull_request" not in i and is_identification(i)]
         if len(batch) < 100:
             return out
         page += 1
@@ -161,6 +171,8 @@ def main():
     latest, notes = {}, []
     for iss in sorted(fetch_issues(), key=lambda i: i["created_at"]):
         labels = {l["name"] for l in iss.get("labels", [])}
+        if "identification" not in labels:
+            label_issue(iss["number"], "identification")
         if iss["state"] == "closed" and iss.get("state_reason") == "not_planned":
             continue
         if labels & {"withdrawn", "invalid", "spam"}:
@@ -181,7 +193,8 @@ def main():
         flags = dict(range="[x] possible range extension" in flag_text,
                      newsp="[x] possibly an undescribed species" in flag_text,
                      review="[x] needs a specialist" in flag_text)
-        note = (f.get("notes and ideas") or f.get("reasoning (optional)") or "").strip()[:1500]
+        note = (f.get("notes and ideas") or f.get("reasoning (optional)") or "")
+        note = re.split(r"\n-{3,}\s*\n", note)[0].strip()[:1500]   # drop the website's footer
         vote = unid or bool(fam or gen)
         if not vote and not note and not any(flags.values()):
             if "check-image-id" not in labels:

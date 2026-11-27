@@ -1,0 +1,8 @@
+# IUCN Red List data: raw API responses and derived outputs are not
+# redistributed in this public repository (IUCN Red List Terms of Use).
+data/cache/
+output/
+# API token
+.Renviron
+.Rhistory
+.RData

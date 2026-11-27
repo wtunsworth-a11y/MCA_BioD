@@ -3,7 +3,9 @@
 Website: https://wtunsworth-a11y.github.io/MCA_BioD/
 
 A community identification site for difficult camera trap images from
-Melanesia. It starts with the Managalas Plateau, Ijivitari District, Oro
+Melanesia. Its purpose is to support greater use of camera traps as a method
+for biodiversity surveys, and to develop a community of experts who can
+identify what they record. It starts with the Managalas Plateau, Ijivitari District, Oro
 (Northern) Province, Papua New Guinea, and aims to become a national
 community of practice for camera trap users in PNG, open in time to
 Indonesia (Papua), Solomon Islands and other neighbours. It is a pilot of

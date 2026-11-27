@@ -1,5 +1,5 @@
 name: Camera trap identification
-description: Add your identification for one image on the Managalas Camera Trap ID website.
+description: Add your identification for one image on the Melanesian Camera Trap ID website.
 title: "ID: "
 labels: ["identification"]
 body:

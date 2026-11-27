@@ -1,8 +1,9 @@
 # Curated camera trap images for community identification
 
 Images from the Managalas camera trap survey that need identification
-below family level. They will be posted to the community ID board
-(`../camera-trap-id.html`).
+below family level. They are published on the Managalas Camera Trap ID website
+(https://wtunsworth-a11y.github.io/MCA_BioD/), which is built from the
+`docs/` folder.
 
 ## Layout
 
@@ -47,6 +48,14 @@ frames, and the ID board warns identifiers about them. Eight frames are
 obviously affected because they are stamped January 2020 (see
 `clock_unreliable`). A reset can also produce a plausible-looking 2026 date,
 so mark any other cameras you know were affected.
+
+## Location
+
+All images are from Oro (Northern) Province, Ijivitari District. Grids
+G09, G35, G43, G46, G51, G57 and most of G55 are in Afore Rural LLG, and
+G38 and station G55_G1 are in Oro Bay Rural LLG. The `province`,
+`district` and `llg` columns come from testing each station against
+geoBoundaries ADM1-3 boundaries.
 
 ## Location data
 

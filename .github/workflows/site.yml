@@ -1,0 +1,58 @@
+# Tallies identification issues and publishes docs/ to GitHub Pages.
+# Needs Settings > Pages > Source set to "GitHub Actions".
+name: Camera trap ID website
+
+on:
+  push:
+    paths: ["docs/**", "scripts/tally.py", ".github/workflows/site.yml"]
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled, deleted]
+  schedule:
+    - cron: "23 */6 * * *"   # safety net every six hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: camtrap-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Only build from the default branch; skip issue events that aren't identifications.
+    if: >-
+      github.ref_name == github.event.repository.default_branch &&
+      (github.event_name != 'issues' || contains(github.event.issue.labels.*.name, 'identification'))
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tally identifications
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: python3 scripts/tally.py
+
+      - name: Save updated tallies
+        run: |
+          git config user.name "camtrap-tally"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/ids.json docs/data/labels.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "Update identification tallies"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deploy
+        uses: actions/deploy-pages@v4

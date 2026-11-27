@@ -74,7 +74,7 @@ def parse_body(body):
             fields[current].append(line)
     clean = {}
     for k, v in fields.items():
-        text = "\n".join(v).strip()
+        text = re.split(r"\n-{3,}\s*\n", "\n".join(v) + "\n")[0].strip()   # drop the website's footer
         clean[k] = "" if text == "_No response_" else text
     return clean
 
@@ -83,7 +83,7 @@ def cap(s):
     return s[:1].upper() + s[1:].lower() if s else ""
 
 
-PROVISIONAL = re.compile(r"(\bsp|\bspp|\bcf|\baff|\bnov|\bnew\b)\.?|[\"'\u201c\u201d\u2018\u2019?]", re.I)
+PROVISIONAL = re.compile(r"\b(sp|spp|cf|aff|nov)\b\.?|\bn\.\s*sp\b|[\"'\u201c\u201d\u2018\u2019?]|\s\S+\s", re.I)
 
 
 def normalise(f, g, s):
@@ -164,6 +164,14 @@ def main():
     images = json.load(open(os.path.join(DATA, "images.json")))
     cfg = json.load(open(os.path.join(DATA, "config.json")))
     known = {i["id"].lower(): i["id"] for i in images}
+    # IUCN common names (e.g. "New Guinea Quoll") -> (family, genus, epithet)
+    common = {}
+    try:
+        for sp_ in json.load(open(os.path.join(DATA, "iucn.json")))["species"]:
+            if sp_.get("common"):
+                common[sp_["common"].strip().lower()] = (sp_["family"], sp_["genus"], sp_["species"])
+    except FileNotFoundError:
+        pass
     for i in images:                      # old IDs of images that were moved
         for a in i.get("aliases", []):
             known[a.lower()] = i["id"]
@@ -189,6 +197,9 @@ def main():
             continue
         unid = "[x]" in (f.get("not identifiable") or "").lower()
         fam, gen, sp, prov = normalise(f.get("family"), f.get("genus"), f.get("species epithet"))
+        hit = common.get((f.get("species epithet") or "").strip().lower())
+        if hit and (not gen or gen == hit[1]):
+            fam, gen, sp, prov = fam or hit[0], hit[1], hit[2], ""
         flag_text = (f.get("flags") or "").lower()
         flags = dict(range="[x] possible range extension" in flag_text,
                      newsp="[x] possibly an undescribed species" in flag_text,

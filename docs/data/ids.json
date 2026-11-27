@@ -5,8 +5,8 @@
   "vote": true,
   "family": "Dasyuridae",
   "genus": "Dasyurus",
-  "species": "",
-  "provisional": "New Guinea Quoll",
+  "species": "albopunctatus",
+  "provisional": "",
   "unid": false,
   "flags": {
    "range": false,
@@ -15,7 +15,7 @@
   },
   "confidence": "Sure",
   "local": "",
-  "note": "_No response_",
+  "note": "",
   "at": "2026-11-27T03:57:48Z",
   "url": "https://github.com/wtunsworth-a11y/MCA_BioD/issues/4"
  }

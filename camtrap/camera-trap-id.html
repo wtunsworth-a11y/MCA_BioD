@@ -5,6 +5,7 @@
 <style>
 /* Layout: a contact-sheet grid of trap frames under a slim rule bar; a frame opens into a lightbox sheet with the tally beside it. */
 :root{
+  --sea:#dfe9ee; --land:#c9d3c4;
   --bg:#eef0ec; --surface:#fbfcfa; --sunk:#e3e7e1; --ink:#18201b; --muted:#59645c; --line:#d2d8d0;
   --accent:#a85f00; --accent-ink:#ffffff; --accent-soft:#f6e6cf;
   --moss:#2f6a45; --moss-soft:#dcebdf; --warn:#a2382a; --warn-soft:#f5dfdb;
@@ -18,12 +19,12 @@
   --bg:#0f1311; --surface:#171c19; --sunk:#202722; --ink:#e6ebe6; --muted:#97a39a; --line:#2b332e;
   --accent:#f0a63c; --accent-ink:#1c1200; --accent-soft:#3a2a12;
   --moss:#7cc495; --moss-soft:#1d3326; --warn:#ef8a74; --warn-soft:#3b1f1a;
-  --strip:#050706; --strip-ink:#f4c46a; color-scheme:dark}}
+  --strip:#050706; --strip-ink:#f4c46a; --sea:#16232b; --land:#33403a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1311; --surface:#171c19; --sunk:#202722; --ink:#e6ebe6; --muted:#97a39a; --line:#2b332e;
   --accent:#f0a63c; --accent-ink:#1c1200; --accent-soft:#3a2a12;
   --moss:#7cc495; --moss-soft:#1d3326; --warn:#ef8a74; --warn-soft:#3b1f1a;
-  --strip:#050706; --strip-ink:#f4c46a; color-scheme:dark}
+  --strip:#050706; --strip-ink:#f4c46a; --sea:#16232b; --land:#33403a; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
@@ -152,6 +153,19 @@ form textarea{resize:vertical;min-height:54px}
 .f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (max-width:480px){.f2{grid-template-columns:minmax(0,1fr)}}
 .up form{display:grid;gap:10px}
+.fams{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-block:14px 4px}
+.fams .lbl{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.fam{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer;font-weight:500;display:inline-flex;gap:8px;align-items:center}
+.fam .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.fam[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fam[aria-pressed="true"] .n{color:var(--bg);opacity:.75}
+.famlink{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding-top:6px}
+.famlink code{font-family:var(--f-mono);font-size:12px;background:var(--sunk);padding:2px 6px;border-radius:4px;overflow-wrap:anywhere}
+.famlink button{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:2px 8px;cursor:pointer;font-size:12.5px}
+.locmap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:10px;align-items:start}
+.locmap svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:var(--r);background:var(--sea)}
+.locmap figcaption{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+.clockwarn{color:var(--warn)}
 .foot{border-top:1px solid var(--line);padding-block:22px 34px;color:var(--muted);font-size:13.5px}
 .foot p{margin:0 0 6px;max-width:80ch}
 .foot .mono{font-size:12px}
@@ -175,6 +189,9 @@ form textarea{resize:vertical;min-height:54px}
       <button class="btn primary" id="btnUpload" hidden>Add images</button>
     </div>
   </header>
+
+  <nav class="fams" id="fams" aria-label="Browse by family"><span class="lbl">Browse by family</span></nav>
+  <div class="famlink" id="famlink" hidden></div>
 
   <section class="rule" aria-label="Consensus rule">
     <span class="lede">Consensus rule</span>
@@ -242,7 +259,7 @@ const DEFAULTS = {minIds:5, agreePct:70, targetRank:"species"};
 
 const S = {
   db:null, user:null, assets:null, uid:null, canEdit:false, canWrite:false,
-  images:[], votes:{}, settings:{...DEFAULTS}, profiles:{}, filter:"needs", hideMine:false,
+  images:[], votes:{}, settings:{...DEFAULTS}, profiles:{}, family:"", filter:"needs", hideMine:false,
   loaded:{images:false, votes:false}, openId:null, writing:false
 };
 const $ = s => document.querySelector(s);
@@ -361,10 +378,22 @@ function frameNode(img) {
     im.addEventListener("error", () => { im.remove(); f.prepend(el("div",{class:"miss", text:"Image unavailable"})); });
     f.append(im);
   } else f.append(el("div",{class:"miss", text:"No image file"}));
-  f.append(el("div",{class:"strip"}, el("span",{text: code(img)}), el("span",{text: [img.station || img.site, img.takenAt, img.time].filter(Boolean).join(" · ")})));
+  f.append(el("div",{class:"strip"}, el("span",{text: code(img)}), el("span",{text: [img.family, img.elevation ? img.elevation + " m" : "", [timeOfDay(img), img.clockReset ? "" : img.time].filter(Boolean).join(" ")].filter(Boolean).join(" · ")})));
   return f;
 }
-const code = img => "CT-" + (img.id||"").slice(-5).toUpperCase();
+const code = img => img.imageId || ("CT-" + (img.id||"").slice(-5).toUpperCase());
+let GEO = null;
+fetch("geo.json").then(r => r.ok ? r.json() : null).then(g => { GEO = g; if (S.openId) showDetail(S.openId); }).catch(() => {});
+function timeOfDay(img) {
+  const ir = /^infrared/i.test(img.imageType || "");
+  if (img.clockReset || !img.time) return img.imageType ? (ir ? "Night" : "Day") : "";
+  const [h, m] = img.time.split(":").map(Number), t = h + (m || 0) / 60;
+  if (t < 5 || t >= 19) return "Night";
+  if (t < 6.75) return "Dawn";
+  if (t < 17.5) return "Day";
+  return "Dusk";
+}
+const stationElev = (st) => GEO && GEO.elev ? GEO.elev[st] : undefined;
 
 function pillNode(c) {
   const {status, result, total} = c, {minIds} = S.settings;
@@ -376,9 +405,34 @@ function pillNode(c) {
   return p;
 }
 
+function renderFamilies() {
+  const nav = $("#fams"); nav.querySelectorAll(".fam").forEach(b => b.remove());
+  const counts = {}; S.images.forEach(i => { const f = i.family || "Unassigned"; counts[f] = (counts[f]||0)+1; });
+  const mk = (val, label, n) => nav.append(el("button",{class:"fam", type:"button", "aria-pressed": String(S.family === val), onclick: () => setFamily(val)}, label, el("span",{class:"n", text:n})));
+  mk("", "All families", S.images.length);
+  Object.keys(counts).sort().forEach(f => mk(f, f, counts[f]));
+  const fl = $("#famlink"); fl.textContent = "";
+  fl.hidden = !S.family;
+  if (S.family) {
+    const tag = "#family-" + S.family;
+    const c = el("code",{text: tag});
+    const btn = el("button",{type:"button", text:"Copy"});
+    btn.addEventListener("click", () => {
+      const sel = () => { const r = document.createRange(); r.selectNodeContents(c); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Press Ctrl+C"; };
+      try { navigator.clipboard.writeText(tag).then(() => btn.textContent = "Copied", sel); } catch (e) { sel(); }
+    });
+    fl.append(`To send a ${S.family} specialist straight to these images, add`, c, "to the end of the board's link.", btn);
+  }
+}
+function setFamily(f) {
+  S.family = f;
+  const h = f ? "#family-" + f : "";
+  if (location.hash !== h) { if (h) location.hash = h.slice(1); else history.replaceState(null, "", location.pathname + location.search); }
+  renderFamilies(); renderGrid();
+}
 function renderGrid() {
   const gfm = genusFamilyMap();
-  const rows = S.images.map(img => ({img, c: consensus(img.id, gfm)}));
+  const rows = S.images.filter(img => !S.family || (img.family || "Unassigned") === S.family).map(img => ({img, c: consensus(img.id, gfm)}));
   const counts = {needs:0, disputed:0, partial:0, resolved:0, all:rows.length};
   rows.forEach(r => counts[r.c.status]++);
   for (const k in counts) $("#n-"+k).textContent = counts[k];
@@ -388,6 +442,10 @@ function renderGrid() {
   const g = $("#grid"); g.textContent = "";
   if (!S.loaded.images) {
     g.append(el("div",{class:"empty"}, el("h2",{text:"Connecting to the board…"}), el("p",{text:"Images and identifications from the community will appear here."})));
+    return;
+  }
+  if (!rows.length && S.family) {
+    g.append(el("div",{class:"empty"}, el("h2",{text:`No ${S.family} images yet`}), el("p",{text:"Choose another family above, or All families."})));
     return;
   }
   if (!rows.length) {
@@ -412,7 +470,7 @@ function renderGrid() {
       el("div",{class:"cbody"},
         pillNode(c),
         c.status === "needs" ? el("div",{class:"meter"}, el("i",{style:`width:${pct}%`})) : null,
-        el("div",{class:"meta"}, el("span",{text: `${c.total} identification${c.total===1?"":"s"}`}), mine ? el("span",{class:"mine", text:"You identified"}) : el("span",{text: img.camera || ""}))
+        el("div",{class:"meta"}, el("span",{text: `${c.total} identification${c.total===1?"":"s"}`}), mine ? el("span",{class:"mine", text:"You identified"}) : el("span",{text: img.family || ""}))
       ));
     g.append(card);
   }
@@ -420,13 +478,14 @@ function renderGrid() {
 
 function renderDatalists() {
   const f = new Set(), g = new Set(), s = new Set();
+  S.images.forEach(i => i.family && f.add(i.family));
   for (const v of allVotes()) { if (v.family) f.add(v.family); if (v.genus) g.add(v.genus); if (v.genus && v.species) s.add(v.species); }
   const fill = (id, set) => { const d = $(id); d.textContent = ""; [...set].sort().forEach(x => d.append(el("option",{value:x}))); };
   fill("#dlFamily", f); fill("#dlGenus", g); fill("#dlSpecies", s);
 }
 
 function renderAll() {
-  renderRule(); renderGrid(); renderDatalists();
+  renderRule(); renderFamilies(); renderGrid(); renderDatalists();
   if (S.openId) renderDetailLive();
   const ids = new Set(); S.images.forEach(i => ids.add(i.uploader)); Object.keys(S.votes).forEach(u => ids.add(u));
   needProfiles(ids);
@@ -439,7 +498,7 @@ function openImage(id) {
 }
 function closeSheet() {
   S.openId = null; $("#sheet").hidden = true; $("#sheet").textContent = ""; document.body.style.overflow = "";
-  if (location.hash.startsWith("#img-")) history.replaceState(null, "", location.pathname + location.search);
+  if (location.hash.startsWith("#img-")) history.replaceState(null, "", location.pathname + location.search + (S.family ? "#family-" + S.family : ""));
 }
 function showDetail(id) {
   const img = S.images.find(i => i.id === id);
@@ -500,8 +559,15 @@ function renderDetailLive() {
   // facts
   const facts = el("dl",{class:"facts"});
   const fact = (k, val) => { if (val) facts.append(el("dt",{text:k}), el("dd",{text:val})); };
-  fact("Site", img.site); fact("Station", img.station); fact("Date", [img.takenAt, img.time].filter(Boolean).join(" ")); fact("Camera", img.camera); fact("File", img.filename);
-  fact("Added by", nameOf(img.uploader) + (img.createdAt ? " · " + img.createdAt.slice(0,10) : ""));
+  fact("Family", img.family ? img.family + " (from curation)" : "");
+  fact("Station", img.station ? `${img.grid ? img.grid + " " : ""}${img.station}${img.camera ? ", camera " + img.camera : ""}` : "");
+  const gr = GEO && img.grid && GEO.grids[img.grid];
+  fact("Elevation", img.elevation ? `${Number(img.elevation).toLocaleString("en")} m` + (gr ? ` (this grid spans ${gr[4].toLocaleString("en")}–${gr[5].toLocaleString("en")} m)` : "") : "");
+  const tod = timeOfDay(img);
+  fact("Time of day", tod ? (img.clockReset ? `${tod} (judged from the ${/^infrared/i.test(img.imageType||"") ? "infrared" : "colour"} image, as the clock is unreliable)` : `${tod}, ${img.time}${img.imageType ? " · " + img.imageType : ""}`) : "");
+  fact("Date", img.clockReset ? "" : img.takenAt);
+  if (img.clockReset) facts.append(el("dt",{class:"clockwarn", text:"Clock"}), el("dd",{class:"clockwarn", text:"Unreliable. This camera's clock reset after a battery failure, so the date and time of day may be wrong. Day or night can still be judged from colour versus infrared."}));
+  fact("Added by", (img.uploader ? nameOf(img.uploader) : "Project team") + (img.createdAt ? " · " + img.createdAt.slice(0,10) : ""));
   fact("Notes", img.notes);
 
   // tally
@@ -540,12 +606,41 @@ function renderDetailLive() {
         x.note ? el("div",{class:"why", text: x.note}) : null)));
   }
 
-  live.append(v, facts,
+  live.append(v, facts, mapNode(img) || "",
     el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally),
     el("div",{class:"sec"}, el("h3",{text:`Identifications (${c.total})`}), ul));
 
   // keep the form's withdraw button in sync
   const wd = $("#fWithdraw"); if (wd) wd.hidden = !(S.votes[S.uid] && S.votes[S.uid][img.id]);
+}
+
+function svgEl(tag, attrs={}, ...kids) {
+  const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [k,v] of Object.entries(attrs)) if (v != null) n.setAttribute(k, v);
+  kids.forEach(k => n.append(k.nodeType ? k : document.createTextNode(String(k))));
+  return n;
+}
+function mapNode(img) {
+  if (!GEO || !img.grid || !GEO.grids[img.grid]) return null;
+  const [x, y, w, h] = GEO.grids[img.grid];
+  const [bx, by, bw, bh] = GEO.studyBox;
+  const R = GEO.relief;
+  const over = svgEl("svg",{viewBox:"139.6 1.4 16.2 9.8", role:"img", "aria-label":"Papua New Guinea with the study area marked"},
+    svgEl("path",{d: GEO.outline, style:"fill:var(--land);stroke:var(--muted);stroke-width:.05"}),
+    svgEl("circle",{cx: bx + bw/2, cy: by + bh/2, r:".75", style:"fill:none;stroke:var(--accent);stroke-width:.16"}),
+    svgEl("text",{x:"140.1", y:"10.9", style:"font:600 .62px var(--f-mono);fill:var(--muted)"}, "PAPUA NEW GUINEA"));
+  const study = svgEl("svg",{viewBox:`0 0 ${R.w} ${R.h}`, role:"img", "aria-label":`Survey grids on the Managalas Plateau, grid ${img.grid} highlighted`},
+    svgEl("image",{href: R.uri, x:0, y:0, width:R.w, height:R.h}));
+  for (const [g, b] of Object.entries(GEO.grids)) if (g !== img.grid)
+    study.append(svgEl("rect",{x:b[0]-2, y:b[1]-2, width:b[2]+4, height:b[3]+4, style:"fill:none;stroke:#ffffff;stroke-opacity:.75;stroke-width:1.2"}));
+  study.append(
+    svgEl("rect",{x:x-4, y:y-4, width:w+8, height:h+8, style:"fill:var(--accent);fill-opacity:.35;stroke:var(--accent);stroke-width:3"}),
+    svgEl("text",{x: x + w/2, y: y - 9, "text-anchor":"middle", style:"font:700 15px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3.5px"}, img.grid),
+    svgEl("rect",{x:12, y:R.h-24, width:R.km10, height:5, style:"fill:#18201b"}),
+    svgEl("text",{x:12, y:R.h-30, style:"font:600 12px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3px"}, "10 km"));
+  return el("div",{class:"sec"}, el("h3",{text:"Location"}),
+    el("figure",{class:"locmap", style:"margin:0"}, over, study,
+      el("figcaption",{text:`Survey grid ${img.grid} on the Managalas Plateau, Oro Province. Each square is one grid of 49 stations, about 3 km across. Exact station positions are not shown.`})));
 }
 
 function formSection(img) {
@@ -557,7 +652,7 @@ function formSection(img) {
     return sec;
   }
   const mine = (S.votes[S.uid] || {})[img.id] || {};
-  const fam = el("input",{id:"fFam", list:"dlFamily", autocomplete:"off", placeholder:"e.g. Muridae", value: mine.family || ""});
+  const fam = el("input",{id:"fFam", list:"dlFamily", autocomplete:"off", placeholder:"e.g. Muridae", value: mine.at ? (mine.family || "") : (img.family || "")});
   const gen = el("input",{id:"fGen", list:"dlGenus", autocomplete:"off", placeholder:"e.g. Rattus", value: mine.genus || ""});
   const sp = el("input",{id:"fSp", list:"dlSpecies", autocomplete:"off", placeholder:"e.g. exulans", value: mine.species || ""});
   gen.addEventListener("change", () => { const g = normalise("", gen.value, "").genus; const f = genusFamilyMap()[g]; if (f && !fam.value.trim()) fam.value = f; });
@@ -571,7 +666,8 @@ function formSection(img) {
   const withdraw = el("button",{class:"btn ghost", type:"button", id:"fWithdraw", hidden: !mine.at, text:"Withdraw my ID"});
   const form = el("form",{class:"idf"},
     el("div",{class:"f3"}, el("label",{for:"fFam"}, "Family", fam), el("label",{for:"fGen"}, "Genus", gen), el("label",{for:"fSp"}, "Species epithet", sp)),
-    el("p",{class:"hint", text:"Fill in only the ranks you are confident of. Leave species blank for a genus-level ID."}),
+    el("p",{class:"hint", text:"Day or night activity can narrow the options: check the time of day above."}),
+    el("p",{class:"hint", text:"Fill in only the ranks you are confident of. Leave species blank for a genus-level ID. The family is filled in from curation; change it if you disagree."}),
     el("label",{class:"chk", for:"fUnid"}, unid, "Not identifiable from this image (too dark, blurred or partial)"),
     el("label",{for:"fLocal"}, "Local or common name (optional, not counted in consensus)", local),
     el("label",{for:"fConf"}, "Confidence", conf),
@@ -645,23 +741,31 @@ function openUpload() {
   drop.addEventListener("dragleave", () => drop.classList.remove("over"));
   drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); setFiles(e.dataTransfer.files); });
   input.addEventListener("change", () => setFiles(input.files));
-  const site = el("input",{id:"uSite", maxlength:"80", placeholder:"e.g. Managalas Plateau, upper transect"});
-  const station = el("input",{id:"uStation", maxlength:"40", placeholder:"e.g. G46 C2"});
+  const famIn = el("input",{id:"uFam", list:"dlFamily", required:true, maxlength:"40", placeholder:"e.g. Macropodidae", value: S.family || ""});
+  const station = el("input",{id:"uStation", maxlength:"12", placeholder:"e.g. G46_C2"});
+  const camSel = el("select",{id:"uCamNo"}, el("option",{value:"", text:"Not known"}), el("option",{value:"1", text:"Camera 1"}), el("option",{value:"2", text:"Camera 2"}));
+  const clock = el("input",{type:"checkbox", id:"uClock"});
   const date = el("input",{id:"uDate", type:"date"});
   const time = el("input",{id:"uTime", type:"time"});
-  const cam = el("input",{id:"uCam", maxlength:"60", placeholder:"e.g. Browning trail camera, unit 2"});
   const notes = el("textarea",{id:"uNotes", maxlength:"600", placeholder:"Habitat, elevation, time of night, anything that helps"});
   const msg = el("span",{class:"msg"});
   const go = el("button",{class:"btn primary", type:"submit", disabled:true, text:"Upload"});
   const form = el("form",{},
-    el("div",{class:"f2"}, el("label",{for:"uSite"}, "Site", site), el("label",{for:"uStation"}, "Station or camera ID", station)),
+    el("label",{for:"uFam"}, "Family (all images in this batch)", famIn),
+    el("div",{class:"f2"}, el("label",{for:"uStation"}, "Station code from the data strip", station), el("label",{for:"uCamNo"}, "Camera at the station", camSel)),
     el("div",{class:"f2"}, el("label",{for:"uDate"}, "Date taken", date), el("label",{for:"uTime"}, "Time (optional)", time)),
-    el("label",{for:"uCam"}, "Camera (optional)", cam),
+    el("label",{class:"chk", for:"uClock"}, clock, "Camera clock reset (battery failure), so the date and time are unreliable"),
     el("label",{for:"uNotes"}, "Notes (optional)", notes),
-    el("p",{class:"hint", text:"These details apply to every image in this batch, so upload one station or date at a time. The original filename is kept for matching labels back to your dataset."}),
+    el("p",{class:"hint", text:"These details apply to every image in this batch. The station code places the image on the map and sets its elevation. The original filename is kept for matching labels back to your dataset."}),
     el("div",{class:"actions"}, go, el("button",{class:"btn ghost", type:"button", onclick: closeSheet, text:"Cancel"}), msg));
   form.addEventListener("submit", async e => {
     e.preventDefault(); if (!files.length) return;
+    const famV = cap(famIn.value.trim().split(/\s+/)[0] || "");
+    if (!famV) { msg.className = "msg err"; msg.textContent = "Give the family for this batch."; return; }
+    const sm = station.value.trim().toUpperCase().match(/^(G\d{2,3})[ _-]?([A-G]\d)$/);
+    if (station.value.trim() && !sm) { msg.className = "msg err"; msg.textContent = "Write the station like G46_C2."; return; }
+    const grid = sm ? sm[1] : "", st = sm ? sm[2] : "";
+    const elev = sm ? stationElev(grid + "_" + st) : undefined;
     go.disabled = true; let done = 0, failed = 0;
     for (const f of files) {
       msg.className = "msg"; msg.textContent = `Uploading ${done + failed + 1} of ${files.length}…`;
@@ -669,14 +773,14 @@ function openUpload() {
         const r = await S.assets.upload(f);
         const id = "ct" + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
         await S.db.doc("images/" + id).set({
-          asset: r.id, site: site.value.trim(), station: station.value.trim(), takenAt: date.value, time: time.value, camera: cam.value.trim(),
+          asset: r.id, family: famV, grid, station: st, camera: camSel.value, elevation: elev ?? null, clockReset: clock.checked, takenAt: date.value, time: time.value,
           notes: notes.value.trim(), uploader: S.uid, createdAt: new Date().toISOString(), filename: f.name.slice(0,120)
         });
         done++;
       } catch (err) { failed++; if (err && err.code === "quota_exceeded") { msg.className = "msg err"; msg.textContent = "The board's storage is full. Remove resolved images before adding more."; go.disabled = false; return; } }
     }
     if (failed) { msg.className = "msg err"; msg.textContent = `${done} uploaded, ${failed} failed. Check the files and try again.`; go.disabled = false; }
-    else { S.filter = "needs"; closeSheet(); renderGrid(); }
+    else { S.filter = "needs"; closeSheet(); setFamily(famV); }
   });
   sh.append(el("div",{class:"up", role:"dialog", "aria-modal":"true", "aria-labelledby":"uTitle"},
     el("div",{class:"side-head"}, el("h2",{id:"uTitle", text:"Add unidentified images"}), el("button",{class:"x", type:"button", "aria-label":"Close", onclick: closeSheet, text:"×"})),
@@ -710,7 +814,7 @@ async function save(filename, data, btn) {
 }
 function exportCsv() {
   const gfm = genusFamilyMap(), s = S.settings;
-  const head = ["image_code","image_id","filename","site","station","camera","date","time","status","consensus_rank","consensus_family","consensus_genus","consensus_species","consensus_label","agreement_pct","agreeing_ids","total_ids","rule_min_ids","rule_agree_pct","rule_target_rank","image_url_path"];
+  const head = ["image_code","image_id","filename","curated_family","grid","station","camera","elevation_m","date","time","time_of_day","clock_unreliable","status","consensus_rank","consensus_family","consensus_genus","consensus_species","consensus_label","agreement_pct","agreeing_ids","total_ids","rule_min_ids","rule_agree_pct","rule_target_rank","image_url_path"];
   const lines = [head.join(",")];
   for (const img of S.images) {
     const c = consensus(img.id, gfm), r = c.result;
@@ -718,7 +822,7 @@ function exportCsv() {
     if (r && r.rank === "species") { [gen, spp] = r.name.split(" "); fam = gfm[gen] || ""; }
     else if (r && r.rank === "genus") { gen = r.name; fam = gfm[gen] || ""; }
     else if (r && r.rank === "family") fam = r.name;
-    lines.push([code(img), img.id, img.filename, img.site, img.station, img.camera, img.takenAt, img.time, c.status,
+    lines.push([code(img), img.id, img.filename, img.family, img.grid, img.station, img.camera, img.elevation, img.takenAt, img.time, timeOfDay(img), img.clockReset ? "yes" : "", c.status,
       r ? r.rank : "", fam, gen, spp, r ? r.name : "", r ? Math.round(r.pct) : "", r ? r.n : "", c.total,
       s.minIds, s.agreePct, s.targetRank, img.asset ? "/_blob/" + img.asset : ""].map(csvCell).join(","));
   }
@@ -736,7 +840,7 @@ async function exportJson() {
   const out = {
     exported: new Date().toISOString(), project: "Managalas camera trap identification pilot", rule: S.settings, contributors,
     images: S.images.map(img => { const c = consensus(img.id, gfm); return {
-      code: code(img), id: img.id, filename: img.filename, site: img.site, station: img.station, camera: img.camera, date: img.takenAt, time: img.time,
+      code: code(img), id: img.id, filename: img.filename, curated_family: img.family, grid: img.grid, station: img.station, camera: img.camera, elevation_m: img.elevation, date: img.takenAt, time: img.time, time_of_day: timeOfDay(img), clock_unreliable: !!img.clockReset,
       notes: img.notes, added: img.createdAt, asset: img.asset, status: c.status, consensus: c.result,
       identifications: c.ids.map(v => ({contributor: alias[v.uid], family: v.family, genus: v.genus, species: v.species, not_identifiable: !!v.unid, local_name: v.local || "", confidence: v.confidence, note: v.note, at: v.at}))
     }; })
@@ -757,6 +861,8 @@ $("#btnUpload").addEventListener("click", openUpload);
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#sheet").hidden) closeSheet(); });
 function route() {
   const m = location.hash.match(/^#img-([A-Za-z0-9-]+)$/);
+  const f = location.hash.match(/^#family-([A-Za-z]+)$/);
+  if (f && f[1] !== S.family) { S.family = f[1]; renderFamilies(); renderGrid(); }
   if (m) showDetail(m[1]); else if (S.openId) closeSheet();
 }
 window.addEventListener("hashchange", route);

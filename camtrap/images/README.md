@@ -25,8 +25,18 @@ One row per image:
   temperature, and whether the frame is colour (day) or infrared (night).
   This is supporting information for identifiers. It does not affect how the files are organised.
 
-## Data checks
+## Clock resets
 
-- `Peramelidae_001`: the frame is stamped 18 Jan 2020, but this deployment ran in
-  2026, so the camera's clock was probably reset. Check the deployment
-  log for the real date.
+Some cameras lost power and their clocks reset, so the date and time on
+their data strip are wrong. The `clock_unreliable` column marks these
+frames, and the ID board warns identifiers about them. Only one frame is
+obviously affected so far: `Peramelidae_001` is stamped 18 Jan 2020 on a
+2026 deployment. A reset can also produce a plausible-looking 2026 date,
+so mark any other cameras you know were affected.
+
+## Location data
+
+Elevation for each station comes from SRTM 1-arc-second data, using the
+survey's station coordinates (WGS 84 / UTM zone 55S). Exact coordinates
+are deliberately kept out of this public repository, because some of
+these species are of conservation concern.

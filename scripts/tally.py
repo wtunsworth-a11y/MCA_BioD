@@ -154,6 +154,9 @@ def main():
     images = json.load(open(os.path.join(DATA, "images.json")))
     cfg = json.load(open(os.path.join(DATA, "config.json")))
     known = {i["id"].lower(): i["id"] for i in images}
+    for i in images:                      # old IDs of images that were moved
+        for a in i.get("aliases", []):
+            known[a.lower()] = i["id"]
 
     latest, notes = {}, []
     for iss in sorted(fetch_issues(), key=lambda i: i["created_at"]):

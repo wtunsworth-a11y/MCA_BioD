@@ -40,26 +40,6 @@
 "llg": "Afore Rural LLG"
 },
 {
-"id": "Dasyuridae_003",
-"file": "images/Dasyuridae/Dasyuridae_003.jpg",
-"thumb": "thumbs/Dasyuridae_003.jpg",
-"family": "Dasyuridae",
-"curatedGenus": "",
-"group": "",
-"grid": "G51",
-"station": "G4",
-"camera": "2",
-"elevation": 971,
-"date": "2025-10-10",
-"time": "03:06",
-"clockReset": false,
-"imageType": "infrared (night)",
-"sameVisit": [],
-"province": "Oro (Northern) Province",
-"district": "Ijivitari District",
-"llg": "Afore Rural LLG"
-},
-{
 "id": "Dasyuridae_004",
 "file": "images/Dasyuridae/Dasyuridae_004.jpg",
 "thumb": "thumbs/Dasyuridae_004.jpg",
@@ -478,6 +458,29 @@
 "province": "Oro (Northern) Province",
 "district": "Ijivitari District",
 "llg": "Afore Rural LLG"
+},
+{
+"id": "Macropodidae_021",
+"file": "images/Macropodidae/Macropodidae_021.jpg",
+"thumb": "thumbs/Macropodidae_021.jpg",
+"family": "Macropodidae",
+"curatedGenus": "",
+"group": "",
+"grid": "G51",
+"station": "G4",
+"camera": "2",
+"elevation": 971,
+"date": "2025-10-10",
+"time": "03:06",
+"clockReset": false,
+"imageType": "infrared (night)",
+"sameVisit": [],
+"province": "Oro (Northern) Province",
+"district": "Ijivitari District",
+"llg": "Afore Rural LLG",
+"aliases": [
+"Dasyuridae_003"
+]
 },
 {
 "id": "Peramelidae_001",

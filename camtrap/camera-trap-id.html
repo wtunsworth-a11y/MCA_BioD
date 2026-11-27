@@ -1,0 +1,808 @@
+<title>Managalas Camera Trap ID</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a contact-sheet grid of trap frames under a slim rule bar; a frame opens into a lightbox sheet with the tally beside it. */
+:root{
+  --bg:#eef0ec; --surface:#fbfcfa; --sunk:#e3e7e1; --ink:#18201b; --muted:#59645c; --line:#d2d8d0;
+  --accent:#a85f00; --accent-ink:#ffffff; --accent-soft:#f6e6cf;
+  --moss:#2f6a45; --moss-soft:#dcebdf; --warn:#a2382a; --warn-soft:#f5dfdb;
+  --strip:#0d100e; --strip-ink:#f4c46a;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1311; --surface:#171c19; --sunk:#202722; --ink:#e6ebe6; --muted:#97a39a; --line:#2b332e;
+  --accent:#f0a63c; --accent-ink:#1c1200; --accent-soft:#3a2a12;
+  --moss:#7cc495; --moss-soft:#1d3326; --warn:#ef8a74; --warn-soft:#3b1f1a;
+  --strip:#050706; --strip-ink:#f4c46a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1311; --surface:#171c19; --sunk:#202722; --ink:#e6ebe6; --muted:#97a39a; --line:#2b332e;
+  --accent:#f0a63c; --accent-ink:#1c1200; --accent-soft:#3a2a12;
+  --moss:#7cc495; --moss-soft:#1d3326; --warn:#ef8a74; --warn-soft:#3b1f1a;
+  --strip:#050706; --strip-ink:#f4c46a; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+i.tx{font-style:italic}
+
+header.top{padding-block:28px 18px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;justify-content:space-between}
+.brand h1{font-family:var(--f-display);font-stretch:78%;font-weight:800;font-size:clamp(28px,4.4vw,44px);line-height:1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.brand p{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:8px 14px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--warn);border-color:var(--warn)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+.rule{border-block:1px solid var(--line);padding-block:12px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.rule .lede{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rule .txt{flex:1 1 380px;min-width:0}
+.rule b{font-weight:600}
+.ladder{display:inline-flex;gap:4px;align-items:center;font-family:var(--f-mono);font-size:12.5px}
+.ladder span{padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+.ladder span.on{background:var(--moss-soft);color:var(--moss)}
+
+.settings{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:end;padding-block:14px;border-bottom:1px solid var(--line)}
+.settings label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.settings input,.settings select{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 8px;width:9.5em}
+
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-block:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;background:var(--sunk);padding:4px;border-radius:calc(var(--r) + 2px)}
+.tabs button{border:0;background:transparent;padding:6px 12px;border-radius:var(--r);cursor:pointer;color:var(--muted);font-weight:500;display:inline-flex;gap:6px;align-items:center}
+.tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+.tabs .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.check{display:inline-flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;cursor:pointer}
+
+.note{margin:0 0 14px;padding:10px 14px;border-radius:var(--r);background:var(--accent-soft);color:var(--ink);font-size:14px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;padding-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s ease,border-color .15s}
+.card:hover{border-color:var(--muted);transform:translateY(-2px)}
+.frame{position:relative;aspect-ratio:4/3;background:var(--strip);max-width:100%}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .miss{position:absolute;inset:0;display:grid;place-items:center;color:var(--strip-ink);font-family:var(--f-mono);font-size:12px}
+.strip{position:absolute;left:0;right:0;bottom:0;background:rgb(5 7 6 / .78);color:var(--strip-ink);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:4px 8px;display:flex;justify-content:space-between;gap:8px;white-space:nowrap;overflow:hidden}
+.strip span:last-child{overflow:hidden;text-overflow:ellipsis}
+.cbody{padding:10px 12px 12px;display:grid;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:3px 9px;border-radius:99px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-self:start}
+.pill.needs{background:var(--sunk);color:var(--muted)}
+.pill.disputed{background:var(--warn-soft);color:var(--warn)}
+.pill.partial{background:var(--accent-soft);color:var(--accent)}
+.pill.resolved{background:var(--moss-soft);color:var(--moss)}
+.meter{height:4px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent)}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12.5px}
+.mine{color:var(--moss);font-weight:500}
+
+.empty{border:1.5px dashed var(--line);border-radius:var(--r);padding:48px 24px;text-align:center;color:var(--muted);grid-column:1/-1}
+.empty h2{font-family:var(--f-display);font-stretch:85%;color:var(--ink);margin:0 0 6px;font-size:22px}
+.empty p{max-width:52ch;margin:0 auto 14px}
+
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:20;background:rgb(5 7 6 / .62);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 24px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(12px,env(safe-area-inset-left,0px))}
+.panel{background:var(--surface);border-radius:10px;width:min(1180px,100%);display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);overflow:hidden;border:1px solid var(--line)}
+@media (max-width:860px){.panel{grid-template-columns:minmax(0,1fr)}}
+.lightbox{background:var(--strip);display:flex;flex-direction:column;min-width:0}
+.lb-img{position:relative;flex:1;display:grid;place-items:center;min-height:280px;overflow:auto;cursor:zoom-in}
+.lb-img img{max-width:100%;max-height:78vh;display:block}
+.lb-img.zoom{cursor:zoom-out;place-items:start}
+.lb-img.zoom img{max-width:none;max-height:none}
+.lb-tools{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:10px 14px;color:var(--strip-ink);font-family:var(--f-mono);font-size:12px;border-top:1px solid rgb(255 255 255 / .08)}
+.lb-tools label{display:inline-flex;gap:8px;align-items:center}
+.lb-tools input[type=range]{width:110px;accent-color:#f4c46a}
+.lb-tools button{background:transparent;border:1px solid rgb(244 196 106 / .4);color:var(--strip-ink);border-radius:4px;padding:3px 8px;cursor:pointer;font:inherit}
+.side{padding:20px 22px 24px;display:grid;gap:20px;align-content:start;min-width:0}
+.side-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.side-head h2{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:26px;margin:0;line-height:1.1}
+.x{border:1px solid var(--line);background:transparent;border-radius:var(--r);width:34px;height:34px;cursor:pointer;flex:none;font-size:18px;line-height:1}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:14px}
+dl.facts dt{color:var(--muted);font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+dl.facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.sec h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500}
+.verdict{padding:12px 14px;border-radius:var(--r);border:1px solid var(--line);display:grid;gap:4px}
+.verdict .big{font-size:18px;font-weight:600}
+.verdict small{color:var(--muted)}
+.tally{display:grid;gap:12px}
+.rank h4{margin:0 0 6px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;color:var(--muted)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;font-size:14px;margin-bottom:6px}
+.row .lbar{grid-column:1/-1;height:6px;background:var(--sunk);border-radius:99px;overflow:hidden;position:relative}
+.row .lbar i{display:block;height:100%;background:var(--muted)}
+.row.top .lbar i{background:var(--accent)}
+.row.met .lbar i{background:var(--moss)}
+.row .lbar b{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.55}
+.none{color:var(--muted);font-size:14px;margin:0}
+ul.ids{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.ids li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+ul.ids img{width:28px;height:28px;border-radius:50%}
+ul.ids .who{font-size:13px;color:var(--muted)}
+ul.ids .who b{color:var(--ink);font-weight:600}
+ul.ids .what{font-size:14.5px}
+ul.ids .why{font-size:13.5px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.conf{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:1px 6px;border-radius:3px;background:var(--sunk);color:var(--muted);margin-left:6px}
+form.idf{display:grid;gap:10px;background:var(--sunk);padding:14px;border-radius:var(--r)}
+.f3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.f3{grid-template-columns:minmax(0,1fr)}}
+form label{display:grid;gap:3px;font-size:12.5px;color:var(--muted)}
+form input,form select,form textarea{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:7px 9px;width:100%;min-width:0}
+form textarea{resize:vertical;min-height:54px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.msg{font-size:13px;color:var(--muted)}
+.msg.err{color:var(--warn)}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+
+/* upload */
+.up{background:var(--surface);border-radius:10px;width:min(620px,100%);padding:22px;border:1px solid var(--line);display:grid;gap:14px}
+.up h2{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:24px;margin:0}
+.drop{border:1.5px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.thumbs{display:flex;flex-wrap:wrap;gap:6px}
+.thumbs img{width:64px;height:48px;object-fit:cover;border-radius:3px}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:480px){.f2{grid-template-columns:minmax(0,1fr)}}
+.up form{display:grid;gap:10px}
+.foot{border-top:1px solid var(--line);padding-block:22px 34px;color:var(--muted);font-size:13.5px}
+.foot p{margin:0 0 6px;max-width:80ch}
+.foot .mono{font-size:12px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--ink)}
+.chk input{width:auto}
+.pill.unid{background:var(--sunk);color:var(--ink)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <p class="eyebrow">Pilot · Managalas Plateau · Papua New Guinea</p>
+      <h1>Managalas Camera Trap ID</h1>
+      <p>Curated camera trap frames that still need a name. Add your best identification at family, genus or species level. Once enough people agree, the name becomes a verified label for training automated image classifiers.</p>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" id="btnCsv" hidden>Export labels (CSV)</button>
+      <button class="btn ghost" id="btnJson" hidden>Export all (JSON)</button>
+      <button class="btn ghost" id="btnSettings" hidden>Consensus rules</button>
+      <button class="btn primary" id="btnUpload" hidden>Add images</button>
+    </div>
+  </header>
+
+  <section class="rule" aria-label="Consensus rule">
+    <span class="lede">Consensus rule</span>
+    <span class="txt" id="ruleText">Loading the rule…</span>
+    <span class="ladder" id="ladder" aria-label="Target rank"></span>
+  </section>
+
+  <form class="settings" id="settingsForm" hidden>
+    <label for="sMin">Minimum identifications
+      <input id="sMin" type="number" min="2" max="100" step="1" required>
+    </label>
+    <label for="sPct">Agreement needed (%)
+      <input id="sPct" type="number" min="50" max="100" step="1" required>
+    </label>
+    <label for="sRank">Image is resolved at
+      <select id="sRank">
+        <option value="species">Species</option>
+        <option value="genus">Genus</option>
+        <option value="family">Family</option>
+      </select>
+    </label>
+    <div class="actions">
+      <button class="btn primary" type="submit">Save rule</button>
+      <span class="msg" id="sMsg"></span>
+    </div>
+  </form>
+
+  <div class="bar">
+    <div class="tabs" role="group" aria-label="Filter images" id="tabs">
+      <button data-f="needs" aria-pressed="true">Needs IDs <span class="n" id="n-needs">0</span></button>
+      <button data-f="disputed" aria-pressed="false">No agreement yet <span class="n" id="n-disputed">0</span></button>
+      <button data-f="partial" aria-pressed="false">Partly resolved <span class="n" id="n-partial">0</span></button>
+      <button data-f="resolved" aria-pressed="false">Resolved <span class="n" id="n-resolved">0</span></button>
+      <button data-f="all" aria-pressed="false">All <span class="n" id="n-all">0</span></button>
+    </div>
+    <label class="check" for="hideMine"><input type="checkbox" id="hideMine"> Hide images I've identified</label>
+  </div>
+
+  <p class="note" id="note" hidden></p>
+  <div class="grid" id="grid">
+    <div class="empty">
+      <h2>Connecting to the board…</h2>
+      <p>Images and identifications from the community will appear here.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="foot"><div class="wrap">
+  <p>A pilot of the Managalas project, funded by the European Union. Built to be handed on to a Papua New Guinean group that will grow a community of practice and identification expertise.</p>
+  <p class="mono">Exports carry every image, identification and the consensus rule, so the record can move to whichever platform the community adopts next.</p>
+</div></footer>
+
+<div class="sheet" id="sheet" hidden></div>
+
+<datalist id="dlFamily"></datalist>
+<datalist id="dlGenus"></datalist>
+<datalist id="dlSpecies"></datalist>
+
+<script>
+(() => {
+const RANKS = ["species","genus","family"]; // finest first
+const RANK_LABEL = {species:"Species", genus:"Genus", family:"Family"};
+const CONF = {sure:"Sure", likely:"Likely", guess:"Best guess"};
+const DEFAULTS = {minIds:5, agreePct:70, targetRank:"species"};
+
+const S = {
+  db:null, user:null, assets:null, uid:null, canEdit:false, canWrite:false,
+  images:[], votes:{}, settings:{...DEFAULTS}, profiles:{}, filter:"needs", hideMine:false,
+  loaded:{images:false, votes:false}, openId:null, writing:false
+};
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null && k !== false) n.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return n;
+};
+try { S.hideMine = localStorage.getItem("ctid.hideMine") === "1"; S.filter = localStorage.getItem("ctid.filter") || "needs"; } catch(e) {}
+
+/* ---------- taxonomy helpers ---------- */
+const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1).toLowerCase() : "";
+function normalise(f, g, s) {
+  let family = cap((f||"").trim().split(/\s+/)[0] || "");
+  let genus = cap((g||"").trim().split(/\s+/)[0] || "");
+  let sp = (s||"").trim().toLowerCase().replace(/\s+/g," ");
+  if (genus && sp.startsWith(genus.toLowerCase()+" ")) sp = sp.slice(genus.length+1);
+  if (!genus && sp.includes(" ")) { const [a,...b] = sp.split(" "); genus = cap(a); sp = b.join(" "); }
+  if (/^(sp|spp|sp\.|spp\.|\?|unknown)$/.test(sp)) sp = "";
+  sp = sp.split(" ")[0] || "";
+  if (!genus) sp = "";
+  return {family, genus, species: sp};
+}
+function allVotes() {
+  const out = [];
+  for (const [uid, m] of Object.entries(S.votes)) for (const [img, v] of Object.entries(m||{})) if (v) out.push({uid, img, ...v});
+  return out;
+}
+function genusFamilyMap() {
+  const t = {};
+  for (const v of allVotes()) if (v.genus && v.family) { t[v.genus] ??= {}; t[v.genus][v.family] = (t[v.genus][v.family]||0)+1; }
+  const m = {};
+  for (const [g, fams] of Object.entries(t)) m[g] = Object.entries(fams).sort((a,b)=>b[1]-a[1])[0][0];
+  return m;
+}
+function votesFor(imgId) {
+  const out = [];
+  for (const [uid, m] of Object.entries(S.votes)) { const v = m && m[imgId]; if (v) out.push({uid, ...v}); }
+  return out.sort((a,b)=> (a.at||"").localeCompare(b.at||""));
+}
+function consensus(imgId, gfm) {
+  const ids = votesFor(imgId), total = ids.length;
+  const {minIds, agreePct, targetRank} = S.settings;
+  const tally = {species:{}, genus:{}, family:{}};
+  let unid = 0;
+  for (const v of ids) {
+    if (v.unid) { unid++; continue; }
+    const fam = v.family || gfm[v.genus] || "";
+    if (fam) tally.family[fam] = (tally.family[fam]||0)+1;
+    if (v.genus) tally.genus[v.genus] = (tally.genus[v.genus]||0)+1;
+    if (v.genus && v.species) { const k = v.genus+" "+v.species; tally.species[k] = (tally.species[k]||0)+1; }
+  }
+  const lists = {};
+  for (const r of RANKS) lists[r] = Object.entries(tally[r]).map(([name,n])=>({name,n,pct: total? n/total*100 : 0})).sort((a,b)=>b.n-a.n || a.name.localeCompare(b.name));
+  let result = null;
+  const unidPct = total ? unid/total*100 : 0;
+  if (total >= minIds && unidPct >= agreePct) result = {rank:"unid", name:"Not identifiable", n:unid, pct:unidPct};
+  if (total >= minIds && !result) for (const r of RANKS) {
+    const top = lists[r][0], second = lists[r][1];
+    if (top && top.pct >= agreePct && (!second || second.n < top.n)) { result = {rank:r, ...top}; break; }
+  }
+  let status;
+  if (total < minIds) status = "needs";
+  else if (!result) status = "disputed";
+  else if (result.rank === "unid") status = "resolved";
+  else status = RANKS.indexOf(result.rank) <= RANKS.indexOf(targetRank) ? "resolved" : "partial";
+  return {ids, total, lists, result, status, unid, unidPct};
+}
+function taxonNode(rank, name) {
+  if (rank === "family") return el("span", {text:name});
+  return el("i", {class:"tx", text:name});
+}
+
+/* ---------- people ---------- */
+let profQueue = new Set(), profTimer = null;
+function needProfiles(ids) {
+  for (const id of ids) if (id && !S.profiles[id]) profQueue.add(id);
+  if (profQueue.size && !profTimer && S.user) profTimer = setTimeout(fetchProfiles, 400);
+}
+async function fetchProfiles() {
+  profTimer = null;
+  const batch = [...profQueue].slice(0, 32);
+  batch.forEach(id => profQueue.delete(id));
+  try {
+    const res = await S.user.profiles(batch);
+    for (const id of batch) S.profiles[id] = res[id] || {id, name:"", avatarUrl:""};
+  } catch(e) { for (const id of batch) S.profiles[id] = {id, name:"", avatarUrl:""}; }
+  renderAll();
+  if (profQueue.size) profTimer = setTimeout(fetchProfiles, 2100);
+}
+const nameOf = id => id === S.uid ? "You" : ((S.profiles[id] && S.profiles[id].name) || "A member");
+
+/* ---------- rendering ---------- */
+function renderRule() {
+  const {minIds, agreePct, targetRank} = S.settings;
+  const t = $("#ruleText"); t.textContent = "";
+  t.append("An identification is accepted once an image has at least ", el("b",{text:`${minIds} identifications`}),
+    " and ", el("b",{text:`${agreePct}%`}), " of them agree. The finest rank that passes wins: species, then genus, then family. Images are marked resolved at ",
+    el("b",{text: targetRank}), " level.");
+  const lad = $("#ladder"); lad.textContent = "";
+  const ti = RANKS.indexOf(targetRank);
+  ["family","genus","species"].forEach(r => lad.append(el("span",{class: RANKS.indexOf(r) >= ti ? "on":"", text: RANK_LABEL[r]})));
+}
+
+function frameNode(img) {
+  const f = el("div",{class:"frame"});
+  if (img.asset) {
+    const im = el("img",{src:"/_blob/"+img.asset, alt:"Camera trap image "+code(img), loading:"lazy"});
+    im.addEventListener("error", () => { im.remove(); f.prepend(el("div",{class:"miss", text:"Image unavailable"})); });
+    f.append(im);
+  } else f.append(el("div",{class:"miss", text:"No image file"}));
+  f.append(el("div",{class:"strip"}, el("span",{text: code(img)}), el("span",{text: [img.station || img.site, img.takenAt, img.time].filter(Boolean).join(" · ")})));
+  return f;
+}
+const code = img => "CT-" + (img.id||"").slice(-5).toUpperCase();
+
+function pillNode(c) {
+  const {status, result, total} = c, {minIds} = S.settings;
+  if (status === "needs") return el("span",{class:"pill needs", text:`${total} of ${minIds} IDs`});
+  if (status === "disputed") return el("span",{class:"pill disputed", text:`No agreement · ${total} IDs`});
+  if (result.rank === "unid") return el("span",{class:"pill unid", text:`Not identifiable · ${Math.round(result.pct)}%`});
+  const p = el("span",{class:"pill "+status});
+  p.append(result.rank === "family" ? "Family " : "", taxonNode(result.rank, result.name), ` · ${Math.round(result.pct)}%`);
+  return p;
+}
+
+function renderGrid() {
+  const gfm = genusFamilyMap();
+  const rows = S.images.map(img => ({img, c: consensus(img.id, gfm)}));
+  const counts = {needs:0, disputed:0, partial:0, resolved:0, all:rows.length};
+  rows.forEach(r => counts[r.c.status]++);
+  for (const k in counts) $("#n-"+k).textContent = counts[k];
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === S.filter)));
+  $("#hideMine").checked = S.hideMine;
+
+  const g = $("#grid"); g.textContent = "";
+  if (!S.loaded.images) {
+    g.append(el("div",{class:"empty"}, el("h2",{text:"Connecting to the board…"}), el("p",{text:"Images and identifications from the community will appear here."})));
+    return;
+  }
+  if (!rows.length) {
+    const e = el("div",{class:"empty"}, el("h2",{text:"No images yet"}),
+      el("p",{text:"Add the first unidentified camera trap frames. Others can then add identifications at whatever rank they are confident of."}));
+    if (S.assets) e.append(el("button",{class:"btn primary", onclick: openUpload, text:"Add images"}));
+    else e.append(el("p",{class:"hint", text:"Ask the board owner for contributor or editor access to add images."}));
+    g.append(e); return;
+  }
+  let list = rows.filter(r => S.filter === "all" || r.c.status === S.filter);
+  if (S.hideMine && S.uid) list = list.filter(r => !r.c.ids.some(v => v.uid === S.uid));
+  list.sort((a,b) => (b.img.createdAt||"").localeCompare(a.img.createdAt||""));
+  if (!list.length) {
+    g.append(el("div",{class:"empty"}, el("h2",{text:"Nothing in this view"}), el("p",{text:"Try another tab, or untick “Hide images I've identified”."})));
+    return;
+  }
+  for (const {img, c} of list) {
+    const mine = c.ids.some(v => v.uid === S.uid);
+    const pct = Math.min(100, c.total / S.settings.minIds * 100);
+    const card = el("button",{class:"card", type:"button", "aria-label":`Open ${code(img)}`, onclick: () => openImage(img.id)},
+      frameNode(img),
+      el("div",{class:"cbody"},
+        pillNode(c),
+        c.status === "needs" ? el("div",{class:"meter"}, el("i",{style:`width:${pct}%`})) : null,
+        el("div",{class:"meta"}, el("span",{text: `${c.total} identification${c.total===1?"":"s"}`}), mine ? el("span",{class:"mine", text:"You identified"}) : el("span",{text: img.camera || ""}))
+      ));
+    g.append(card);
+  }
+}
+
+function renderDatalists() {
+  const f = new Set(), g = new Set(), s = new Set();
+  for (const v of allVotes()) { if (v.family) f.add(v.family); if (v.genus) g.add(v.genus); if (v.genus && v.species) s.add(v.species); }
+  const fill = (id, set) => { const d = $(id); d.textContent = ""; [...set].sort().forEach(x => d.append(el("option",{value:x}))); };
+  fill("#dlFamily", f); fill("#dlGenus", g); fill("#dlSpecies", s);
+}
+
+function renderAll() {
+  renderRule(); renderGrid(); renderDatalists();
+  if (S.openId) renderDetailLive();
+  const ids = new Set(); S.images.forEach(i => ids.add(i.uploader)); Object.keys(S.votes).forEach(u => ids.add(u));
+  needProfiles(ids);
+}
+
+/* ---------- detail sheet ---------- */
+function openImage(id) {
+  if (location.hash !== "#img-"+id) { location.hash = "img-"+id; return; }
+  showDetail(id);
+}
+function closeSheet() {
+  S.openId = null; $("#sheet").hidden = true; $("#sheet").textContent = ""; document.body.style.overflow = "";
+  if (location.hash.startsWith("#img-")) history.replaceState(null, "", location.pathname + location.search);
+}
+function showDetail(id) {
+  const img = S.images.find(i => i.id === id);
+  if (!img) { if (S.loaded.images) closeSheet(); return; }
+  S.openId = id;
+  const sh = $("#sheet"); sh.textContent = ""; sh.hidden = false; document.body.style.overflow = "hidden";
+
+  // lightbox
+  const box = el("div",{class:"lb-img", title:"Click to zoom"});
+  const im = el("img",{src: img.asset ? "/_blob/"+img.asset : "", alt:"Camera trap image "+code(img)});
+  box.append(im);
+  box.addEventListener("click", () => box.classList.toggle("zoom"));
+  const br = el("input",{type:"range", id:"lbBright", min:"50", max:"300", value:"100", "aria-label":"Brightness"});
+  const ct = el("input",{type:"range", id:"lbContrast", min:"50", max:"250", value:"100", "aria-label":"Contrast"});
+  const apply = () => im.style.filter = `brightness(${br.value}%) contrast(${ct.value}%)`;
+  br.addEventListener("input", apply); ct.addEventListener("input", apply);
+  const lb = el("div",{class:"lightbox"}, box,
+    el("div",{class:"lb-tools"},
+      el("label",{}, "Brightness", br), el("label",{}, "Contrast", ct),
+      el("button",{type:"button", onclick:()=>{br.value=100; ct.value=100; apply(); box.classList.remove("zoom");}, text:"Reset"}),
+      el("span",{text:"Click image to zoom"})));
+
+  const side = el("div",{class:"side"},
+    el("div",{class:"side-head"},
+      el("div",{}, el("p",{class:"eyebrow", text: code(img)}), el("h2",{id:"dTitle", text:"Identification"})),
+      el("button",{class:"x", type:"button", "aria-label":"Close", onclick: closeSheet, text:"×"})),
+    el("div",{id:"dLive"}),
+    formSection(img));
+  sh.append(el("div",{class:"panel", role:"dialog", "aria-modal":"true", "aria-labelledby":"dTitle"}, lb, side));
+  sh.onclick = e => { if (e.target === sh) closeSheet(); };
+  renderDetailLive();
+}
+
+function renderDetailLive() {
+  const live = $("#dLive"); if (!live) return;
+  const img = S.images.find(i => i.id === S.openId);
+  if (!img) { closeSheet(); return; }
+  const c = consensus(img.id, genusFamilyMap());
+  const {minIds, agreePct} = S.settings;
+  live.textContent = "";
+  live.style.display = "grid"; live.style.gap = "20px";
+
+  // verdict
+  const v = el("div",{class:"verdict"});
+  if (c.result && c.result.rank === "unid") {
+    v.append(el("div",{class:"big", text:"Not identifiable from this image"}), el("small",{text:`${c.result.n} of ${c.total} contributors judged the image too poor to name. It will be left out of training labels.`}));
+  } else if (c.result) {
+    v.append(el("div",{class:"big"}, RANK_LABEL[c.result.rank]+": ", taxonNode(c.result.rank, c.result.name)),
+      el("small",{text:`${c.result.n} of ${c.total} identifications agree (${Math.round(c.result.pct)}%).` + (c.status === "partial" ? ` Not yet agreed at ${S.settings.targetRank} level.` : "")}));
+  } else if (c.status === "needs") {
+    v.append(el("div",{class:"big", text:`Needs ${minIds - c.total} more identification${minIds - c.total === 1 ? "" : "s"}`}),
+      el("small",{text:`${c.total} of ${minIds} so far. The tally below is provisional.`}));
+  } else {
+    v.append(el("div",{class:"big", text:"No agreement yet"}), el("small",{text:`No rank has ${agreePct}% agreement across ${c.total} identifications. Add yours or discuss in the notes.`}));
+  }
+  v.prepend(pillNode(c));
+
+  // facts
+  const facts = el("dl",{class:"facts"});
+  const fact = (k, val) => { if (val) facts.append(el("dt",{text:k}), el("dd",{text:val})); };
+  fact("Site", img.site); fact("Station", img.station); fact("Date", [img.takenAt, img.time].filter(Boolean).join(" ")); fact("Camera", img.camera); fact("File", img.filename);
+  fact("Added by", nameOf(img.uploader) + (img.createdAt ? " · " + img.createdAt.slice(0,10) : ""));
+  fact("Notes", img.notes);
+
+  // tally
+  const tally = el("div",{class:"tally"});
+  for (const r of RANKS) {
+    const list = c.lists[r];
+    const box = el("div",{class:"rank"}, el("h4",{}, el("span",{text: RANK_LABEL[r]}), el("span",{class:"mono", text: `${list.reduce((a,b)=>a+b.n,0)} of ${c.total} gave a ${r}`})));
+    if (!list.length) box.append(el("p",{class:"none", text:"No suggestions at this rank yet."}));
+    list.slice(0,4).forEach((x,i) => {
+      const met = c.result && c.result.rank === r && i === 0;
+      box.append(el("div",{class:"row"+(i===0?" top":"")+(met?" met":"")},
+        el("span",{}, taxonNode(r, x.name)), el("span",{class:"mono", text:`${x.n} · ${Math.round(x.pct)}%`}),
+        el("span",{class:"lbar"}, el("i",{style:`width:${x.pct}%`}), el("b",{style:`left:calc(${agreePct}% - 1px)`, title:`${agreePct}% threshold`}))));
+    });
+    tally.append(box);
+  }
+  if (c.unid) tally.append(el("div",{class:"rank"}, el("div",{class:"row"},
+    el("span",{text:"Not identifiable from this image"}), el("span",{class:"mono", text:`${c.unid} · ${Math.round(c.unidPct)}%`}),
+    el("span",{class:"lbar"}, el("i",{style:`width:${c.unidPct}%`}), el("b",{style:`left:calc(${agreePct}% - 1px)`})))));
+
+  // identifications list
+  const ul = el("ul",{class:"ids"});
+  if (!c.ids.length) ul.append(el("li",{}, el("span"), el("p",{class:"none", text:"No identifications yet. Be the first."})));
+  for (const x of c.ids) {
+    const p = S.profiles[x.uid];
+    const what = el("div",{class:"what"});
+    if (x.genus) what.append(el("i",{class:"tx", text: x.genus + (x.species ? " " + x.species : " sp.")}));
+    if (x.family) what.append(x.genus ? ` (${x.family})` : x.family);
+    if (x.unid) what.append("Not identifiable from this image");
+    else if (!x.genus && !x.family) what.append("No name given");
+    if (x.local) what.append(el("div",{class:"why", text:"Local or common name: " + x.local}));
+    if (x.confidence) what.append(el("span",{class:"conf", text: CONF[x.confidence] || x.confidence}));
+    ul.append(el("li",{},
+      p && p.avatarUrl ? el("img",{src:p.avatarUrl, alt:""}) : el("span"),
+      el("div",{}, el("div",{class:"who"}, el("b",{text: nameOf(x.uid)}), x.at ? " · " + x.at.slice(0,10) : ""), what,
+        x.note ? el("div",{class:"why", text: x.note}) : null)));
+  }
+
+  live.append(v, facts,
+    el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally),
+    el("div",{class:"sec"}, el("h3",{text:`Identifications (${c.total})`}), ul));
+
+  // keep the form's withdraw button in sync
+  const wd = $("#fWithdraw"); if (wd) wd.hidden = !(S.votes[S.uid] && S.votes[S.uid][img.id]);
+}
+
+function formSection(img) {
+  const sec = el("div",{class:"sec"});
+  sec.append(el("h3",{text:"Your identification"}));
+  if (!S.uid || !S.canWrite) {
+    sec.append(el("p",{class:"hint", text: S.uid ? "You can view this board but not add identifications. Ask the owner for contributor access." : "Sign in to claude.ai to add an identification."}));
+    if (S.canEdit || (S.uid && img.uploader === S.uid)) sec.append(deleteBlock(img));
+    return sec;
+  }
+  const mine = (S.votes[S.uid] || {})[img.id] || {};
+  const fam = el("input",{id:"fFam", list:"dlFamily", autocomplete:"off", placeholder:"e.g. Muridae", value: mine.family || ""});
+  const gen = el("input",{id:"fGen", list:"dlGenus", autocomplete:"off", placeholder:"e.g. Rattus", value: mine.genus || ""});
+  const sp = el("input",{id:"fSp", list:"dlSpecies", autocomplete:"off", placeholder:"e.g. exulans", value: mine.species || ""});
+  gen.addEventListener("change", () => { const g = normalise("", gen.value, "").genus; const f = genusFamilyMap()[g]; if (f && !fam.value.trim()) fam.value = f; });
+  const local = el("input",{id:"fLocal", maxlength:"80", placeholder:"Tok Pisin, Tok Ples or English name", value: mine.local || ""});
+  const unid = el("input",{type:"checkbox", id:"fUnid", checked: !!mine.unid});
+  const syncUnid = () => [fam, gen, sp].forEach(i => i.disabled = unid.checked);
+  unid.addEventListener("change", syncUnid); syncUnid();
+  const conf = el("select",{id:"fConf"}, ...Object.entries(CONF).map(([k,l]) => el("option",{value:k, selected: (mine.confidence||"likely") === k, text:l})));
+  const note = el("textarea",{id:"fNote", maxlength:"600", placeholder:"What features did you use? Tail, ears, gait, size against the post…"}); note.value = mine.note || "";
+  const msg = el("span",{class:"msg", id:"fMsg"});
+  const withdraw = el("button",{class:"btn ghost", type:"button", id:"fWithdraw", hidden: !mine.at, text:"Withdraw my ID"});
+  const form = el("form",{class:"idf"},
+    el("div",{class:"f3"}, el("label",{for:"fFam"}, "Family", fam), el("label",{for:"fGen"}, "Genus", gen), el("label",{for:"fSp"}, "Species epithet", sp)),
+    el("p",{class:"hint", text:"Fill in only the ranks you are confident of. Leave species blank for a genus-level ID."}),
+    el("label",{class:"chk", for:"fUnid"}, unid, "Not identifiable from this image (too dark, blurred or partial)"),
+    el("label",{for:"fLocal"}, "Local or common name (optional, not counted in consensus)", local),
+    el("label",{for:"fConf"}, "Confidence", conf),
+    el("label",{for:"fNote"}, "Reasoning (optional)", note),
+    el("div",{class:"actions"}, el("button",{class:"btn primary", type:"submit", text: mine.at ? "Update my ID" : "Add my ID"}), withdraw, msg));
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (unid.checked) {
+      await saveVote(img.id, {family:"", genus:"", species:"", unid:true, local: local.value.trim().slice(0,80), confidence: conf.value, note: note.value.trim().slice(0,600), at: new Date().toISOString()}, msg);
+      form.querySelector("button[type=submit]").textContent = "Update my ID"; return;
+    }
+    const t = normalise(fam.value, gen.value, sp.value);
+    if (!t.family && !t.genus) { msg.className = "msg err"; msg.textContent = "Give at least a family or a genus."; return; }
+    if (sp.value.trim() && !t.genus) { msg.className = "msg err"; msg.textContent = "A species needs its genus."; return; }
+    fam.value = t.family; gen.value = t.genus; sp.value = t.species;
+    await saveVote(img.id, {...t, local: local.value.trim().slice(0,80), confidence: conf.value, note: note.value.trim().slice(0,600), at: new Date().toISOString()}, msg);
+    form.querySelector("button[type=submit]").textContent = "Update my ID";
+  });
+  withdraw.addEventListener("click", () => saveVote(img.id, null, msg));
+  sec.append(form);
+  if (S.canEdit || img.uploader === S.uid) sec.append(deleteBlock(img));
+  return sec;
+}
+
+async function saveVote(imgId, vote, msg) {
+  if (S.writing) { msg.textContent = "Still saving the last change…"; return; }
+  S.writing = true; msg.className = "msg"; msg.textContent = "Saving…";
+  try {
+    const mine = {...(S.votes[S.uid] || {})};
+    if (vote) mine[imgId] = vote; else delete mine[imgId];
+    await S.db.doc("votes/" + S.uid).set({ids: mine});
+    msg.textContent = vote ? "Saved. Thanks!" : "Your ID was withdrawn.";
+  } catch (e) {
+    msg.className = "msg err";
+    msg.textContent = e && e.code === "invalid_argument" ? "You don't have permission to add identifications here." : "Could not save. Check your connection and try again.";
+  } finally { S.writing = false; }
+}
+
+function deleteBlock(img) {
+  const msg = el("span",{class:"msg"});
+  const btn = el("button",{class:"btn danger", type:"button", text:"Remove this image"});
+  let armed = false;
+  btn.addEventListener("click", async () => {
+    if (!armed) { armed = true; btn.textContent = "Confirm removal"; msg.textContent = "This deletes the image for everyone."; return; }
+    btn.disabled = true; msg.textContent = "Removing…";
+    try {
+      await S.db.doc("images/" + img.id).delete();
+      if (S.assets && img.asset) S.assets.delete(img.asset).catch(() => {});
+      closeSheet();
+    } catch (e) { btn.disabled = false; msg.className = "msg err"; msg.textContent = "Could not remove it. You may not have permission."; }
+  });
+  return el("div",{class:"actions", style:"margin-top:14px"}, btn, msg);
+}
+
+/* ---------- upload ---------- */
+function openUpload() {
+  const sh = $("#sheet"); sh.textContent = ""; sh.hidden = false; document.body.style.overflow = "hidden";
+  let files = [];
+  const input = el("input",{type:"file", id:"uFiles", accept:"image/jpeg,image/png,image/webp,image/gif", multiple:true, hidden:true});
+  const thumbs = el("div",{class:"thumbs"});
+  const drop = el("div",{class:"drop", tabindex:"0", role:"button"}, el("b",{text:"Choose images"}), " or drop them here. JPEG, PNG or WebP up to 20 MB each.");
+  const setFiles = list => {
+    files = [...list].filter(f => /^image\//.test(f.type) && f.size <= 20*1024*1024);
+    thumbs.textContent = "";
+    files.forEach(f => thumbs.append(el("img",{src: URL.createObjectURL(f), alt: f.name})));
+    go.disabled = !files.length; go.textContent = files.length ? `Upload ${files.length} image${files.length===1?"":"s"}` : "Upload";
+  };
+  drop.addEventListener("click", () => input.click());
+  drop.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.click(); } });
+  drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("over"); });
+  drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+  drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); setFiles(e.dataTransfer.files); });
+  input.addEventListener("change", () => setFiles(input.files));
+  const site = el("input",{id:"uSite", maxlength:"80", placeholder:"e.g. Managalas Plateau, upper transect"});
+  const station = el("input",{id:"uStation", maxlength:"40", placeholder:"e.g. G46 C2"});
+  const date = el("input",{id:"uDate", type:"date"});
+  const time = el("input",{id:"uTime", type:"time"});
+  const cam = el("input",{id:"uCam", maxlength:"60", placeholder:"e.g. Browning trail camera, unit 2"});
+  const notes = el("textarea",{id:"uNotes", maxlength:"600", placeholder:"Habitat, elevation, time of night, anything that helps"});
+  const msg = el("span",{class:"msg"});
+  const go = el("button",{class:"btn primary", type:"submit", disabled:true, text:"Upload"});
+  const form = el("form",{},
+    el("div",{class:"f2"}, el("label",{for:"uSite"}, "Site", site), el("label",{for:"uStation"}, "Station or camera ID", station)),
+    el("div",{class:"f2"}, el("label",{for:"uDate"}, "Date taken", date), el("label",{for:"uTime"}, "Time (optional)", time)),
+    el("label",{for:"uCam"}, "Camera (optional)", cam),
+    el("label",{for:"uNotes"}, "Notes (optional)", notes),
+    el("p",{class:"hint", text:"These details apply to every image in this batch, so upload one station or date at a time. The original filename is kept for matching labels back to your dataset."}),
+    el("div",{class:"actions"}, go, el("button",{class:"btn ghost", type:"button", onclick: closeSheet, text:"Cancel"}), msg));
+  form.addEventListener("submit", async e => {
+    e.preventDefault(); if (!files.length) return;
+    go.disabled = true; let done = 0, failed = 0;
+    for (const f of files) {
+      msg.className = "msg"; msg.textContent = `Uploading ${done + failed + 1} of ${files.length}…`;
+      try {
+        const r = await S.assets.upload(f);
+        const id = "ct" + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+        await S.db.doc("images/" + id).set({
+          asset: r.id, site: site.value.trim(), station: station.value.trim(), takenAt: date.value, time: time.value, camera: cam.value.trim(),
+          notes: notes.value.trim(), uploader: S.uid, createdAt: new Date().toISOString(), filename: f.name.slice(0,120)
+        });
+        done++;
+      } catch (err) { failed++; if (err && err.code === "quota_exceeded") { msg.className = "msg err"; msg.textContent = "The board's storage is full. Remove resolved images before adding more."; go.disabled = false; return; } }
+    }
+    if (failed) { msg.className = "msg err"; msg.textContent = `${done} uploaded, ${failed} failed. Check the files and try again.`; go.disabled = false; }
+    else { S.filter = "needs"; closeSheet(); renderGrid(); }
+  });
+  sh.append(el("div",{class:"up", role:"dialog", "aria-modal":"true", "aria-labelledby":"uTitle"},
+    el("div",{class:"side-head"}, el("h2",{id:"uTitle", text:"Add unidentified images"}), el("button",{class:"x", type:"button", "aria-label":"Close", onclick: closeSheet, text:"×"})),
+    drop, input, thumbs, form));
+  sh.onclick = e => { if (e.target === sh) closeSheet(); };
+}
+
+/* ---------- settings ---------- */
+function fillSettingsForm() {
+  $("#sMin").value = S.settings.minIds; $("#sPct").value = S.settings.agreePct; $("#sRank").value = S.settings.targetRank;
+}
+$("#btnSettings").addEventListener("click", () => { const f = $("#settingsForm"); f.hidden = !f.hidden; if (!f.hidden) fillSettingsForm(); });
+$("#settingsForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const m = $("#sMsg"); m.className = "msg"; m.textContent = "Saving…";
+  const next = {
+    minIds: Math.max(2, Math.min(100, parseInt($("#sMin").value, 10) || DEFAULTS.minIds)),
+    agreePct: Math.max(50, Math.min(100, parseInt($("#sPct").value, 10) || DEFAULTS.agreePct)),
+    targetRank: RANKS.includes($("#sRank").value) ? $("#sRank").value : "species"
+  };
+  try { await S.db.doc("config/settings").set(next); m.textContent = "Saved. Every image has been re-scored."; }
+  catch (err) { m.className = "msg err"; m.textContent = "Only editors can change the rule."; }
+});
+
+/* ---------- exports ---------- */
+const csvCell = v => { const t = v == null ? "" : String(v); return /[",\n\r]/.test(t) || /^[=+\-@]/.test(t) ? '"' + (/^[=+\-@]/.test(t) ? "'" : "") + t.replace(/"/g,'""') + '"' : t; };
+async function save(filename, data, btn) {
+  const old = btn.textContent;
+  try { await S.downloads.save({filename, data}); }
+  catch (e) { if (!e || e.code !== "cancelled") { btn.textContent = "Could not save"; setTimeout(() => btn.textContent = old, 2500); } }
+}
+function exportCsv() {
+  const gfm = genusFamilyMap(), s = S.settings;
+  const head = ["image_code","image_id","filename","site","station","camera","date","time","status","consensus_rank","consensus_family","consensus_genus","consensus_species","consensus_label","agreement_pct","agreeing_ids","total_ids","rule_min_ids","rule_agree_pct","rule_target_rank","image_url_path"];
+  const lines = [head.join(",")];
+  for (const img of S.images) {
+    const c = consensus(img.id, gfm), r = c.result;
+    let fam = "", gen = "", spp = "";
+    if (r && r.rank === "species") { [gen, spp] = r.name.split(" "); fam = gfm[gen] || ""; }
+    else if (r && r.rank === "genus") { gen = r.name; fam = gfm[gen] || ""; }
+    else if (r && r.rank === "family") fam = r.name;
+    lines.push([code(img), img.id, img.filename, img.site, img.station, img.camera, img.takenAt, img.time, c.status,
+      r ? r.rank : "", fam, gen, spp, r ? r.name : "", r ? Math.round(r.pct) : "", r ? r.n : "", c.total,
+      s.minIds, s.agreePct, s.targetRank, img.asset ? "/_blob/" + img.asset : ""].map(csvCell).join(","));
+  }
+  save(`managalas-camtrap-labels-${new Date().toISOString().slice(0,10)}.csv`, lines.join("\r\n"), $("#btnCsv"));
+}
+async function exportJson() {
+  const ids = Object.keys(S.votes);
+  const names = {};
+  for (let i = 0; i < ids.length; i += 32) {
+    try { const p = await S.user.profiles(ids.slice(i, i + 32)); for (const id of ids.slice(i, i + 32)) names[id] = (p[id] && p[id].name) || ""; } catch (e) {}
+  }
+  const contributors = {}; ids.forEach((id, i) => contributors["c" + (i + 1)] = {name: names[id] || ""});
+  const alias = Object.fromEntries(ids.map((id, i) => [id, "c" + (i + 1)]));
+  const gfm = genusFamilyMap();
+  const out = {
+    exported: new Date().toISOString(), project: "Managalas camera trap identification pilot", rule: S.settings, contributors,
+    images: S.images.map(img => { const c = consensus(img.id, gfm); return {
+      code: code(img), id: img.id, filename: img.filename, site: img.site, station: img.station, camera: img.camera, date: img.takenAt, time: img.time,
+      notes: img.notes, added: img.createdAt, asset: img.asset, status: c.status, consensus: c.result,
+      identifications: c.ids.map(v => ({contributor: alias[v.uid], family: v.family, genus: v.genus, species: v.species, not_identifiable: !!v.unid, local_name: v.local || "", confidence: v.confidence, note: v.note, at: v.at}))
+    }; })
+  };
+  save(`managalas-camtrap-full-${new Date().toISOString().slice(0,10)}.json`, JSON.stringify(out, null, 1), $("#btnJson"));
+}
+$("#btnCsv").addEventListener("click", exportCsv);
+$("#btnJson").addEventListener("click", exportJson);
+
+/* ---------- controls ---------- */
+$("#tabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  S.filter = b.dataset.f; try { localStorage.setItem("ctid.filter", S.filter); } catch(e) {}
+  renderGrid();
+});
+$("#hideMine").addEventListener("change", e => { S.hideMine = e.target.checked; try { localStorage.setItem("ctid.hideMine", S.hideMine ? "1":"0"); } catch(e) {} renderGrid(); });
+$("#btnUpload").addEventListener("click", openUpload);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#sheet").hidden) closeSheet(); });
+function route() {
+  const m = location.hash.match(/^#img-([A-Za-z0-9-]+)$/);
+  if (m) showDetail(m[1]); else if (S.openId) closeSheet();
+}
+window.addEventListener("hashchange", route);
+
+function setNote(t) { const n = $("#note"); n.textContent = t || ""; n.hidden = !t; }
+
+/* ---------- boot ---------- */
+renderRule(); renderGrid();
+async function boot() {
+  if (!window.claude || !window.claude.use) { setNote("Open this board on claude.ai to see the shared images."); return; }
+  const [db, user, assets, downloads] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("assets"), claude.use("downloads")]);
+  S.downloads = downloads;
+  if (!db) { setNote("Sign in to claude.ai to see and identify the shared images."); return; }
+  S.db = db; S.user = user; S.assets = assets;
+  if (user) {
+    try { const me = await user.me(); S.uid = me.id; S.canEdit = !!me.canEdit; } catch(e) {}
+    try { const w = await user.can("data.write"); S.canWrite = w !== false; } catch(e) { S.canWrite = true; }
+  }
+  $("#btnUpload").hidden = !assets;
+  $("#btnSettings").hidden = !S.canEdit;
+  $("#btnCsv").hidden = !downloads;
+  $("#btnJson").hidden = !(downloads && S.canEdit);
+
+  const timer = setTimeout(() => { if (!S.loaded.images) setNote("The shared store has not answered yet. The board will fill in as soon as it does."); }, 10000);
+  db.collection("images").onSnapshot(snap => {
+    S.images = snap.docs.map(d => ({id: d.id, ...d.data()}));
+    if (!snap.metadata.fromCache) { S.loaded.images = true; clearTimeout(timer); setNote(""); }
+    else S.loaded.images = S.loaded.images || snap.size > 0;
+    renderAll();
+    if (S.openId == null) route();
+  }, () => { clearTimeout(timer); S.loaded.images = true; setNote("The image list could not be loaded. Reload the page to try again."); renderAll(); });
+  db.collection("votes").onSnapshot(snap => {
+    const v = {}; snap.docs.forEach(d => { const b = d.data(); v[d.id] = (b && b.ids) || {}; });
+    S.votes = v; S.loaded.votes = true; renderAll();
+  }, () => setNote("Identifications could not be loaded. Reload the page to try again."));
+  db.doc("config/settings").onSnapshot(snap => {
+    const b = snap.exists ? snap.data() : {};
+    S.settings = {
+      minIds: Number.isFinite(b.minIds) ? b.minIds : DEFAULTS.minIds,
+      agreePct: Number.isFinite(b.agreePct) ? b.agreePct : DEFAULTS.agreePct,
+      targetRank: RANKS.includes(b.targetRank) ? b.targetRank : DEFAULTS.targetRank
+    };
+    if (!$("#settingsForm").hidden) fillSettingsForm();
+    renderAll();
+  }, () => {});
+}
+boot();
+})();
+</script>

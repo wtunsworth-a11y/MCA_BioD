@@ -378,7 +378,7 @@ function frameNode(img) {
     im.addEventListener("error", () => { im.remove(); f.prepend(el("div",{class:"miss", text:"Image unavailable"})); });
     f.append(im);
   } else f.append(el("div",{class:"miss", text:"No image file"}));
-  f.append(el("div",{class:"strip"}, el("span",{text: code(img)}), el("span",{text: [img.family, img.elevation ? img.elevation + " m" : "", [timeOfDay(img), img.clockReset ? "" : img.time].filter(Boolean).join(" ")].filter(Boolean).join(" · ")})));
+  f.append(el("div",{class:"strip"}, el("span",{text: code(img)}), el("span",{text: [famLabel(famKey(img)), img.elevation ? img.elevation + " m" : "", [timeOfDay(img), img.clockReset ? "" : img.time].filter(Boolean).join(" ")].filter(Boolean).join(" · ")})));
   return f;
 }
 const code = img => img.imageId || ("CT-" + (img.id||"").slice(-5).toUpperCase());
@@ -405,12 +405,14 @@ function pillNode(c) {
   return p;
 }
 
+const famKey = i => i.family || i.group || "Unassigned";
+const famLabel = k => k.replace(/-/g, " ");
 function renderFamilies() {
   const nav = $("#fams"); nav.querySelectorAll(".fam").forEach(b => b.remove());
-  const counts = {}; S.images.forEach(i => { const f = i.family || "Unassigned"; counts[f] = (counts[f]||0)+1; });
+  const counts = {}; S.images.forEach(i => { const f = famKey(i); counts[f] = (counts[f]||0)+1; });
   const mk = (val, label, n) => nav.append(el("button",{class:"fam", type:"button", "aria-pressed": String(S.family === val), onclick: () => setFamily(val)}, label, el("span",{class:"n", text:n})));
   mk("", "All families", S.images.length);
-  Object.keys(counts).sort().forEach(f => mk(f, f, counts[f]));
+  Object.keys(counts).sort().forEach(f => mk(f, famLabel(f), counts[f]));
   const fl = $("#famlink"); fl.textContent = "";
   fl.hidden = !S.family;
   if (S.family) {
@@ -421,7 +423,7 @@ function renderFamilies() {
       const sel = () => { const r = document.createRange(); r.selectNodeContents(c); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Press Ctrl+C"; };
       try { navigator.clipboard.writeText(tag).then(() => btn.textContent = "Copied", sel); } catch (e) { sel(); }
     });
-    fl.append(`To send a ${S.family} specialist straight to these images, add`, c, "to the end of the board's link.", btn);
+    fl.append(`To send a ${famLabel(S.family)} specialist straight to these images, add`, c, "to the end of the board's link.", btn);
   }
 }
 function setFamily(f) {
@@ -432,7 +434,7 @@ function setFamily(f) {
 }
 function renderGrid() {
   const gfm = genusFamilyMap();
-  const rows = S.images.filter(img => !S.family || (img.family || "Unassigned") === S.family).map(img => ({img, c: consensus(img.id, gfm)}));
+  const rows = S.images.filter(img => !S.family || famKey(img) === S.family).map(img => ({img, c: consensus(img.id, gfm)}));
   const counts = {needs:0, disputed:0, partial:0, resolved:0, all:rows.length};
   rows.forEach(r => counts[r.c.status]++);
   for (const k in counts) $("#n-"+k).textContent = counts[k];
@@ -445,7 +447,7 @@ function renderGrid() {
     return;
   }
   if (!rows.length && S.family) {
-    g.append(el("div",{class:"empty"}, el("h2",{text:`No ${S.family} images yet`}), el("p",{text:"Choose another family above, or All families."})));
+    g.append(el("div",{class:"empty"}, el("h2",{text:`No ${famLabel(S.family)} images yet`}), el("p",{text:"Choose another family above, or All families."})));
     return;
   }
   if (!rows.length) {
@@ -470,7 +472,7 @@ function renderGrid() {
       el("div",{class:"cbody"},
         pillNode(c),
         c.status === "needs" ? el("div",{class:"meter"}, el("i",{style:`width:${pct}%`})) : null,
-        el("div",{class:"meta"}, el("span",{text: `${c.total} identification${c.total===1?"":"s"}`}), mine ? el("span",{class:"mine", text:"You identified"}) : el("span",{text: img.family || ""}))
+        el("div",{class:"meta"}, el("span",{text: `${c.total} identification${c.total===1?"":"s"}`}), mine ? el("span",{class:"mine", text:"You identified"}) : el("span",{text: img.curatedGenus || ""}))
       ));
     g.append(card);
   }
@@ -559,7 +561,8 @@ function renderDetailLive() {
   // facts
   const facts = el("dl",{class:"facts"});
   const fact = (k, val) => { if (val) facts.append(el("dt",{text:k}), el("dd",{text:val})); };
-  fact("Family", img.family ? img.family + " (from curation)" : "");
+  fact("Curated as", img.family ? [img.family, img.curatedGenus].filter(Boolean).join(", ") : (img.group ? famLabel(img.group) + ", family not yet known" : ""));
+  if (img.sameVisit && img.sameVisit.length) fact("Same visit", "Other frames of this visit: " + img.sameVisit.join(", "));
   fact("Station", img.station ? `${img.grid ? img.grid + " " : ""}${img.station}${img.camera ? ", camera " + img.camera : ""}` : "");
   const gr = GEO && img.grid && GEO.grids[img.grid];
   fact("Elevation", img.elevation ? `${Number(img.elevation).toLocaleString("en")} m` + (gr ? ` (this grid spans ${gr[4].toLocaleString("en")}–${gr[5].toLocaleString("en")} m)` : "") : "");
@@ -653,7 +656,7 @@ function formSection(img) {
   }
   const mine = (S.votes[S.uid] || {})[img.id] || {};
   const fam = el("input",{id:"fFam", list:"dlFamily", autocomplete:"off", placeholder:"e.g. Muridae", value: mine.at ? (mine.family || "") : (img.family || "")});
-  const gen = el("input",{id:"fGen", list:"dlGenus", autocomplete:"off", placeholder:"e.g. Rattus", value: mine.genus || ""});
+  const gen = el("input",{id:"fGen", list:"dlGenus", autocomplete:"off", placeholder:"e.g. Rattus", value: mine.at ? (mine.genus || "") : (img.curatedGenus || "")});
   const sp = el("input",{id:"fSp", list:"dlSpecies", autocomplete:"off", placeholder:"e.g. exulans", value: mine.species || ""});
   gen.addEventListener("change", () => { const g = normalise("", gen.value, "").genus; const f = genusFamilyMap()[g]; if (f && !fam.value.trim()) fam.value = f; });
   const local = el("input",{id:"fLocal", maxlength:"80", placeholder:"Tok Pisin, Tok Ples or English name", value: mine.local || ""});
@@ -667,7 +670,7 @@ function formSection(img) {
   const form = el("form",{class:"idf"},
     el("div",{class:"f3"}, el("label",{for:"fFam"}, "Family", fam), el("label",{for:"fGen"}, "Genus", gen), el("label",{for:"fSp"}, "Species epithet", sp)),
     el("p",{class:"hint", text:"Day or night activity can narrow the options: check the time of day above."}),
-    el("p",{class:"hint", text:"Fill in only the ranks you are confident of. Leave species blank for a genus-level ID. The family is filled in from curation; change it if you disagree."}),
+    el("p",{class:"hint", text:"Fill in only the ranks you are confident of. Leave species blank for a genus-level ID. The curated family (and genus, where known) is filled in; change it if you disagree."}),
     el("label",{class:"chk", for:"fUnid"}, unid, "Not identifiable from this image (too dark, blurred or partial)"),
     el("label",{for:"fLocal"}, "Local or common name (optional, not counted in consensus)", local),
     el("label",{for:"fConf"}, "Confidence", conf),
@@ -861,7 +864,7 @@ $("#btnUpload").addEventListener("click", openUpload);
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#sheet").hidden) closeSheet(); });
 function route() {
   const m = location.hash.match(/^#img-([A-Za-z0-9-]+)$/);
-  const f = location.hash.match(/^#family-([A-Za-z]+)$/);
+  const f = location.hash.match(/^#family-([A-Za-z-]+)$/);
   if (f && f[1] !== S.family) { S.family = f[1]; renderFamilies(); renderGrid(); }
   if (m) showDetail(m[1]); else if (S.openId) closeSheet();
 }

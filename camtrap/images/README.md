@@ -8,11 +8,23 @@ below family level. They will be posted to the community ID board
 
     images/<Family>/<Family>_<NNN>.jpg
 
-Folders follow what is already known about each image: its family.
-Each image gets the next free number in its family, ordered by capture
-date. Numbers are never reused, so a new upload called
-`Macropodidae 1.jpg` becomes the next free number in that family and
-never overwrites an existing file.
+Each folder is a family, so a specialist in one group can find their
+images in one place:
+
+| Folder | Images | Curated as |
+|---|---|---|
+| Macropodidae | 20 | family |
+| Peramelidae | 35 | family |
+| Phalangeridae | 11 | genus *Phalanger* |
+| Varanidae | 11 | genus *Varanus* |
+| Dasyuridae | 4 | genus *Dasyurus* (2) or family only (2) |
+| Small_mammals_family_unknown | 15 | "small mammal"; family not yet known |
+
+Images are numbered within their family, in order of capture date, with
+clock-reset frames last. Numbers are never reused, so uploads with the
+same file name (such as `Peramelidae 1.jpeg` and `Peramelidae_1.jpg`)
+always get separate IDs. Exact byte-for-byte copies were dropped, and
+their names are kept in `original_filename`.
 
 ## manifest.csv
 
@@ -20,8 +32,10 @@ One row per image:
 
 - `image_id`: the image's identifier everywhere, including on the ID board.
 - `original_filename`: the name it was uploaded with.
-- `family`, plus empty `genus` and `species` columns to fill once the community agrees.
-- Context read from the camera's data strip: grid, station, burst frame, date, time,
+- `family` and `curated_genus`: the curator's grouping. Empty `genus` and `species` columns are for the agreed IDs.
+- `curator_hint`: a name taken from the uploaded file name (e.g. `Isoodon`). The board does not show it to identifiers, so it can't bias their IDs.
+- `same_visit_as`: other frames from the same camera within 30 minutes, which probably show the same animal on one visit.
+- Context read from the camera's data strip: grid, station, camera (CT1 or CT2 at the station), date, time, time of day,
   temperature, and whether the frame is colour (day) or infrared (night).
   This is supporting information for identifiers. It does not affect how the files are organised.
 
@@ -29,9 +43,9 @@ One row per image:
 
 Some cameras lost power and their clocks reset, so the date and time on
 their data strip are wrong. The `clock_unreliable` column marks these
-frames, and the ID board warns identifiers about them. Only one frame is
-obviously affected so far: `Peramelidae_001` is stamped 18 Jan 2020 on a
-2026 deployment. A reset can also produce a plausible-looking 2026 date,
+frames, and the ID board warns identifiers about them. Eight frames are
+obviously affected because they are stamped January 2020 (see
+`clock_unreliable`). A reset can also produce a plausible-looking 2026 date,
 so mark any other cameras you know were affected.
 
 ## Location data

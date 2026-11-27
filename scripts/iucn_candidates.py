@@ -6,7 +6,7 @@ common name, Red List category, elevation limits and habitats.
 Needs an IUCN Red List API v4 token in IUCN_REDLIST_KEY (or a proxy that
 adds it). Usage: python3 scripts/iucn_candidates.py
 """
-import json, os, sys, time, urllib.request
+import json, os, sys, time, urllib.error, urllib.request
 API = "https://api.iucnredlist.org/api/v4"
 KEY = os.environ.get("IUCN_REDLIST_KEY", "dummy")
 FAMILIES = ["Macropodidae", "Peramelidae", "Phalangeridae", "Varanidae", "Dasyuridae",
@@ -14,15 +14,31 @@ FAMILIES = ["Macropodidae", "Peramelidae", "Phalangeridae", "Varanidae", "Dasyur
             "Muridae", "Petauridae", "Pseudocheiridae", "Burramyidae", "Acrobatidae", "Soricidae"]
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs", "data", "iucn.json")
 
-def get(path, tries=4):
+CACHE = os.environ.get("IUCN_CACHE", os.path.join(os.path.dirname(OUT), "..", "..", ".iucn_cache"))
+os.makedirs(CACHE, exist_ok=True)
+
+
+def get(path, tries=8):
+    """GET with an on-disk cache (so reruns resume) and patient retries on rate limits."""
+    key = os.path.join(CACHE, "".join(c if c.isalnum() else "_" for c in path)[:200] + ".json")
+    if os.path.exists(key):
+        return json.load(open(key))
     for t in range(tries):
         try:
             req = urllib.request.Request(API + path, headers={"Authorization": KEY, "User-Agent": "camtrap-iucn"})
             with urllib.request.urlopen(req, timeout=60) as r:
-                return json.loads(r.read())
-        except Exception as e:
+                data = json.loads(r.read())
+            json.dump(data, open(key, "w"))
+            time.sleep(0.6)
+            return data
+        except urllib.error.HTTPError as e:
             if t == tries - 1: raise
-            time.sleep(2 * (t + 1))
+            wait = int(e.headers.get("Retry-After") or 0) or (15 * (t + 1) if e.code == 429 else 3 * (t + 1))
+            print(f"HTTP {e.code} on {path}; waiting {wait}s", file=sys.stderr)
+            time.sleep(wait)
+        except Exception:
+            if t == tries - 1: raise
+            time.sleep(3 * (t + 1))
 
 def pages(path):
     out, p = [], 1
@@ -53,7 +69,6 @@ for fam in FAMILIES:
             countries=sorted(l["code"] for l in d.get("locations", []) if l.get("code") and len(l["code"]) == 2),
             habitats=sorted({(h.get("description") or {}).get("en", "") for h in d.get("habitats", [])} - {""}),
             year=d.get("year_published"), url=d.get("url")))
-        time.sleep(0.15)
 species.sort(key=lambda s: (s["family"], s["name"]))
 json.dump({"source": "IUCN Red List of Threatened Species, API v4", "retrieved": time.strftime("%Y-%m-%d"),
            "species": species}, open(OUT, "w"), indent=1)

@@ -16,6 +16,8 @@ country <- toupper(if (length(args) && !startsWith(args[1], "--")) args[1] else 
 refresh <- "--refresh" %in% args
 missing_trend_unknown <- "--missing-trend-unknown" %in% args
 
+# Write names with accents and curly quotes as UTF-8, whatever the locale.
+invisible(suppressWarnings(Sys.setlocale("LC_CTYPE", "C.UTF-8")))
 for (f in list.files("R", pattern = "\\.R$", full.names = TRUE)) source(f)
 
 if (file.exists(".Renviron")) readRenviron(".Renviron")
@@ -30,7 +32,7 @@ scored <- scored[is_true(scored$in_focal), , drop = FALSE]
 ranked <- rank_species(scored)
 
 cols <- c("rank", "priority", "rank_in_priority", "priority_score",
-          "scientific_name", "kingdom", "phylum", "class", "order", "family",
+          "scientific_name", "common_name", "kingdom", "phylum", "class", "order", "family",
           "category", "criteria", "criteria_version", "year_published",
           "population_trend", "possibly_extinct",
           "risk_w", "decline_w", "restriction_w", "endemism_w", "PS1", "PS2",

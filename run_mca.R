@@ -17,6 +17,8 @@ args <- commandArgs(trailingOnly = TRUE)
 buffer_km <- 25
 if ("--buffer-km" %in% args) buffer_km <- as.numeric(args[which(args == "--buffer-km") + 1])
 
+# Write names with accents and curly quotes as UTF-8, whatever the locale.
+invisible(suppressWarnings(Sys.setlocale("LC_CTYPE", "C.UTF-8")))
 for (f in list.files("R", pattern = "\\.R$", full.names = TRUE)) source(f)
 if (file.exists(".Renviron")) readRenviron(".Renviron")
 
@@ -83,7 +85,7 @@ mca <- site_rank(ranked)
 
 cols <- c("site_tier", "site_tier_label", "site_rank", "evidence", "evidence_note",
           "site_tier_gbif", "priority", "rank",
-          "priority_score", "scientific_name", "kingdom", "phylum", "class",
+          "priority_score", "scientific_name", "common_name", "kingdom", "phylum", "class",
           "order", "family", "category", "criteria", "population_trend",
           "systems", "elev_lower", "elev_upper",
           "n_site", "n_buffer", "n_country", "site_share",

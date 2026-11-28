@@ -4,6 +4,7 @@
 # checked by hand. Verdicts go in review/mca_gbif_review.csv.
 # Run after run_mca.R. Output: output/MCA_gbif_records_audit.csv
 
+invisible(suppressWarnings(Sys.setlocale("LC_CTYPE", "C.UTF-8")))
 for (f in list.files("R", full.names = TRUE)) source(f)
 g <- site_geometries("data/mca/managalas_wdpa.geojson")
 mca <- read.csv("output/MCA_target4_ranked.csv", stringsAsFactors = FALSE)

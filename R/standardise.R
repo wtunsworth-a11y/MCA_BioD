@@ -67,6 +67,7 @@ standardise_one <- function(a, focal, presence, origin, num_summary) {
     class = tx$class_name %||% NA_character_,
     order = tx$order_name %||% NA_character_,
     family = tx$family_name %||% NA_character_,
+    common_name = common_name(tx$common_names),
     is_species = isTRUE(tx$species %||% TRUE),
     category = cat_code,
     criteria_version = a$red_list_category$version %||% NA_character_,
@@ -97,4 +98,14 @@ standardise_one <- function(a, focal, presence, origin, num_summary) {
     elev_upper = parse_num(g("upper_elevation_limit"), "max"),
     url = a$url %||% NA_character_
   )
+}
+
+#' Main English common name from an IUCN taxon record, else the first English
+#' one, else NA.
+common_name <- function(names) {
+  if (!length(names)) return(NA_character_)
+  eng <- Filter(function(n) identical(n$language, "eng"), names)
+  if (!length(eng)) return(NA_character_)
+  main <- Filter(function(n) isTRUE(n$main), eng)
+  as.character((if (length(main)) main else eng)[[1]]$name)
 }

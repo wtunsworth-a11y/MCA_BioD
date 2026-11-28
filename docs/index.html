@@ -284,6 +284,7 @@ a.btn{text-decoration:none;justify-content:center}
 .authbox .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .authbox .chips{display:flex;flex-wrap:wrap;gap:6px}
 .authbox .chips label{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:var(--ink);cursor:pointer}
+.botcheck{min-height:65px}
 .linkbtn{background:none;border:0;color:var(--accent);cursor:pointer;padding:0;font:inherit;text-decoration:underline}
 .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:99px;margin-left:6px;vertical-align:1px}
 .tag.pending{background:var(--accent-soft);color:var(--accent)}
@@ -513,6 +514,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
 <div class="sheet" id="modSheet" hidden></div>
 
 <script src="vendor/supabase-2.45.4.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <script>
 (() => {
 const RANKS = ["species","genus","family"];
@@ -946,20 +948,31 @@ function openAuth(after, startAt) {
     box.textContent = "";
     const email = el("input",{type:"email", id:"authEmail", autocomplete:"email", required:true, placeholder:"you@example.org"});
     const go = el("button",{class:"btn primary", type:"submit", text:"Email me a sign-in link"});
+    const bot = el("div",{class:"botcheck", "aria-label":"Check that you are not a robot"});
+    let botToken = "", botId = null;
     const f = el("form",{style:"display:grid;gap:14px"},
       el("h2",{id:"authTitle", text:"Sign in to take part"}),
       el("p",{text:"Enter your email and we'll send you a sign-in link. No password, and your email address is never shown on the site."}),
-      el("label",{for:"authEmail"}, "Email address", email), el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Cancel", onclick: close})), msg);
+      el("label",{for:"authEmail"}, "Email address", email), bot, el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Cancel", onclick: close})), msg);
+    // Cloudflare Turnstile bot check: usually ticks itself; its token goes with the sign-in request.
+    const mountBot = (tries = 0) => {
+      if (!S.cfg.turnstileSiteKey) return;
+      if (!window.turnstile) { if (tries < 40) setTimeout(() => mountBot(tries + 1), 250); else bot.textContent = "The bot check didn't load. Check your connection and reload the page."; return; }
+      botId = window.turnstile.render(bot, { sitekey: S.cfg.turnstileSiteKey, theme: "auto", size: "flexible",
+        callback: t => { botToken = t; }, "expired-callback": () => { botToken = ""; }, "error-callback": () => { botToken = ""; } });
+    };
     f.addEventListener("submit", async e => {
       e.preventDefault(); if (!email.value.includes("@")) return err("Enter a valid email address.");
       go.disabled = true; msg.className = "msg"; msg.textContent = "Sending…";
+      if (S.cfg.turnstileSiteKey && !botToken) { go.disabled = false; return err("Please wait for the bot check to finish (or tick its box), then try again."); }
       try { localStorage.setItem("ctid.returnTo", location.hash || ""); } catch (x) {}
-      const { error } = await S.sb.auth.signInWithOtp({ email: email.value.trim(), options: { shouldCreateUser: true, emailRedirectTo: location.origin + location.pathname } });
+      const { error } = await S.sb.auth.signInWithOtp({ email: email.value.trim(), options: { shouldCreateUser: true, emailRedirectTo: location.origin + location.pathname, captchaToken: botToken || undefined } });
       go.disabled = false;
+      if (botId !== null && window.turnstile) { window.turnstile.reset(botId); botToken = ""; }   // each check works once
       if (error) return err(friendly(error));
       stepCode(email.value.trim());
     });
-    box.append(f); email.focus();
+    box.append(f); email.focus(); mountBot();
   };
   const stepCode = (addr) => {
     box.textContent = "";

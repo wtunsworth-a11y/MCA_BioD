@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Melanesian Camera Trap ID</title>
+<meta name="description" content="Community identification of difficult camera trap images from Melanesia, starting with the Managalas Plateau, Oro Province, Papua New Guinea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a contact-sheet grid of trap frames under a slim rule bar; a frame opens into a lightbox sheet with the tally beside it. */
+/* Rainforest palette: leaf-white ground, deep forest green bands, warm hornbill-orange actions. */
+:root{
+  --bg:#f6f9f3; --surface:#ffffff; --sunk:#edf3e8; --ink:#1e2c23; --muted:#58695d; --line:#dbe5d6;
+  --forest:#1f5c46; --forest-2:#174837; --forest-ink:#ffffff; --leaf:#e3f0e4;
+  --accent:#b75a10; --accent-ink:#ffffff; --accent-soft:#fcebd8;
+  --moss:#2c7a4f; --moss-soft:#ddf0e2; --warn:#a63a2c; --warn-soft:#f8e1dc;
+  --strip:#142019; --strip-ink:#f3d7a1; --sea:#dcebf0; --land:#cfdcc9;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1913; --surface:#16221b; --sunk:#1d2b23; --ink:#e6efe8; --muted:#9db0a2; --line:#2a3a30;
+  --forest:#173d30; --forest-2:#123226; --forest-ink:#ffffff; --leaf:#1b3026;
+  --accent:#f0a24a; --accent-ink:#201300; --accent-soft:#3a2914;
+  --moss:#7fcb98; --moss-soft:#1c3427; --warn:#f08b75; --warn-soft:#3d211b;
+  --strip:#0b120e; --strip-ink:#f3d7a1; --sea:#16252b; --land:#33433a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1913; --surface:#16221b; --sunk:#1d2b23; --ink:#e6efe8; --muted:#9db0a2; --line:#2a3a30;
+  --forest:#173d30; --forest-2:#123226; --forest-ink:#ffffff; --leaf:#1b3026;
+  --accent:#f0a24a; --accent-ink:#201300; --accent-soft:#3a2914;
+  --moss:#7fcb98; --moss-soft:#1c3427; --warn:#f08b75; --warn-soft:#3d211b;
+  --strip:#0b120e; --strip-ink:#f3d7a1; --sea:#16252b; --land:#33433a; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:var(--f-display)}
+.wrap{max-width:1600px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+i.tx{font-style:italic}
+
+header.top{padding-block:28px 18px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;justify-content:space-between}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.4vw,44px);line-height:1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.brand p{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:8px 14px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--warn);border-color:var(--warn)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+.rule{border-block:1px solid var(--line);padding-block:12px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.rule .lede{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rule .txt{flex:1 1 380px;min-width:0}
+.rule b{font-weight:600}
+.ladder{display:inline-flex;gap:4px;align-items:center;font-family:var(--f-mono);font-size:12.5px}
+.ladder span{padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+.ladder span.on{background:var(--moss-soft);color:var(--moss)}
+
+.settings{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:end;padding-block:14px;border-bottom:1px solid var(--line)}
+.settings label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.settings input,.settings select{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 8px;width:9.5em}
+
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-block:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;background:var(--sunk);padding:4px;border-radius:calc(var(--r) + 2px)}
+.tabs button{border:0;background:transparent;padding:6px 12px;border-radius:var(--r);cursor:pointer;color:var(--muted);font-weight:500;display:inline-flex;gap:6px;align-items:center}
+.tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+.tabs .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.check{display:inline-flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;cursor:pointer}
+
+.note{margin:0 0 14px;padding:10px 14px;border-radius:var(--r);background:var(--accent-soft);color:var(--ink);font-size:14px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;padding-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s ease,border-color .15s}
+.card:hover{border-color:var(--muted);transform:translateY(-2px)}
+.frame{position:relative;aspect-ratio:4/3;background:var(--strip);max-width:100%}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .miss{position:absolute;inset:0;display:grid;place-items:center;color:var(--strip-ink);font-family:var(--f-mono);font-size:12px}
+.strip{position:absolute;left:0;right:0;bottom:0;background:rgb(5 7 6 / .78);color:var(--strip-ink);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:4px 8px;display:flex;justify-content:space-between;gap:8px;white-space:nowrap;overflow:hidden}
+.strip span:last-child{overflow:hidden;text-overflow:ellipsis}
+.cbody{padding:10px 12px 12px;display:grid;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:3px 9px;border-radius:99px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-self:start}
+.pill.needs{background:var(--sunk);color:var(--muted)}
+.pill.disputed{background:var(--warn-soft);color:var(--warn)}
+.pill.partial{background:var(--accent-soft);color:var(--accent)}
+.pill.resolved{background:var(--moss-soft);color:var(--moss)}
+.meter{height:4px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent)}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12.5px}
+.mine{color:var(--moss);font-weight:500}
+
+.empty{border:1.5px dashed var(--line);border-radius:var(--r);padding:48px 24px;text-align:center;color:var(--muted);grid-column:1/-1}
+.empty h2{font-family:var(--f-display);color:var(--ink);margin:0 0 6px;font-size:22px}
+.empty p{max-width:52ch;margin:0 auto 14px}
+
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:20;background:rgb(5 7 6 / .62);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 24px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(12px,env(safe-area-inset-left,0px))}
+.panel{background:var(--surface);border-radius:10px;width:min(1180px,100%);display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);overflow:hidden;border:1px solid var(--line)}
+@media (max-width:860px){.panel{grid-template-columns:minmax(0,1fr)}}
+.lightbox{background:var(--strip);display:flex;flex-direction:column;min-width:0}
+.lb-img{position:relative;flex:1;display:grid;place-items:center;min-height:280px;overflow:auto;cursor:zoom-in}
+.lb-img img{max-width:100%;max-height:78vh;display:block}
+.lb-img.zoom{cursor:zoom-out;place-items:start}
+.lb-img.zoom img{max-width:none;max-height:none}
+.lb-tools{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:10px 14px;color:var(--strip-ink);font-family:var(--f-mono);font-size:12px;border-top:1px solid rgb(255 255 255 / .08)}
+.lb-tools label{display:inline-flex;gap:8px;align-items:center}
+.lb-tools input[type=range]{width:110px;accent-color:#f4c46a}
+.lb-tools button{background:transparent;border:1px solid rgb(244 196 106 / .4);color:var(--strip-ink);border-radius:4px;padding:3px 8px;cursor:pointer;font:inherit}
+.side{padding:20px 22px 24px;display:grid;gap:20px;align-content:start;min-width:0}
+.side-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.side-head h2{font-family:var(--f-display);font-weight:800;font-size:26px;margin:0;line-height:1.1}
+.x{border:1px solid var(--line);background:transparent;border-radius:var(--r);width:34px;height:34px;cursor:pointer;flex:none;font-size:18px;line-height:1}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:14px}
+dl.facts dt{color:var(--muted);font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+dl.facts dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.sec h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500}
+.verdict{padding:12px 14px;border-radius:var(--r);border:1px solid var(--line);display:grid;gap:4px}
+.verdict .big{font-size:18px;font-weight:600}
+.verdict small{color:var(--muted)}
+.tally{display:grid;gap:12px}
+.rank h4{margin:0 0 6px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;color:var(--muted)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;font-size:14px;margin-bottom:6px}
+.row .lbar{grid-column:1/-1;height:6px;background:var(--sunk);border-radius:99px;overflow:hidden;position:relative}
+.row .lbar i{display:block;height:100%;background:var(--muted)}
+.row.top .lbar i{background:var(--accent)}
+.row.met .lbar i{background:var(--moss)}
+.row .lbar b{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.55}
+.none{color:var(--muted);font-size:14px;margin:0}
+ul.ids{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.ids li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start}
+ul.ids img{width:28px;height:28px;border-radius:50%}
+ul.ids .who{font-size:13px;color:var(--muted)}
+ul.ids .who b{color:var(--ink);font-weight:600}
+ul.ids .what{font-size:14.5px}
+ul.ids .why{font-size:13.5px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.conf{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:1px 6px;border-radius:3px;background:var(--sunk);color:var(--muted);margin-left:6px}
+form.idf{display:grid;gap:10px;background:var(--sunk);padding:14px;border-radius:var(--r)}
+.f3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.f3{grid-template-columns:minmax(0,1fr)}}
+form label{display:grid;gap:3px;font-size:12.5px;color:var(--muted)}
+form input,form select,form textarea{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:7px 9px;width:100%;min-width:0}
+form textarea{resize:vertical;min-height:54px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.msg{font-size:13px;color:var(--muted)}
+.msg.err{color:var(--warn)}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+
+/* upload */
+.up{background:var(--surface);border-radius:10px;width:min(620px,100%);padding:22px;border:1px solid var(--line);display:grid;gap:14px}
+.up h2{font-family:var(--f-display);font-weight:800;font-size:24px;margin:0}
+.drop{border:1.5px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.thumbs{display:flex;flex-wrap:wrap;gap:6px}
+.thumbs img{width:64px;height:48px;object-fit:cover;border-radius:3px}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:480px){.f2{grid-template-columns:minmax(0,1fr)}}
+.up form{display:grid;gap:10px}
+.fams{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-block:14px 4px}
+.fams .lbl{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.fam{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer;font-weight:500;display:inline-flex;gap:8px;align-items:center}
+.fam .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.fam[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fam[aria-pressed="true"] .n{color:var(--bg);opacity:.75}
+.famlink{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted);padding-top:6px}
+.famlink code{font-family:var(--f-mono);font-size:12px;background:var(--sunk);padding:2px 6px;border-radius:4px;overflow-wrap:anywhere}
+.famlink button{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:2px 8px;cursor:pointer;font-size:12.5px}
+.locmap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:10px;align-items:start}
+.locmap svg{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:var(--r);background:var(--sea)}
+.locmap figcaption{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+.clockwarn{color:var(--warn)}
+.foot{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:14px;margin-top:40px}
+.foot p{margin:0 0 6px;max-width:80ch}
+.foot .mono{font-size:12px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--ink)}
+.chk input{width:auto}
+.pill.unid{background:var(--sunk);color:var(--ink)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.flag{display:inline-flex;font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--warn-soft);color:var(--warn);margin-right:4px}
+.flag.newsp{background:var(--accent-soft);color:var(--accent)}
+.cbody .flags{display:flex;flex-wrap:wrap;gap:4px}
+.note-entry .what{font-style:normal;color:var(--muted)}
+.cands{display:grid;gap:6px}
+form.idf{display:grid;gap:12px;background:var(--sunk);padding:16px;border-radius:var(--r)}
+form.idf .f3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+form.idf label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+form.idf label.chk{display:flex;gap:8px;align-items:flex-start;color:var(--ink);font-size:14px}
+form.idf label.chk input{margin-top:3px}
+form.idf input:not([type]),form.idf textarea{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;width:100%;min-width:0;color:var(--ink);font:inherit}
+form.idf input:disabled{opacity:.45}
+form.idf textarea{resize:vertical}
+.fs{border:0;padding:0;margin:0;display:grid;gap:6px}
+.fs legend{font-size:13px;color:var(--muted);padding:0;margin-bottom:4px}
+.fs.row3{display:flex;flex-wrap:wrap;gap:6px 18px}
+.fs.row3 legend{width:100%}
+@media (max-width:480px){form.idf .f3{grid-template-columns:minmax(0,1fr)}}
+.cand{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:14px;padding:6px 0;border-bottom:1px solid var(--line)}
+.cand small{color:var(--muted);grid-column:1/-1}
+.cand.out{opacity:.55}
+.rl{font-family:var(--f-mono);font-size:11px;padding:1px 6px;border-radius:3px;background:var(--sunk);color:var(--ink);align-self:start}
+.rl.CR,.rl.EN{background:var(--warn-soft);color:var(--warn)}
+.rl.VU,.rl.NT{background:var(--accent-soft);color:var(--accent)}
+.cta{display:grid;gap:10px;background:var(--sunk);padding:14px;border-radius:var(--r)}
+.cta ol{margin:0;padding-left:20px;font-size:14px;display:grid;gap:4px}
+a{color:var(--accent)}
+details.more summary{cursor:pointer;color:var(--muted);font-size:13px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;padding-block:6px 14px;font-size:14px;color:var(--muted)}
+.howto b{color:var(--ink);display:block;font-weight:600}
+</style>
+
+<style>body{margin:0;font-family:var(--f-body)}img{max-width:100%}[hidden]{display:none!important}/* desktop-first detail view: photo fixed on the left, details scroll on the right */
+@media (min-width:861px){
+  .sheet{align-items:stretch;padding:24px max(24px,env(safe-area-inset-right,0px)) 24px max(24px,env(safe-area-inset-left,0px));overflow:hidden}
+  .panel{width:min(1680px,100%);height:calc(100vh - 48px);grid-template-columns:minmax(0,1.7fr) minmax(380px,1fr)}
+  .lightbox{min-height:0}
+  .lb-img{min-height:0}
+  .lb-img img{max-height:calc(100vh - 140px)}
+  .side{overflow-y:auto;min-height:0}
+  .sheet{top:0;z-index:30}
+}
+.grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.navbtns{display:flex;gap:6px;align-items:center}
+.navbtns button{border:1px solid var(--line);background:transparent;border-radius:var(--r);height:34px;padding:0 10px;cursor:pointer;font-size:13px;color:var(--ink)}
+.navbtns button:disabled{opacity:.4;cursor:default}
+.navbtns .pos{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+a.btn{text-decoration:none;justify-content:center}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:15;background:var(--forest);color:var(--forest-ink);box-shadow:0 1px 0 rgb(0 0 0 / .06),0 4px 14px rgb(0 0 0 / .06)}
+.topbar .wrap{display:flex;align-items:center;gap:6px 18px;min-height:52px;flex-wrap:wrap}
+.topbar .home{font-family:var(--f-display);font-weight:700;font-size:19px;color:#fff;text-decoration:none;margin-right:auto;display:flex;gap:10px;align-items:center}
+.topbar .home small{font-family:var(--f-body);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);background:#f3d7a1;padding:2px 8px;border-radius:99px}
+.topbar nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.topbar nav > a,.topbar nav > div > button{color:#e8f2ec;text-decoration:none;font-size:14px;font-weight:500;padding:8px 12px;border-radius:var(--r);background:none;border:0;cursor:pointer;font-family:inherit}
+.topbar nav > a:hover,.topbar nav > div > button:hover,.topbar nav > div > button[aria-expanded="true"]{background:rgb(255 255 255 / .1);color:#fff}
+.topbar nav > a.on{color:#f3d7a1}
+.menu{position:relative}
+.menu .drop{position:absolute;right:0;top:calc(100% + 6px);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgb(0 0 0 / .25);min-width:260px;padding:6px;display:grid}
+.menu .drop a{display:flex;justify-content:space-between;gap:16px;padding:8px 10px;border-radius:5px;text-decoration:none;color:var(--ink);font-size:14px}
+.menu .drop a:hover,.menu .drop a:focus{background:var(--sunk)}
+.menu .drop a span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.menu .drop hr{border:0;border-top:1px solid var(--line);margin:4px 0}
+/* hero */
+.hero{position:relative;color:#fff;background:var(--forest-2) url("assets/hero.jpg") center 60%/cover no-repeat;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgb(15 45 34 / .92) 0%,rgb(15 45 34 / .72) 45%,rgb(15 45 34 / .15) 100%)}
+.hero .wrap{padding-block:72px 64px;display:grid;gap:18px}
+.hero .eyebrow{color:#f3d7a1;font-family:var(--f-body);font-weight:700;letter-spacing:.08em;font-size:12.5px;margin:0}
+.hero h1{font-size:clamp(34px,4.6vw,60px);line-height:1.04;margin:0;max-width:16ch;font-weight:800;letter-spacing:-.015em;text-wrap:balance}
+.hero p.lead{font-size:19px;max-width:52ch;margin:0;color:#e9f3ed}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.hero .btn{border:0;font-weight:700;padding:12px 20px;border-radius:99px;font-size:15.5px}
+.hero .btn.primary{background:#f3a448;color:#201300}
+.hero .btn.light{background:rgb(255 255 255 / .14);color:#fff;border:1px solid rgb(255 255 255 / .35)}
+.hero .btn.light:hover{background:rgb(255 255 255 / .22)}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:14px;font-size:14px;color:#d6e7dd}
+.hero .facts b{display:block;font-family:var(--f-display);font-size:26px;color:#fff;font-weight:700;line-height:1.1}
+/* sections */
+.section{padding-block:56px 8px}
+.section h2{font-size:clamp(26px,2.6vw,36px);margin:0 0 6px;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.section .sub{color:var(--muted);margin:0 0 22px;max-width:70ch;font-size:17px}
+.frame .setbadge{position:absolute;top:8px;right:8px;background:rgb(15 45 34 / .85);color:#fff;font-size:12.5px;font-weight:700;padding:3px 9px;border-radius:99px}
+.setbar{display:flex;align-items:center;gap:14px;padding:10px 14px;border-top:1px solid rgb(255 255 255 / .08);color:var(--strip-ink);font-size:13px}
+.setstrip{display:flex;gap:8px}
+.setstrip button{padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;background:none;width:96px;height:54px}
+.setstrip button[aria-pressed="true"]{border-color:#f3a448}
+.setstrip img{width:100%;height:100%;object-fit:cover;display:block}
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.guide article{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.guide h3{margin:0 0 8px;font-size:18px;font-weight:700}
+.guide ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:15px}
+.guide code{font-family:var(--f-mono);font-size:13px;background:var(--sunk);padding:1px 5px;border-radius:4px;color:var(--ink)}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.why article{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px}
+.why article h3{margin:0 0 8px;font-size:19px;font-weight:700}
+.why article p{margin:0;color:var(--muted);font-size:15.5px}
+.why .ic{width:40px;height:40px;border-radius:12px;background:var(--leaf);color:var(--moss);display:grid;place-items:center;margin-bottom:14px}
+.why .ic svg{width:22px;height:22px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;counter-reset:step}
+.steps div{background:var(--leaf);border-radius:14px;padding:20px 22px;font-size:15.5px;color:var(--ink)}
+.steps b{display:flex;gap:10px;align-items:center;font-family:var(--f-display);font-size:18px;margin-bottom:6px}
+.steps b::before{counter-increment:step;content:counter(step);width:28px;height:28px;border-radius:50%;background:var(--forest);color:#fff;display:grid;place-items:center;font-size:14px}
+.famcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:1000px){.famcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.famcards{grid-template-columns:minmax(0,1fr)}}
+.worktitle{font-size:clamp(24px,2.2vw,30px);margin:24px 0 0;font-weight:700}
+.famcard{display:grid;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;padding:0;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;color:var(--ink)}
+.famcard:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgb(20 50 35 / .12)}
+.famcard img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--strip)}
+.famcard .fb{padding:14px 16px 16px;display:grid;gap:4px}
+.famcard .fn{font-family:var(--f-display);font-size:20px;font-weight:700;line-height:1.15}
+.famcard .fc{color:var(--muted);font-size:14.5px}
+.famcard .meter{margin-top:8px}
+.famcard .meter i{background:var(--moss)}
+.partner{background:var(--forest);color:#fff;border-radius:18px;padding:34px 34px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px;align-items:center}
+.partner h2{color:#fff;margin:0 0 8px}
+.partner p{color:#dcebe2;margin:0 0 10px;max-width:62ch}
+.partner .contact{background:rgb(255 255 255 / .1);border:1px solid rgb(255 255 255 / .2);border-radius:12px;padding:18px 20px;display:grid;gap:8px}
+.partner .contact code{font-family:var(--f-mono);font-size:15px;color:#fff;overflow-wrap:anywhere}
+.partner .contact button{justify-self:start;border:0;background:#f3a448;color:#201300;font-weight:700;border-radius:99px;padding:8px 16px;cursor:pointer}
+@media (max-width:860px){.partner{grid-template-columns:minmax(0,1fr)}}
+.logos{display:flex;flex-wrap:wrap;gap:20px 36px;align-items:center;padding-block:8px 18px}
+.logos img{height:64px;width:auto;max-width:260px;object-fit:contain}
+.workarea{padding-top:28px}
+/* breadcrumbs */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13.5px;color:var(--muted);padding-top:16px}
+.crumbs a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.crumbs a:hover{color:var(--ink)}
+.crumbs .sep{opacity:.5}
+.crumbs b{color:var(--ink);font-weight:600}
+.backbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:6px 12px;cursor:pointer;font-size:13.5px;color:var(--ink);text-decoration:none}
+.backbtn:hover{border-color:var(--muted)}
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding-bottom:40px}
+.pager .mid{display:flex;gap:8px;flex-wrap:wrap}
+/* big arrows on the photo */
+.lb-img{position:relative}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:96px;border:0;border-radius:8px;background:rgb(0 0 0 / .45);color:#fff;font-size:34px;line-height:1;cursor:pointer;z-index:2;display:grid;place-items:center}
+.lb-arrow:hover{background:rgb(0 0 0 / .7)}
+.lb-arrow.prev{left:12px}.lb-arrow.next{right:12px}
+.lb-arrow:disabled{opacity:.2;cursor:default}
+.side-crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.side-crumbs a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);cursor:pointer}
+.side-crumbs a:hover{color:var(--ink)}
+.side-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border-bottom-width:2px;border-radius:3px;padding:0 4px}
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="home" href="#" id="navHome">Melanesian Camera Trap ID <small>Pilot</small></a>
+    <nav aria-label="Main">
+      <a href="#" id="navHome2">Home</a>
+      <div class="menu">
+        <button type="button" id="famBtn" aria-haspopup="true" aria-expanded="false">Families ▾</button>
+        <div class="drop" id="famMenu" hidden></div>
+      </div>
+      <a href="#why" id="navWhy">Why</a>
+      <a href="#how" id="navHow">How to help</a>
+      <a href="#guidelines" id="navGuide">Submitting images</a>
+      <a href="#partner" id="navPartner">Partner with us</a>
+      <a href="#about" id="navAbout">About</a>
+      <a href="data/labels.csv" download>Download labels</a>
+    </nav>
+  </div>
+</div>
+<section class="hero" id="hero">
+  <div class="wrap">
+    <p class="eyebrow">PILOT · STARTING ON THE MANAGALAS PLATEAU · PAPUA NEW GUINEA</p>
+    <h1>Help put a name to the animals caught on camera in Papua New Guinea</h1>
+    <p class="lead">Camera traps photograph animals that are shy, nocturnal and little studied. We're starting with images from the Managalas Plateau, and building a place where camera trap users across PNG, and in time the wider region, can give help, and get help, naming animals in their images.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#groups" id="ctaStart">Start identifying</a>
+      <a class="btn light" href="#why" id="ctaWhy">Why we're doing this</a>
+    </div>
+    <div class="facts" id="heroFacts"></div>
+  </div>
+</section>
+
+<div class="wrap" id="homeIntro">
+  <section class="section" id="why">
+    <h2>Why we're doing this</h2>
+    <p class="sub">Our aim is to support greater use of camera traps as a method for biodiversity surveys, and to develop a community of experts who can identify what they record. Naming difficult images together does both. We're starting with images from the Managalas Plateau.</p>
+    <div class="why">
+      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/></svg></div>
+        <h3>More camera trap surveys</h3><p>Camera traps are a powerful, low-impact way to survey wildlife, but every survey produces images that are hard to name. Making identification easier, and getting expert help, removes one of the main barriers to using them more widely.</p></article>
+      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 20c0-2.5 1.4-4.5 3-4.5s4 1.5 4 4.5"/></svg></div>
+        <h3>A community of experts</h3><p>Working on real images together builds identification skills and connects people who know these animals. The aim is a community of experts across Papua New Guinea, linked in time with Indonesia, Solomon Islands and other neighbours.</p></article>
+      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Hard images, open questions</h3><p>These frames are the difficult ones: animals at night, half hidden, or from groups where species look alike. Some may be outside their known range, and some may be species not yet described.</p></article>
+      <article><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 15l3-3 3 3 4-5"/></svg></div>
+        <h3>Better tools for the region</h3><p>Names that several people agree on become verified training labels. They help build automated tools that can sort camera trap images from New Guinea and neighbouring islands, whose animals are often missing from global datasets.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <h2>How to help</h2>
+    <p class="sub">No special software is needed, just a free GitHub account to record your identification.</p>
+    <div class="steps">
+      <div><b>Choose your group</b>Pick the animals you know best below: wallabies, bandicoots, cuscuses, monitor lizards and more.</div>
+      <div><b>Study the image</b>Brighten night shots, check the location, elevation and time of day, and compare with species known from PNG.</div>
+      <div><b>Give your best name</b>Name it at the level you're sure of. Working names, notes and flags for range extensions or new species are welcome.</div>
+    </div>
+  </section>
+
+  <section class="section" id="guidelines">
+    <h2>Choosing images to submit</h2>
+    <p class="sub">For camera trap projects in PNG (and, in time, the wider region) that want to add images. We want a small, carefully chosen set from each project that the community can work through, not every frame from a survey.</p>
+    <div class="guide">
+      <article><h3>Send selected images</h3><ul>
+        <li>Choose images that genuinely need a second opinion: animals you can't name with confidence after checking them yourself.</li>
+        <li>Send tens of images per group, not hundreds.</li>
+        <li>Send no more than 2 or 3 images of the same thing: the same species at the same survey location (cameras within the same 1 km square). Pick the clearest ones.</li>
+      </ul></article>
+      <article><h3>Group photos of one animal</h3><ul>
+        <li>If one camera activation (the same camera, within the same minute) caught an animal in several photos, send up to 3 as a set, chosen to show different features: head and ears, tail, feet, flank or markings.</li>
+        <li>Keep a set together by putting it in its own folder, or by giving the files the same name with a, b, c (e.g. <code>G46_C2_0716a.jpg</code>).</li>
+        <li>On this site a set appears as one sighting and is identified once, using all its photos. Photos minutes apart are kept separate, as there is no way to know they show the same individual.</li>
+      </ul></article>
+      <article><h3>Keep the originals</h3><ul>
+        <li>Send the original JPEG at full size, with the camera's data strip (date, time, station) intact. Don't crop, brighten or edit it.</li>
+        <li>Note the group (family) if you know it, and any doubts about the date if the camera's clock may have reset.</li>
+        <li>Tell us the project, country and province, and each station's coordinates. The site only ever shows a general location, never exact camera positions.</li>
+        <li>Leave out photos that show people, houses or gardens.</li>
+      </ul></article>
+      <article><h3>Previously identified images</h3><ul>
+        <li>Confirmed identifications are welcome as references: a few clear examples per species help people compare.</li>
+        <li>Send them in a separate folder named <code>reference</code>, with the confirmed name and who identified it, in the file name or in a short list.</li>
+        <li>References are shown as examples, not put to the vote.</li>
+      </ul></article>
+    </div>
+  </section>
+
+  <section class="section" id="groups">
+    <h2>Choose your group</h2>
+    <p class="sub">Each group's progress bar shows how many of its images have reached an agreed name.</p>
+    <div class="famcards" id="famcards"></div>
+  </section>
+</div>
+
+<div class="wrap workarea" id="workarea">
+  <div class="crumbs" id="crumbs" hidden></div>
+  <h2 class="worktitle" id="workTitle">All images</h2>
+  <nav class="fams" id="fams" aria-label="Browse by family"><span class="lbl">Browse by family</span></nav>
+  <div class="famlink" id="famlink" hidden></div>
+
+  <section class="rule" aria-label="Consensus rule">
+    <span class="lede">Consensus rule</span>
+    <span class="txt" id="ruleText">Loading the rule…</span>
+    <span class="ladder" id="ladder" aria-label="Target rank"></span>
+  </section>
+
+  <div class="bar">
+    <div class="tabs" role="group" aria-label="Filter images" id="tabs">
+      <button data-f="needs" aria-pressed="true">Needs IDs <span class="n" id="n-needs">0</span></button>
+      <button data-f="disputed" aria-pressed="false">No agreement yet <span class="n" id="n-disputed">0</span></button>
+      <button data-f="partial" aria-pressed="false">Partly resolved <span class="n" id="n-partial">0</span></button>
+      <button data-f="resolved" aria-pressed="false">Resolved <span class="n" id="n-resolved">0</span></button>
+      <button data-f="flagged" aria-pressed="false">Flagged for review <span class="n" id="n-flagged">0</span></button>
+      <button data-f="all" aria-pressed="false">All <span class="n" id="n-all">0</span></button>
+    </div>
+    <span class="msg" id="updated"></span>
+  </div>
+
+  <p class="note" id="note" hidden></p>
+  <div class="grid" id="grid"><div class="empty"><h2>Loading images…</h2></div></div>
+  <div class="pager" id="pager"></div>
+
+  <section class="section" id="partner">
+    <div class="partner">
+      <div>
+        <h2>Help this pilot grow</h2>
+        <p>This is a pilot of the Managalas project, led by Landscape Alliance PNG and funded by the European Union. We are looking for partners to grow it into a national community of practice: camera trap projects across Papua New Guinea that want to share images, institutions and experts who want to take part, and funders who could help it last.</p>
+        <p>We would also like to hear from camera trap users in Indonesia, Solomon Islands and other neighbouring countries, where many of the same animal groups occur.</p>
+      </div>
+      <div class="contact" id="contact">
+        <b>Get in touch for more information</b>
+        <span id="contactBody">Contact details coming soon.</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="foot" id="about"><div class="wrap">
+  <div class="logos" id="logos"></div>
+  <p>A pilot of the Managalas project, led by Landscape Alliance PNG and funded by the European Union, to grow a community of practice and identification expertise for camera trap surveys.</p>
+  <p>All images are from Ijivitari District, Oro (Northern) Province. A survey location is a fixed 1 km square; maps show only the 5 km area around it, never exact camera positions. Elevations come from SRTM data. Candidate species, names and elevation ranges come from the IUCN Red List of Threatened Species (<span id="iucnDate">API v4</span>).</p>
+  <p class="mono">Identifications are recorded in <a id="repoLink" href="#">the project repository</a>.</p>
+</div></footer>
+
+<div class="sheet" id="sheet" hidden></div>
+
+<script>
+(() => {
+const RANKS = ["species","genus","family"];
+const RANK_LABEL = {species:"Species", genus:"Genus", family:"Family"};
+const S = { images:[], ids:[], cfg:{minIds:5, agreePct:70, targetRank:"species", repo:""}, geo:null, iucn:null, family:"", filter:"needs", openId:null };
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null && k !== false) n.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return n;
+};
+const svgEl = (tag, attrs={}, ...kids) => { const n = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const [k,v] of Object.entries(attrs)) if (v != null) n.setAttribute(k, v); kids.forEach(k => n.append(k.nodeType ? k : document.createTextNode(String(k)))); return n; };
+try { S.filter = localStorage.getItem("ctid.filter") || "needs"; } catch(e) {}
+const famKey = i => i.family || i.group || "Unassigned";
+const famLabel = k => k.replace(/-/g, " ");
+const safeUrl = u => /^https:\/\//.test(u || "") ? u : null;
+
+function timeOfDay(img) {
+  const ir = /^infrared/i.test(img.imageType || "");
+  if (img.clockReset || !img.time) return img.imageType ? (ir ? "Night" : "Day") : "";
+  const [h, m] = img.time.split(":").map(Number), t = h + (m || 0) / 60;
+  if (t < 5 || t >= 19) return "Night"; if (t < 6.75) return "Dawn"; if (t < 17.5) return "Day"; return "Dusk";
+}
+function genusFamilyMap() {
+  const t = {};
+  for (const v of S.ids.filter(isVote)) if (v.genus && v.family) { t[v.genus] ??= {}; t[v.genus][v.family] = (t[v.genus][v.family]||0)+1; }
+  const m = {}; for (const [g, f] of Object.entries(t)) m[g] = Object.entries(f).sort((a,b)=>b[1]-a[1])[0][0];
+  if (S.iucn) for (const s of S.iucn.species) m[s.genus] ??= s.family;
+  return m;
+}
+const isVote = v => v.vote !== false;
+/* Several photos of one animal form a set ("sighting"); its first photo stands for it. */
+const leadOf = id => { const i = S.byId && S.byId[id]; return i && i.set && i.set.length ? i.set[0] : id; };
+const isLead = i => !i.set || !i.set.length || i.set[0] === i.id;
+const sightings = () => S.images.filter(isLead);
+const idsFor = id => S.ids.filter(v => v.image === id && isVote(v));
+const entriesFor = id => S.ids.filter(v => v.image === id);
+function flagsFor(id) {
+  const f = {range:0, newsp:0, review:0};
+  for (const v of entriesFor(id)) for (const k in f) if (v.flags && v.flags[k]) f[k]++;
+  return f;
+}
+const FLAG_LABEL = {range:"Possible range extension", newsp:"Possibly undescribed", review:"Needs specialist review"};
+function flagNodes(id) {
+  const f = flagsFor(id);
+  return Object.entries(f).filter(([,n]) => n).map(([k,n]) => el("span",{class:"flag " + k, title:`${n} contributor${n>1?"s":""}`, text: FLAG_LABEL[k] + (n > 1 ? ` ×${n}` : "")}));
+}
+function consensus(id, gfm) {
+  const ids = idsFor(id), total = ids.length, {minIds, agreePct, targetRank} = S.cfg;
+  const tally = {species:{}, genus:{}, family:{}}; let unid = 0;
+  for (const v of ids) {
+    if (v.unid) { unid++; continue; }
+    const fam = v.family || gfm[v.genus] || "";
+    if (fam) tally.family[fam] = (tally.family[fam]||0)+1;
+    if (v.genus) tally.genus[v.genus] = (tally.genus[v.genus]||0)+1;
+    if (v.genus && v.species) { const k = v.genus+" "+v.species; tally.species[k] = (tally.species[k]||0)+1; }
+  }
+  const lists = {};
+  for (const r of RANKS) lists[r] = Object.entries(tally[r]).map(([name,n])=>({name,n,pct: total? n/total*100:0})).sort((a,b)=>b.n-a.n||a.name.localeCompare(b.name));
+  let result = null; const unidPct = total ? unid/total*100 : 0;
+  if (total >= minIds && unidPct >= agreePct) result = {rank:"unid", name:"Not identifiable", n:unid, pct:unidPct};
+  if (total >= minIds && !result) for (const r of RANKS) { const [a,b] = lists[r]; if (a && a.pct >= agreePct && (!b || b.n < a.n)) { result = {rank:r, ...a}; break; } }
+  let status;
+  if (total < minIds) status = "needs"; else if (!result) status = "disputed";
+  else if (result.rank === "unid") status = "resolved";
+  else status = RANKS.indexOf(result.rank) <= RANKS.indexOf(targetRank) ? "resolved" : "partial";
+  return {ids, total, lists, result, status, unid, unidPct};
+}
+const taxonNode = (rank, name) => rank === "family" ? el("span",{text:name}) : el("i",{class:"tx", text:name});
+function pillNode(c) {
+  const {status, result, total} = c;
+  if (status === "needs") return el("span",{class:"pill needs", text:`${total} of ${S.cfg.minIds} IDs`});
+  if (status === "disputed") return el("span",{class:"pill disputed", text:`No agreement · ${total} IDs`});
+  if (result.rank === "unid") return el("span",{class:"pill unid", text:`Not identifiable · ${Math.round(result.pct)}%`});
+  const p = el("span",{class:"pill "+status}); p.append(result.rank === "family" ? "Family " : "", taxonNode(result.rank, result.name), ` · ${Math.round(result.pct)}%`); return p;
+}
+
+function renderRule() {
+  const {minIds, agreePct, targetRank} = S.cfg, t = $("#ruleText"); t.textContent = "";
+  t.append("A name is accepted once an image has at least ", el("b",{text:`${minIds} identifications`}), " and ", el("b",{text:`${agreePct}%`}),
+    " of them agree. The finest rank that passes wins: species, then genus, then family. Images are marked resolved at ", el("b",{text:targetRank}), " level.");
+  const lad = $("#ladder"); lad.textContent = ""; const ti = RANKS.indexOf(targetRank);
+  ["family","genus","species"].forEach(r => lad.append(el("span",{class: RANKS.indexOf(r) >= ti ? "on":"", text: RANK_LABEL[r]})));
+}
+function renderFamilies() {
+  const nav = $("#fams"); nav.querySelectorAll(".fam").forEach(b => b.remove());
+  const counts = {}; sightings().forEach(i => { const f = famKey(i); counts[f] = (counts[f]||0)+1; });
+  const mk = (val, label, n) => nav.append(el("button",{class:"fam", type:"button", "aria-pressed": String(S.family === val), onclick: () => setFamily(val)}, label, el("span",{class:"n", text:n})));
+  mk("", "All families", sightings().length);
+  Object.keys(counts).sort().forEach(f => mk(f, famLabel(f), counts[f]));
+  const fl = $("#famlink"); fl.textContent = ""; fl.hidden = !S.family;
+  if (S.family) {
+    const url = location.origin + location.pathname + "#family-" + S.family;
+    const c = el("code",{text:url}), btn = el("button",{type:"button", text:"Copy link"});
+    btn.addEventListener("click", () => navigator.clipboard?.writeText(url).then(() => btn.textContent = "Copied", () => {}));
+    fl.append(`Link for ${famLabel(S.family)} specialists:`, c, btn);
+  }
+}
+const FAM_INFO = {
+  "Macropodidae": "Wallabies and tree kangaroos", "Peramelidae": "Bandicoots", "Phalangeridae": "Cuscuses",
+  "Dasyuridae": "Quolls and other dasyurids", "Varanidae": "Monitor lizards", "Small-mammals": "Small mammals (family not yet known)" };
+function renderHome() {
+  const home = !S.family;
+  $("#workTitle").textContent = home ? "All images" : (FAM_INFO[S.family] || famLabel(S.family));
+  $("#hero").hidden = !home; $("#homeIntro").hidden = !home;
+  const gfm = genusFamilyMap(), locs = new Set(S.images.map(i => i.location));
+  const elev = S.images.map(i => i.elevation);
+  const hf = $("#heroFacts"); hf.textContent = "";
+  [[sightings().length, `sightings to identify (${S.images.length} photos)`], [familyKeys().length, "animal groups"], [locs.size, "survey locations"], [`${Math.min(...elev).toLocaleString("en")}–${Math.max(...elev).toLocaleString("en")} m`, "elevation range"], [S.ids.filter(isVote).length, "identifications so far"]]
+    .forEach(([n, l]) => hf.append(el("div",{}, el("b",{text:n}), l)));
+  const fc = $("#famcards"); fc.textContent = "";
+  for (const f of familyKeys()) {
+    const imgs = sightings().filter(i => famKey(i) === f), ok = imgs.filter(i => ["resolved","partial"].includes(consensus(i.id, gfm).status)).length;
+    const card = el("button",{class:"famcard", type:"button", "aria-label":`${famLabel(f)}: ${imgs.length} sightings`},
+      el("img",{src:`assets/families/${f}.jpg`, alt:"", loading:"lazy"}),
+      el("div",{class:"fb"}, el("span",{class:"fn", text: FAM_INFO[f] || famLabel(f)}),
+        el("span",{class:"fc", text: `${f === "Small-mammals" ? "Small mammals" : f} · ${imgs.length} sightings · ${ok} named`}),
+        el("div",{class:"meter"}, el("i",{style:`width:${imgs.length ? Math.max(2, ok / imgs.length * 100) : 0}%`}))));
+    card.addEventListener("click", () => goFamily(f));
+    fc.append(card);
+  }
+}
+function renderContact() {
+  const c = $("#contactBody"), email = S.cfg.contactEmail; c.textContent = "";
+  if (!email) { c.textContent = "Contact details coming soon."; return; }
+  const code = el("code",{text: email}), b = el("button",{type:"button", text:"Copy email address"});
+  b.addEventListener("click", () => navigator.clipboard?.writeText(email).then(() => b.textContent = "Copied", () => {}));
+  c.append("Email ", code, b);
+}
+function renderLogos() {
+  const L = $("#logos"); L.textContent = "";
+  (S.cfg.logos || []).forEach(l => { if (l && /^[\w./-]+$/.test(l.file || "")) L.append(el("img",{src: l.file, alt: l.alt || ""})); });
+}
+function familyKeys() { return [...new Set(S.images.map(famKey))].sort(); }
+function famCount(f) { return sightings().filter(i => famKey(i) === f).length; }
+function goHome() {
+  if (S.openId) closeSheet();
+  S.family = ""; S.filter = "needs";
+  history.replaceState(null, "", location.pathname);
+  renderFamilies(); renderGrid(); window.scrollTo({top:0, behavior:"smooth"});
+}
+function goFamily(f) {
+  if (S.openId) closeSheet();
+  setFamily(f);
+  window.scrollTo({top: 0, behavior:"smooth"});
+}
+function renderMenu() {
+  const m = $("#famMenu"); m.textContent = "";
+  const link = (label, n, f) => { const a = el("a",{href: f ? "#family-" + f : "#"}, label, el("span",{text:n})); a.addEventListener("click", e => { e.preventDefault(); closeMenu(); f ? goFamily(f) : goHome(); }); return a; };
+  m.append(link("All families", sightings().length, ""), el("hr"));
+  familyKeys().forEach(f => m.append(link(famLabel(f), famCount(f), f)));
+}
+function openMenu() { renderMenu(); $("#famMenu").hidden = false; $("#famBtn").setAttribute("aria-expanded","true"); $("#famMenu a")?.focus(); }
+function closeMenu() { $("#famMenu").hidden = true; $("#famBtn").setAttribute("aria-expanded","false"); }
+function renderCrumbs() {
+  const c = $("#crumbs"); c.textContent = ""; c.hidden = !S.family;
+  if (!S.family) return;
+  const home = el("a",{href:"#", text:"Home"}); home.addEventListener("click", e => { e.preventDefault(); goHome(); });
+  const back = el("button",{class:"backbtn", type:"button", text:"← All families"}); back.addEventListener("click", goHome);
+  c.append(back, home, el("span",{class:"sep", text:"›"}), el("b",{text: famLabel(S.family)}));
+}
+function renderPager() {
+  const p = $("#pager"); p.textContent = "";
+  const top = el("button",{class:"backbtn", type:"button", text:"↑ Back to top"}); top.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+  if (!S.family) { p.append(el("span"), top); return; }
+  const ks = familyKeys(), i = ks.indexOf(S.family), prev = ks[i-1], next = ks[i+1];
+  const btn = (f, label) => { const b = el("button",{class:"backbtn", type:"button", text: label}); b.addEventListener("click", () => goFamily(f)); return b; };
+  const home = el("button",{class:"backbtn", type:"button", text:"← All families"}); home.addEventListener("click", goHome);
+  p.append(prev ? btn(prev, `← ${famLabel(prev)}`) : el("span"), el("div",{class:"mid"}, home, top), next ? btn(next, `${famLabel(next)} →`) : el("span"));
+}
+function setFamily(f) {
+  S.family = f; const h = f ? "#family-" + f : "";
+  if (location.hash !== h) history.replaceState(null, "", location.pathname + h);
+  renderFamilies(); renderGrid();
+}
+function renderGrid() {
+  renderCrumbs(); renderPager(); renderHome();
+  const gfm = genusFamilyMap();
+  const rows = sightings().filter(i => !S.family || famKey(i) === S.family).map(img => ({img, c: consensus(img.id, gfm)}));
+  const counts = {needs:0, disputed:0, partial:0, resolved:0, flagged:0, all:rows.length};
+  rows.forEach(r => { counts[r.c.status]++; r.flags = flagNodes(r.img.id); if (r.flags.length) counts.flagged++; });
+  for (const k in counts) $("#n-"+k).textContent = counts[k];
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === S.filter)));
+  const g = $("#grid"); g.textContent = "";
+  const list = S.visible = rows.filter(r => S.filter === "all" || (S.filter === "flagged" ? r.flags.length : r.c.status === S.filter));
+  S.visible = list.map(r => r.img.id);
+  if (!list.length) { g.append(el("div",{class:"empty"}, el("h2",{text:"Nothing in this view"}), el("p",{text:"Try another tab or family."}))); return; }
+  for (const {img, c, flags} of list) {
+    const info = [img.elevation.toLocaleString("en") + " m", [timeOfDay(img), img.clockReset ? "(clock reset)" : img.time].filter(Boolean).join(" ")].join(" · ");
+    const frame = el("div",{class:"frame"}, el("img",{src: img.thumb, alt:"Camera trap image " + img.id, loading:"lazy"}),
+      img.set && img.set.length > 1 ? el("span",{class:"setbadge", text:`${img.set.length} photos`}) : null);
+    g.append(el("button",{class:"card", type:"button", "aria-label":`Open ${img.id}`, onclick: () => openImage(img.id)}, frame,
+      el("div",{class:"cbody"}, el("div",{class:"meta mono"}, el("b",{text: img.id, style:"color:var(--ink);font-weight:500"}), el("span",{text: info})), pillNode(c), flags.length ? el("div",{class:"flags"}, flags) : null,
+        c.status === "needs" ? el("div",{class:"meter"}, el("i",{style:`width:${Math.min(100, c.total / S.cfg.minIds * 100)}%`})) : null,
+        el("div",{class:"meta"}, el("span",{text:`${c.total} identification${c.total===1?"":"s"}`}), el("span",{text: img.curatedGenus || ""})))));
+  }
+}
+
+/* ---------- detail ---------- */
+function openImage(id) {
+  if (S.openId) { history.replaceState(null, "", location.pathname + "#img-" + id); showDetail(id); }
+  else location.hash = "img-" + id;
+}
+function closeSheet() {
+  S.openId = null; $("#sheet").hidden = true; $("#sheet").textContent = ""; document.body.style.overflow = "";
+  if (location.hash.startsWith("#img-")) history.replaceState(null, "", location.pathname + (S.family ? "#family-" + S.family : ""));
+}
+function mapNode(img) {
+  const G = S.geo; if (!G || !G.areas || !G.areas[img.area]) return null;
+  const [x, y, w, h] = G.areas[img.area], [bx, by, bw, bh] = G.studyBox, R = G.relief;
+  const over = svgEl("svg",{viewBox:"139.6 1.4 16.2 9.8", role:"img", "aria-label":"Papua New Guinea with the study area marked"},
+    svgEl("path",{d: G.outline, style:"fill:var(--land);stroke:var(--muted);stroke-width:.05"}),
+    svgEl("circle",{cx: bx + bw/2, cy: by + bh/2, r:".75", style:"fill:none;stroke:var(--accent);stroke-width:.16"}),
+    svgEl("text",{x:"140.1", y:"10.9", style:"font:600 .62px var(--f-mono);fill:var(--muted)"}, "PAPUA NEW GUINEA"));
+  const study = svgEl("svg",{viewBox:`0 0 ${R.w} ${R.h}`, role:"img", "aria-label":`Managalas Plateau, with the 5 km area around survey location ${img.location} highlighted`}, svgEl("image",{href: R.uri, x:0, y:0, width:R.w, height:R.h}));
+  for (const [a, b] of Object.entries(G.areas)) if (a !== img.area) study.append(svgEl("rect",{x:b[0], y:b[1], width:b[2], height:b[3], style:"fill:none;stroke:#ffffff;stroke-opacity:.55;stroke-width:1"}));
+  study.append(svgEl("rect",{x, y, width:w, height:h, style:"fill:var(--accent);fill-opacity:.3;stroke:var(--accent);stroke-width:3"}),
+    svgEl("rect",{x:12, y:R.h-24, width:R.km10, height:5, style:"fill:#18201b"}),
+    svgEl("text",{x:12, y:R.h-30, style:"font:600 12px var(--f-mono);fill:#18201b;paint-order:stroke;stroke:#ffffff;stroke-width:3px"}, "10 km"));
+  return el("div",{class:"sec"}, el("h3",{text:"Location"}),
+    el("figure",{class:"locmap", style:"margin:0"}, over, study,
+      el("figcaption",{text:`The highlighted square is the 5 km area containing survey location ${img.location} (${img.llg}, ${img.district}, ${img.province}). Faint squares are other areas with images. Exact camera positions and 1 km survey locations are not shown publicly.`})));
+}
+function candidatesNode(img) {
+  if (!S.iucn) return null;
+  const fam = img.family;
+  const pool = S.iucn.species.filter(s => fam ? s.family === fam : !["Macropodidae","Peramelidae","Phalangeridae","Varanidae"].includes(s.family));
+  if (!pool.length) return null;
+  const e = img.elevation, M = 150;
+  const inRange = s => s.elevMin == null && s.elevMax == null ? null : (e >= (s.elevMin ?? 0) - M && e <= (s.elevMax ?? 9000) + M);
+  const sorted = pool.map(s => ({s, r: inRange(s)})).sort((a,b) => (a.r === false) - (b.r === false) || (a.r === null) - (b.r === null) || a.s.name.localeCompare(b.s.name));
+  const fits = sorted.filter(x => x.r !== false), outs = sorted.filter(x => x.r === false);
+  const row = ({s, r}) => {
+    const url = safeUrl(s.url);
+    const name = el("span",{}, el("i",{class:"tx", text:s.name}), " ", el("span",{class:"msg", text:s.authority}), s.common ? " · " + s.common : "");
+    const elev = s.elevMin == null && s.elevMax == null ? "elevation range not recorded" : `${s.elevMin ?? "?"}–${s.elevMax ?? "?"} m`;
+    return el("div",{class:"cand" + (r === false ? " out" : "")}, url ? el("a",{href:url, target:"_blank", rel:"noopener"}, name) : name,
+      el("span",{class:"rl " + s.category, title:"IUCN Red List category", text:s.category}), el("small",{text:`${elev}${s.habitats.length ? " · " + s.habitats.slice(0,2).join("; ") : ""}`}));
+  };
+  const box = el("div",{class:"cands"}, ...fits.map(row));
+  if (!fits.length) box.append(el("p",{class:"none", text:"No species in this group is recorded at this elevation."}));
+  const sec = el("div",{class:"sec"}, el("h3",{text: fam ? `Known ${fam} in PNG near ${e} m` : `Known small mammals in PNG near ${e} m`}),
+    el("p",{class:"hint", text:`Guidance only. These are species the IUCN Red List records anywhere in Papua New Guinea (not only Oro Province) with an elevation range that includes ${e} m (±${M} m). Check each one's distribution on its IUCN page. This survey is expected to find range extensions and possibly undescribed species, so the animal may not be on this list. If so, say so and flag it.`}), box);
+  if (outs.length) sec.append(el("details",{class:"more"}, el("summary",{text:`${outs.length} more recorded in PNG, but not at this elevation (a match would be an elevation range extension)`}), el("div",{class:"cands"}, ...outs.map(row))));
+  return sec;
+}
+/* ---------- identification form (on the site; GitHub only stores it) ---------- */
+const MARK = "<!-- camtrap-identification v1 -->";
+const FLAGS = [["range","Possible range extension (outside the known range or elevation for this taxon)"],
+               ["newsp","Possibly an undescribed species"],["review","Needs a specialist's review"]];
+const cap1 = t => t ? t.charAt(0).toUpperCase() + t.slice(1).toLowerCase() : "";
+function issueBody(img, d) {
+  const sec = (h, v) => `### ${h}\n\n${v && String(v).trim() ? String(v).trim() : "_No response_"}\n`;
+  const box = (on, label) => `- [${on ? "x" : " "}] ${label}`;
+  return [MARK,
+    sec("Image ID", img.id), sec("Family", d.family), sec("Genus", d.genus), sec("Species epithet", d.species),
+    sec("Not identifiable", box(d.unid, "The animal cannot be identified from this image (too dark, blurred or partial)")),
+    sec("Flags", FLAGS.map(([k, l]) => box(d.flags[k], l)).join("\n")),
+    sec("Confidence", d.confidence), sec("Local or common name (optional)", d.local), sec("Notes and ideas", d.note),
+    `---\n_Submitted from the [Melanesian Camera Trap ID website](${location.origin + location.pathname}#img-${img.id}). Press **Create** to send it._`
+  ].join("\n");
+}
+function datalist(id, values) {
+  const dl = el("datalist",{id}); [...new Set(values.filter(Boolean))].sort().forEach(v => dl.append(el("option",{value:v}))); return dl;
+}
+function idForm(img) {
+  const sp = S.iucn ? S.iucn.species : [];
+  const fam = el("input",{id:"fFam", list:"dlFam", autocomplete:"off", placeholder:"e.g. Peramelidae", value: img.family || ""});
+  const gen = el("input",{id:"fGen", list:"dlGen", autocomplete:"off", placeholder:"e.g. Echymipera", value: img.curatedGenus || ""});
+  const spe = el("input",{id:"fSp", list:"dlSp", autocomplete:"off", placeholder:'e.g. kalubu, a common name, or sp. "Managalas"'});
+  const lists = el("div",{hidden:true});
+  const refresh = () => {
+    lists.textContent = "";
+    const f = cap1(fam.value.trim()), g = cap1(gen.value.trim());
+    lists.append(datalist("dlFam", [...sp.map(x => x.family), ...S.images.map(i => i.family)]),
+      datalist("dlGen", sp.filter(x => !f || x.family === f).map(x => x.genus)),
+      (() => { const dl = el("datalist",{id:"dlSp"}); sp.filter(x => (!g || x.genus === g) && (!f || x.family === f)).sort((a,b) => a.species.localeCompare(b.species))
+        .forEach(x => dl.append(el("option",{value:x.species, label: x.common ? `${x.genus} ${x.species} · ${x.common}` : `${x.genus} ${x.species}`}))); return dl; })());
+  };
+  fam.addEventListener("input", refresh); gen.addEventListener("input", refresh);
+  gen.addEventListener("change", () => { const m = sp.find(x => x.genus === cap1(gen.value.trim())); if (m && !fam.value.trim()) { fam.value = m.family; refresh(); } });
+  refresh();
+  const unid = el("input",{type:"checkbox", id:"fUnid"});
+  unid.addEventListener("change", () => [fam, gen, spe].forEach(i => i.disabled = unid.checked));
+  const flagBoxes = Object.fromEntries(FLAGS.map(([k]) => [k, el("input",{type:"checkbox", id:"fFlag-"+k})]));
+  const confs = ["Sure","Likely","Best guess"].map(c => el("input",{type:"radio", name:"fConf", id:"fConf-"+c.replace(/ /g,""), value:c, checked: c === "Likely"}));
+  const local = el("input",{id:"fLocal", maxlength:"80", placeholder:"Tok Pisin, Tok Ples or English"});
+  const note = el("textarea",{id:"fNote", maxlength:"1500", rows:"3", placeholder:"Features you used (tail, ears, colour, gait, size), alternatives you considered, why it might be a range extension or a new species, local knowledge…"});
+  const msg = el("p",{class:"msg", "aria-live":"polite"});
+  const go = el("button",{class:"btn primary", type:"submit", text:"Submit on GitHub"});
+  const form = el("form",{class:"idf", novalidate:true},
+    el("div",{class:"f3"}, el("label",{for:"fFam"}, "Family", fam), el("label",{for:"fGen"}, "Genus", gen), el("label",{for:"fSp"}, "Species", spe)),
+    el("p",{class:"hint", text:"Fill in only the ranks you're sure of: leave species blank for a genus-level ID. Suggestions come from the IUCN list, but any name is accepted, including working names for a possible new species."}),
+    el("label",{class:"chk", for:"fUnid"}, unid, "Not identifiable from this image (too dark, blurred or partial)"),
+    el("fieldset",{class:"fs"}, el("legend",{text:"Flags (optional)"}),
+      ...FLAGS.map(([k, l]) => el("label",{class:"chk", for:"fFlag-"+k}, flagBoxes[k], l))),
+    el("fieldset",{class:"fs row3"}, el("legend",{text:"Confidence"}),
+      ...confs.map(c => el("label",{class:"chk", for:c.id}, c, c.value))),
+    el("label",{for:"fNote"}, "Notes and ideas (optional)", note),
+    el("label",{for:"fLocal"}, "Local or common name (optional; not counted in the consensus)", local),
+    lists,
+    el("div",{class:"actions"}, go, msg),
+    el("p",{class:"hint", text:"Submit opens GitHub in a new tab with your identification written out. Sign in (a free account), check it, and press Create. It appears here within a few minutes. Submitting again for the same image replaces your earlier ID. You can also send a note or flag with no name; it is shown but not counted as a vote."}));
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const d = { family: cap1(fam.value.trim().split(/\s+/)[0] || ""), genus: cap1(gen.value.trim().split(/\s+/)[0] || ""), species: spe.value.trim(),
+      unid: unid.checked, flags: Object.fromEntries(FLAGS.map(([k]) => [k, flagBoxes[k].checked])),
+      confidence: (confs.find(c => c.checked) || {}).value || "", local: local.value.trim(), note: note.value.trim() };
+    if (d.unid) { d.family = d.genus = d.species = ""; }
+    // A common name typed into Species (e.g. "New Guinea Quoll") becomes its scientific name.
+    const cm = d.species && sp.find(x => x.common && x.common.toLowerCase() === d.species.toLowerCase() && (!d.genus || x.genus === d.genus));
+    if (cm) { d.family = d.family || cm.family; d.genus = cm.genus; d.species = cm.species; fam.value = d.family; gen.value = d.genus; spe.value = d.species; }
+    const hasName = d.family || d.genus, hasOther = d.unid || d.note || Object.values(d.flags).some(Boolean);
+    if (!hasName && !hasOther) { msg.className = "msg err"; msg.textContent = "Give a family or genus, tick Not identifiable, or write a note."; return; }
+    if (d.species && !d.genus) { msg.className = "msg err"; msg.textContent = "A species needs its genus."; return; }
+    const what = d.unid ? "not identifiable" : [d.genus, d.species].filter(Boolean).join(" ") || d.family || "note";
+    const url = `https://github.com/${S.cfg.repo}/issues/new?` + new URLSearchParams({title: `ID: ${img.id} – ${what}`, body: issueBody(img, d)}).toString();
+    const w = window.open(url, "_blank", "noopener");
+    msg.className = "msg"; msg.textContent = "";
+    msg.append(w === null ? "Your browser blocked the new tab. " : "GitHub has opened in a new tab. Press Create there to send it. ",
+      el("a",{href:url, target:"_blank", rel:"noopener", text: w === null ? "Open GitHub to send it" : "Open it again"}));
+  });
+  return form;
+}
+function step(id, d) {
+  id = leadOf(id);
+  const list = (S.visible && S.visible.includes(id)) ? S.visible : sightings().map(i => i.id);
+  const i = list.indexOf(id) + d;
+  return i >= 0 && i < list.length ? list[i] : null;
+}
+function navNode(id) {
+  id = leadOf(id);
+  const list = (S.visible && S.visible.includes(id)) ? S.visible : sightings().map(i => i.id);
+  const prev = step(id, -1), next = step(id, 1);
+  return el("div",{class:"navbtns"},
+    el("button",{type:"button", "aria-label":"Previous image", title:"Previous image (left arrow)", disabled: !prev, onclick: () => prev && openImage(prev), text:"← Prev"}),
+    el("span",{class:"pos", text:`${list.indexOf(id) + 1} / ${list.length}`}),
+    el("button",{type:"button", "aria-label":"Next image", title:"Next image (right arrow)", disabled: !next, onclick: () => next && openImage(next), text:"Next →"}),
+    el("button",{class:"x", type:"button", "aria-label":"Close", title:"Close (Esc)", onclick: closeSheet, text:"×"}));
+}
+function viewerHead(img) {
+  const fk = famKey(img);
+  const a = (text, fn) => { const x = el("a",{href:"#", text}); x.addEventListener("click", e => { e.preventDefault(); fn(); }); return x; };
+  const back = el("button",{class:"backbtn", type:"button", text:`← Back to ${famLabel(S.family || fk)}`});
+  back.addEventListener("click", () => { if (!S.family) S.family = fk; closeSheet(); renderFamilies(); renderGrid(); });
+  return el("div",{style:"display:grid;gap:10px"},
+    el("div",{class:"side-top"}, back, navNode(img.id)),
+    el("div",{class:"side-crumbs"}, a("Home", goHome), el("span",{text:"›"}), a(famLabel(fk), () => goFamily(fk)), el("span",{text:"›"}), el("b",{text: img.id})),
+    el("h2",{id:"dTitle", text:"Identification", style:"font-family:var(--f-display);font-weight:800;font-size:26px;margin:0"}));
+}
+function showDetail(id) {
+  const shown = S.images.find(i => i.id === id || (i.aliases || []).includes(id)); if (!shown) return;
+  const img = S.byId[leadOf(shown.id)] || shown;                 // the sighting's first photo carries the identification
+  const members = (img.set && img.set.length ? img.set : [img.id]).map(m => S.byId[m]).filter(Boolean);
+  S.openId = img.id; const sh = $("#sheet"); sh.textContent = ""; sh.hidden = false; document.body.style.overflow = "hidden";
+  const box = el("div",{class:"lb-img", title:"Click to zoom"}), im = el("img",{src: shown.file, alt:"Camera trap image " + shown.id}); box.append(im);
+  const cap = el("span",{class:"setcap"});
+  const strip = members.length > 1 ? el("div",{class:"setstrip", role:"group", "aria-label":"Photos of this animal"}) : null;
+  const showPhoto = m => {
+    im.src = m.file; im.alt = "Camera trap image " + m.id;
+    cap.textContent = `Photo ${members.indexOf(m) + 1} of ${members.length} · ${m.id} · ${m.clockReset ? timeOfDay(m) : m.time}`;
+    strip && strip.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.id === m.id)));
+  };
+  if (strip) { members.forEach(m => { const b = el("button",{type:"button", "data-id": m.id, "aria-label": `Show ${m.id}`}, el("img",{src: m.thumb, alt:""})); b.addEventListener("click", () => showPhoto(m)); strip.append(b); }); }
+  box.addEventListener("click", e => { if (!e.target.closest(".lb-arrow")) box.classList.toggle("zoom"); });
+  const pv = step(img.id, -1), nx = step(img.id, 1);
+  const arrow = (cls, target, label, ch) => { const b = el("button",{class:"lb-arrow " + cls, type:"button", "aria-label":label, title:label, disabled: !target, text: ch}); b.addEventListener("click", () => target && openImage(target)); return b; };
+  box.append(arrow("prev", pv, "Previous image", "‹"), arrow("next", nx, "Next image", "›"));
+  const br = el("input",{type:"range", min:"50", max:"300", value:"100", "aria-label":"Brightness"}), ct = el("input",{type:"range", min:"50", max:"250", value:"100", "aria-label":"Contrast"});
+  const apply = () => im.style.filter = `brightness(${br.value}%) contrast(${ct.value}%)`; br.oninput = ct.oninput = apply;
+  if (strip) showPhoto(shown);
+  const lb = el("div",{class:"lightbox"}, box, strip ? el("div",{class:"setbar"}, strip, cap) : null, el("div",{class:"lb-tools"}, el("label",{}, "Brightness", br), el("label",{}, "Contrast", ct),
+    el("button",{type:"button", onclick:()=>{br.value=100; ct.value=100; apply(); box.classList.remove("zoom");}, text:"Reset"}), el("span",{}, "Click image to zoom · ", el("kbd",{text:"←"}), " ", el("kbd",{text:"→"}), " previous / next · ", el("kbd",{text:"Esc"}), " close")));
+
+  const c = consensus(img.id, genusFamilyMap()), {minIds, agreePct} = S.cfg;
+  const v = el("div",{class:"verdict"}, pillNode(c));
+  if (c.result && c.result.rank === "unid") v.append(el("div",{class:"big", text:"Not identifiable from this image"}), el("small",{text:`${c.result.n} of ${c.total} judged the image too poor to name.`}));
+  else if (c.result) v.append(el("div",{class:"big"}, RANK_LABEL[c.result.rank]+": ", taxonNode(c.result.rank, c.result.name)), el("small",{text:`${c.result.n} of ${c.total} identifications agree (${Math.round(c.result.pct)}%).` + (c.status === "partial" ? ` Not yet agreed at ${S.cfg.targetRank} level.` : "")}));
+  else if (c.status === "needs") v.append(el("div",{class:"big", text:`Needs ${minIds - c.total} more identification${minIds - c.total === 1 ? "" : "s"}`}), el("small",{text:`${c.total} of ${minIds} so far.`}));
+  else v.append(el("div",{class:"big", text:"No agreement yet"}), el("small",{text:`No rank has ${agreePct}% agreement across ${c.total} identifications.`}));
+
+  const fl = flagNodes(img.id); if (fl.length) v.append(el("div",{class:"flags"}, fl));
+  const facts = el("dl",{class:"facts"}), fact = (k, val, cls) => { if (val) facts.append(el("dt",{class:cls, text:k}), el("dd",{class:cls, text:val})); };
+  fact("Curated as", img.family ? [img.family, img.curatedGenus].filter(Boolean).join(", ") : "Small mammal, family not yet known");
+  fact("Project", img.project ? `${img.project}${img.project === "Managalas" ? " (pilot)" : ""}` : "");
+  fact("Location", [img.llg, img.district, img.province, img.country].filter(Boolean).join(", "));
+  fact("Survey location", `${img.location}${img.camera ? `, camera ${img.camera}` : ""}`);
+  fact("Elevation", `${img.elevation.toLocaleString("en")} m`);
+  const tod = timeOfDay(img);
+  fact("Time of day", img.clockReset ? `${tod} (judged from the ${/^infrared/i.test(img.imageType) ? "infrared" : "colour"} image)` : `${tod}, ${img.time} · ${img.imageType}`);
+  fact("Date", img.clockReset ? "" : img.date);
+  if (img.clockReset) fact("Clock", "Unreliable: this camera's clock reset after a battery failure, so the date and time may be wrong.", "clockwarn");
+  if (members.length > 1) fact("Photos", `${members.length} photos from one camera activation (same camera, same minute): ${members.map(m => m.id).join(", ")}. Your identification covers the set.`);
+
+  const tally = el("div",{class:"tally"});
+  for (const r of RANKS) {
+    const list = c.lists[r], b = el("div",{class:"rank"}, el("h4",{}, el("span",{text:RANK_LABEL[r]}), el("span",{class:"mono", text:`${list.reduce((a,x)=>a+x.n,0)} of ${c.total} gave a ${r}`})));
+    if (!list.length) b.append(el("p",{class:"none", text:"No suggestions at this rank yet."}));
+    list.slice(0,4).forEach((x,i) => b.append(el("div",{class:"row"+(i===0?" top":"")+(c.result && c.result.rank===r && i===0?" met":"")},
+      el("span",{}, taxonNode(r, x.name)), el("span",{class:"mono", text:`${x.n} · ${Math.round(x.pct)}%`}),
+      el("span",{class:"lbar"}, el("i",{style:`width:${x.pct}%`}), el("b",{style:`left:calc(${agreePct}% - 1px)`})))));
+    tally.append(b);
+  }
+  const ul = el("ul",{class:"ids"});
+  const entries = entriesFor(img.id);
+  if (!entries.length) ul.append(el("li",{}, el("span"), el("p",{class:"none", text:"No identifications or notes yet. Be the first."})));
+  for (const x of entries) {
+    const what = el("div",{class:"what"});
+    if (!isVote(x)) what.append("Note (not counted as a vote)");
+    else if (x.unid) what.append("Not identifiable from this image");
+    else {
+      if (x.genus) what.append(el("i",{class:"tx", text: x.genus + (x.species ? " " + x.species : x.provisional ? "" : " sp.")}), x.provisional ? " " + x.provisional : "");
+      if (x.family) what.append(x.genus ? ` (${x.family})` : x.family);
+    }
+    if (x.confidence && isVote(x)) what.append(el("span",{class:"conf", text:x.confidence}));
+    const xf = Object.entries(x.flags || {}).filter(([,on]) => on).map(([k]) => el("span",{class:"flag " + k, text: FLAG_LABEL[k]}));
+    if (xf.length) what.append(el("div",{}, xf));
+    const url = safeUrl(x.url);
+    ul.append(el("li",{class: isVote(x) ? "" : "note-entry"}, el("span"), el("div",{}, el("div",{class:"who"}, el("b",{text:x.user}), " · " + (x.at||"").slice(0,10), url ? [" · ", el("a",{href:url, target:"_blank", rel:"noopener", text:"discussion"})] : ""), what,
+      x.local ? el("div",{class:"why", text:"Local or common name: " + x.local}) : null, x.note ? el("div",{class:"why", text:x.note}) : null)));
+  }
+  const cta = idForm(img);
+
+  const side = el("div",{class:"side"},
+    viewerHead(img),
+    v, facts, mapNode(img), el("div",{class:"sec", id:"yourId"}, el("h3",{text:"Your identification"}), cta),
+    el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally), el("div",{class:"sec"}, el("h3",{text:`Identifications and notes (${c.total} counted${entries.length > c.total ? `, ${entries.length - c.total} note${entries.length - c.total > 1 ? "s" : ""}` : ""})`}), ul), candidatesNode(img));
+  sh.append(el("div",{class:"panel", role:"dialog", "aria-modal":"true", "aria-labelledby":"dTitle"}, lb, side));
+  sh.onclick = e => { if (e.target === sh) closeSheet(); };
+}
+function route() {
+  const m = location.hash.match(/^#img-([A-Za-z0-9_-]+)$/), f = location.hash.match(/^#family-([A-Za-z-]+)$/);
+  if (f && f[1] !== S.family) { S.family = f[1]; renderFamilies(); renderGrid(); }
+  if (!f && !m && S.family && !location.hash) { S.family = ""; renderFamilies(); renderGrid(); }
+  if (m) showDetail(m[1]); else if (S.openId) closeSheet();
+}
+window.addEventListener("hashchange", route);
+$("#famBtn").addEventListener("click", () => $("#famMenu").hidden ? openMenu() : closeMenu());
+document.addEventListener("click", e => { if (!e.target.closest(".menu")) closeMenu(); });
+["#navHome", "#navHome2"].forEach(sel => $(sel).addEventListener("click", e => { e.preventDefault(); goHome(); }));
+const jump = t => { if (S.openId) closeSheet(); if (S.family && ["#why","#how","#groups","#guidelines"].includes(t)) { S.family = ""; history.replaceState(null, "", location.pathname); renderFamilies(); renderGrid(); }
+  const n = $(t); window.scrollTo({top: n.getBoundingClientRect().top + scrollY - 64, behavior:"smooth"}); };
+[["#navGuide","#guidelines"], ["#navWhy","#why"], ["#navHow","#how"], ["#navPartner","#partner"], ["#navAbout","#about"], ["#ctaStart","#groups"], ["#ctaWhy","#why"]].forEach(([b, t]) => $(b).addEventListener("click", e => { e.preventDefault(); jump(t); }));
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#famMenu").hidden) { closeMenu(); $("#famBtn").focus(); } });
+document.addEventListener("keydown", e => {
+  if ($("#sheet").hidden || e.target.closest("input,textarea,select")) return;
+  if (e.key === "Escape") closeSheet();
+  else if ((e.key === "ArrowRight" || e.key === "ArrowLeft") && S.openId) { const n = step(S.openId, e.key === "ArrowRight" ? 1 : -1); if (n) { e.preventDefault(); openImage(n); } }
+});
+$("#tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.filter = b.dataset.f; try { localStorage.setItem("ctid.filter", S.filter); } catch(e) {} renderGrid(); });
+
+const get = (u, fallback) => fetch(u, {cache:"no-cache"}).then(r => r.ok ? r.json() : fallback).catch(() => fallback);
+Promise.all([get("data/images.json", []), get("data/ids.json", []), get("data/config.json", {}), get("data/geo.json", null), get("data/iucn.json", null)]).then(([images, ids, cfg, geo, iucn]) => {
+  S.images = images; S.cfg = {...S.cfg, ...cfg}; S.geo = geo; S.iucn = iucn;
+  S.byId = Object.fromEntries(images.map(i => [i.id, i]));
+  images.forEach(i => (i.aliases || []).forEach(a => { S.byId[a] = i; }));
+  S.ids = ids.map(v => ({...v, image: leadOf(S.byId[v.image] ? S.byId[v.image].id : v.image)}));
+  if (!S.cfg.repo) { const o = location.hostname.split(".")[0], r = location.pathname.split("/")[1]; S.cfg.repo = `${o}/${r}`; }
+  $("#repoLink").href = `https://github.com/${S.cfg.repo}/issues?q=label%3Aidentification`;
+  if (iucn && iucn.retrieved) $("#iucnDate").textContent = "retrieved " + iucn.retrieved;
+  if (!images.length) { $("#grid").textContent = ""; $("#grid").append(el("div",{class:"empty"}, el("h2",{text:"The image list could not be loaded"}), el("p",{text:"Reload the page to try again."}))); return; }
+  const latest = ids.reduce((a, v) => v.at > a ? v.at : a, "");
+  const nv = S.ids.filter(isVote).length;
+  $("#updated").textContent = ids.length ? `${nv} identifications, ${ids.length - nv} notes · latest ${latest.slice(0,10)}` : "No identifications yet";
+  renderRule(); renderFamilies(); renderGrid(); renderContact(); renderLogos(); route();
+});
+})();
+</script>
+</body>
+</html>

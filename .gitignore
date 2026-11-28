@@ -7,3 +7,4 @@ output/
 .Renviron
 .Rhistory
 .RData
+.iucn_cache/

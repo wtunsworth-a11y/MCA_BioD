@@ -415,7 +415,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
 
   <section class="section" id="how">
     <h2>How to help</h2>
-    <p class="sub">No special software or account is needed. The first time you submit, enter your email address and we'll send you a sign-in link. No password.</p>
+    <p class="sub">No special software or account is needed. The first time you submit, enter your email address and we'll send you a 6-digit sign-in code. No password.</p>
     <div class="steps">
       <div><b>Choose your group</b>Pick the animals you know best below: wallabies, bandicoots, cuscuses, monitor lizards and more.</div>
       <div><b>Study the image</b>Brighten night shots, check the location, elevation and time of day, and compare with species known from PNG.</div>
@@ -839,7 +839,7 @@ function idForm(img) {
     lists,
     el("div",{class:"actions"}, go, withdraw, msg),
     el("p",{class:"hint", text: S.sb
-      ? (mine ? "You can change or withdraw your identification at any time. Earlier versions are kept for the moderators." : "The first time, you'll be asked to sign in with your email. Your identification appears straight away, and you can change it later. You can also send a note or flag with no name; it is shown but not counted as a vote.")
+      ? (mine ? "You can change or withdraw your identification at any time. Earlier versions are kept for the moderators." : "The first time, you'll be asked to sign in with a code sent to your email. Your identification appears straight away, and you can change it later. You can also send a note or flag with no name; it is shown but not counted as a vote.")
       : "Submit opens GitHub in a new tab with your identification written out. Sign in (a free account), check it, and press Create. It appears here within a few minutes."}));
   form.addEventListener("submit", async e => {
     e.preventDefault();
@@ -947,12 +947,12 @@ function openAuth(after, startAt) {
   const stepEmail = () => {
     box.textContent = "";
     const email = el("input",{type:"email", id:"authEmail", autocomplete:"email", required:true, placeholder:"you@example.org"});
-    const go = el("button",{class:"btn primary", type:"submit", text:"Email me a sign-in link"});
+    const go = el("button",{class:"btn primary", type:"submit", text:"Email me a sign-in code"});
     const bot = el("div",{class:"botcheck", "aria-label":"Check that you are not a robot"});
     let botToken = "", botId = null;
     const f = el("form",{style:"display:grid;gap:14px"},
       el("h2",{id:"authTitle", text:"Sign in to take part"}),
-      el("p",{text:"Enter your email and we'll send you a sign-in link. No password, and your email address is never shown on the site."}),
+      el("p",{text:"Enter your email and we'll send you a 6-digit sign-in code. No password, and your email address is never shown on the site."}),
       el("label",{for:"authEmail"}, "Email address", email), bot, el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Cancel", onclick: close})), msg);
     // Cloudflare Turnstile bot check: usually ticks itself; its token goes with the sign-in request.
     const mountBot = (tries = 0) => {
@@ -976,12 +976,12 @@ function openAuth(after, startAt) {
   };
   const stepCode = (addr) => {
     box.textContent = ""; msg.className = "msg"; msg.textContent = "";
-    const code = el("input",{type:"text", id:"authCode", inputmode:"numeric", autocomplete:"one-time-code", maxlength:"6", placeholder:"6-digit code"});
-    const go = el("button",{class:"btn primary", type:"submit", text:"Sign in with code"});
+    const code = el("input",{type:"text", id:"authCode", inputmode:"numeric", autocomplete:"one-time-code", maxlength:"6", placeholder:"6-digit code", style:"font-size:22px;letter-spacing:4px"});
+    const go = el("button",{class:"btn primary", type:"submit", text:"Sign in"});
     const f = el("form",{style:"display:grid;gap:14px"},
       el("h2",{id:"authTitle", text:"Check your email"}),
-      el("p",{}, "We've sent a sign-in email to ", el("b",{text:addr}), ". Click the link in it and you'll come back here, signed in. If the email shows a 6-digit code, you can type it here instead."),
-      el("label",{for:"authCode"}, "Code (if your email has one)", code),
+      el("p",{}, "We've sent a 6-digit code to ", el("b",{text:addr}), ". Type it here, or click the link in the same email. It may take a minute to arrive; check your spam folder too. Please don't ask for another code meanwhile, as a new one cancels the first."),
+      el("label",{for:"authCode"}, "Sign-in code", code),
       el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Use a different email", onclick: stepEmail})), msg);
     f.addEventListener("submit", async e => {
       e.preventDefault(); if (!/^\d{6}$/.test(code.value.trim())) return err("Enter the 6 digits from the email.");
@@ -991,7 +991,7 @@ function openAuth(after, startAt) {
       if (error) return err("That code didn't work. Check it, or use the link in the email.");
       await afterSignIn();
     });
-    box.append(f);
+    box.append(f); code.focus();
   };
   const stepProfile = () => {
     box.textContent = "";

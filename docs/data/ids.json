@@ -1,8 +1,9 @@
 [
  {
   "image": "Dasyuridae_002",
-  "user": "wtunsworth-a11y",
+  "user": "Will Unsworth",
   "vote": true,
+  "counted": true,
   "family": "Dasyuridae",
   "genus": "Dasyurus",
   "species": "albopunctatus",
@@ -15,8 +16,29 @@
   },
   "confidence": "Likely",
   "local": "",
+  "note": "white spots",
+  "at": "2026-11-28T03:30:12.744037+00:00",
+  "url": ""
+ },
+ {
+  "image": "Macropodidae_002",
+  "user": "Will Unsworth",
+  "vote": true,
+  "counted": true,
+  "family": "Macropodidae",
+  "genus": "Thylogale",
+  "species": "",
+  "provisional": "",
+  "unid": false,
+  "flags": {
+   "range": false,
+   "newsp": false,
+   "review": false
+  },
+  "confidence": "Best guess",
+  "local": "",
   "note": "",
-  "at": "2026-11-27T04:25:28Z",
-  "url": "https://github.com/wtunsworth-a11y/MCA_BioD/issues/6"
+  "at": "2026-11-28T03:32:22.706037+00:00",
+  "url": ""
  }
 ]

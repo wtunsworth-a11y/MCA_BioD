@@ -335,7 +335,7 @@ a.btn{text-decoration:none;justify-content:center}
 .partner .contact button{justify-self:start;border:0;background:#f3a448;color:#201300;font-weight:700;border-radius:99px;padding:8px 16px;cursor:pointer}
 @media (max-width:860px){.partner{grid-template-columns:minmax(0,1fr)}}
 .logos{display:flex;flex-wrap:wrap;gap:20px 36px;align-items:center;padding-block:8px 18px}
-.logos img{height:64px;width:auto;max-width:260px;object-fit:contain}
+.logos img{height:72px;width:auto;max-width:260px;object-fit:contain;background:#fff;padding:8px 12px;border-radius:10px;border:1px solid var(--line)}
 .workarea{padding-top:28px}
 /* breadcrumbs */
 .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13.5px;color:var(--muted);padding-top:16px}
@@ -975,7 +975,7 @@ function openAuth(after, startAt) {
     box.append(f); email.focus(); mountBot();
   };
   const stepCode = (addr) => {
-    box.textContent = "";
+    box.textContent = ""; msg.className = "msg"; msg.textContent = "";
     const code = el("input",{type:"text", id:"authCode", inputmode:"numeric", autocomplete:"one-time-code", maxlength:"6", placeholder:"6-digit code"});
     const go = el("button",{class:"btn primary", type:"submit", text:"Sign in with code"});
     const f = el("form",{style:"display:grid;gap:14px"},

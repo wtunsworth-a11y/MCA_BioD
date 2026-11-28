@@ -1,0 +1,27 @@
+scientific_name,reviewed_tier,evidence,note,gbif_records
+Endiandra inaequitepala,1,Collected on the plateau,"Pullen 1964: S slopes of Hydrographers Range near Siurane, Managalase area.",2513099470
+Endiandra pilosa,1,Collected on the plateau,"Damas et al. 2013: Sibium Mountains, W of Akupe Camp, Kuriate River.",2980343315
+Ornithoptera alexandrae,1,Location hidden,"Three iNaturalist observations (2023, 2025) in Ijivitari District with coordinates deliberately blurred by about 31 km, as iNaturalist does for threatened species. The points fall inside the MCA but the true sites may not.","5281881886; 5292537142; 4465707468"
+Goura scheepmakeri,3,Mislocated record removed,"The only record (MCZ 92307) is labelled 'Owen Stanley, Aroa River', which is in Central Province. Its coordinates came from an automated GEOLocate match (score 42, low precision, under review) that placed it inside the MCA.",863414740
+Psychotria ramuensis,1,Collected on the plateau,"Damas & James 2013: Sibium Mountains, S of Akupe Camp.","1828941875; 2980357315"
+Syzygium pallens,1,Collected on the plateau,"Pullen 1964: S slope of Hydrographers Range near Siurane village, Managalase area (4 specimens).","95077650; 95077651; 95077652; 95077653"
+Endiandra latifolia,1,Collected on the plateau,"James 2013: Sibium Mountains, S of Ulabe Camp; Pullen 1964.","6561497651; 2514101600"
+Hunga papuana,1,Collected on the plateau,"James 2013: Sibium Mountains, vicinity of Akupe Camp.",2515207259
+Aglaia cuspidata,1,Collected on the plateau,"Pullen 1964: S side of Hydrographers Range near Siurane, Managalase area.",2515835480
+Anisoptera thurifera,1,Collected on the plateau,"Pullen 1964: N side of Sibium Range, S of Toma village, Bariji-Managalase area (6 specimens); Hoogland 1953: Hydrographers Range foothills near Inota village.",94064085; 94068235
+Hibiscus pulvinulifer,2,Probably inside,"Pullen 1964: Pongani valley between Dareki and Ondoro, Managalase area. The rounded coordinates fall 4 km outside the boundary, but the label places it in the Managalase area.",94525842
+Millettia velvetina,3,Mislocated record removed,"The only nearby record is labelled '5 miles S of Brown River Station', which is in Central Province near Port Moresby, about 70 km west of where its coordinates put it.",94910514
+Tetracentrum caudovittatus,2,Nearby lowlands,"Fish collections from streams near Buna and the Isaveni River near Popondetta, 14-17 km from the boundary.",1320357129; 1318071435
+Zenarchopterus robertsi,2,Nearby lowlands,"Roberts 1975: Ovi Creek, a tributary of the Kumusi River, 21 km from the boundary.",666714936
+Cupaniopsis rhytidocarpa,2,Nearby lowlands,"Hoogland 1953: near Sangara, about 10 km W of Popondetta.",912547013
+Pseudomugil connieae,2,Nearby lowlands,"Allen 1978 and Roberts 1975: creeks near Popondetta.",1318909555; 473272252
+Calophyllum robustum,2,Nearby lowlands,"Cavanaugh 1945: Dobodura Plain, Samboga River area.",94126167
+Garcinia jaweri,2,Nearby lowlands,"Cavanaugh 1945: Dobodura Plain, Amboga River.",94461543
+Brachychiton carruthersii,2,Nearby lowlands,"Cavanaugh 1945: Dobodura Plain, Amboga River.",94112283
+Tetracentrum honessi,2,Nearby lowlands,"Honess: Samboga or Girua River at Buna, 17 km from the boundary.",1318141664
+Tateurndina ocellicauda,2,Nearby lowlands,"Roberts 1975: tributary of the Isaveni River near Popondetta.",1319849500
+Syzygium sambogense,2,Nearby lowlands,"Hoogland 1953: Samboga River W of Embi Lakes; Dobodura airstrip.",95078241
+Gmelina sessilis,2,Nearby lowlands,"1945: Dobodura Plain, Samboga River area.",94477000
+Ficus novae-georgiae,2,Nearby lowlands,"Hoogland 1953: Popondetta to Cape Killerton road near Garara village.",2828667043
+Pterocarpus indicus,2,Nearby lowlands,"Hoogland 1953 and de Zeeuw 1943: Samboga River and Embi Lakes; Fitzgerald 1895: Kumusi River.",94942070; 2595884651
+Endospermum medullosum,2,Nearby lowlands,"Cavanaugh 1945: Dobodura Plain.",94335955

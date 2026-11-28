@@ -163,17 +163,22 @@ Rscript run_mca.R --buffer-km 10
 4. Within each tier, Priority 1 species come before Priority 2, then species are ranked by the national score.
 5. `site_share` is the buffer's share of the species' GBIF records in PNG. It roughly shows how much the area matters for that species. Survey effort biases it heavily.
 
-**Result** (25 km buffer, 28 Nov 2026):
+**Record review.** Tiers 1 and 2 rest on a few GBIF records each, so every record behind them was checked by hand against its original locality label (`audit_mca_records.R` lists them). The verdicts are in `review/mca_gbif_review.csv`, and `run_mca.R` applies them:
+- Two species are moved to tier 3 because their only records are mislocated:
+  - *Goura scheepmakeri*: a specimen labelled "Aroa River", which is in Central Province. An automated, low-confidence GEOLocate match placed it inside the MCA.
+  - *Millettia velvetina*: a specimen labelled "Brown River Station", near Port Moresby, about 70 km from where its coordinates put it.
+- The Queen Alexandra's birdwing records are iNaturalist observations whose coordinates are blurred by about 31 km, so they are marked "Location hidden".
+- Eight tier 1 species are confirmed by specimens collected on the plateau (Sibium Mountains 2013; Hydrographers Range and the Managalase area 1953–1964).
+- Tier 2 records are from the Popondetta–Dobodura–Buna lowlands, mostly collected 1945–1978.
+
+**Result** (25 km buffer, after review, 28 Nov 2026):
 
 | Tier | Species | Priority 1 | Priority 2 |
 |---|---|---|---|
-| 1, recorded in the site | 10 | 9 | 1 |
-| 2, recorded nearby | 16 | 14 | 2 |
-| 3, no records nearby | 926 | 859 | 67 |
+| 1, recorded in the site | 9 | 8 | 1 |
+| 2, recorded nearby | 15 | 13 | 2 |
+| 3, no records nearby | 928 | 861 | 67 |
 | 4, marine only | 347 | 32 | 315 |
-
-Tier 1 includes *Ornithoptera alexandrae* (Queen Alexandra's birdwing,
-the MCA's flagship species) and *Goura scheepmakeri*.
 
 **Caveats**
 - GBIF holds only about 3,400 records inside the MCA. Tier 3 therefore mostly means "not surveyed", not "absent".

@@ -56,9 +56,33 @@ ranked$n_country <- counts$n_country[i]
 dup <- ranked$gbif_key[duplicated(ranked$gbif_key) & !is.na(ranked$gbif_key)]
 ranked$gbif_shared_key <- ranked$gbif_key %in% dup
 ranked$site_tier <- site_tier(ranked$n_site, ranked$n_buffer, ranked$systems)
+ranked$site_tier_gbif <- ranked$site_tier
+
+# Manual review of the GBIF records behind tiers 1 and 2 (review/): reads each
+# record's original locality label, moves species whose only records are
+# mislocated, and records how strong the evidence is.
+review_file <- file.path("review", "mca_gbif_review.csv")
+ranked$evidence <- NA_character_
+ranked$evidence_note <- NA_character_
+if (file.exists(review_file)) {
+  rv <- read.csv(review_file, stringsAsFactors = FALSE)
+  j <- match(ranked$scientific_name, rv$scientific_name)
+  hit <- !is.na(j)
+  ranked$site_tier[hit] <- rv$reviewed_tier[j[hit]]
+  ranked$evidence[hit] <- rv$evidence[j[hit]]
+  ranked$evidence_note[hit] <- rv$note[j[hit]]
+  unreviewed <- ranked$site_tier_gbif %in% 1:2 & !hit
+  if (any(unreviewed)) {
+    warning(sum(unreviewed), " species in tiers 1-2 have no entry in ", review_file,
+            ": ", paste(ranked$scientific_name[unreviewed], collapse = ", "),
+            call. = FALSE)
+    ranked$evidence[unreviewed] <- "Not reviewed"
+  }
+}
 mca <- site_rank(ranked)
 
-cols <- c("site_tier", "site_tier_label", "site_rank", "priority", "rank",
+cols <- c("site_tier", "site_tier_label", "site_rank", "evidence", "evidence_note",
+          "site_tier_gbif", "priority", "rank",
           "priority_score", "scientific_name", "kingdom", "phylum", "class",
           "order", "family", "category", "criteria", "population_trend",
           "systems", "elev_lower", "elev_upper",

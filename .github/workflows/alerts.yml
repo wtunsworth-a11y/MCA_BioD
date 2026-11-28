@@ -1,0 +1,42 @@
+# Emails the moderators when new members are waiting for approval.
+# Needs repository secrets ALERT_SMTP_USER, ALERT_SMTP_PASSWORD and ALERT_TO
+# (see scripts/alert_pending.py). Running hourly also keeps the free
+# Supabase project from pausing.
+name: Moderator alerts
+
+on:
+  schedule:
+    - cron: "41 * * * *"   # every hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: moderator-alerts
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for members waiting for approval
+        env:
+          ALERT_SMTP_USER: ${{ secrets.ALERT_SMTP_USER }}
+          ALERT_SMTP_PASSWORD: ${{ secrets.ALERT_SMTP_PASSWORD }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+        run: python3 scripts/alert_pending.py
+
+      - name: Remember who has been reported
+        run: |
+          git config user.name "camtrap-alerts"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/alert_state.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update moderator alert state"
+            git pull --rebase --quiet
+            git push
+          fi

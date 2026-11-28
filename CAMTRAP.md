@@ -65,3 +65,17 @@ If the repository moves to another GitHub account (for example a Landscape
 Alliance PNG organisation account), transfer it under Settings > General >
 Transfer ownership, then update `repo` in `docs/data/config.json`.
 The identifications travel with the repository because they are its issues.
+
+## Moderators and alerts
+
+- **Adding a moderator.** Once the person has signed in on the site and been
+  approved, open **Moderate → All members** and click **Make moderator**. To
+  make someone a moderator before they first sign in, add their email in
+  Supabase: SQL Editor →
+  `insert into public.moderator_emails (email) values ('name@example.org');`
+  They are approved and made a moderator automatically when they first sign in.
+- **Alerts.** `.github/workflows/alerts.yml` runs hourly and emails the
+  addresses in the `ALERT_TO` repository secret when someone new is waiting for
+  approval (it uses the `ALERT_SMTP_USER` / `ALERT_SMTP_PASSWORD` Gmail
+  secrets). To alert another moderator, add their email to `ALERT_TO`,
+  separated by commas.

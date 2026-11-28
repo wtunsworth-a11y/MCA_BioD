@@ -274,6 +274,37 @@ a.btn{text-decoration:none;justify-content:center}
 .guide h3{margin:0 0 8px;font-size:18px;font-weight:700}
 .guide ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--muted);font-size:15px}
 .guide code{font-family:var(--f-mono);font-size:13px;background:var(--sunk);padding:1px 5px;border-radius:4px;color:var(--ink)}
+.authbtn{background:#f3d7a1 !important;color:#1f3a2c !important;font-weight:700 !important;border-radius:99px !important}
+.badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:#f3a448;color:#201300;font-size:12px;font-weight:700;margin-left:4px}
+.authbox{background:var(--surface);color:var(--ink);border-radius:16px;width:min(460px,100%);margin:auto;padding:26px 26px 22px;display:grid;gap:14px;box-shadow:0 20px 60px rgb(0 0 0 / .3);align-self:center}
+.authbox h2{margin:0;font-size:24px}
+.authbox p{margin:0;color:var(--muted)}
+.authbox label{display:grid;gap:5px;font-size:14px;color:var(--muted)}
+.authbox input[type=email],.authbox input[type=text]{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:16px;color:var(--ink);width:100%}
+.authbox .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.authbox .chips{display:flex;flex-wrap:wrap;gap:6px}
+.authbox .chips label{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:var(--ink);cursor:pointer}
+.botcheck{min-height:65px}
+.linkbtn{background:none;border:0;color:var(--accent);cursor:pointer;padding:0;font:inherit;text-decoration:underline}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:99px;margin-left:6px;vertical-align:1px}
+.tag.pending{background:var(--accent-soft);color:var(--accent)}
+.tag.hidden{background:var(--warn-soft);color:var(--warn)}
+.tag.you{background:var(--moss-soft);color:var(--moss)}
+.modbtn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:3px 10px;font-size:13px;cursor:pointer;color:var(--ink);margin-left:6px}
+.modbtn.warn{color:var(--warn);border-color:var(--warn)}
+.comments{display:grid;gap:10px}
+.comment{background:var(--sunk);border-radius:10px;padding:10px 12px;font-size:14.5px}
+.comment .who{font-size:13px;color:var(--muted);margin-bottom:2px}
+.comment .who b{color:var(--ink)}
+.cform{display:grid;gap:8px}
+.cform textarea{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font:inherit;color:var(--ink);resize:vertical}
+.modpanel{background:var(--surface);color:var(--ink);border-radius:16px;width:min(1100px,100%);margin:0 auto;padding:26px;display:grid;gap:24px}
+.modpanel h2{margin:0}
+.modpanel h3{margin:0 0 10px;font-size:18px}
+.modpanel table{width:100%;border-collapse:collapse;font-size:14px}
+.modpanel th,.modpanel td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.modpanel th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+.modpanel .tablewrap{overflow-x:auto}
 .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .why article{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px}
 .why article h3{margin:0 0 8px;font-size:19px;font-weight:700}
@@ -345,6 +376,11 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
       <a href="#partner" id="navPartner">Partner with us</a>
       <a href="#about" id="navAbout">About</a>
       <a href="data/labels.csv" download>Download labels</a>
+      <a href="#moderate" id="navMod" hidden>Moderate <span class="badge" id="modCount" hidden></span></a>
+      <div class="menu">
+        <button type="button" id="navAuth" class="authbtn">Sign in</button>
+        <div class="drop" id="userMenu" hidden></div>
+      </div>
     </nav>
   </div>
 </div>
@@ -379,7 +415,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
 
   <section class="section" id="how">
     <h2>How to help</h2>
-    <p class="sub">No special software is needed, just a free GitHub account to record your identification.</p>
+    <p class="sub">No special software or account is needed. The first time you submit, enter your email address and we'll send you a sign-in link. No password.</p>
     <div class="steps">
       <div><b>Choose your group</b>Pick the animals you know best below: wallabies, bandicoots, cuscuses, monitor lizards and more.</div>
       <div><b>Study the image</b>Brighten night shots, check the location, elevation and time of day, and compare with species known from PNG.</div>
@@ -442,6 +478,7 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
       <button data-f="resolved" aria-pressed="false">Resolved <span class="n" id="n-resolved">0</span></button>
       <button data-f="flagged" aria-pressed="false">Flagged for review <span class="n" id="n-flagged">0</span></button>
       <button data-f="all" aria-pressed="false">All <span class="n" id="n-all">0</span></button>
+      <button data-f="mine" aria-pressed="false" id="tabMine" hidden>Mine <span class="n" id="n-mine">0</span></button>
     </div>
     <span class="msg" id="updated"></span>
   </div>
@@ -469,11 +506,15 @@ kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);border
   <div class="logos" id="logos"></div>
   <p>A pilot of the Managalas project, led by Landscape Alliance PNG and funded by the European Union, to grow a community of practice and identification expertise for camera trap surveys.</p>
   <p>All images are from Ijivitari District, Oro (Northern) Province. A survey location is a fixed 1 km square; maps show only the 5 km area around it, never exact camera positions. Elevations come from SRTM data. Candidate species, names and elevation ranges come from the IUCN Red List of Threatened Species (<span id="iucnDate">API v4</span>).</p>
-  <p class="mono">Identifications are recorded in <a id="repoLink" href="#">the project repository</a>.</p>
+  <p class="mono">Identifications are stored in the project database, with a public copy of the agreed labels in <a id="repoLink" href="#">the project repository</a>. Email addresses are never shown.</p>
 </div></footer>
 
 <div class="sheet" id="sheet" hidden></div>
+<div class="sheet" id="authSheet" hidden></div>
+<div class="sheet" id="modSheet" hidden></div>
 
+<script src="vendor/supabase-2.45.4.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <script>
 (() => {
 const RANKS = ["species","genus","family"];
@@ -509,7 +550,7 @@ function genusFamilyMap() {
   if (S.iucn) for (const s of S.iucn.species) m[s.genus] ??= s.family;
   return m;
 }
-const isVote = v => v.vote !== false;
+const isVote = v => v.vote !== false && v.counted !== false && !v.hidden;
 /* Several photos of one animal form a set ("sighting"); its first photo stands for it. */
 const leadOf = id => { const i = S.byId && S.byId[id]; return i && i.set && i.set.length ? i.set[0] : id; };
 const isLead = i => !i.set || !i.set.length || i.set[0] === i.id;
@@ -658,12 +699,13 @@ function renderGrid() {
   renderCrumbs(); renderPager(); renderHome();
   const gfm = genusFamilyMap();
   const rows = sightings().filter(i => !S.family || famKey(i) === S.family).map(img => ({img, c: consensus(img.id, gfm)}));
-  const counts = {needs:0, disputed:0, partial:0, resolved:0, flagged:0, all:rows.length};
+  const mineIds = new Set(S.user ? S.ids.filter(v => v.uid === S.user.id).map(v => v.image) : []);
+  const counts = {needs:0, disputed:0, partial:0, resolved:0, flagged:0, all:rows.length, mine:rows.filter(r => mineIds.has(r.img.id)).length};
   rows.forEach(r => { counts[r.c.status]++; r.flags = flagNodes(r.img.id); if (r.flags.length) counts.flagged++; });
   for (const k in counts) $("#n-"+k).textContent = counts[k];
   document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === S.filter)));
   const g = $("#grid"); g.textContent = "";
-  const list = S.visible = rows.filter(r => S.filter === "all" || (S.filter === "flagged" ? r.flags.length : r.c.status === S.filter));
+  const list = S.visible = rows.filter(r => S.filter === "all" || (S.filter === "flagged" ? r.flags.length : S.filter === "mine" ? mineIds.has(r.img.id) : r.c.status === S.filter));
   S.visible = list.map(r => r.img.id);
   if (!list.length) { g.append(el("div",{class:"empty"}, el("h2",{text:"Nothing in this view"}), el("p",{text:"Try another tab or family."}))); return; }
   for (const {img, c, flags} of list) {
@@ -768,7 +810,22 @@ function idForm(img) {
   const local = el("input",{id:"fLocal", maxlength:"80", placeholder:"Tok Pisin, Tok Ples or English"});
   const note = el("textarea",{id:"fNote", maxlength:"1500", rows:"3", placeholder:"Features you used (tail, ears, colour, gait, size), alternatives you considered, why it might be a range extension or a new species, local knowledge…"});
   const msg = el("p",{class:"msg", "aria-live":"polite"});
-  const go = el("button",{class:"btn primary", type:"submit", text:"Submit on GitHub"});
+  const mine = S.sb && S.user ? S.ids.find(v => v.image === img.id && v.uid === S.user.id) : null;
+  if (mine) {
+    fam.value = mine.family; gen.value = mine.genus; spe.value = mine.species || mine.provisional; refresh();
+    if (mine.unid) { unid.checked = true; [fam, gen, spe].forEach(i => i.disabled = true); }
+    FLAGS.forEach(([k]) => flagBoxes[k].checked = !!mine.flags[k]);
+    confs.forEach(c => c.checked = c.value === (mine.confidence || "Likely"));
+    local.value = mine.local; note.value = mine.note;
+  }
+  const go = el("button",{class:"btn primary", type:"submit", text: S.sb ? (mine ? "Update my identification" : "Submit identification") : "Submit on GitHub"});
+  const withdraw = mine ? el("button",{class:"btn", type:"button", text:"Withdraw"}) : null;
+  if (withdraw) withdraw.addEventListener("click", async () => {
+    withdraw.disabled = true;
+    const { error } = await S.sb.from("identifications").delete().eq("id", mine.rowId);
+    if (error) { withdraw.disabled = false; msg.className = "msg err"; msg.textContent = error.message; return; }
+    await loadCommunity(); refreshAll(); showDetail(img.id); toast("Your identification was withdrawn.");
+  });
   const form = el("form",{class:"idf", novalidate:true},
     el("div",{class:"f3"}, el("label",{for:"fFam"}, "Family", fam), el("label",{for:"fGen"}, "Genus", gen), el("label",{for:"fSp"}, "Species", spe)),
     el("p",{class:"hint", text:"Fill in only the ranks you're sure of: leave species blank for a genus-level ID. Suggestions come from the IUCN list, but any name is accepted, including working names for a possible new species."}),
@@ -780,9 +837,11 @@ function idForm(img) {
     el("label",{for:"fNote"}, "Notes and ideas (optional)", note),
     el("label",{for:"fLocal"}, "Local or common name (optional; not counted in the consensus)", local),
     lists,
-    el("div",{class:"actions"}, go, msg),
-    el("p",{class:"hint", text:"Submit opens GitHub in a new tab with your identification written out. Sign in (a free account), check it, and press Create. It appears here within a few minutes. Submitting again for the same image replaces your earlier ID. You can also send a note or flag with no name; it is shown but not counted as a vote."}));
-  form.addEventListener("submit", e => {
+    el("div",{class:"actions"}, go, withdraw, msg),
+    el("p",{class:"hint", text: S.sb
+      ? (mine ? "You can change or withdraw your identification at any time. Earlier versions are kept for the moderators." : "The first time, you'll be asked to sign in with your email. Your identification appears straight away, and you can change it later. You can also send a note or flag with no name; it is shown but not counted as a vote.")
+      : "Submit opens GitHub in a new tab with your identification written out. Sign in (a free account), check it, and press Create. It appears here within a few minutes."}));
+  form.addEventListener("submit", async e => {
     e.preventDefault();
     const d = { family: cap1(fam.value.trim().split(/\s+/)[0] || ""), genus: cap1(gen.value.trim().split(/\s+/)[0] || ""), species: spe.value.trim(),
       unid: unid.checked, flags: Object.fromEntries(FLAGS.map(([k]) => [k, flagBoxes[k].checked])),
@@ -794,6 +853,22 @@ function idForm(img) {
     const hasName = d.family || d.genus, hasOther = d.unid || d.note || Object.values(d.flags).some(Boolean);
     if (!hasName && !hasOther) { msg.className = "msg err"; msg.textContent = "Give a family or genus, tick Not identifiable, or write a note."; return; }
     if (d.species && !d.genus) { msg.className = "msg err"; msg.textContent = "A species needs its genus."; return; }
+    if (S.sb) {
+      if (!signedInGate(() => { showDetail(img.id); toast("You're signed in. Check your identification and press Submit."); })) return;
+      let species = d.species, provisional = "";
+      if (species && d.genus && species.toLowerCase().startsWith(d.genus.toLowerCase() + " ")) species = species.slice(d.genus.length + 1);
+      if (species && PROV.test(species)) { provisional = species; species = ""; } else species = (species.split(/\s+/)[0] || "").toLowerCase();
+      const row = { sighting_id: img.id, user_id: S.user.id, family: d.family || null, genus: d.genus || null, species: species || null, provisional: provisional || null,
+        unid: d.unid, flag_range: d.flags.range, flag_newsp: d.flags.newsp, flag_review: d.flags.review,
+        confidence: d.confidence || null, local_name: d.local || null, note: d.note || null };
+      go.disabled = true; msg.className = "msg"; msg.textContent = "Saving…";
+      const { error } = await S.sb.from("identifications").upsert(row, { onConflict: "sighting_id,user_id" });
+      go.disabled = false;
+      if (error) { msg.className = "msg err"; msg.textContent = error.message; return; }
+      await loadCommunity(); refreshAll(); showDetail(img.id);
+      toast(S.me && S.me.status === "approved" ? "Saved. Thank you!" : "Saved. It will count once a moderator approves your account.");
+      return;
+    }
     const what = d.unid ? "not identifiable" : [d.genus, d.species].filter(Boolean).join(" ") || d.family || "note";
     const url = `https://github.com/${S.cfg.repo}/issues/new?` + new URLSearchParams({title: `ID: ${img.id} – ${what}`, body: issueBody(img, d)}).toString();
     const w = window.open(url, "_blank", "noopener");
@@ -803,6 +878,237 @@ function idForm(img) {
   });
   return form;
 }
+/* ---------- community data (Supabase) ---------- */
+const PROV = /\b(sp|spp|cf|aff|nov)\b\.?|\bn\.\s*sp\b|["'“”‘’?]|\s\S+\s/i;
+function rowToEntry(r) {
+  const p = S.profiles[r.user_id] || {};
+  return { rowId: r.id, image: leadOf(r.sighting_id), uid: r.user_id, user: p.display_name || "Member", status: p.status || "pending",
+    vote: !!(r.unid || r.family || r.genus), counted: p.status === "approved", hidden: r.hidden,
+    family: r.family || "", genus: r.genus || "", species: r.species || "", provisional: r.provisional || "", unid: r.unid,
+    flags: {range: r.flag_range, newsp: r.flag_newsp, review: r.flag_review}, confidence: r.confidence || "",
+    local: r.local_name || "", note: r.note || "", at: r.updated_at };
+}
+async function loadCommunity() {
+  if (!S.sb) return;
+  const [p, i, c] = await Promise.all([
+    S.sb.from("profiles").select("id,display_name,affiliation,expertise,status,is_moderator,created_at"),
+    S.sb.from("identifications").select("*"),
+    S.sb.from("comments").select("*").order("created_at")]);
+  if (p.error || i.error || c.error) { console.error(p.error || i.error || c.error); return; }
+  S.profiles = Object.fromEntries(p.data.map(x => [x.id, x]));
+  S.ids = i.data.map(rowToEntry);
+  S.comments = c.data.map(x => ({...x, image: leadOf(x.sighting_id)}));
+  const { data: { session } } = await S.sb.auth.getSession();
+  S.user = session ? session.user : null;
+  S.me = S.user ? S.profiles[S.user.id] || null : null;
+  renderAuthNav(); updateCounts();
+}
+function updateCounts() {
+  const nv = S.ids.filter(isVote).length, latest = S.ids.reduce((a, v) => v.at > a ? v.at : a, "");
+  $("#updated").textContent = S.ids.length ? `${nv} counted identifications · latest ${latest.slice(0,10)}` : "No identifications yet";
+}
+function refreshAll() { renderFamilies(); renderGrid(); }
+function renderAuthNav() {
+  const b = $("#navAuth"); if (!b) return;
+  b.parentElement.hidden = !S.sb;
+  b.textContent = S.me ? `${S.me.display_name} ▾` : (S.user ? "Finish signing in" : "Sign in");
+  const mod = !!(S.me && S.me.is_moderator);
+  $("#navMod").hidden = !mod;
+  const pend = mod ? Object.values(S.profiles).filter(x => x.status === "pending").length : 0;
+  $("#modCount").hidden = !pend; $("#modCount").textContent = pend;
+  $("#tabMine").hidden = !S.me;
+}
+function closeUserMenu() { $("#userMenu").hidden = true; }
+function openUserMenu() {
+  const m = $("#userMenu"); m.textContent = "";
+  const item = (label, fn) => { const a = el("a",{href:"#"}, label); a.addEventListener("click", e => { e.preventDefault(); closeUserMenu(); fn(); }); m.append(a); };
+  if (S.me) {
+    m.append(el("div",{style:"padding:8px 10px;font-size:13px;color:var(--muted)"}, S.me.status === "approved" ? "Your identifications count towards the consensus." : S.me.status === "pending" ? "Waiting for a moderator to approve your account. Your identifications are saved and will count once approved." : "This account can't submit."));
+    item("My identifications", () => { S.filter = "mine"; if (S.openId) closeSheet(); goHome(); S.filter = "mine"; renderGrid(); $("#workTitle").scrollIntoView({behavior:"smooth"}); });
+    item("Edit my profile", () => openAuth(null, "profile"));
+    if (S.me.is_moderator) item("Moderate", openModeration);
+    m.append(el("hr"));
+    item("Sign out", async () => { await S.sb.auth.signOut(); S.user = S.me = null; renderAuthNav(); refreshAll(); if (S.openId) showDetail(S.openId); });
+  }
+  m.hidden = false;
+}
+/* Sign in with an emailed link (a 6-digit code also works once the email template shows it). */
+function openAuth(after, startAt) {
+  S.afterAuth = after || null;
+  const sh = $("#authSheet"); sh.textContent = ""; sh.hidden = false;
+  const box = el("div",{class:"authbox", role:"dialog", "aria-modal":"true", "aria-labelledby":"authTitle"});
+  sh.append(box);
+  const close = () => { sh.hidden = true; sh.textContent = ""; };
+  sh.onclick = e => { if (e.target === sh) close(); };
+  const msg = el("p",{class:"msg", "aria-live":"polite"});
+  const err = t => { msg.className = "msg err"; msg.textContent = t; };
+  const friendly = e => /rate|seconds|too many/i.test(e.message || "") ? "Too many sign-in emails were sent recently. Please wait a few minutes and try again." : (e.message || "Something went wrong. Please try again.");
+
+  const stepEmail = () => {
+    box.textContent = "";
+    const email = el("input",{type:"email", id:"authEmail", autocomplete:"email", required:true, placeholder:"you@example.org"});
+    const go = el("button",{class:"btn primary", type:"submit", text:"Email me a sign-in link"});
+    const bot = el("div",{class:"botcheck", "aria-label":"Check that you are not a robot"});
+    let botToken = "", botId = null;
+    const f = el("form",{style:"display:grid;gap:14px"},
+      el("h2",{id:"authTitle", text:"Sign in to take part"}),
+      el("p",{text:"Enter your email and we'll send you a sign-in link. No password, and your email address is never shown on the site."}),
+      el("label",{for:"authEmail"}, "Email address", email), bot, el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Cancel", onclick: close})), msg);
+    // Cloudflare Turnstile bot check: usually ticks itself; its token goes with the sign-in request.
+    const mountBot = (tries = 0) => {
+      if (!S.cfg.turnstileSiteKey) return;
+      if (!window.turnstile) { if (tries < 40) setTimeout(() => mountBot(tries + 1), 250); else bot.textContent = "The bot check didn't load. Check your connection and reload the page."; return; }
+      botId = window.turnstile.render(bot, { sitekey: S.cfg.turnstileSiteKey, theme: "auto", size: "flexible",
+        callback: t => { botToken = t; }, "expired-callback": () => { botToken = ""; }, "error-callback": () => { botToken = ""; } });
+    };
+    f.addEventListener("submit", async e => {
+      e.preventDefault(); if (!email.value.includes("@")) return err("Enter a valid email address.");
+      go.disabled = true; msg.className = "msg"; msg.textContent = "Sending…";
+      if (S.cfg.turnstileSiteKey && !botToken) { go.disabled = false; return err("Please wait for the bot check to finish (or tick its box), then try again."); }
+      try { localStorage.setItem("ctid.returnTo", location.hash || ""); } catch (x) {}
+      const { error } = await S.sb.auth.signInWithOtp({ email: email.value.trim(), options: { shouldCreateUser: true, emailRedirectTo: location.origin + location.pathname, captchaToken: botToken || undefined } });
+      go.disabled = false;
+      if (botId !== null && window.turnstile) { window.turnstile.reset(botId); botToken = ""; }   // each check works once
+      if (error) return err(friendly(error));
+      stepCode(email.value.trim());
+    });
+    box.append(f); email.focus(); mountBot();
+  };
+  const stepCode = (addr) => {
+    box.textContent = "";
+    const code = el("input",{type:"text", id:"authCode", inputmode:"numeric", autocomplete:"one-time-code", maxlength:"6", placeholder:"6-digit code"});
+    const go = el("button",{class:"btn primary", type:"submit", text:"Sign in with code"});
+    const f = el("form",{style:"display:grid;gap:14px"},
+      el("h2",{id:"authTitle", text:"Check your email"}),
+      el("p",{}, "We've sent a sign-in email to ", el("b",{text:addr}), ". Click the link in it and you'll come back here, signed in. If the email shows a 6-digit code, you can type it here instead."),
+      el("label",{for:"authCode"}, "Code (if your email has one)", code),
+      el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Use a different email", onclick: stepEmail})), msg);
+    f.addEventListener("submit", async e => {
+      e.preventDefault(); if (!/^\d{6}$/.test(code.value.trim())) return err("Enter the 6 digits from the email.");
+      go.disabled = true; msg.className = "msg"; msg.textContent = "Checking…";
+      const { error } = await S.sb.auth.verifyOtp({ email: addr, token: code.value.trim(), type: "email" });
+      go.disabled = false;
+      if (error) return err("That code didn't work. Check it, or use the link in the email.");
+      await afterSignIn();
+    });
+    box.append(f);
+  };
+  const stepProfile = () => {
+    box.textContent = "";
+    const me = S.me || {};
+    const name = el("input",{type:"text", id:"pfName", maxlength:"60", required:true, value: me.display_name || "", placeholder:"How your name appears with your identifications"});
+    const org = el("input",{type:"text", id:"pfOrg", maxlength:"120", value: me.affiliation || "", placeholder:"e.g. University of PNG, Landscape Alliance PNG"});
+    const groups = familyKeys().map(f => { const c = el("input",{type:"checkbox", value:f, checked: (me.expertise || []).includes(f)}); return el("label",{}, c, famLabel(f)); });
+    const go = el("button",{class:"btn primary", type:"submit", text: S.me ? "Save profile" : "Join"});
+    const f = el("form",{style:"display:grid;gap:14px"},
+      el("h2",{id:"authTitle", text: S.me ? "Your profile" : "Welcome"}),
+      el("p",{text: S.me ? "Your name is shown with your identifications and comments." : "Tell us how your name should appear with your identifications. Your email address is never shown."}),
+      el("label",{for:"pfName"}, "Display name", name), el("label",{for:"pfOrg"}, "Organisation (optional)", org),
+      el("div",{style:"display:grid;gap:6px"}, el("span",{style:"font-size:14px;color:var(--muted)", text:"Groups you know well (optional)"}), el("div",{class:"chips"}, groups)),
+      el("div",{class:"row"}, go, el("button",{type:"button", class:"linkbtn", text:"Cancel", onclick: close})), msg);
+    f.addEventListener("submit", async e => {
+      e.preventDefault(); const n = name.value.trim(); if (n.length < 2) return err("Enter a display name of at least 2 characters.");
+      const row = { id: S.user.id, display_name: n, affiliation: org.value.trim() || null, expertise: groups.map(l => l.querySelector("input")).filter(c => c.checked).map(c => c.value) };
+      go.disabled = true; msg.className = "msg"; msg.textContent = "Saving…";
+      const { error } = S.me ? await S.sb.from("profiles").update(row).eq("id", S.user.id) : await S.sb.from("profiles").insert(row);
+      go.disabled = false;
+      if (error) return err(error.message);
+      await loadCommunity(); finish();
+    });
+    box.append(f); name.focus();
+  };
+  const finish = () => {
+    close(); refreshAll();
+    const fn = S.afterAuth; S.afterAuth = null;
+    if (S.me && S.me.status === "pending") toast("Welcome! Your identifications are saved now and will count once a moderator approves your account.");
+    if (fn) fn(); else if (S.openId) showDetail(S.openId);
+  };
+  async function afterSignIn() { await loadCommunity(); if (!S.me) stepProfile(); else finish(); }
+  S.authNext = afterSignIn;
+  if (startAt === "profile") stepProfile(); else if (S.user && !S.me) stepProfile(); else stepEmail();
+}
+function toast(t) {
+  const n = el("div",{role:"status", style:"position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--forest);color:#fff;padding:12px 18px;border-radius:12px;max-width:min(560px,92vw);box-shadow:0 10px 30px rgb(0 0 0 / .25);font-size:15px"}, t);
+  document.body.append(n); setTimeout(() => n.remove(), 7000);
+}
+function signedInGate(after) { if (S.me) return true; openAuth(after); return false; }
+
+/* ---------- moderation ---------- */
+async function modUpdate(table, id, patch) {
+  const { error } = await S.sb.from(table).update(patch).eq("id", id);
+  if (error) { toast(error.message); return; }
+  await loadCommunity(); refreshAll(); renderModeration();
+}
+function openModeration() {
+  if (!(S.me && S.me.is_moderator)) return;
+  $("#modSheet").hidden = false; renderModeration();
+}
+function renderModeration() {
+  const sh = $("#modSheet"); if (sh.hidden) return; sh.textContent = "";
+  const close = () => { sh.hidden = true; sh.textContent = ""; if (location.hash === "#moderate") history.replaceState(null, "", location.pathname); };
+  sh.onclick = e => { if (e.target === sh) close(); };
+  const btn = (label, fn, warn) => { const b = el("button",{type:"button", class:"modbtn" + (warn ? " warn" : ""), text: label}); b.addEventListener("click", fn); return b; };
+  const people = Object.values(S.profiles).sort((a,b) => (a.created_at < b.created_at ? 1 : -1));
+  const table = (head, rows) => el("div",{class:"tablewrap"}, el("table",{}, el("thead",{}, el("tr",{}, head.map(h => el("th",{text:h})))), el("tbody",{}, rows)));
+  const pending = people.filter(p => p.status === "pending");
+  const who = id => (S.profiles[id] || {}).display_name || "Member";
+  const imgLink = id => { const a = el("a",{href:"#img-" + id, text:id}); a.addEventListener("click", () => close()); return a; };
+  const panel = el("div",{class:"modpanel", role:"dialog", "aria-modal":"true", "aria-labelledby":"modTitle"},
+    el("div",{class:"row", style:"display:flex;justify-content:space-between;gap:10px;align-items:center"}, el("h2",{id:"modTitle", text:"Moderation"}), el("button",{class:"x", type:"button", "aria-label":"Close", text:"×", onclick: close})),
+    el("section",{}, el("h3",{text:`New members waiting for approval (${pending.length})`}),
+      pending.length ? table(["Name","Organisation","Groups","Joined",""], pending.map(p => el("tr",{},
+        el("td",{text:p.display_name}), el("td",{text:p.affiliation || ""}), el("td",{text:(p.expertise||[]).map(famLabel).join(", ")}), el("td",{text:(p.created_at||"").slice(0,10)}),
+        el("td",{}, btn("Approve", () => modUpdate("profiles", p.id, {status:"approved"})), btn("Block", () => modUpdate("profiles", p.id, {status:"blocked"}), true)))))
+      : el("p",{class:"none", text:"Nobody is waiting."})),
+    el("section",{}, el("h3",{text:`All members (${people.length})`}),
+      table(["Name","Organisation","Status","Moderator",""], people.map(p => el("tr",{},
+        el("td",{text:p.display_name}), el("td",{text:p.affiliation || ""}), el("td",{text:p.status}), el("td",{text:p.is_moderator ? "yes" : ""}),
+        el("td",{}, p.id === S.user.id ? "" : [
+          p.status === "blocked" ? btn("Unblock", () => modUpdate("profiles", p.id, {status:"approved"})) : btn("Block", () => modUpdate("profiles", p.id, {status:"blocked"}), true),
+          p.is_moderator ? btn("Remove moderator", () => modUpdate("profiles", p.id, {is_moderator:false}), true) : (p.status === "approved" ? btn("Make moderator", () => modUpdate("profiles", p.id, {is_moderator:true})) : "")]))))),
+    el("section",{}, el("h3",{text:"Latest identifications"}),
+      table(["When","Image","Who","Name","Note",""], [...S.ids].sort((a,b) => a.at < b.at ? 1 : -1).slice(0,60).map(v => el("tr",{},
+        el("td",{text:(v.at||"").slice(0,16).replace("T"," ")}), el("td",{}, imgLink(v.image)), el("td",{text: who(v.uid)}),
+        el("td",{text: v.unid ? "not identifiable" : [v.genus, v.species || v.provisional].filter(Boolean).join(" ") || v.family || "note"}), el("td",{text:(v.note||"").slice(0,80)}),
+        el("td",{}, v.hidden ? btn("Unhide", () => modUpdate("identifications", v.rowId, {hidden:false})) : btn("Hide", () => modUpdate("identifications", v.rowId, {hidden:true}), true)))))),
+    el("section",{}, el("h3",{text:"Latest comments"}),
+      table(["When","Image","Who","Comment",""], [...(S.comments||[])].reverse().slice(0,60).map(c => el("tr",{},
+        el("td",{text:(c.created_at||"").slice(0,16).replace("T"," ")}), el("td",{}, imgLink(c.image)), el("td",{text: who(c.user_id)}), el("td",{text:c.body}),
+        el("td",{}, c.hidden ? btn("Unhide", () => modUpdate("comments", c.id, {hidden:false})) : btn("Hide", () => modUpdate("comments", c.id, {hidden:true}), true)))))));
+  sh.append(panel);
+}
+
+/* ---------- comments on a sighting ---------- */
+function commentsNode(img) {
+  if (!S.sb) return null;
+  const list = (S.comments || []).filter(c => c.image === img.id && (!c.hidden || (S.me && S.me.is_moderator) || (S.user && c.user_id === S.user.id)));
+  const box = el("div",{class:"comments"});
+  if (!list.length) box.append(el("p",{class:"none", text:"No comments yet. Ask a question or share an idea about this animal."}));
+  list.forEach(c => {
+    const mine = S.user && c.user_id === S.user.id, mod = S.me && S.me.is_moderator;
+    const acts = [];
+    if (mine) acts.push(el("button",{type:"button", class:"linkbtn", text:"Delete", onclick: async () => { const { error } = await S.sb.from("comments").delete().eq("id", c.id); if (error) return toast(error.message); await loadCommunity(); showDetail(img.id); }}));
+    if (mod) acts.push(el("button",{type:"button", class:"linkbtn", text: c.hidden ? "Unhide" : "Hide", onclick: async () => { const { error } = await S.sb.from("comments").update({hidden: !c.hidden}).eq("id", c.id); if (error) return toast(error.message); await loadCommunity(); showDetail(img.id); }}));
+    box.append(el("div",{class:"comment"}, el("div",{class:"who"}, el("b",{text:(S.profiles[c.user_id] || {}).display_name || "Member"}), " · " + (c.created_at || "").slice(0,10),
+      c.hidden ? el("span",{class:"tag hidden", text:"hidden"}) : null, acts.length ? [" · ", ...acts] : null), el("div",{text:c.body})));
+  });
+  const ta = el("textarea",{id:"cBody", rows:"2", maxlength:"1500", placeholder:"Add a comment or question"});
+  const msg = el("p",{class:"msg", "aria-live":"polite"});
+  const go = el("button",{class:"btn", type:"submit", text:"Post comment"});
+  const f = el("form",{class:"cform"}, ta, el("div",{class:"actions"}, go, msg));
+  f.addEventListener("submit", async e => {
+    e.preventDefault(); const body = ta.value.trim(); if (!body) return;
+    if (!signedInGate(() => showDetail(img.id))) return;
+    go.disabled = true; msg.className = "msg"; msg.textContent = "Posting…";
+    const { error } = await S.sb.from("comments").insert({ sighting_id: img.id, user_id: S.user.id, body });
+    go.disabled = false;
+    if (error) { msg.className = "msg err"; msg.textContent = error.message; return; }
+    await loadCommunity(); showDetail(img.id);
+  });
+  box.append(f);
+  return el("div",{class:"sec"}, el("h3",{text:`Discussion (${list.length})`}), box);
+}
+
 function step(id, d) {
   id = leadOf(id);
   const list = (S.visible && S.visible.includes(id)) ? S.visible : sightings().map(i => i.id);
@@ -887,17 +1193,23 @@ function showDetail(id) {
   if (!entries.length) ul.append(el("li",{}, el("span"), el("p",{class:"none", text:"No identifications or notes yet. Be the first."})));
   for (const x of entries) {
     const what = el("div",{class:"what"});
-    if (!isVote(x)) what.append("Note (not counted as a vote)");
+    if (!x.vote) what.append("Note (not counted as a vote)");
     else if (x.unid) what.append("Not identifiable from this image");
     else {
       if (x.genus) what.append(el("i",{class:"tx", text: x.genus + (x.species ? " " + x.species : x.provisional ? "" : " sp.")}), x.provisional ? " " + x.provisional : "");
       if (x.family) what.append(x.genus ? ` (${x.family})` : x.family);
     }
-    if (x.confidence && isVote(x)) what.append(el("span",{class:"conf", text:x.confidence}));
+    if (x.confidence && x.vote) what.append(el("span",{class:"conf", text:x.confidence}));
     const xf = Object.entries(x.flags || {}).filter(([,on]) => on).map(([k]) => el("span",{class:"flag " + k, text: FLAG_LABEL[k]}));
     if (xf.length) what.append(el("div",{}, xf));
     const url = safeUrl(x.url);
-    ul.append(el("li",{class: isVote(x) ? "" : "note-entry"}, el("span"), el("div",{}, el("div",{class:"who"}, el("b",{text:x.user}), " · " + (x.at||"").slice(0,10), url ? [" · ", el("a",{href:url, target:"_blank", rel:"noopener", text:"discussion"})] : ""), what,
+    const tags = [];
+    if (S.user && x.uid === S.user.id) tags.push(el("span",{class:"tag you", text:"you"}));
+    if (x.vote && x.counted === false && x.status === "pending") tags.push(el("span",{class:"tag pending", text:"awaiting approval"}));
+    if (x.hidden) tags.push(el("span",{class:"tag hidden", text:"hidden"}));
+    if (S.me && S.me.is_moderator && x.rowId) tags.push(el("button",{type:"button", class:"modbtn" + (x.hidden ? "" : " warn"), text: x.hidden ? "Unhide" : "Hide",
+      onclick: async () => { const { error } = await S.sb.from("identifications").update({hidden: !x.hidden}).eq("id", x.rowId); if (error) return toast(error.message); await loadCommunity(); refreshAll(); showDetail(img.id); }}));
+    ul.append(el("li",{class: x.vote ? "" : "note-entry"}, el("span"), el("div",{}, el("div",{class:"who"}, el("b",{text:x.user}), tags, " · " + (x.at||"").slice(0,10), url ? [" · ", el("a",{href:url, target:"_blank", rel:"noopener", text:"discussion"})] : ""), what,
       x.local ? el("div",{class:"why", text:"Local or common name: " + x.local}) : null, x.note ? el("div",{class:"why", text:x.note}) : null)));
   }
   const cta = idForm(img);
@@ -905,7 +1217,7 @@ function showDetail(id) {
   const side = el("div",{class:"side"},
     viewerHead(img),
     v, facts, mapNode(img), el("div",{class:"sec", id:"yourId"}, el("h3",{text:"Your identification"}), cta),
-    el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally), el("div",{class:"sec"}, el("h3",{text:`Identifications and notes (${c.total} counted${entries.length > c.total ? `, ${entries.length - c.total} note${entries.length - c.total > 1 ? "s" : ""}` : ""})`}), ul), candidatesNode(img));
+    el("div",{class:"sec"}, el("h3",{text:"Tally by rank"}), tally), el("div",{class:"sec"}, el("h3",{text:`Identifications and notes (${c.total} counted${entries.length > c.total ? `, ${entries.length - c.total} not counted` : ""})`}), ul), commentsNode(img), candidatesNode(img));
   sh.append(el("div",{class:"panel", role:"dialog", "aria-modal":"true", "aria-labelledby":"dTitle"}, lb, side));
   sh.onclick = e => { if (e.target === sh) closeSheet(); };
 }
@@ -915,7 +1227,10 @@ function route() {
   if (!f && !m && S.family && !location.hash) { S.family = ""; renderFamilies(); renderGrid(); }
   if (m) showDetail(m[1]); else if (S.openId) closeSheet();
 }
-window.addEventListener("hashchange", route);
+window.addEventListener("hashchange", () => { if (location.hash === "#moderate") openModeration(); else route(); });
+$("#navAuth").addEventListener("click", () => { if (!S.user) openAuth(); else if (!S.me) openAuth(null, "profile"); else ($("#userMenu").hidden ? openUserMenu() : closeUserMenu()); });
+$("#navMod").addEventListener("click", e => { e.preventDefault(); openModeration(); });
+document.addEventListener("click", e => { if (!e.target.closest(".menu")) closeUserMenu(); });
 $("#famBtn").addEventListener("click", () => $("#famMenu").hidden ? openMenu() : closeMenu());
 document.addEventListener("click", e => { if (!e.target.closest(".menu")) closeMenu(); });
 ["#navHome", "#navHome2"].forEach(sel => $(sel).addEventListener("click", e => { e.preventDefault(); goHome(); }));
@@ -923,7 +1238,9 @@ const jump = t => { if (S.openId) closeSheet(); if (S.family && ["#why","#how","
   const n = $(t); window.scrollTo({top: n.getBoundingClientRect().top + scrollY - 64, behavior:"smooth"}); };
 [["#navGuide","#guidelines"], ["#navWhy","#why"], ["#navHow","#how"], ["#navPartner","#partner"], ["#navAbout","#about"], ["#ctaStart","#groups"], ["#ctaWhy","#why"]].forEach(([b, t]) => $(b).addEventListener("click", e => { e.preventDefault(); jump(t); }));
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#famMenu").hidden) { closeMenu(); $("#famBtn").focus(); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { if (!$("#authSheet").hidden) { $("#authSheet").hidden = true; } else if (!$("#modSheet").hidden) { $("#modSheet").hidden = true; } } });
 document.addEventListener("keydown", e => {
+  if (!$("#authSheet").hidden || !$("#modSheet").hidden) return;
   if ($("#sheet").hidden || e.target.closest("input,textarea,select")) return;
   if (e.key === "Escape") closeSheet();
   else if ((e.key === "ArrowRight" || e.key === "ArrowLeft") && S.openId) { const n = step(S.openId, e.key === "ArrowRight" ? 1 : -1); if (n) { e.preventDefault(); openImage(n); } }
@@ -931,19 +1248,36 @@ document.addEventListener("keydown", e => {
 $("#tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.filter = b.dataset.f; try { localStorage.setItem("ctid.filter", S.filter); } catch(e) {} renderGrid(); });
 
 const get = (u, fallback) => fetch(u, {cache:"no-cache"}).then(r => r.ok ? r.json() : fallback).catch(() => fallback);
-Promise.all([get("data/images.json", []), get("data/ids.json", []), get("data/config.json", {}), get("data/geo.json", null), get("data/iucn.json", null)]).then(([images, ids, cfg, geo, iucn]) => {
+Promise.all([get("data/images.json", []), get("data/ids.json", []), get("data/config.json", {}), get("data/geo.json", null), get("data/iucn.json", null)]).then(async ([images, ids, cfg, geo, iucn]) => {
   S.images = images; S.cfg = {...S.cfg, ...cfg}; S.geo = geo; S.iucn = iucn;
   S.byId = Object.fromEntries(images.map(i => [i.id, i]));
   images.forEach(i => (i.aliases || []).forEach(a => { S.byId[a] = i; }));
   S.ids = ids.map(v => ({...v, image: leadOf(S.byId[v.image] ? S.byId[v.image].id : v.image)}));
+  S.profiles = {}; S.comments = [];
+  if (window.supabase && S.cfg.supabaseUrl && S.cfg.supabaseKey) {
+    S.sb = window.supabase.createClient(S.cfg.supabaseUrl, S.cfg.supabaseKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: "pkce" } });
+    S.ids = [];
+  }
   if (!S.cfg.repo) { const o = location.hostname.split(".")[0], r = location.pathname.split("/")[1]; S.cfg.repo = `${o}/${r}`; }
   $("#repoLink").href = `https://github.com/${S.cfg.repo}/issues?q=label%3Aidentification`;
   if (iucn && iucn.retrieved) $("#iucnDate").textContent = "retrieved " + iucn.retrieved;
   if (!images.length) { $("#grid").textContent = ""; $("#grid").append(el("div",{class:"empty"}, el("h2",{text:"The image list could not be loaded"}), el("p",{text:"Reload the page to try again."}))); return; }
-  const latest = ids.reduce((a, v) => v.at > a ? v.at : a, "");
-  const nv = S.ids.filter(isVote).length;
-  $("#updated").textContent = ids.length ? `${nv} identifications, ${ids.length - nv} notes · latest ${latest.slice(0,10)}` : "No identifications yet";
-  renderRule(); renderFamilies(); renderGrid(); renderContact(); renderLogos(); route();
+  updateCounts();
+  renderRule(); renderFamilies(); renderGrid(); renderContact(); renderLogos(); renderAuthNav();
+  let back = "";
+  if (/[?&]code=/.test(location.search)) { try { back = localStorage.getItem("ctid.returnTo") || ""; localStorage.removeItem("ctid.returnTo"); } catch (x) {} }
+  route();
+  if (S.sb) {
+    S.sb.auth.onAuthStateChange((event) => { if (event === "SIGNED_IN" || event === "SIGNED_OUT") loadCommunity().then(refreshAll); });
+    await S.sb.auth.getSession();                       // finishes a sign-in link (?code=…) if present
+    await loadCommunity(); refreshAll();
+    if (/[?&]code=/.test(location.search)) history.replaceState(null, "", location.pathname + (back || location.hash));
+    if (back && /^#img-/.test(back)) showDetail(back.slice(5));
+    if (S.user && !S.me) openAuth(null, "profile");
+    else if (back && S.me) toast("You're signed in. You can now submit your identification.");
+    if (location.hash === "#moderate") openModeration();
+    if (S.openId && !back) showDetail(S.openId);
+  }
 });
 })();
 </script>

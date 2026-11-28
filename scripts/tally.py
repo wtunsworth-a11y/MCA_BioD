@@ -11,6 +11,11 @@ and writes:
 The consensus rule (minimum identifications, agreement percentage and
 target rank) is read from docs/data/config.json and matches the website.
 
+Identifications come from the website's Supabase database when
+docs/data/config.json names one (supabaseUrl, supabaseKey); otherwise from
+GitHub issues. Running it regularly also keeps the free Supabase project
+from pausing.
+
 Environment: GITHUB_TOKEN and REPO ("owner/name"). Set DRY_RUN=1 to skip
 labelling and commenting on issues.
 """
@@ -158,6 +163,28 @@ def consensus(ids, gfm, cfg):
     return status, result, total
 
 
+def supabase_entries(cfg, lead):
+    """Identifications from the website's Supabase database (public, read-only key).
+
+    Only visible entries are returned; a vote counts once its author is approved."""
+    base, key = cfg["supabaseUrl"].rstrip("/"), cfg["supabaseKey"]
+    def rest(path):
+        req = urllib.request.Request(f"{base}/rest/v1/{path}", headers={"apikey": key, "User-Agent": "camtrap-tally"})
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read())
+    people = {p["id"]: p for p in rest("profiles?select=id,display_name,status")}
+    out = []
+    for r in rest("identifications?select=*&order=updated_at"):
+        p = people.get(r["user_id"], {})
+        out.append(dict(
+            image=lead.get(r["sighting_id"], r["sighting_id"]), user=p.get("display_name", "Member"),
+            vote=bool(r["unid"] or r["family"] or r["genus"]), counted=p.get("status") == "approved",
+            family=r["family"] or "", genus=r["genus"] or "", species=r["species"] or "", provisional=r["provisional"] or "",
+            unid=r["unid"], flags=dict(range=r["flag_range"], newsp=r["flag_newsp"], review=r["flag_review"]),
+            confidence=r["confidence"] or "", local=r["local_name"] or "", note=r["note"] or "", at=r["updated_at"], url=""))
+    return out
+
+
 def main():
     if not REPO:
         sys.exit("Set REPO=owner/name")
@@ -178,8 +205,10 @@ def main():
         for a in i.get("aliases", []):
             known[a.lower()] = lead[i["id"]]
 
+    # The website stores identifications in Supabase when it is configured; otherwise in GitHub issues.
+    sb = supabase_entries(cfg, lead) if cfg.get("supabaseUrl") and cfg.get("supabaseKey") else None
     latest, notes = {}, []
-    for iss in sorted(fetch_issues(), key=lambda i: i["created_at"]):
+    for iss in ([] if sb is not None else sorted(fetch_issues(), key=lambda i: i["created_at"])):
         labels = {l["name"] for l in iss.get("labels", [])}
         if "identification" not in labels:
             label_issue(iss["number"], "identification")
@@ -230,13 +259,13 @@ def main():
         if "counted" not in labels:
             label_issue(iss["number"], "counted")
 
-    ids = sorted(list(latest.values()) + notes, key=lambda v: (v["image"], v["at"]))
+    ids = sb if sb is not None else sorted(list(latest.values()) + notes, key=lambda v: (v["image"], v["at"]))
     with open(os.path.join(DATA, "ids.json"), "w") as fh:
         json.dump(ids, fh, indent=1)
 
     # genus -> most common family, so genus-only IDs still count at family level
     gf = defaultdict(Counter)
-    votes = [v for v in ids if v["vote"]]
+    votes = [v for v in ids if v["vote"] and v.get("counted", True)]
     for v in votes:
         if v["genus"] and v["family"]:
             gf[v["genus"]][v["family"]] += 1

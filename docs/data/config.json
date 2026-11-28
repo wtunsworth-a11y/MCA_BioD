@@ -5,5 +5,7 @@
   "targetRank": "species",
   "contactEmail": "w.unsworth@landscapealliance.org",
   "logos": [],
-  "logoNotes": "LA = Landscape Alliance"
+  "logoNotes": "LA = Landscape Alliance",
+  "supabaseUrl": "https://imromviegshfocauhjdu.supabase.co",
+  "supabaseKey": "sb_publishable_qHD8vB-aawXygXCqilo9RQ_mqt-bAub"
 }

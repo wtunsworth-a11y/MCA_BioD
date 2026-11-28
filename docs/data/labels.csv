@@ -1,6 +1,6 @@
 image_id,observation_id,file,curated_family,curated_genus,grid,station,camera,elevation_m,date,time,clock_unreliable,status,consensus_rank,consensus_family,consensus_genus,consensus_species,agreement_pct,agreeing_ids,total_ids,flag_range_extension,flag_undescribed,flag_review,rule_min_ids,rule_agree_pct,rule_target_rank
 Dasyuridae_001,Dasyuridae_001,images/Dasyuridae/Dasyuridae_001.jpg,Dasyuridae,,G57,G5,1,528,2025-09-09,03:22,,needs,,,,,,,0,,,,5,70,species
-Dasyuridae_002,Dasyuridae_002,images/Dasyuridae/Dasyuridae_002.jpg,Dasyuridae,Dasyurus,G09,G3,1,1242,2025-09-29,05:08,,needs,,,,,,,1,,,,5,70,species
+Dasyuridae_002,Dasyuridae_002,images/Dasyuridae/Dasyuridae_002.jpg,Dasyuridae,Dasyurus,G09,G3,1,1242,2025-09-29,05:08,,needs,,,,,,,0,,,,5,70,species
 Dasyuridae_004,Dasyuridae_004,images/Dasyuridae/Dasyuridae_004.jpg,Dasyuridae,Dasyurus,G51,B4,2,1065,2025-10-27,20:21,,needs,,,,,,,0,,,,5,70,species
 Macropodidae_001,Macropodidae_001,images/Macropodidae/Macropodidae_001.jpg,Macropodidae,,G46,E1,1,1509,2026-04-03,10:39,,needs,,,,,,,0,,,,5,70,species
 Macropodidae_002,Macropodidae_002,images/Macropodidae/Macropodidae_002.jpg,Macropodidae,,G46,C3,2,1484,2026-04-03,21:14,,needs,,,,,,,0,,,,5,70,species

@@ -1,8 +1,8 @@
 # IUCN Red List data: raw API responses and derived outputs are not
 # redistributed in this public repository (IUCN Red List Terms of Use).
 # WDPA boundaries are also under a no-redistribution licence.
-data/
-output/
+/data/
+/output/
 # API token
 .Renviron
 .Rhistory

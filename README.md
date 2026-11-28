@@ -124,6 +124,61 @@ Eight qualifying species use 2.3 criteria, and eight have no recorded
 population trend. The remaining gap with the paper most likely comes from
 Red List updates between versions 2025-2 and 2026-1.
 
+## Site prioritisation: Managalas Conservation Area
+
+`run_mca.R` narrows the national list to the Managalas Conservation Area (MCA)
+in Oro Province, using GBIF occurrence records. The MCA is WDPA site 555651673:
+a Conservation Area designated in 2017 under local community governance,
+2,133 km².
+
+**Inputs**
+- The cached national IUCN data from `run_target4.R`.
+- The MCA boundary from WDPA, saved to `data/mca/managalas_wdpa.geojson`.
+  It isn't committed because of WDPA's licence. To download it again:
+
+```bash
+mkdir -p data/mca
+curl -s "https://data-gis.unep-wcmc.org/server/rest/services/ProtectedSites/The_World_Database_of_Protected_Areas/MapServer/1/query?where=site_id%3D555651673&outFields=*&returnGeometry=true&outSR=4326&f=geojson" -o data/mca/managalas_wdpa.geojson
+```
+
+**Run**
+
+```bash
+Rscript run_mca.R                  # 25 km buffer
+Rscript run_mca.R --buffer-km 10
+```
+
+**Method**
+1. Each species name is matched to the GBIF backbone taxonomy.
+   - Where GBIF treats an IUCN species as a synonym of a broader species, it is counted by its own name key. GBIF restricts that key to records filed under the name. Otherwise six IUCN *Actinodaphne* species, all lumped into *A. nitida* by GBIF, would each get the others' 193 records.
+   - Any key still shared by two IUCN species is flagged in `gbif_shared_key`.
+2. GBIF records are counted inside the boundary, within the buffer (25 km by default) and across PNG.
+   - Fossils and living collections are excluded, as are records with geospatial issues.
+   - GBIF caps request size, so the query polygons are simplified at 200–300 m.
+3. Each species gets an evidence tier:
+   - **1, recorded in the site:** a GBIF record inside the boundary.
+   - **2, recorded nearby:** a record within the buffer but none inside.
+   - **3, no records nearby:** a land or freshwater species with no record in the buffer.
+   - **4, marine only:** IUCN lists only the Marine system.
+4. Within each tier, Priority 1 species come before Priority 2, then species are ranked by the national score.
+5. `site_share` is the buffer's share of the species' GBIF records in PNG. It roughly shows how much the area matters for that species. Survey effort biases it heavily.
+
+**Result** (25 km buffer, 28 Nov 2026):
+
+| Tier | Species | Priority 1 | Priority 2 |
+|---|---|---|---|
+| 1, recorded in the site | 10 | 9 | 1 |
+| 2, recorded nearby | 16 | 14 | 2 |
+| 3, no records nearby | 926 | 859 | 67 |
+| 4, marine only | 347 | 32 | 315 |
+
+Tier 1 includes *Ornithoptera alexandrae* (Queen Alexandra's birdwing,
+the MCA's flagship species) and *Goura scheepmakeri*.
+
+**Caveats**
+- GBIF holds only about 3,400 records inside the MCA. Tier 3 therefore mostly means "not surveyed", not "absent".
+- IUCN range maps or Area of Habitat (from the IUCN spatial data download, which needs a login) would show which tier 3 species could occur there. So would an elevation and habitat match against the plateau. Local and Indigenous knowledge, and survey reports for the plateau, should add species GBIF misses.
+
 ## Caveats from the paper
 
 The ranked list is a **starting point** for national review, not a final

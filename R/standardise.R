@@ -91,6 +91,10 @@ standardise_one <- function(a, focal, presence, origin, num_summary) {
     focal_presence = if (is.na(fi)) NA_character_ else lpres[fi],
     focal_origin = if (is.na(fi)) NA_character_ else lorig[fi],
     n_countries = n_countries,
+    systems = paste(unique(vapply(a$systems %||% list(), en_text, character(1))),
+                    collapse = "; "),
+    elev_lower = parse_num(g("lower_elevation_limit"), "min"),
+    elev_upper = parse_num(g("upper_elevation_limit"), "max"),
     url = a$url %||% NA_character_
   )
 }
